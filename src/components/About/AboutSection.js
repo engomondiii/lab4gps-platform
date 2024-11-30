@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/AboutSection.css"; // Import your CSS file for styling
+import { FaHandsHelping, FaBuilding, FaUsers, FaTools, FaNetworkWired } from "react-icons/fa";
+
 
 const AboutSection = () => {
   // State to track the active tab
@@ -60,106 +62,80 @@ const AboutSection = () => {
     
     
     
-    who: (
-      <div className="who-content">
+
+who: (
+  <div className="who-content">
+    <div className="who-main">
+      <div className="who-text">
         <h3>Who We Are</h3>
         <p>
-        We are a community focused on solving global issues through education, research, and practice. 
-
-We firmly believe that 'Solving others' problems is an love in action.'
-         </p>
+          We are a community focused on solving global issues through education, research, and practice.
+          We firmly believe that 'Solving others' problems is love in action.'
+        </p>
         <p>
-        To pursue this mission, we amalgamate the specialized knowledge and strengths of each individual to  form a community, tackling challenging tasks that are impossible to achieve alone. 
-          </p>
+          To pursue this mission, we amalgamate the specialized knowledge and strengths of each individual
+          to form a community, tackling challenging tasks that are impossible to achieve alone.
+        </p>
         <blockquote>
-        Lab4GPS is a research institute that aims to solve world problems under the slogan of 'Love in Action' .  We believe that 'solving other people's problems is the practice of love'.        </blockquote>
-        <h4>Our Team</h4>
-        <p><strong>IWL Partners:</strong> As the primary sponsors of Lab4GPS, they provide the financial support necessary for our research and innovation projects. They support GPS in developing sustainable solutions and offer strategic direction for global problem-solving.
-
-
-
-Supporting GPSs that develop sustainable solutions, 
-
-Provides strategic direction for solving global problems.</p>
-        <p><strong>GPS Startups:</strong> Purpose-driven companies founded by GPS who discover the secrets to solving the world's problems and transform them into business models. They lead the way in developing innovative and sustainable solutions to address social issues.
-
-
-GPSs are discovering the secret to solving the world's problems, 
-
-This is a company that was founded by sublimating this into a business model. </p>
-        <p><strong>GPS PD (Program Development):</strong>A team of experts who develop GPS programs and train GPS. They design educational programs and training courses to help GPS acquire the necessary skills and knowledge.
-
-
-
-We design GPS training programs and courses  to help GPS personnel acquire the skills and knowledge they need. 
-
-
-
-</p>
-        <p><strong>GPS Specialists:</strong>Experts who assist GPS Startups and Lab4GPS members by leveraging their Purpose-Specific Skill Sets. They provide technical and strategic support needed for GPS to achieve their goals, based on diverse expertise.
-
-
-They are based on their expertise in various fields and GPS 
-
-We provide technical and strategic support needed to achieve your goals.</p>
-        <p><strong>Lab4GPS Operations Team:</strong>Individuals who manage Lab4GPS through tasks such as organizational operations, human resources, space provision, channel expansion, toolbox installation, and digital transformation. They create an efficient work environment to ensure optimal performance from all team members.
-
-
-
-We create an efficient work environment  to support all team members to perform at their best.</p>
-        <p><strong>Shared Service Center:</strong>A future center that will provide specialized services such as startup incubation, legal services, and accounting services to Lab4GPS members. By offering highly specialized services, it helps GPS grow and make a greater impact.
-
-
-
-We accelerate the growth of GPSs and help them make a bigger impact through highly specialized services  .</p>
-        <h4>Our Network</h4>
-        <p><strong>GPS All Over the World:</strong>Lab4GPS collaborates closely with GPS around the world who aims to solve global issues. 
-
-This network consists of individuals with diverse backgrounds and expertise, developing innovative and sustainable  solutions in various regions. The GPS network shares knowledge and resources, striving for greater impact through collaboration and solidarity.
-
-
-
-We are comprised of people with diverse backgrounds and expertise, developing innovative and sustainable solutions in different regions.
-
-</p>
-        <p><strong>Global Christian Network:</strong>Lab4GPS is supported by the prayers and backing of the global Christian network. 
-
-This network shares our mission and vision, providing spiritual and financial support for our activities.
-
-
-
-A global network of Christians share our mission and vision and support our work through spiritual and financial support.
-
-</p>
-        <h4>Who We Serve</h4>
-        <p>
-          <strong>Global Community:</strong>The ultimate beneficiaries of the positive changes brought about by purpose-driven business. Thanks to the innovative and sustainable solutions developed by GPS and GPS Startup Teams supported by Lab4GPS, their quality of life is improved, and various social problems are addressed, with love put into action.
-
-
-
-You are the ultimate beneficiary of the positive change that purpose-driven businesses create. 
-
-Thanks to innovative and sustainable solutions, they improve the quality of life, solve various social problems and put love into practice.
-        </p>
-        <p>
-          <strong>Individuals Aiming to Solve Problems (GPS/GPS Startups):</strong>GPS and GPS Startup Teams are individuals passionate about dedicating their lives to solving the world's problems, and we support them in realizing their vision and goals.
-
-
-
-As people with a passion for solving the world's problems , we support them to realize their vision and goals.
-        </p>
-        <p>
-          <strong>Stakeholders and Investors:</strong>We serve and stakeholders who resonate with our vision and goals and wish to invest their time and resources with love. They not only provide financial support but also strategic advice and networks to ensure successful global problem-solving.
-
-
-
-As stakeholders and investors willing to invest time and resources with love , 
-
-They provide financial support as well as advice and networks to help problem-solving efforts be successful.
-        </p>
+          Lab4GPS is a research institute that aims to solve world problems under the slogan of 'Love in Action'.
+          We believe that 'solving other people's problems is the practice of love.'
+        </blockquote>
       </div>
-    ),
-    
+      <div className="who-image-container"></div>
+    </div>
+
+    <h4>Our Team</h4>
+    <div className="team-list">
+      <div className="team-item">
+        <FaHandsHelping className="team-icon" />
+        <p><strong>IWL Partners:</strong> As the primary sponsors of Lab4GPS, they provide the financial support necessary for our research and innovation projects. They support GPS in developing sustainable solutions and offer strategic direction for global problem-solving.</p>
+      </div>
+      <div className="team-item">
+        <FaBuilding className="team-icon" />
+        <p><strong>GPS Startups:</strong> Purpose-driven companies founded by GPS who discover the secrets to solving the world's problems and transform them into business models. They lead the way in developing innovative and sustainable solutions to address social issues.</p>
+      </div>
+      <div className="team-item">
+        <FaUsers className="team-icon" />
+        <p><strong>GPS PD (Program Development):</strong> A team of experts who develop GPS programs and train GPS. They design educational programs and training courses to help GPS acquire the necessary skills and knowledge.</p>
+      </div>
+      <div className="team-item">
+        <FaTools className="team-icon" />
+        <p><strong>GPS Specialists:</strong> Experts who assist GPS Startups and Lab4GPS members by leveraging their Purpose-Specific Skill Sets. They provide technical and strategic support needed for GPS to achieve their goals, based on diverse expertise.</p>
+      </div>
+      <div className="team-item">
+        <FaBuilding className="team-icon" />
+        <p><strong>Lab4GPS Operations Team:</strong> Individuals who manage Lab4GPS through tasks such as organizational operations, human resources, space provision, channel expansion, toolbox installation, and digital transformation. They create an efficient work environment to ensure optimal performance from all team members.</p>
+      </div>
+      <div className="team-item">
+        <FaNetworkWired className="team-icon" />
+        <p><strong>Shared Service Center:</strong> A future center that will provide specialized services such as startup incubation, legal services, and accounting services to Lab4GPS members. By offering highly specialized services, it helps GPS grow and make a greater impact.</p>
+      </div>
+    </div>
+
+    <h4>Who We Serve</h4>
+    <div className="serve-section">
+      <div className="serve-item">
+        <div className="serve-image global-community"></div>
+        <div className="serve-text">
+          <p><strong>Global Community:</strong> The ultimate beneficiaries of the positive changes brought about by purpose-driven business. Thanks to the innovative and sustainable solutions developed by GPS and GPS Startup Teams supported by Lab4GPS, their quality of life is improved, and various social problems are addressed, with love put into action.</p>
+        </div>
+      </div>
+      <div className="serve-item">
+        <div className="serve-image individuals"></div>
+        <div className="serve-text">
+          <p><strong>Individuals Aiming to Solve Problems (GPS/GPS Startups):</strong> GPS and GPS Startup Teams are individuals passionate about dedicating their lives to solving the world's problems, and we support them in realizing their vision and goals.</p>
+        </div>
+      </div>
+      <div className="serve-item">
+        <div className="serve-image stakeholders"></div>
+        <div className="serve-text">
+          <p><strong>Stakeholders and Investors:</strong> We serve and stakeholders who resonate with our vision and goals and wish to invest their time and resources with love. They not only provide financial support but also strategic advice and networks to ensure successful global problem-solving.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+),
+
     what: (
       <div className="what-content">
         <h3>Mission: Empowering GPS through Education, Research, and Practice</h3>

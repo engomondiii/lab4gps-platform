@@ -341,3 +341,159 @@
     font-size: 1rem; /* Maintain text readability */
   }
 }
+
+
+
+
+/* Who Section Styling */
+.who-content {
+  padding: 2rem;
+  color: #333;
+  font-family: "Helvetica Regular", sans-serif;
+}
+
+.who-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.who-text {
+  flex: 2;
+}
+
+.who-text h3 {
+  font-size: 2.5rem;
+  color: #141e3f; /* Lab4GPS Blue */
+  margin-bottom: 1rem;
+}
+
+.who-text p,
+.who-text blockquote {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.who-image-container {
+  flex: 1;
+  background-image: url("../assets/Images/who1.jpg"); /* Replace with actual path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Team Section */
+.team-list {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.team-item {
+  background: #f5f5f5;
+  padding: 2rem; /* Increased padding for better spacing */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center align icon and text */
+  display: flex;
+  flex-direction: column; /* Stack icon and content */
+  align-items: center;
+  gap: 1rem; /* Space between icon and text */
+}
+
+.team-icon {
+  font-size: 4rem; /* Increased icon size for better visibility */
+  color: #00cc99; /* Lab4GPS Green */
+  margin-bottom: 1rem; /* Space below the icon */
+}
+
+.team-item p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* Who We Serve Section */
+.serve-section {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.serve-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.serve-image {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 250px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.global-community {
+  background-image: url("../assets/Images/who3.jpg"); /* Replace with actual path */
+}
+
+.individuals {
+  background-image: url("../assets/Images/who4.jpg"); /* Replace with actual path */
+}
+
+.stakeholders {
+  background-image: url("../assets/Images/who5.jpg"); /* Replace with actual path */
+}
+
+.serve-text {
+  flex: 2;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .who-main {
+    flex-direction: column; /* Stacks text and image on smaller screens */
+    text-align: center;
+  }
+
+  .who-image-container {
+    height: 200px; /* Adjusted height for smaller screens */
+  }
+
+  .serve-item {
+    flex-direction: column; /* Stack text and image on smaller screens */
+  }
+
+  .serve-image {
+    width: 100%;
+    height: 200px;
+  }
+
+  .team-item {
+    padding: 1.5rem;
+  }
+
+  .team-icon {
+    font-size: 3rem; /* Slightly reduced for smaller screens */
+  }
+
+  .serve-text {
+    text-align: center;
+  }
+}
