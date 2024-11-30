@@ -93,18 +93,9 @@
   border-radius: 8px;
 }
 
-/* Why Section Styling */
-.why-content {
-  padding: 1.5rem;
-  line-height: 1.8;
-  color: #333;
-}
 
-.why-content h3 {
-  font-size: 1.8rem;
-  color: #141e3f; /* Lab4GPS Blue */
-  margin-bottom: 1rem;
-}
+
+
 
 .why-content h4 {
   font-size: 1.5rem;
@@ -258,5 +249,95 @@
   .team-section,
   .testimonial-section {
     grid-template-columns: 1fr;
+  }
+}
+
+
+/* Why Section Styling */
+.why-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Space between sections */
+  padding: 2rem;
+  line-height: 1.8;
+  color: #333;
+  position: relative; /* Maintain relative positioning for internal elements */
+}
+
+.why-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between; /* Ensures content and image are spaced evenly */
+  gap: 2rem; /* Space between image and text */
+}
+
+.why-image-container {
+  flex: 1;
+  background-image: url("../assets/Images/why.png"); /* Replace with the correct path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-width: 800px; /* Balanced size for larger displays */
+  height: 650px; /* Adjusted height for proportions */
+  border-radius: 8px; /* Rounded corners for modern look */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for emphasis */
+  margin: 0 auto; /* Centers the image horizontally */
+}
+
+.why-main-text {
+  flex: 2;
+  padding: 1rem;
+}
+
+.why-content h3 {
+  font-size: 2.5rem; /* Increased font size for stronger headline */
+  color: #141e3f; /* Lab4GPS Blue */
+  margin-bottom: 1rem;
+}
+
+.why-content h4 {
+  font-size: 1.7rem; /* Slightly larger for emphasis */
+  color: #00cc99; /* Lab4GPS Green */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.why-content p {
+  font-size: 1.1rem; /* Slightly larger text for readability */
+  margin-bottom: 1rem;
+}
+
+.why-content blockquote {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #555;
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  border-left: 4px solid #00cc99; /* Green accent for blockquote */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .why-main {
+    flex-direction: column; /* Stacks text and image on smaller screens */
+    text-align: center;
+  }
+
+  .why-image-container {
+    max-width: 100%; /* Image container takes full width */
+    height: 250px; /* Scaled height for smaller screens */
+  }
+
+  .why-main-text {
+    padding: 0;
+  }
+
+  .why-content h3 {
+    font-size: 2rem; /* Adjust headline size for smaller screens */
+  }
+
+  .why-content p {
+    font-size: 1rem; /* Maintain text readability */
   }
 }
