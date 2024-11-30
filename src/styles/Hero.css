@@ -1,0 +1,55 @@
+.hero {
+  height: 80vh; /* Reduce height to show part of the next section */
+  background: url('../assets/Images/i1.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  font-family: 'Helvetica-Regular', sans-serif; /* Set default font family */
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-family: 'Helvetica75-Bold', sans-serif; /* Bold font for heading */
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-family: 'Helvetica-Regular', sans-serif; /* Regular font for paragraph */
+}
+
+.hero-buttons .btn-learn,
+.hero-buttons .btn-involved {
+  margin: 0 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.hero-buttons .btn-learn {
+  background-color: #00CC99;
+  color: black;
+}
+
+.hero-buttons .btn-learn:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.hero-buttons .btn-involved {
+  background-color: white; /* Lab4GPS Blue */
+  color: #141e3f;
+}
+
+.hero-buttons .btn-involved:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+}

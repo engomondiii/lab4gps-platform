@@ -1,0 +1,61 @@
+.restricted-access {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #141e3f, #00cc99); /* Warm gradient background */
+    color: white;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .restricted-content {
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .restricted-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .restricted-message {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .restricted-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-login {
+    background-color: #141e3f; /* Orange for Login */
+  }
+  
+  .btn-login:hover {
+    background-color: #009977;
+  }
+  
+  .btn-signup {
+    background-color: #00cc99; /* Green for Sign Up */
+  }
+  
+  .btn-signup:hover {
+    background-color: #009977;
+  }
+  

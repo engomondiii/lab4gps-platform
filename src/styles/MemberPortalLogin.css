@@ -1,0 +1,148 @@
+/* General Layout */
+.member-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #141e3f, #00cc99); /* Lab4GPS Blue to Green Gradient */
+    font-family: "Helvetica", sans-serif;
+    color: #ffffff;
+    padding: 2rem;
+  }
+  
+  .member-login-wrapper {
+    display: flex;
+    background: #ffffff; /* White background for form and poster */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  /* Login Form Section */
+  .login-form-section,
+  .poster-section {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .login-form-section {
+    border-right: 1px solid #cccccc; /* Divider between form and poster */
+    color: #141e3f; /* Lab4GPS Blue */
+  }
+  
+  .login-form-section h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: "Helvetica75-Bold";
+  }
+  
+  .login-form label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .login-form input:focus {
+    border: 1px solid #00cc99; /* Lab4GPS Green */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 204, 153, 0.5);
+  }
+  
+  .error-message {
+    color: #ff9900; /* Lab4GPS Orange */
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .login-form button {
+    background: #00cc99; /* Lab4GPS Green */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .login-form button:hover {
+    background: #009977; /* Darker Green */
+    transform: scale(1.05);
+  }
+  
+  .login-form-section p a {
+    color: #141e3f; /* Lab4GPS Orange */
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .login-form-section p a:hover {
+    color: #141e3f; /* Lighter Orange */
+  }
+  
+  /* Poster Section */
+  .poster-section {
+    background: #f8f9fa; /* Light Gray for contrast */
+    color: #141e3f; /* Lab4GPS Blue */
+  }
+  
+  .poster-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-family: "Helvetica75-Bold";
+  }
+  
+  .poster-section p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .poster-button {
+    display: inline-block;
+    background: #141e3f; /* Lab4GPS Orange */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .poster-button:hover {
+    background: #141e3f; /* Darker Orange */
+    transform: scale(1.05);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .member-login-wrapper {
+      flex-direction: column;
+    }
+  
+    .login-form-section {
+      border-right: none;
+      border-bottom: 1px solid #cccccc; /* Divider for mobile */
+    }
+  }
+  

@@ -1,0 +1,86 @@
+.footer {
+    background-color: #141e3f;
+    color: #CCCCCC;
+    padding: 2rem;
+    font-family: 'Helvetica', sans-serif;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .footer-section h3 {
+    color: #00CC99;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-section p,
+  .footer-section ul {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .footer-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-link:hover {
+    color: #00cc99;
+  }
+  
+  .social-media .social-icons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-size: cover;
+    transition: transform 0.3s;
+  }
+  
+  .social-icon.facebook {
+    background-image: url('../assets/Images/flogo.png');
+  }
+  
+  .social-icon.twitter {
+    background-image: url('../assets//Images/xlogo.png');
+  }
+  
+  .social-icon.instagram {
+    background-image: url('../assets/Images/instalogo.png');
+  }
+  
+  .social-icon.linkedin {
+    background-image: url('../assets/Images/linkedinlogo.png');
+  }
+  
+  .social-icon.talk {
+    background-image: url('../assets/Images/talk.png');
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  .footer-bottom {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    border-top: 1px solid #666666;
+    padding-top: 1rem;
+  }
+  

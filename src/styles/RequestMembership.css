@@ -1,0 +1,104 @@
+/* General Styling */
+.request-membership {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #141e3f, #00cc99); /* Lab4GPS Blue to Green Gradient */
+    font-family: "Helvetica", sans-serif;
+    color: #ffffff;
+    padding: 2rem;
+  }
+  
+  /* Form Container */
+  .membership-form {
+    background: #ffffff;
+    color: #141e3f; /* Lab4GPS Blue for text */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .membership-form h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #141e3f;
+    font-family: "Helvetica75-Bold";
+  }
+  
+  /* Form Labels */
+  .membership-form label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  /* Input Fields */
+  .membership-form input,
+  .membership-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #141e3f;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .membership-form input:focus,
+  .membership-form textarea:focus {
+    border: 1px solid #00cc99; /* Lab4GPS Green */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 204, 153, 0.5);
+  }
+  
+  /* Textarea Styling */
+  .membership-form textarea {
+    resize: none;
+    height: 120px;
+  }
+  
+  /* Submit Button */
+  .membership-form button {
+    background: #00cc99;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+  }
+  
+  .membership-form button:hover {
+    background: #009977;
+    transform: scale(1.05);
+  }
+  
+  /* Confirmation Message */
+  .request-membership h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    text-align: center;
+    font-family: "Helvetica75-Bold";
+    margin-top: 2rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .membership-form {
+      width: 90%;
+    }
+  
+    .membership-form h1 {
+      font-size: 2rem;
+    }
+  }
+  

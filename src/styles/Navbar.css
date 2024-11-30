@@ -1,0 +1,149 @@
+/* General Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white; /* Default background color */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better visibility */
+}
+
+/* Change background color on scroll */
+.navbar.scrolled {
+    background-color: #141e3f; /* Dark blue background when scrolled */
+}
+
+/* Logo Styles */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 50px;
+    width: auto;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    position: relative;
+}
+
+.nav-links li {
+    margin: 0 0.75rem;
+    position: relative; /* To position the pointer */
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+    padding: 0.5rem 0;
+    display: inline-block;
+    color: #141e3f; /* Dark text color before scrolling */
+}
+
+/* Change text color on scroll */
+.nav-links li a.scrolled-text {
+    color: white; /* Text color when scrolled */
+}
+
+/* Active link styling with a dot */
+.nav-links li.active a {
+    color: #00cc99; /* Highlight active link */
+}
+
+.nav-links li.active::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #00cc99; /* Dot color */
+    border-radius: 50%; /* Make it a circle */
+    transition: all 0.3s ease;
+}
+
+/* Hovered link styling with a dot */
+.nav-links li:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #00cc99; /* Dot color */
+    border-radius: 50%; /* Make it a circle */
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #141e3f; /* Default hamburger color */
+    margin: 3px 0;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Change hamburger color on scroll */
+.navbar.scrolled .hamburger div {
+    background-color: white; /* Hamburger color when scrolled */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #141e3f; /* Background for mobile menu */
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for mobile menu */
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0.75rem 0; /* Adjust spacing for mobile */
+    }
+
+    .nav-links li a {
+        font-size: 1rem; /* Slightly larger font for better visibility on mobile */
+        color: white !important; /* Force text color to white in mobile menu */
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Specific styles for mobile dropdown */
+    .nav-links {
+        background-color: #141e3f; /* Ensure constant background color for dropdown */
+    }
+
+    .nav-links li.active::after {
+        background-color: white; /* Adjust pointer color for mobile */
+    }
+}
