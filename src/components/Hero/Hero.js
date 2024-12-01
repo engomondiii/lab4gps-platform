@@ -7,6 +7,17 @@ const Hero = () => {
 
   return (
     <section className="hero">
+      <div className="hero-video-container">
+        {/* Vimeo Video Embed */}
+        <iframe
+          src="https://player.vimeo.com/video/163099115?autoplay=1&loop=1&background=1&muted=1"
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          title="Earth Animation"
+          className="hero-video"
+        ></iframe>
+      </div>
       <div className="hero-content">
         <h1>Solving Global Issues Through Practical Love</h1>
         <p>Fostering collaboration and innovation globally.</p>

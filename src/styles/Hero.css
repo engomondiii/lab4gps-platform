@@ -1,16 +1,36 @@
 .hero {
-  height: 80vh; /* Reduce height to show part of the next section */
-  background: url('../assets/Images/erth5.jpeg') no-repeat center center/cover;
+  position: relative;
+  height: 100vh; /* Full viewport height */
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   text-align: center;
   font-family: 'Helvetica-Regular', sans-serif; /* Set default font family */
+  overflow: hidden; /* Ensure no overflow beyond the viewport */
 }
 
+/* Video Container */
+.hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place the video behind the content */
+  overflow: hidden; /* Prevent video overflow */
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video fills the container */
+}
+
+/* Content Styling */
 .hero-content {
   max-width: 800px;
+  z-index: 2; /* Ensure content is above the video */
 }
 
 .hero h1 {
@@ -25,6 +45,7 @@
   font-family: 'Helvetica-Regular', sans-serif; /* Regular font for paragraph */
 }
 
+/* Buttons Styling */
 .hero-buttons .btn-learn,
 .hero-buttons .btn-involved {
   margin: 0 0.5rem;
