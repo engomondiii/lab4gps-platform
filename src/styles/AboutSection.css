@@ -4,6 +4,8 @@
   font-family: "Helvetica", sans-serif;
   max-width: 1200px;
   margin: 0 auto;
+  background: linear-gradient(135deg, #f5f7fa, #e2e6f0); /* Soft gradient background */
+
 }
 
 /* About Description */
