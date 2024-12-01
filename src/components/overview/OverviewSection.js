@@ -4,48 +4,48 @@ import "../../styles/OverviewSection.css";
 import { FaProjectDiagram, FaUsers, FaBook, FaRegNewspaper, FaHandHoldingHeart, FaKey } from "react-icons/fa";
 
 const features = [
-  {
-    title: "Collaboration Hub",
-    icon: <FaUsers />,
-    description:
-      "Connect problem-solvers and innovators to tackle global challenges through structured phases of discovery, projects, and startups.",
-    route: "/collaboration-hub", // Route for the feature
-  },
-  {
-    title: "Projects",
-    icon: <FaProjectDiagram />,
-    description:
-      "Discover structured, actionable projects aimed at solving critical problems with clear goals, milestones, and measurable outcomes.",
-    route: "/projects", // Route for the feature
-  },
-  {
-    title: "Resources",
-    icon: <FaBook />,
-    description:
-      "Access articles, webinars, and tools that empower learning, innovation, and collaboration on global challenges.",
-    route: "/resources", // Route for the feature
-  },
-  {
-    title: "News & Events",
-    icon: <FaRegNewspaper />,
-    description:
-      "Stay updated with the latest achievements, partnerships, and global events relevant to Lab4GPS's mission.",
-    route: "/news-events", // Route for the feature
-  },
-  {
-    title: "Sponsorship",
-    icon: <FaHandHoldingHeart />,
-    description:
-      "Support impactful initiatives with tiered sponsorship options and secure payment systems that align with your values.",
-    route: "/sponsorship", // Route for the feature
-  },
-  {
-    title: "Member Portal",
-    icon: <FaKey />,
-    description:
-      "Internal members access advanced tools like task management, training, and collaboration spaces to drive meaningful solutions.",
-    route: "/member-portal/login", // Route for the feature
-  },
+  // {
+  //   title: "Collaboration Hub",
+  //   icon: <FaUsers />,
+  //   description:
+  //     "Connect problem-solvers and innovators to tackle global challenges through structured phases of discovery, projects, and startups.",
+  //   route: "/collaboration-hub", // Route for the feature
+  // },
+  // {
+  //   title: "Projects",
+  //   icon: <FaProjectDiagram />,
+  //   description:
+  //     "Discover structured, actionable projects aimed at solving critical problems with clear goals, milestones, and measurable outcomes.",
+  //   route: "/projects", // Route for the feature
+  // },
+  // {
+  //   title: "Resources",
+  //   icon: <FaBook />,
+  //   description:
+  //     "Access articles, webinars, and tools that empower learning, innovation, and collaboration on global challenges.",
+  //   route: "/resources", // Route for the feature
+  // },
+  // {
+  //   title: "News & Events",
+  //   icon: <FaRegNewspaper />,
+  //   description:
+  //     "Stay updated with the latest achievements, partnerships, and global events relevant to Lab4GPS's mission.",
+  //   route: "/news-events", // Route for the feature
+  // },
+  // {
+  //   title: "Sponsorship",
+  //   icon: <FaHandHoldingHeart />,
+  //   description:
+  //     "Support impactful initiatives with tiered sponsorship options and secure payment systems that align with your values.",
+  //   route: "/sponsorship", // Route for the feature
+  // },
+  // {
+  //   title: "Member Portal",
+  //   icon: <FaKey />,
+  //   description:
+  //     "Internal members access advanced tools like task management, training, and collaboration spaces to drive meaningful solutions.",
+  //   route: "/member-portal/login", // Route for the feature
+  // },
 ];
 
 const OverviewSection = () => {
@@ -88,7 +88,7 @@ const OverviewSection = () => {
 
       {/* Features Section */}
       <div className="overview-section features-section">
-        <h2 className="features-heading">Key Components of Lab4GPS</h2>
+        {/* <h2 className="features-heading">Key Components of Lab4GPS</h2> */}
         <div className="features-container">
           {features.map((feature, index) => (
             <div key={index} className="feature-card">
