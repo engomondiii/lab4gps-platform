@@ -6,6 +6,7 @@ import logo from '../../assets/Images/Lab4GPS_Logo_2024-1.jpg'; // Import the lo
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState({ about: false, collaboration: false });
     const location = useLocation(); // Get current location
 
     // Add scroll event listener
@@ -36,30 +37,46 @@ const Navbar = () => {
                 <li className={isActive('/') ? 'active' : ''}>
                     <Link to="/" className={isScrolled ? 'scrolled-text' : ''}>Home</Link>
                 </li>
-                <li className={isActive('/about') ? 'active' : ''}>
-                    <Link to="/about" className={isScrolled ? 'scrolled-text' : ''}>About</Link>
+                <li
+                    className="dropdown"
+                    onMouseEnter={() => setIsDropdownOpen({ ...isDropdownOpen, about: true })}
+                    onMouseLeave={() => setIsDropdownOpen({ ...isDropdownOpen, about: false })}
+                >
+                    <Link
+                        to="/about"
+                        className={`dropdown-link ${isScrolled ? 'scrolled-text' : ''}`}
+                        onClick={() => setIsDropdownOpen({ ...isDropdownOpen, about: false })}
+                    >
+                        About
+                    </Link>
+                    <ul className={`dropdown-menu ${isDropdownOpen.about ? 'show' : ''}`}>
+                        <li><Link to="/about/why">Why</Link></li>
+                        <li><Link to="/about/who">Who</Link></li>
+                        <li><Link to="/about/what">What</Link></li>
+                        <li><Link to="/about/where">Where</Link></li>
+                        <li><Link to="/about/how">How</Link></li>
+                    </ul>
                 </li>
-                <li className={isActive('/collaboration-hub') ? 'active' : ''}>
-                    <Link to="/collaboration-hub" className={isScrolled ? 'scrolled-text' : ''}>Collaboration Hub</Link>
+                <li
+                    className="dropdown"
+                    onMouseEnter={() => setIsDropdownOpen({ ...isDropdownOpen, collaboration: true })}
+                    onMouseLeave={() => setIsDropdownOpen({ ...isDropdownOpen, collaboration: false })}
+                >
+                    <Link
+                        to="/collaboration-hub"
+                        className={`dropdown-link ${isScrolled ? 'scrolled-text' : ''}`}
+                        onClick={() => setIsDropdownOpen({ ...isDropdownOpen, collaboration: false })}
+                    >
+                        Collaboration Hub
+                    </Link>
+                    <ul className={`dropdown-menu ${isDropdownOpen.collaboration ? 'show' : ''}`}>
+                        <li><Link to="/collaboration-hub/startups">GPS Startups</Link></li>
+                        <li><Link to="/collaboration-hub/projects">GPS Projects</Link></li>
+                        <li><Link to="/collaboration-hub/demo-day">GPS Demo Day</Link></li>
+                        <li><Link to="/collaboration-hub/sponsorship">Sponsorship</Link></li>
+                        <li><Link to="/contact-us">Contact Us</Link></li>
+                    </ul>
                 </li>
-                <li className={isActive('/projects') ? 'active' : ''}>
-                    <Link to="/projects" className={isScrolled ? 'scrolled-text' : ''}> GPS Projects</Link>
-                </li>
-                <li className={isActive('/startups') ? 'active' : ''}>
-                    <Link to="/startups" className={isScrolled ? 'scrolled-text' : ''}>GPS Startups</Link>
-                </li>
-                {/* <li className={isActive('/resources') ? 'active' : ''}>
-                    <Link to="/resources" className={isScrolled ? 'scrolled-text' : ''}>Resources</Link>
-                </li>
-                <li className={isActive('/news-events') ? 'active' : ''}>
-                    <Link to="/news-events" className={isScrolled ? 'scrolled-text' : ''}>News & Events</Link>
-                </li> */}
-                <li className={isActive('/sponsorship') ? 'active' : ''}>
-                    <Link to="/sponsorship" className={isScrolled ? 'scrolled-text' : ''}>Sponsorship</Link>
-                </li>
-                {/* <li className={isActive('/member-portal') ? 'active' : ''}>
-                    <Link to="/member-portal" className={isScrolled ? 'scrolled-text' : ''}>Member Portal</Link>
-                </li> */}
                 <li className={isActive('/login') ? 'active' : ''}>
                     <Link to="/login" className={isScrolled ? 'scrolled-text' : ''}>Login</Link>
                 </li>

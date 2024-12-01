@@ -33,7 +33,7 @@
 
 .nav-links li {
     margin: 0 0.5rem; /* Reduced margin for less spacing between links */
-    position: relative; /* To position the pointer */
+    position: relative; /* To position dropdowns */
 }
 
 .nav-links li a {
@@ -44,6 +44,45 @@
     padding: 0.25rem 0; /* Reduced padding for compact height */
     display: inline-block;
     color: #141e3f; /* Dark text color before scrolling */
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Dropdown shadow */
+    border-radius: 4px;
+    padding: 0.5rem 0;
+    z-index: 1000;
+}
+
+.dropdown-menu li {
+    padding: 0.5rem 1rem;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.dropdown-menu li a {
+    color: #141e3f;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f5f5f5;
+    color: #00cc99; /* Highlight color on hover */
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Show dropdown on hover */
 }
 
 /* Active link styling with a dot */
@@ -119,16 +158,17 @@
         color: white !important; /* Force text color to white in mobile menu */
     }
 
+    .dropdown-menu {
+        position: static; /* Remove absolute positioning for mobile */
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .dropdown-menu li a {
+        color: white;
+    }
+
     .hamburger {
         display: flex;
-    }
-
-    /* Specific styles for mobile dropdown */
-    .nav-links {
-        background-color: #141e3f; /* Ensure constant background color for dropdown */
-    }
-
-    .nav-links li.active::after {
-        background-color: white; /* Adjust pointer color for mobile */
     }
 }

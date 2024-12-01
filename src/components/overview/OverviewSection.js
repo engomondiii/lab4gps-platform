@@ -5,21 +5,19 @@ import "../../styles/OverviewSection.css";
 const OverviewSection = () => {
   return (
     <>
-      {/* Animated Introduction Section */}
+      {/* Introduction Section */}
       <div className="overview-section intro-section">
-        <div className="animated-background"></div> {/* Decorative Animation */}
         <div className="overview-container">
-          {/* Left: Animated Globe */}
+          {/* Left: YouTube Video */}
           <div className="overview-left">
-            <div className="hero-animation">
-              <div className="orbit-container">
-                <div className="orbit">
-                  <div className="globe"></div>
-                  <div className="orbiting-icon orbiting-icon-1"></div>
-                  <div className="orbiting-icon orbiting-icon-2"></div>
-                  <div className="orbiting-icon orbiting-icon-3"></div>
-                </div>
-              </div>
+            <div className="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/savPHzThsZc"
+                title="Lab4GPS Introduction Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
 
@@ -37,23 +35,6 @@ const OverviewSection = () => {
           </div>
         </div>
       </div>
-
-      {/* Wavy Separator with Gradient */}
-      {/* <div className="section-separator">
-        <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gradient-colors" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#141e3f" />
-              <stop offset="50%" stopColor="#00cc99" />
-              <stop offset="100%" stopColor="#FF9900" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M0,49.99C150,100,450,50,750,60C1050,70,1200,100,1200,100V120H0V49.99Z"
-            fill="url(#gradient-colors)"
-          />
-        </svg>
-      </div> */}
 
       {/* Key Features Section */}
       <div className="overview-section features-section">
