@@ -40,7 +40,7 @@ const Footer = () => {
           </ul> */}
           <div className="footer-subsections">
             <div className="subsection">
-              <h4>About</h4>
+              <h4>Know About Lab4GPS</h4>
               <ul>
                 <li><Link to="/about/why" className="footer-link">Why</Link></li>
                 <li><Link to="/about/who" className="footer-link">Who</Link></li>
@@ -56,6 +56,8 @@ const Footer = () => {
                 <li><Link to="/collaboration-hub/projects" className="footer-link">GPS Projects</Link></li>
                 <li><Link to="/collaboration-hub/demo-day" className="footer-link">GPS Demo Day</Link></li>
                 <li><Link to="/collaboration-hub/sponsorship" className="footer-link">Sponsorship</Link></li>
+                <li><Link to="/collaboration-hub/contactus" className="footer-link">Contact Us</Link></li>
+
               </ul>
             </div>
           </div>
