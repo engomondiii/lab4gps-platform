@@ -57,15 +57,15 @@ const Navbar = () => {
                 <li className={isActive('/sponsorship') ? 'active' : ''}>
                     <Link to="/sponsorship" className={isScrolled ? 'scrolled-text' : ''}>Sponsorship</Link>
                 </li>
-                <li className={isActive('/member-portal') ? 'active' : ''}>
+                {/* <li className={isActive('/member-portal') ? 'active' : ''}>
                     <Link to="/member-portal" className={isScrolled ? 'scrolled-text' : ''}>Member Portal</Link>
-                </li>
+                </li> */}
                 <li className={isActive('/login') ? 'active' : ''}>
                     <Link to="/login" className={isScrolled ? 'scrolled-text' : ''}>Login</Link>
                 </li>
-                {/* <li className={isActive('/signup') ? 'active' : ''}>
+                <li className={isActive('/signup') ? 'active' : ''}>
                     <Link to="/signup" className={isScrolled ? 'scrolled-text' : ''}>Sign Up</Link>
-                </li> */}
+                </li>
             </ul>
         </nav>
     );

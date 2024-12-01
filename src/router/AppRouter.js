@@ -68,31 +68,25 @@ const AppRouter = () => {
         <Route
           path="/collaboration-hub"
           element={
-            <ProtectedRoute>
               <Layout>
                 <CollaborationHub />
               </Layout>
-            </ProtectedRoute>
           }
         />
         <Route
           path="/projects"
           element={
-            <ProtectedRoute>
               <Layout>
                 <Projects />
               </Layout>
-            </ProtectedRoute>
           }
         />
         <Route
           path="/startups"
           element={
-            <ProtectedRoute>
               <Layout>
                 <Startups />
               </Layout>
-            </ProtectedRoute>
           }
         />
         <Route
@@ -118,11 +112,10 @@ const AppRouter = () => {
         <Route
           path="/sponsorship"
           element={
-            <ProtectedRoute>
+            
               <Layout>
                 <Sponsorship />
               </Layout>
-            </ProtectedRoute>
           }
         />
 
