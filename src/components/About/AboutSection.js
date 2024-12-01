@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/AboutSection.css"; // Import your CSS file for styling
-import { FaHandsHelping, FaBuilding, FaUsers, FaTools, FaNetworkWired } from "react-icons/fa";
+import { FaHandsHelping, FaBuilding, FaUsers, FaTools, FaNetworkWired,  } from "react-icons/fa";
+
 
 
 const AboutSection = () => {
@@ -136,93 +137,92 @@ who: (
   </div>
 ),
 
-    what: (
-      <div className="what-content">
-        <h3>Mission: Empowering GPS through Education, Research, and Practice</h3>
-        <p>
-        Supporting GPS through education, research and practice
-        </p>
-        
-        
+what: (
+  <div className="what-content">
+    <h3>Mission: Empowering GPS through Education, Research, and Practice</h3>
+    <p>Supporting GPS through education, research, and practice</p>
+
+    <div className="development-program">
+      <i className="development-icon" />
+      <div className="program-text">
         <h4>Development of GPS Programs</h4>
         <p>
-        The GPS program combines Christian values ​​with entrepreneurial spirit to train the next generation of global leaders (GPS) to address global issues.
-
-
-
-The GPS program combines Christian values ​​and entrepreneurship  to train the next generation of Global Leadership (GPS) leaders to solve global problems.
-
-Students from different academic disciplines collaborate to solve problems,
-
-We combine knowledge and skills from various fields to create more effective solutions.
-
-Based on the principle that "solving other people's problems is an act of love" 
-
-Solve complex global problems involving cultural, religious, political and economic factors.
-
-Beyond theoretical education, it emphasizes real-world problem-solving experiences. Students real global issues, applying the theories they have learned through practical projects. This prepares them to make a tangible impact even after graduation. 
-
-
-
-Beyond theoretical education, we emphasize real-world problem-solving experiences. Students tackle real-world global problems and apply theories learned through hands-on projects. 
-
-By working with people from diverse backgrounds, students understand their role as members of a global community and broaden their understanding of international issues.
-
-
-        </p>
-        <h4>Training GPS Through the GPS Program</h4>
-        <p>
-        Lab4GPS trains the next generation of Global Problem Solvers (GPS) through its education programs.
-
-These programs support students in finding their identity and life purpose, building their roadmap to success. 
-
-Emphasizing 'Learning by doing,' students learn through actual experiences, applying their knowledge to real-world problems. 
-
-
+          The GPS program combines Christian values with entrepreneurial spirit to train the next
+          generation of global leaders (GPS) to address global issues.
         </p>
         <p>
-        Lab4GPS trains the next generation of global problem solvers (GPS) through educational programs .
-The GPS program helps students discover their identity and life purpose and build a roadmap for success.
-
-Emphasizing 'learning through practice', students apply the knowledge they have learned to real-world problems through real-world experiences.
-Upon successful completion of the program, the GPS certification will help them grow into trusted leaders in solving global problems.
-
-
-        </p>
-        <h4>Supporting GPS to Found Purpose-Driven Enterprises</h4>
-        <p>
-        Lab4GPS serves as an incubator, supporting GPS in founding purpose-driven enterprises aimed at solving global problems. 
-
-By emphasizing innovative approaches such as Global Value Chain innovation, Systems Thinking, and Design Thinking, 
-
-we help GPS create products and services that resonate with consumers. 
-
-Additionally, we assist GPS in generating Joy, Money, and Love through problem-solving.
-
-
-        </p>
-        <p>
-        Lab4GPS acts as an incubator to support the creation of purpose-driven companies that aim to solve global problems .
-We emphasize innovative approaches such as global value chain innovation, systems thinking, and design thinking to help GPS create products and services that resonate with consumers. 
-
-Helping you create joy, money and love through problem solving. 
-
-        </p>
-        <h4>Current State</h4>
-        <p>
-          <strong>Chakancha:</strong> Chakancha is the first startup created by Lab4GPS, and aims to improve the working conditions of Kenyan tea pickers and respect their living standards. The company aims to create a sustainable future by transforming the value chain of the tea industry in the traditional global market and establishing a system that enables economic self-sufficiency of the local tea industry.
-          </p>
-        <p>
-          <strong>Momma:</strong>Mamma is a startup team that helps foreigners easily learn about the Korean language, culture, and work environment, and helps them achieve effective economic independence by arranging employment through building relationships with foreign-Korean sponsors and collaboration with Korean employers.
-        </p>
-        <p>
-          <strong>Wow (WAH):</strong> The WAH team has a vision to help people who are wandering without finding their purpose in life to live a purpose-driven life. We support people around the world to find their purpose in life and move forward to a better future.
-        </p>
-        <p>
-          <strong>Chakan Cashmere:</strong>Chakan Cashmere aims to improve working conditions in Mongolia and pursue sustainable practices. To achieve this, we create eco-friendly products from recycled cashmere and provide fair wages and reasonable prices through transparent transactions and direct transaction systems. We enrich the lifestyles of both Mongolia and consumers through sustainable approaches.
+          Students from different academic disciplines collaborate to solve problems. Based on the
+          principle that "solving other people's problems is an act of love," the GPS program
+          emphasizes real-world problem-solving experiences and broader understanding of global
+          challenges.
         </p>
       </div>
-    ),
+    </div>
+
+    <div className="program-gallery">
+      {/* 5 images styled as a gallery */}
+      <div className="gallery-image image-1" />
+      <div className="gallery-image image-2" />
+      <div className="gallery-image image-3" />
+      <div className="gallery-image image-4" />
+      <div className="gallery-image image-5" />
+    </div>
+
+    <div className="training-program">
+      <div className="training-image" />
+      <div className="training-text">
+        <h4>Training GPS Through the GPS Program</h4>
+        <p>
+          Lab4GPS trains the next generation of Global Problem Solvers (GPS) through educational
+          programs, helping students discover their identity and build a roadmap for success.
+        </p>
+        <p>
+          Emphasizing 'learning through practice,' students apply their knowledge to real-world
+          problems, preparing them to be trusted leaders in solving global challenges.
+        </p>
+      </div>
+    </div>
+
+    <h4>Current State</h4>
+    <div className="current-state">
+      <div className="current-item">
+        <div className="current-image chakancha" />
+        <p>
+          <strong>Chakancha:</strong> The first startup created by Lab4GPS, aiming to improve
+          working conditions of Kenyan tea pickers while ensuring sustainable practices in the tea
+          industry.
+        </p>
+      </div>
+      <div className="current-item">
+        <div className="current-image momma" />
+        <p>
+          <strong>Momma:</strong> A startup helping foreigners learn the Korean language and
+          culture, facilitating economic independence through sponsor-employer relationships.
+        </p>
+      </div>
+      <div className="current-item">
+        <div className="current-image wah" />
+        <p>
+          <strong>Wow (WAH):</strong> Supporting individuals to discover their purpose in life,
+          fostering a purpose-driven future globally.
+        </p>
+      </div>
+      <div className="current-item">
+        <div className="current-image chakan-cashmere" />
+        <p>
+          <strong>Chakan Cashmere:</strong> Advocating fair wages and sustainable practices in
+          Mongolia through eco-friendly products made of recycled cashmere.
+        </p>
+      </div>
+    </div>
+  </div>
+),
+
+
+
+
+
+
     where: (
       <div className="where-content">
         <h3>Vision: Pioneering the Path to a Better World through Education, Innovation, and Collaboration</h3>
@@ -543,6 +543,9 @@ We believe that as people who love God and are called according to His purpose, 
         return null;
     }
   };
+
+
+  
 
   return (
     <div className="about-container">

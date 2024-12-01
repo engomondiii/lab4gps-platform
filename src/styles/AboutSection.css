@@ -497,3 +497,243 @@
     text-align: center;
   }
 }
+
+
+
+
+
+/* What Section Styling */
+.what-content {
+  padding: 3rem;
+  font-family: "Helvetica Regular", sans-serif;
+  color: #333;
+  background-color: #f9f9f9; /* Light gray background for better contrast */
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Mission and Headings */
+.what-content h3 {
+  font-size: 2.8rem;
+  color: #141e3f; /* Lab4GPS Blue */
+  margin-bottom: 1.8rem;
+  font-weight: bold;
+}
+
+.what-content h4 {
+  font-size: 2rem;
+  color: #00cc99; /* Lab4GPS Green */
+  margin-top: 1.8rem;
+  margin-bottom: 1.2rem;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+/* Development Program Section */
+.development-program,
+.training-program {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.development-icon,
+.training-icon {
+  font-size: 3.5rem;
+  color: #00cc99; /* Icon color */
+  flex-shrink: 0;
+}
+
+.program-text {
+  flex: 1;
+}
+
+.program-text p,
+.training-text p {
+  font-size: 1.3rem;
+  line-height: 2;
+  margin-bottom: 1.2rem;
+}
+
+/* Gallery Section */
+.program-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Auto-adjust based on available space */
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  justify-content: center;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 300px; /* Increased height for better visibility */
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer; /* Make it clickable */
+}
+
+.gallery-image:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Add Lightbox (Full Screen Modal) Styles */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.lightbox-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Replace placeholders with actual image paths */
+.image-1 {
+  background-image: url("../assets/Images/what1.jpg");
+  height: 400px; /* Increased size */
+  width: 100%; /* Ensures the image fills the container width */
+}
+
+.image-2 {
+  background-image: url("../assets/Images/what2.jpg");
+  height: 400px; /* Increased size */
+  width: 100%;
+}
+
+.image-3 {
+  background-image: url("../assets/Images/what3.jpg");
+  height: 400px; /* Increased size */
+  width: 100%;
+}
+
+.image-4 {
+  background-image: url("../assets/Images/what4.jpg");
+  height: 400px; /* Increased size */
+  width: 100%;
+}
+
+.image-5 {
+  background-image: url("../assets/Images/whatI.jpg");
+  height: 400px; /* Increased size */
+  width: 100%;
+}
+
+/* Training Program Section */
+.training-program {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.training-image {
+  flex: 1;
+  background-image: url("../assets/Images/what6.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 350px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.training-text {
+  flex: 2;
+}
+
+.training-text p {
+  font-size: 1.3rem;
+  line-height: 2;
+  margin-bottom: 1.2rem;
+}
+
+/* Current State Section */
+.current-state {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.current-item {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.current-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.current-image {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+}
+
+/* Replace placeholders with actual image paths */
+.chakancha {
+  background-image: url("../assets/Images/what7.jpg");
+  height: 250px; /* Reduced size */
+  width: 100%;  /* Ensures it takes the full container width */
+}
+
+.momma {
+  background-image: url("../assets/Images/what8.jpg");
+  height: 250px; /* Reduced size */
+  width: 100%;
+}
+
+.wah {
+  background-image: url("../assets/Images/what9.jpg");
+  height: 250px; /* Reduced size */
+  width: 100%;
+}
+
+.chakan-cashmere {
+  background-image: url("../assets/Images/what10.jpg");
+  height: 250px; /* Reduced size */
+  width: 100%;
+}
