@@ -63,9 +63,9 @@ const Navbar = () => {
                 <li className={isActive('/login') ? 'active' : ''}>
                     <Link to="/login" className={isScrolled ? 'scrolled-text' : ''}>Login</Link>
                 </li>
-                <li className={isActive('/signup') ? 'active' : ''}>
+                {/* <li className={isActive('/signup') ? 'active' : ''}>
                     <Link to="/signup" className={isScrolled ? 'scrolled-text' : ''}>Sign Up</Link>
-                </li>
+                </li> */}
             </ul>
         </nav>
     );
