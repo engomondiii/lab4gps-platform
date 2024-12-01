@@ -54,6 +54,33 @@
   color: #00cc99;
 }
 
+/* Footer Subsections */
+.footer-subsections {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.subsection {
+  flex: 1;
+}
+
+.subsection h4 {
+  color: #00CC99;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.subsection ul {
+  list-style: none;
+  padding: 0;
+}
+
+.subsection ul li {
+  margin-bottom: 0.5rem;
+}
+
 /* Social Media Icons */
 .social-media .social-icons {
   display: flex;

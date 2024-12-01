@@ -32,13 +32,33 @@ const Footer = () => {
         </div>
         <div className="footer-section">
           <h3>Quick Links</h3>
-          <ul>
+          {/* <ul>
             <li><Link to="/" className="footer-link">Home</Link></li>
-            <li><Link to="/collaboration-hub" className="footer-link">Collaboration Hub</Link></li>
-            <li><Link to="/projects" className="footer-link">Projects</Link></li>
-            <li><Link to="/news-events" className="footer-link">News & Events</Link></li>
-            <li><Link to="/sponsorship" className="footer-link">Sponsorship</Link></li>
-          </ul>
+            <li><Link to="/login" className="footer-link">Login</Link></li>
+            <li><Link to="/signup" className="footer-link">Sign Up</Link></li>
+            <li><Link to="/contact-us" className="footer-link">Contact Us</Link></li>
+          </ul> */}
+          <div className="footer-subsections">
+            <div className="subsection">
+              <h4>About</h4>
+              <ul>
+                <li><Link to="/about/why" className="footer-link">Why</Link></li>
+                <li><Link to="/about/who" className="footer-link">Who</Link></li>
+                <li><Link to="/about/what" className="footer-link">What</Link></li>
+                <li><Link to="/about/where" className="footer-link">Where</Link></li>
+                <li><Link to="/about/how" className="footer-link">How</Link></li>
+              </ul>
+            </div>
+            <div className="subsection">
+              <h4>Collaboration Hub</h4>
+              <ul>
+                <li><Link to="/collaboration-hub/startups" className="footer-link">GPS Startups</Link></li>
+                <li><Link to="/collaboration-hub/projects" className="footer-link">GPS Projects</Link></li>
+                <li><Link to="/collaboration-hub/demo-day" className="footer-link">GPS Demo Day</Link></li>
+                <li><Link to="/collaboration-hub/sponsorship" className="footer-link">Sponsorship</Link></li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div className="footer-section">
           <h3>Contact Us</h3>
