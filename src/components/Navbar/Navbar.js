@@ -43,17 +43,17 @@ const Navbar = () => {
                     <Link to="/collaboration-hub" className={isScrolled ? 'scrolled-text' : ''}>Collaboration Hub</Link>
                 </li>
                 <li className={isActive('/projects') ? 'active' : ''}>
-                    <Link to="/projects" className={isScrolled ? 'scrolled-text' : ''}>Projects</Link>
+                    <Link to="/projects" className={isScrolled ? 'scrolled-text' : ''}> GPS Projects</Link>
                 </li>
                 <li className={isActive('/startups') ? 'active' : ''}>
-                    <Link to="/startups" className={isScrolled ? 'scrolled-text' : ''}>Startups</Link>
+                    <Link to="/startups" className={isScrolled ? 'scrolled-text' : ''}>GPS Startups</Link>
                 </li>
-                <li className={isActive('/resources') ? 'active' : ''}>
+                {/* <li className={isActive('/resources') ? 'active' : ''}>
                     <Link to="/resources" className={isScrolled ? 'scrolled-text' : ''}>Resources</Link>
                 </li>
                 <li className={isActive('/news-events') ? 'active' : ''}>
                     <Link to="/news-events" className={isScrolled ? 'scrolled-text' : ''}>News & Events</Link>
-                </li>
+                </li> */}
                 <li className={isActive('/sponsorship') ? 'active' : ''}>
                     <Link to="/sponsorship" className={isScrolled ? 'scrolled-text' : ''}>Sponsorship</Link>
                 </li>
