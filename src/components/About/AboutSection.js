@@ -373,112 +373,12 @@ We believe that as people who love God and are called according to His purpose, 
 </p>
       </div>
     ),
-    team: [
-      {
-        name: "IWL Partners",
-        role: "Primary Sponsors",
-        bio: "As the primary sponsors of Lab4GPS, they provide the financial support necessary for our research and innovation projects. They support GPS in developing sustainable solutions and offer strategic direction for global problem-solving.",
-      },
-      {
-        name: "GPS Startups",
-        role: "Purpose-Driven Enterprises",
-        bio: "Founded by GPS who discover the secrets to solving the world's problems and transform them into business models. They lead the way in developing innovative and sustainable solutions to address social issues.",
-      },
-      {
-        name: "GPS PD (Program Development)",
-        role: "Program Development Team",
-        bio: "A team of experts who develop GPS programs and train GPS. They design educational programs and training courses to help GPS acquire the necessary skills and knowledge.",
-      },
-      {
-        name: "GPS Specialists",
-        role: "Expert Advisors",
-        bio: "Experts who assist GPS Startups and Lab4GPS members by leveraging their purpose-specific skill sets. They provide technical and strategic support needed for GPS to achieve their goals.",
-      },
-      {
-        name: "Lab4GPS Operations Team",
-        role: "Operations Management",
-        bio: "Individuals who manage Lab4GPS through tasks such as organizational operations, human resources, space provision, channel expansion, toolbox installation, and digital transformation. They create an efficient work environment to ensure optimal performance from all team members.",
-      },
-      {
-        name: "Shared Service Center",
-        role: "Future Specialized Services",
-        bio: "A center that will provide specialized services such as startup incubation, legal services, and accounting services to Lab4GPS members. By offering highly specialized services, it helps GPS grow and make a greater impact.",
-      },
-    ],
     
-    timeline: [
-      {
-        title: "Founding of Lab4GPS",
-        date: "2020",
-        description: "Lab4GPS was established to pioneer global problem-solving through education, research, and collaboration.",
-      },
-      {
-        title: "Launch of GPS Program",
-        date: "2021",
-        description: "Introduced the first GPS program, combining Christian values and entrepreneurial training for aspiring global leaders.",
-      },
-      {
-        title: "First Global Impact Project",
-        date: "2022",
-        description: "Successfully executed our first large-scale project, improving the lives of underprivileged communities in Kenya.",
-      },
-      {
-        title: "Establishment of Univ 4.0",
-        date: "2023",
-        description: "Launched an online university platform to provide the GPS curriculum to students worldwide.",
-      },
-      {
-        title: "Introduction of SNS 4.0",
-        date: "2024",
-        description: "Created an online hub for connecting problem-solvers with those in need, fostering global collaboration.",
-      },
-      {
-        title: "Expansion of GPS Network",
-        date: "2025",
-        description: "Collaborated with over 50 GPS startups globally, addressing diverse issues with innovative and sustainable solutions.",
-      },
-      {
-        title: "Future Vision",
-        date: "Ongoing",
-        description: "Continuing to empower GPS, develop innovative solutions, and create a better world through love, courage, and wisdom.",
-      },
-    ],
     
-    testimonials: [
-      {
-        name: "Fidel Omondi Otieno",
-        organization: "IWL",
-        testimonial: "As a Software Engineer at IWL working on Lab4GPS, I am deeply inspired by the project's vision of empowering global problem solvers. It has been an incredible journey to create a platform that connects people with problems to those with the solutions."
-      },
-      {
-        name: "Ishmael Chepsoi",
-        organization: "IWL",
-        testimonial: "Working on Lab4GPS as a Software Engineer at IWL has been an enriching experience. I believe this platform will revolutionize global problem-solving through its innovative and collaborative approach."
-      },
-      {
-        name: "Alice Johnson",
-        organization: "Global Partnerships",
-        testimonial: "Lab4GPS is a game-changer in addressing global challenges. The dedication and vision of the GPS team inspire confidence and hope for a better future."
-      },
-      {
-        name: "Michael Lee",
-        organization: "Startup Founder",
-        testimonial: "Thanks to Lab4GPS, our startup found the support and resources needed to bring our ideas to life. The network and collaboration have been invaluable in creating impactful solutions."
-      },
-      {
-        name: "Sarah Kim",
-        organization: "Education Advocate",
-        testimonial: "Lab4GPS's education programs are truly transformative. They equip students with the tools they need to become global leaders who drive positive change."
-      }
-    ],
     
-    socialMedia: [
-      { platform: "LinkedIn", url: "https://www.linkedin.com/company/lab4gps" },
-      { platform: "Facebook", url: "https://www.facebook.com/lab4gps" },
-      { platform: "X", url: "https://twitter.com/lab4gps" },
-      { platform: "Instagram", url: "https://www.instagram.com/lab4gps" },
-      { platform: "KakaoTalk", url: "https://pf.kakao.com/lab4gps" }
-    ],
+    
+    
+
   };
 
   // Render content for each tab
@@ -494,51 +394,9 @@ We believe that as people who love God and are called according to His purpose, 
         return <p>{content.where}</p>;
       case "how":
         return <p>{content.how}</p>;
-      case "team":
-        return (
-          <div className="team-section">
-            {content.team.map((member, index) => (
-              <div key={index} className="team-card">
-                <h4>{member.name}</h4>
-                <p><strong>{member.role}</strong></p>
-                <p>{member.bio}</p>
-              </div>
-            ))}
-          </div>
-        );
-      case "timeline":
-        return (
-          <div className="timeline-section">
-            {content.timeline.map((event, index) => (
-              <div key={index} className="timeline-card">
-                <h4>{event.title}</h4>
-                <p>{event.date}</p>
-                <p>{event.description}</p>
-              </div>
-            ))}
-          </div>
-        );
-      case "testimonials":
-        return (
-          <div className="testimonial-section">
-            {content.testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial-card">
-                <p><strong>{testimonial.name}</strong> ({testimonial.organization})</p>
-                <blockquote>{testimonial.testimonial}</blockquote>
-              </div>
-            ))}
-          </div>
-        );
-      case "socialMedia":
-        return (
-          <div className="social-media-section">
-            {content.socialMedia.map((link, index) => (
-              <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
-                {link.platform}
-              </a>
-            ))}
-          </div>
-        );
+      
+      
+      
       default:
         return null;
     }
@@ -560,7 +418,7 @@ We believe that as people who love God and are called according to His purpose, 
 
       {/* Tab Navigation */}
       <div className="tabs">
-        {["why", "who", "what", "where", "how", "team", "timeline", "testimonials", "socialMedia"].map((tab) => (
+        {["why", "who", "what", "where", "how"].map((tab) => (
           <button
             key={tab}
             className={`tab-button ${activeTab === tab ? "active" : ""}`}
