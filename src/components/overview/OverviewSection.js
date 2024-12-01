@@ -38,15 +38,22 @@ const OverviewSection = () => {
         </div>
       </div>
 
-      {/* Wavy Separator */}
-      <div className="section-separator">
+      {/* Wavy Separator with Gradient */}
+      {/* <div className="section-separator">
         <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradient-colors" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#141e3f" />
+              <stop offset="50%" stopColor="#00cc99" />
+              <stop offset="100%" stopColor="#FF9900" />
+            </linearGradient>
+          </defs>
           <path
             d="M0,49.99C150,100,450,50,750,60C1050,70,1200,100,1200,100V120H0V49.99Z"
-            fill="#00cc99"
+            fill="url(#gradient-colors)"
           />
         </svg>
-      </div>
+      </div> */}
 
       {/* Key Features Section */}
       <div className="overview-section features-section">
