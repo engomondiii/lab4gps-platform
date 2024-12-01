@@ -24,7 +24,7 @@ const Footer = () => {
 
       <div className="footer-container">
         <div className="footer-section">
-          <h3>About Lab4GPS</h3>
+          <h3>About Lab4GPS(Global Problem Solvers)</h3>
           <p>
             Solving global issues through practical love and fostering collaboration to create lasting impact.
           </p>
