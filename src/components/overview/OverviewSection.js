@@ -74,9 +74,9 @@ const OverviewSection = () => {
               create scalable solutions for global challenges. Explore our tools,
               features, and collaborative spaces designed for impactful action.
             </p>
-            <Link to="/login">
+            <Link to="About">
               <button className="cta-button" style={{ backgroundColor: "#141e3f" }}>
-                Login to Explore More
+                Learn More!
               </button>
             </Link>
           </div>
