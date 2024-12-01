@@ -4,7 +4,7 @@ const Sponsorship = () => {
   return (
     <div style={{ padding: '2rem' }}>
       <h1>Sponsorship</h1>
-      <p>Support impactful initiatives with tiered sponsorship options and secure payment systems.</p>
+      <p>The page is being developed and will be ready soon!</p>
     </div>
   );
 };
