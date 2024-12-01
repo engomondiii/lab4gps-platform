@@ -9,11 +9,17 @@ const OverviewSection = () => {
       <div className="overview-section intro-section">
         <div className="animated-background"></div> {/* Decorative Animation */}
         <div className="overview-container">
-          {/* Left: Animated Illustration */}
+          {/* Left: Animated Globe */}
           <div className="overview-left">
-            <div className="hero-illustration">
-              {/* Replace with an SVG or Lottie animation */}
-              <img src="/assets/illustrations/globe-animation.svg" alt="Hero Animation" />
+            <div className="hero-animation">
+              <div className="orbit-container">
+                <div className="orbit">
+                  <div className="globe"></div>
+                  <div className="orbiting-icon orbiting-icon-1"></div>
+                  <div className="orbiting-icon orbiting-icon-2"></div>
+                  <div className="orbiting-icon orbiting-icon-3"></div>
+                </div>
+              </div>
             </div>
           </div>
 
