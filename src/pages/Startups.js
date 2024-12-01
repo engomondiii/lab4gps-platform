@@ -4,7 +4,7 @@ const Startups = () => {
   return (
     <div style={{ padding: '2rem' }}>
       <h1>Startups</h1>
-      <p>Explore the startups initiated through our problem-solving and collaboration efforts.</p>
+      <p>The page is being developed and will be ready soon!</p>
     </div>
   );
 };
