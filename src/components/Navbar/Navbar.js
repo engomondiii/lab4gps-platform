@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaHome, FaInfoCircle, FaHandshake, FaSignInAlt, FaUserPlus } from "react-icons/fa"; // Import relevant icons
 import "../../styles/Navbar.css";
 import logo from "../../assets/Images/Lab4GPS_Logo_2024-1.jpg"; // Import the logo
 
@@ -61,7 +60,6 @@ const Navbar = () => {
         <div className="nav-group">
           <li className={isActive("/") ? "active" : ""}>
             <Link to="/" className={isScrolled ? "scrolled-text" : ""} onClick={handleLinkClick}>
-              <FaHome className="nav-icon" />
               <span>Home</span>
             </Link>
           </li>
@@ -75,7 +73,6 @@ const Navbar = () => {
               className={`dropdown-link ${isScrolled ? "scrolled-text" : ""}`}
               onClick={() => navigateToAboutTab("why")}
             >
-              <FaInfoCircle className="nav-icon" />
               <span>About</span>
             </Link>
             <ul className={`dropdown-menu ${isDropdownOpen.about ? "show" : ""}`}>
@@ -96,7 +93,6 @@ const Navbar = () => {
               className={`dropdown-link ${isScrolled ? "scrolled-text" : ""}`}
               onClick={() => navigateToCollaborationHub("startups")}
             >
-              <FaHandshake className="nav-icon" />
               <span>Collaboration Hub</span>
             </Link>
             <ul className={`dropdown-menu ${isDropdownOpen.collaboration ? "show" : ""}`}>
@@ -116,14 +112,12 @@ const Navbar = () => {
         <div className="nav-group">
           <li className={isActive("/login") ? "active" : ""}>
             <Link to="/login" className={isScrolled ? "scrolled-text" : ""} onClick={handleLinkClick}>
-              <FaSignInAlt className="nav-icon" />
               <span>Login</span>
             </Link>
           </li>
           <span className="divider">|</span>
           <li className={isActive("/signup") ? "active" : ""}>
             <Link to="/signup" className={isScrolled ? "scrolled-text" : ""} onClick={handleLinkClick}>
-              <FaUserPlus className="nav-icon" />
               <span>Sign Up</span>
             </Link>
           </li>
