@@ -1,8 +1,19 @@
-import React from 'react';
-import '../../styles/Footer.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../../styles/Footer.css";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  // Function to navigate to About page with a specific tab
+  const navigateToAboutTab = (tab) => {
+    navigate(`/about?tab=${tab}`);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="footer">
       {/* Wavy Separator */}
@@ -24,40 +35,55 @@ const Footer = () => {
 
       <div className="footer-container">
         <div className="footer-section">
-          <h3>About Lab4GPS(Global Problem Solvers)</h3>
+          <h3>About Lab4GPS (Global Problem Solvers)</h3>
           <p>
             Solving global issues through practical love and fostering collaboration to create lasting impact.
           </p>
-          <Link to="/about" className="footer-link">Learn More</Link>
+          <button onClick={() => navigateToAboutTab("why")} className="footer-link">
+            Learn More
+          </button>
         </div>
         <div className="footer-section">
           <h3>Quick Links</h3>
-          {/* <ul>
-            <li><Link to="/" className="footer-link">Home</Link></li>
-            <li><Link to="/login" className="footer-link">Login</Link></li>
-            <li><Link to="/signup" className="footer-link">Sign Up</Link></li>
-            <li><Link to="/contact-us" className="footer-link">Contact Us</Link></li>
-          </ul> */}
           <div className="footer-subsections">
             <div className="subsection">
               <h4>Know About Lab4GPS</h4>
               <ul>
-                <li><Link to="/about/why" className="footer-link">Why</Link></li>
-                <li><Link to="/about/who" className="footer-link">Who</Link></li>
-                <li><Link to="/about/what" className="footer-link">What</Link></li>
-                <li><Link to="/about/where" className="footer-link">Where</Link></li>
-                <li><Link to="/about/how" className="footer-link">How</Link></li>
+                <li>
+                  <button onClick={() => navigateToAboutTab("why")} className="footer-link">
+                    Why
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => navigateToAboutTab("who")} className="footer-link">
+                    Who
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => navigateToAboutTab("what")} className="footer-link">
+                    What
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => navigateToAboutTab("where")} className="footer-link">
+                    Where
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => navigateToAboutTab("how")} className="footer-link">
+                    How
+                  </button>
+                </li>
               </ul>
             </div>
             <div className="subsection">
               <h4>Collaboration Hub</h4>
               <ul>
-                <li><Link to="/collaboration-hub/startups" className="footer-link">GPS Startups</Link></li>
-                <li><Link to="/collaboration-hub/projects" className="footer-link">GPS Projects</Link></li>
-                <li><Link to="/collaboration-hub/demo-day" className="footer-link">GPS Demo Day</Link></li>
-                <li><Link to="/collaboration-hub/sponsorship" className="footer-link">Sponsorship</Link></li>
-                <li><Link to="/collaboration-hub/contactus" className="footer-link">Contact Us</Link></li>
-
+                <li><button onClick={() => navigate("/collaboration-hub/startups")} className="footer-link">GPS Startups</button></li>
+                <li><button onClick={() => navigate("/collaboration-hub/projects")} className="footer-link">GPS Projects</button></li>
+                <li><button onClick={() => navigate("/collaboration-hub/demo-day")} className="footer-link">GPS Demo Day</button></li>
+                <li><button onClick={() => navigate("/collaboration-hub/sponsorship")} className="footer-link">Sponsorship</button></li>
+                <li><button onClick={() => navigate("/contact-us")} className="footer-link">Contact Us</button></li>
               </ul>
             </div>
           </div>
