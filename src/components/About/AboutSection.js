@@ -413,14 +413,7 @@ We believe that as people who love God and are called according to His purpose, 
 
   return (
     <div className="about-container">
-       {/* Description */}
-       <div className="about-description">
-        <h2>About Lab4GPS</h2>
-        <p>
-          Lab4GPS is committed to solving global challenges through practical love, collaboration,
-          and innovative solutions. Discover our mission, vision, purpose, and the core values that guide us.
-        </p>
-      </div>
+       
       {/* Tabs */}
       <div className="tabs">
         {["why", "who", "what", "where", "how"].map((tab) => (

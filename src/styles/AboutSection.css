@@ -1,46 +1,30 @@
 /* About Section Container */
 .about-container {
-  padding: 3rem;
+  padding: 2rem 1rem; /* Balanced padding for all screen sizes */
   font-family: "Helvetica", sans-serif;
   max-width: 1200px;
   margin: 0 auto;
   background: linear-gradient(135deg, #f5f7fa, #e2e6f0); /* Soft gradient background */
-
-}
-
-/* About Description */
-.about-description {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.about-description h2 {
-  font-size: 2.5rem;
-  font-family: "Helvetica-Bold", sans-serif;
-  color: #141e3f; /* Lab4GPS Blue */
-  margin-bottom: 1rem;
-}
-
-.about-description p {
-  font-size: 1.2rem;
-  color: #555;
-  line-height: 1.8;
-  max-width: 800px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align content */
 }
 
 /* Tabs Navigation */
 .tabs {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
+  justify-content: space-evenly; /* Distribute tabs evenly */
   margin-bottom: 2rem;
-  position: relative;
-  gap: 1rem; /* Spacing between tabs */
+  width: 100%; /* Tabs take up the full width of the container */
+  gap: 1rem; /* Add spacing between tabs */
 }
 
 /* Tab Button Styles */
 .tab-button {
-  padding: 1rem 2rem;
+  flex: 1; /* Ensure all tabs are evenly distributed */
+  max-width: 200px; /* Limit max width of each tab */
+  padding: 0.75rem 1.5rem; /* Adjusted padding for better appearance */
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
@@ -51,8 +35,7 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Floating effect */
   transition: all 0.3s ease;
   text-transform: capitalize;
-  position: relative;
-  z-index: 1;
+  text-align: center;
 }
 
 .tab-button:hover {
@@ -64,183 +47,23 @@
   color: #ffffff; /* White text for active tab */
   background: #141e3f; /* Lab4GPS Blue */
   border-left: 4px solid #00cc99; /* Green accent for active tab on the left */
-  z-index: 2;
-  transform: translateY(-2px); /* Slightly elevated to emphasize active tab */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow for active tab */
 }
 
-/* Horizontal Gradient Underline */
-.tabs::before {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #00cc99, #141e3f); /* Gradient effect */
-  z-index: 0;
-}
-
-/* Tab Content */
+/* Tab Content (Removed Container) */
 .tab-content {
-  padding: 2rem;
   font-size: 1.2rem;
   line-height: 1.8;
   color: #333;
   text-align: justify;
-  border-left: 4px solid #00cc99; /* Accent for content area */
-  padding-left: 2rem;
-  background: #ffffff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-
-
-
-
-.why-content h4 {
-  font-size: 1.5rem;
-  color: #00cc99; /* Lab4GPS Green */
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.why-content p {
-  margin-bottom: 1rem;
-}
-
-.why-content blockquote {
-  font-style: italic;
-  font-size: 1.2rem;
-  color: #555;
-  margin: 1rem 0;
-  padding-left: 1.5rem;
-  border-left: 4px solid #00cc99; /* Green accent for blockquote */
-}
-
-/* Team Section */
-.team-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.team-card {
-  background-color: #ffffff;
-  padding: 1.5rem;
-  border: 2px solid #141e3f;
-  border-radius: 8px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.team-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.team-card h4 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #141e3f;
-  margin-bottom: 0.5rem;
-}
-
-.team-card p {
-  color: #555;
-  margin: 0.5rem 0;
-}
-
-/* Timeline Section */
-.timeline-section {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.timeline-card {
-  background-color: #ffffff;
-  padding: 1.5rem;
-  border: 2px solid #00cc99;
-  border-radius: 8px;
-}
-
-.timeline-card h4 {
-  font-size: 1.4rem;
-  color: #141e3f;
-  margin-bottom: 0.5rem;
-}
-
-.timeline-card p {
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-/* Testimonial Section */
-.testimonial-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.testimonial-card {
-  background-color: #ffffff;
-  padding: 1.5rem;
-  border: 2px solid #141e3f;
-  border-radius: 8px;
-  text-align: center;
-  position: relative;
-}
-
-.testimonial-card::before {
-  content: "“";
-  font-size: 4rem;
-  color: #00cc99;
-  position: absolute;
-  top: -20px;
-  left: 20px;
-}
-
-.testimonial-card blockquote {
-  font-style: italic;
-  font-size: 1.2rem;
-  color: #555;
-}
-
-.testimonial-card p {
-  font-weight: bold;
-  margin-top: 1rem;
-  color: #141e3f;
-}
-
-/* Social Media Section */
-.social-media-section {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.social-media-section a {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #00cc99;
-  text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.social-media-section a:hover {
-  color: #141e3f;
-  transform: scale(1.1);
+  padding-top: 1rem;
 }
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .tabs {
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.5rem; /* Reduced gap for smaller screens */
   }
 
   .tab-button {
@@ -248,11 +71,33 @@
     padding: 0.5rem 1rem;
   }
 
-  .team-section,
-  .testimonial-section {
-    grid-template-columns: 1fr;
+  .tab-content {
+    font-size: 1rem;
+    padding: 0.5rem 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Why Section Styling */
@@ -509,22 +354,26 @@
   padding: 3rem;
   font-family: "Helvetica Regular", sans-serif;
   color: #333;
-  background-color: #f9f9f9; /* Light gray background for better contrast */
+  background-color: #f9f9f9;
   border-radius: 10px;
-  text-align: center;
+  text-align: left; /* Align text to the left for better readability */
+  max-width: 1200px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 /* Mission and Headings */
 .what-content h3 {
   font-size: 2.8rem;
-  color: #141e3f; /* Lab4GPS Blue */
+  color: #141e3f;
   margin-bottom: 1.8rem;
   font-weight: bold;
+  text-transform: capitalize; /* Better hierarchy and style */
 }
 
 .what-content h4 {
   font-size: 2rem;
-  color: #00cc99; /* Lab4GPS Green */
+  color: #00cc99;
   margin-top: 1.8rem;
   margin-bottom: 1.2rem;
   text-transform: capitalize;
@@ -536,19 +385,22 @@
 .training-program {
   display: flex;
   align-items: flex-start;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap; /* Wrap content for mobile responsiveness */
 }
 
 .development-icon,
 .training-icon {
   font-size: 3.5rem;
-  color: #00cc99; /* Icon color */
+  color: #00cc99;
   flex-shrink: 0;
 }
 
-.program-text {
+.program-text,
+.training-text {
   flex: 1;
+  max-width: 800px; /* Limit width for better text flow */
 }
 
 .program-text p,
@@ -556,12 +408,13 @@
   font-size: 1.3rem;
   line-height: 2;
   margin-bottom: 1.2rem;
+  color: #555; /* Slightly softer text color for better readability */
 }
 
 /* Gallery Section */
 .program-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Auto-adjust based on available space */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1.5rem;
   margin-bottom: 3rem;
   justify-content: center;
@@ -569,13 +422,13 @@
 
 .gallery-image {
   width: 100%;
-  height: 300px; /* Increased height for better visibility */
+  height: 300px;
   background-size: cover;
   background-position: center;
   border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  cursor: pointer; /* Make it clickable */
+  cursor: pointer;
 }
 
 .gallery-image:hover {
@@ -590,7 +443,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.8);
   display: none;
   justify-content: center;
   align-items: center;
@@ -626,34 +479,42 @@
 }
 
 /* Replace placeholders with actual image paths */
-.image-1 {
+.image-1,
+.image-2,
+.image-3,
+.image-4,
+.image-5 {
   background-image: url("../assets/Images/what1.jpg");
-  height: 400px; /* Increased size */
-  width: 100%; /* Ensures the image fills the container width */
+  height: 400px;
+  width: 100%;
+  background-size: contain; /* Ensure the whole image fits inside without cropping */
+  background-position: center; /* Center the image in the container */
+  background-repeat: no-repeat; /* Prevent repeating of the image */
 }
 
 .image-2 {
   background-image: url("../assets/Images/what2.jpg");
-  height: 400px; /* Increased size */
-  width: 100%;
 }
 
 .image-3 {
   background-image: url("../assets/Images/what3.jpg");
-  height: 400px; /* Increased size */
-  width: 100%;
 }
 
 .image-4 {
   background-image: url("../assets/Images/what4.jpg");
-  height: 400px; /* Increased size */
-  width: 100%;
 }
 
 .image-5 {
   background-image: url("../assets/Images/whatI.jpg");
-  height: 400px; /* Increased size */
-  width: 100%;
+}
+
+/* Optional: If you want the images to stretch to the container size without distortion */
+.image-1,
+.image-2,
+.image-3,
+.image-4,
+.image-5 {
+  background-size: 100% 100%; /* Stretch the image to fill the container without distortion */
 }
 
 /* Training Program Section */
@@ -688,13 +549,14 @@
 /* Current State Section */
 .current-state {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Reduce minimum column size */
+  gap: 1.5rem; /* Reduced gap between items */
+  margin-bottom: 2.5rem; /* Slightly reduced margin */
 }
 
 .current-item {
   background: #fff;
-  padding: 2rem;
+  padding: 1.5rem; /* Reduced padding for a more compact look */
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   text-align: center;
@@ -702,40 +564,38 @@
 }
 
 .current-item:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px); /* Slightly reduced hover effect for subtle interaction */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
 
 .current-image {
   width: 100%;
-  height: 250px;
+  height: 200px; /* Reduced height for smaller images */
   background-size: cover;
   background-position: center;
   border-radius: 12px;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem; /* Reduced bottom margin for image */
 }
 
-/* Replace placeholders with actual image paths */
+/* Image for specific items */
 .chakancha {
   background-image: url("../assets/Images/what7.jpg");
-  height: 250px; /* Reduced size */
-  width: 100%;  /* Ensures it takes the full container width */
 }
 
 .momma {
   background-image: url("../assets/Images/what8.jpg");
-  height: 250px; /* Reduced size */
-  width: 100%;
 }
 
 .wah {
   background-image: url("../assets/Images/what9.jpg");
-  height: 250px; /* Reduced size */
-  width: 100%;
 }
 
 .chakan-cashmere {
   background-image: url("../assets/Images/what10.jpg");
-  height: 250px; /* Reduced size */
-  width: 100%;
+}
+
+/* Optional: Adding hover effects to images */
+.current-image:hover {
+  opacity: 0.8; /* Slight opacity change for hover effect */
+  cursor: pointer; /* Change cursor to pointer for better UX */
 }
