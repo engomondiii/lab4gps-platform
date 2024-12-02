@@ -136,94 +136,138 @@
 
 
 
-/* Why Section Styling */
+/* General Styling */
+body {
+  font-family: 'Helvetica', sans-serif;
+  color: #333;
+  background-color: #fafafa; /* Light background for readability */
+}
+
 .why-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* Space between sections */
-  padding: 2rem;
-  line-height: 1.8;
-  color: #333;
-  position: relative; /* Maintain relative positioning for internal elements */
+  gap: 3rem; /* Increased spacing for clarity */
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto; /* Centers the content */
+  background-color: #fafafa;
 }
 
 .why-main {
   display: flex;
   flex-wrap: wrap;
+  gap: 2rem;
   align-items: center;
-  justify-content: space-between; /* Ensures content and image are spaced evenly */
-  gap: 2rem; /* Space between image and text */
+  justify-content: space-between;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.why-main:hover {
+  transform: translateY(-5px); /* Lift effect */
 }
 
 .why-image-container {
   flex: 1;
-  background-image: url("../assets/Images/why.png"); /* Replace with the correct path */
+  background-image: url("../assets/Images/why.png");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  max-width: 800px; /* Balanced size for larger displays */
-  height: 650px; /* Adjusted height for proportions */
-  border-radius: 8px; /* Rounded corners for modern look */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for emphasis */
-  margin: 0 auto; /* Centers the image horizontally */
+  height: 550px;
+  width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .why-main-text {
   flex: 2;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .why-content h3 {
-  font-size: 2.5rem; /* Increased font size for stronger headline */
-  color: #141e3f; /* Lab4GPS Blue */
-  margin-bottom: 1rem;
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #141e3f;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
 }
 
 .why-content h4 {
-  font-size: 1.7rem; /* Slightly larger for emphasis */
-  color: #00cc99; /* Lab4GPS Green */
+  font-size: 2rem;
+  color: #00cc99;
+  font-weight: 600;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .why-content p {
-  font-size: 1.1rem; /* Slightly larger text for readability */
-  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.why-slogan, .why-love, .why-business {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
 }
 
 .why-content blockquote {
   font-style: italic;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: #555;
-  margin: 1rem 0;
+  margin: 2rem 0;
   padding-left: 1.5rem;
-  border-left: 4px solid #00cc99; /* Green accent for blockquote */
+  border-left: 5px solid #00cc99;
+}
+
+.why-slogan p, .why-love p, .why-business p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/* Hover Effects */
+.why-main-text p:hover, .why-slogan p:hover, .why-love p:hover, .why-business p:hover {
+  color: #141e3f;
+  transition: color 0.3s ease;
 }
 
 /* Responsive Styling */
 @media (max-width: 768px) {
   .why-main {
-    flex-direction: column; /* Stacks text and image on smaller screens */
+    flex-direction: column;
     text-align: center;
   }
 
   .why-image-container {
-    max-width: 100%; /* Image container takes full width */
-    height: 250px; /* Scaled height for smaller screens */
+    max-width: 100%;
+    height: 300px;
   }
 
   .why-main-text {
-    padding: 0;
+    padding: 1rem;
   }
 
   .why-content h3 {
-    font-size: 2rem; /* Adjust headline size for smaller screens */
+    font-size: 2.2rem;
   }
 
   .why-content p {
-    font-size: 1rem; /* Maintain text readability */
+    font-size: 1rem;
+  }
+
+  .why-content h4 {
+    font-size: 1.7rem;
   }
 }
+
 
 
 

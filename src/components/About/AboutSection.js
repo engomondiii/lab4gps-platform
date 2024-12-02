@@ -18,52 +18,61 @@ const AboutSection = () => {
   const content = {
     why: (
       <div className="why-content">
-        <div className="why-main">
-          <div className="why-image-container"></div>
-          <div className="why-main-text">
-            <h3>Purpose: Solving Global Problems through Education, Research, and Practice</h3>
-            <p>Problem Solving through Education, Research, and Practice</p>
-            <p>
-              Lab4GPS is a community dedicated to bringing innovation to local and global communities
-              through education, research, and practical application. Lab4GPS plays a pivotal role in
-              transforming the resolution of global problems into a scalable and sustainable business
-              model, enabling individuals to joyfully engage in altruistic endeavors.
-            </p>
-            <p>
-              We refer to individuals who dedicate their lives to solving specific issues as Global
-              Problem Solvers (GPS).
-            </p>
-            <p>
-              Lab4GPS is responsible for helping people happily perform good deeds that solve the
-              world's problems. People who have set solving a specific problem as their life's purpose
-              are called Global Problem Solvers (abbreviated as GPS).
-            </p>
-            <p>
-              GPS discovers the secrets to solving the world's problems and creates products or
-              services based on them.
-            </p>
-          </div>
-        </div>
-        <h4>Slogan</h4>
-        <p>
-          <strong>We Solve Global Problems for Others:</strong> Under the slogan "We solve global
-          problems for others," Lab4GPS is dedicated to addressing various global issues. Our goal
-          is not just to solve problems but to contribute to creating a better world.
-        </p>
-        <p>Our goal is not simply to solve problems, but to contribute to creating a better world.</p>
-        <h4>Love in Action</h4>
-        <p>
-          <em>“Love in action”</em> is the principle at the heart of all activities at Lab4GPS. We
-          practice love as concrete actions, not just emotions.
-        </p>
-        <p>Love is not just a feeling, but is practiced through concrete actions.</p>
-        <h4>Business as Love</h4>
-        <p>
-          <em>“Business as love”</em> summarizes the business philosophy of Lab4GPS. We view
-          business not just as a pursuit of profit but as a means of practicing love.
-        </p>
-        <p>We see business as a means of practicing love, rather than simply pursuing profit.</p>
-      </div>
+  <div className="why-main">
+    <div className="why-image-container"></div>
+    <div className="why-main-text">
+      <h3>Purpose: Solving Global Problems through Education, Research, and Practice</h3>
+      <p>Problem Solving through Education, Research, and Practice</p>
+      <p>
+        Lab4GPS is a community dedicated to bringing innovation to local and global communities
+        through education, research, and practical application. Lab4GPS plays a pivotal role in
+        transforming the resolution of global problems into a scalable and sustainable business
+        model, enabling individuals to joyfully engage in altruistic endeavors.
+      </p>
+      <p>
+        We refer to individuals who dedicate their lives to solving specific issues as Global
+        Problem Solvers (GPS).
+      </p>
+      <p>
+        Lab4GPS is responsible for helping people happily perform good deeds that solve the
+        world's problems. People who have set solving a specific problem as their life's purpose
+        are called Global Problem Solvers (abbreviated as GPS).
+      </p>
+      <p>
+        GPS discovers the secrets to solving the world's problems and creates products or
+        services based on them.
+      </p>
+    </div>
+  </div>
+
+  <div className="why-slogan">
+    <h4>Slogan</h4>
+    <p>
+      <strong>We Solve Global Problems for Others:</strong> Under the slogan "We solve global
+      problems for others," Lab4GPS is dedicated to addressing various global issues. Our goal
+      is not just to solve problems but to contribute to creating a better world.
+    </p>
+  </div>
+
+  <div className="why-love">
+    <h4>Love in Action</h4>
+    <p>
+      <em>“Love in action”</em> is the principle at the heart of all activities at Lab4GPS. We
+      practice love as concrete actions, not just emotions.
+    </p>
+  </div>
+
+  <div className="why-business">
+    <h4>Business as Love</h4>
+    <p>
+      <em>“Business as love”</em> summarizes the business philosophy of Lab4GPS. We view
+      business not just as a pursuit of profit but as a means of practicing love.
+    </p>
+  </div>
+</div>
+
+    
+
     ),
     
     
