@@ -1,30 +1,55 @@
 /* About Section Container */
 .about-container {
-  padding: 2rem 1rem; /* Balanced padding for all screen sizes */
+  padding: 2rem 1rem;
   font-family: "Helvetica", sans-serif;
   max-width: 1200px;
   margin: 0 auto;
   background: linear-gradient(135deg, #f5f7fa, #e2e6f0); /* Soft gradient background */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center align content */
+  align-items: center;
 }
 
 /* Tabs Navigation */
 .tabs {
   display: flex;
-  flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
-  justify-content: space-evenly; /* Distribute tabs evenly */
+  flex-wrap: nowrap; /* Prevent tabs from wrapping to the next line */
+  justify-content: space-between; /* Spread out tabs evenly */
   margin-bottom: 2rem;
-  width: 100%; /* Tabs take up the full width of the container */
-  gap: 1rem; /* Add spacing between tabs */
+  width: 100%; /* Ensure the tabs stretch the full width */
+  gap: 0.5rem; /* Reduce gap for a tighter fit */
+  background: #f8f8f8; /* Light background for tab container */
+  border-radius: 10px; /* More subtle border radius */
+  padding: 0.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Softer and larger shadow for modern look */
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Add shine effect */
+.tabs::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #ffffff, #00cc99, #ffffff);
+  opacity: 0.6;
+  animation: shine 1.5s infinite linear;
+}
+
+@keyframes shine {
+  0% { left: -100%; width: 100%; }
+  50% { left: 100%; width: 100%; }
+  100% { left: -100%; width: 100%; }
 }
 
 /* Tab Button Styles */
 .tab-button {
-  flex: 1; /* Ensure all tabs are evenly distributed */
-  max-width: 200px; /* Limit max width of each tab */
-  padding: 0.75rem 1.5rem; /* Adjusted padding for better appearance */
+  flex: 1; /* Ensures each tab stretches evenly */
+  min-width: 120px; /* Minimum width for each tab */
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
@@ -32,25 +57,36 @@
   background: #f8f8f8;
   border: none;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Floating effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   text-transform: capitalize;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
+/* Hover Effect */
 .tab-button:hover {
-  background: #e6e6e6; /* Subtle hover effect */
-  transform: translateY(-2px); /* Hover lift effect */
+  background: #e6e6e6;
+  transform: translateY(-3px); /* Slightly stronger hover lift */
 }
 
+/* Active Tab Styles */
 .tab-button.active {
-  color: #ffffff; /* White text for active tab */
-  background: #141e3f; /* Lab4GPS Blue */
-  border-left: 4px solid #00cc99; /* Green accent for active tab on the left */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow for active tab */
+  color: #ffffff;
+  background: #141e3f;
+  border-left: 4px solid #00cc99; /* Green accent for active tab */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  animation: pulse 0.6s ease-in-out;
 }
 
-/* Tab Content (Removed Container) */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Tab Content */
 .tab-content {
   font-size: 1.2rem;
   line-height: 1.8;
@@ -63,7 +99,7 @@
 @media (max-width: 768px) {
   .tabs {
     flex-wrap: wrap;
-    gap: 0.5rem; /* Reduced gap for smaller screens */
+    gap: 0.5rem;
   }
 
   .tab-button {
