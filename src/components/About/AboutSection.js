@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "../../styles/AboutSection.css";
-import { FaHandsHelping, FaBuilding, FaUsers, FaTools, FaNetworkWired,  } from "react-icons/fa";
+import { FaHandsHelping, FaBuilding, FaUsers, FaTools, FaNetworkWired, FaHeart, FaShieldAlt, FaBrain, FaBible } from "react-icons/fa";
 
 const AboutSection = () => {
   const location = useLocation();
@@ -284,89 +284,74 @@ what: (
     ),
     how: (
       <div className="how-content">
-        <h3>Core Values: Love, Courage, and Wisdom</h3>
-        <p>Love, Courage, and Wisdom
-        </p>
-        <h4>Love</h4>
-        <p>
+  <h3>Core Values: Love, Courage, and Wisdom</h3>
+  <p className="intro-text">Our core values guide us in everything we do. They empower us to make a positive impact on the world.</p>
+
+  <div className="core-value">
+    <div className="icon-container">
+      <FaHeart className="icon love-icon" />
+    </div>
+    <div className="value-text">
+      <h4>Love</h4>
+      <p>
         At Lab4GPS, love equates to solving problems for others with genuine care and compassion. Inspired by the teachings of Jesus Christ, this principle drives our commitment to addressing societal needs through innovation, emphasizing unconditional and sacrificial love, empathy, and forgiveness.
-        </p>
-        <p>
-        Love is true concern and compassion. 
+      </p>
+      <p>Love is true concern and compassion. It means solving other people's problems.</p>
+    </div>
+  </div>
 
-It means solving other people's problems  .
-
-        </p>
-    
-        <h4>Courage</h4>
-        <p>
+  <div className="core-value">
+    <div className="icon-container">
+      <FaShieldAlt className="icon courage-icon" />
+    </div>
+    <div className="value-text">
+      <h4>Courage</h4>
+      <p>
         Courage signifies a commitment to pioneering new frontiers despite uncertainties and risks. Inspired by Jesus' bravery in confronting oppositions and making sacrifices, we invest profoundly in the dreams of innovators, enabling impactful transformations that extend beyond technical metrics.
-        </p>
-        <p>
-        Courage is the ability to endure uncertainty and risk. 
+      </p>
+      <p>Courage is the ability to endure uncertainty and risk. It signifies a commitment to pioneering new territories.</p>
+    </div>
+  </div>
 
-It signifies a commitment to pioneering new territories.
-        </p>
-    
-        <h4>Wisdom</h4>
-        <p>
+  <div className="core-value">
+    <div className="icon-container">
+      <FaBrain className="icon wisdom-icon" />
+    </div>
+    <div className="value-text">
+      <h4>Wisdom</h4>
+      <p>
         Leveraging collective knowledge and experience to foster sustainable and ethical advancements. Inspired by the teachings and discernment of Jesus, we navigate complex challenges with insight and understanding, making balanced decisions for the greater good.
-          </p>
-        <p>
-        Wisdom is having insight and understanding of complex problems. 
+      </p>
+      <p>Wisdom is having insight and understanding of complex problems and making balanced decisions.</p>
+    </div>
+  </div>
 
-and  make balanced decisions.
-        </p>
-    
-        <p>
-        At Lab4GPS, our Core Values ​​Love, Courage, and Wisdom compose the framework of our purpose.  These values ​​guide us in nurturing innovative enterprises, transforming technologies into thriving solutions, and fostering lasting positive change. 
+  <p className="conclusion-text">
+    At Lab4GPS, our Core Values—Love, Courage, and Wisdom—compose the framework of our purpose. These values guide us in nurturing innovative enterprises, transforming technologies into thriving solutions, and fostering lasting positive change.
+  </p>
+  <p className="conclusion-text">
+    Through Love, Courage, and Wisdom, Lab4GPS is committed to empowering innovators to address global challenges and contribute to a better world.
+  </p>
 
-Through Love, Courage, and Wisdom, Lab4GPS is committed to empowering innovators to address global challenges and contribute to a better world.
-        </p>
-        <p>
-        At Lab4GPS, our core values ​​of Love, Courage, and Wisdom frame our purpose.
-These values ​​guide us as we foster innovative companies, transform technology into thriving solutions, and foster lasting positive change.
-Lab4GPS is committed to helping GPS solve global problems and contribute to a better world.
+  <h4>Scripture Verses</h4>
+  <blockquote>
+    <strong>John 13:34</strong><br />
+    “A new command I give you: Love one another. As I have loved you, so you must love one another.”
+  </blockquote>
+  <p>
+    This verse embodies the core spirit of Lab4GPS. Following Jesus' teachings, we practice love and dedicate ourselves to solving others' problems.
+  </p>
 
-
-        </p>
-    
-        <h4>Scripture Verses</h4>
-        <blockquote>
-          <strong>John 13:34</strong><br />
-          “A new command I give you: Love one another.  As I have loved you, so you must love one another.”        </blockquote>
-        <p>
-        A new commandment I give to you, that you love one another; just as I have loved you, that you also love one another.
-
-
-        </p>
-        <p>
-        This verse embodies the core spirit of Lab4GPS. Following Jesus' teachings, we practice love and dedicate ourselves to solving others' problems.
-        </p>
-
-        <p>
-        We follow the teachings of Jesus and practice love, dedicating ourselves to solving other people's problems.
-        </p>
-    
-        <blockquote>
-          <strong>Romans 8:28</strong><br />
-          “And we know that in all things God works for the good of those  who love him, who have been called according to his purpose.”
-        </blockquote>
-        <p>
-        And we know that all things work together for good to those who love God, to those who are the called according to his purpose.
-
-</p>
-<p>
-This verse inspires the vision and mission of Lab4GPS. As those who love God and are called according to His purpose, we believe that all our efforts will work together for good.
+  <blockquote>
+    <strong>Romans 8:28</strong><br />
+    “And we know that in all things God works for the good of those who love him, who have been called according to his purpose.”
+  </blockquote>
+  <p>
+    This verse inspires the vision and mission of Lab4GPS. As those who love God and are called according to His purpose, we believe that all our efforts will work together for good.
+  </p>
+</div>
 
 
-</p>
-<p>
-We believe that as people who love God and are called according to His purpose, all our efforts will be for good.
-
-
-</p>
-      </div>
     ),
     
     
