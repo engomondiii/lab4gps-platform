@@ -46,7 +46,7 @@
 /* Divider Between Login and Sign-Up */
 .divider {
     color: #141e3f;
-    font-size: 1rem;
+    font-size: 1.1rem; /* Increased font size */
     margin: 0 0.5rem;
 }
 
@@ -58,7 +58,7 @@
 
 .nav-links li a {
     text-decoration: none;
-    font-size: 0.8rem; /* Slightly smaller font size */
+    font-size: 0.9rem; /* Slightly increased font size */
     font-weight: bold;
     transition: color 0.3s ease-in-out;
     padding: 0.3rem 0; /* Further reduced vertical padding */
@@ -68,28 +68,14 @@
     color: #141e3f; /* Default text color */
 }
 
-.nav-links li a .nav-icon {
-    font-size: 1.1rem; /* Slightly smaller icon size */
-    margin-bottom: 0.15rem; /* Reduced space between icon and text */
-    transition: color 0.3s ease-in-out;
-}
-
 /* Active Link Styling */
 .nav-links li.active a {
     color: #00cc99; /* Highlight active link */
 }
 
-.nav-links li.active a .nav-icon {
-    color: #00cc99; /* Highlight icon for active link */
-}
-
 /* Hovered Link Styling */
 .nav-links li:hover a {
     color: #00cc99; /* Highlight link text on hover */
-}
-
-.nav-links li:hover a .nav-icon {
-    color: #00cc99; /* Highlight icon on hover */
 }
 
 /* Dropdown Styles */
@@ -119,7 +105,7 @@
     background: none;
     border: none;
     color: #141e3f;
-    font-size: 0.8rem; /* Slightly smaller font size */
+    font-size: 1rem; /* Increased font size */
     text-align: left;
     padding: 0;
     cursor: pointer;
@@ -173,7 +159,7 @@
     }
 
     .nav-links li a {
-        font-size: 0.85rem; /* Slightly smaller font size */
+        font-size: 1rem; /* Slightly increased font size */
         color: white !important;
     }
 
