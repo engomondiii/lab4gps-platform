@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaHome, FaInfoCircle, FaHandshake } from "react-icons/fa"; // Import relevant icons
 import "../../styles/Navbar.css";
 import logo from "../../assets/Images/Lab4GPS_Logo_2024-1.jpg"; // Import the logo
 
@@ -28,6 +29,12 @@ const Navbar = () => {
     setIsMenuOpen(false); // Close the mobile menu
   };
 
+  // Function to navigate to the Collaboration Hub page with a specific section
+  const navigateToCollaborationHub = (section) => {
+    navigate(`/collaboration-hub?section=${section}`);
+    handleLinkClick();
+  };
+
   // Function to navigate to the About page with a specific tab
   const navigateToAboutTab = (tab) => {
     navigate(`/about?tab=${tab}`);
@@ -50,11 +57,14 @@ const Navbar = () => {
         <div></div>
       </div>
       <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
+        {/* Home Link */}
         <li className={isActive("/") ? "active" : ""}>
           <Link to="/" className={isScrolled ? "scrolled-text" : ""} onClick={handleLinkClick}>
-            Home
+            <FaHome className="nav-icon" /> Home
           </Link>
         </li>
+
+        {/* About Dropdown */}
         <li
           className="dropdown"
           onMouseEnter={() => setIsDropdownOpen({ ...isDropdownOpen, about: true })}
@@ -65,7 +75,7 @@ const Navbar = () => {
             className={`dropdown-link ${isScrolled ? "scrolled-text" : ""}`}
             onClick={() => navigateToAboutTab("why")}
           >
-            About
+            <FaInfoCircle className="nav-icon" /> About
           </Link>
           <ul className={`dropdown-menu ${isDropdownOpen.about ? "show" : ""}`}>
             <li>
@@ -85,6 +95,8 @@ const Navbar = () => {
             </li>
           </ul>
         </li>
+
+        {/* Collaboration Hub Dropdown */}
         <li
           className="dropdown"
           onMouseEnter={() => setIsDropdownOpen({ ...isDropdownOpen, collaboration: true })}
@@ -93,18 +105,30 @@ const Navbar = () => {
           <Link
             to="/collaboration-hub"
             className={`dropdown-link ${isScrolled ? "scrolled-text" : ""}`}
-            onClick={handleLinkClick}
+            onClick={() => navigateToCollaborationHub("startups")}
           >
-            Collaboration Hub
+            <FaHandshake className="nav-icon" /> Collaboration Hub
           </Link>
           <ul className={`dropdown-menu ${isDropdownOpen.collaboration ? "show" : ""}`}>
-            <li><Link to="/collaboration-hub/startups" onClick={handleLinkClick}>GPS Startups</Link></li>
-            <li><Link to="/collaboration-hub/projects" onClick={handleLinkClick}>GPS Projects</Link></li>
-            <li><Link to="/collaboration-hub/demo-day" onClick={handleLinkClick}>GPS Demo Day</Link></li>
-            <li><Link to="/collaboration-hub/sponsorship" onClick={handleLinkClick}>Sponsorship</Link></li>
-            <li><Link to="/contact-us" onClick={handleLinkClick}>Contact Us</Link></li>
+            <li>
+              <button onClick={() => navigateToCollaborationHub("startups")}>GPS Startups</button>
+            </li>
+            <li>
+              <button onClick={() => navigateToCollaborationHub("projects")}>GPS Projects</button>
+            </li>
+            <li>
+              <button onClick={() => navigateToCollaborationHub("demo-day")}>GPS Demo Day</button>
+            </li>
+            <li>
+              <button onClick={() => navigateToCollaborationHub("sponsorship")}>Sponsorship</button>
+            </li>
+            <li>
+              <button onClick={() => navigate("/contact-us")}>Contact Us</button>
+            </li>
           </ul>
         </li>
+
+        {/* Login and Sign-Up Links */}
         <li className={isActive("/login") ? "active" : ""}>
           <Link to="/login" className={isScrolled ? "scrolled-text" : ""} onClick={handleLinkClick}>
             Login

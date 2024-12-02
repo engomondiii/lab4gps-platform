@@ -14,6 +14,15 @@ const Footer = () => {
     });
   };
 
+  // Function to navigate to Collaboration Hub page with a specific section
+  const navigateToCollaborationHubSection = (section) => {
+    navigate(`/collaboration-hub?section=${section}`);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="footer">
       {/* Wavy Separator */}
@@ -79,19 +88,58 @@ const Footer = () => {
             <div className="subsection">
               <h4>Collaboration Hub</h4>
               <ul>
-                <li><button onClick={() => navigate("/collaboration-hub/startups")} className="footer-link">GPS Startups</button></li>
-                <li><button onClick={() => navigate("/collaboration-hub/projects")} className="footer-link">GPS Projects</button></li>
-                <li><button onClick={() => navigate("/collaboration-hub/demo-day")} className="footer-link">GPS Demo Day</button></li>
-                <li><button onClick={() => navigate("/collaboration-hub/sponsorship")} className="footer-link">Sponsorship</button></li>
-                <li><button onClick={() => navigate("/contact-us")} className="footer-link">Contact Us</button></li>
+                <li>
+                  <button
+                    onClick={() => navigateToCollaborationHubSection("startups")}
+                    className="footer-link"
+                  >
+                    GPS Startups
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigateToCollaborationHubSection("projects")}
+                    className="footer-link"
+                  >
+                    GPS Projects
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigateToCollaborationHubSection("demo-day")}
+                    className="footer-link"
+                  >
+                    GPS Demo Day
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigateToCollaborationHubSection("sponsorship")}
+                    className="footer-link"
+                  >
+                    Sponsorship
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigate("/contact-us")}
+                    className="footer-link"
+                  >
+                    Contact Us
+                  </button>
+                </li>
               </ul>
             </div>
           </div>
         </div>
         <div className="footer-section">
           <h3>Contact Us</h3>
-          <p>Email: <a href="mailto:info@lab4gps.org" className="footer-link">gpslab@iwl.kr</a></p>
-          <p>KakaoBank: <a href="tel:+1234567890" className="footer-link">3333-30-6931050</a></p>
+          <p>
+            Email: <a href="mailto:info@lab4gps.org" className="footer-link">gpslab@iwl.kr</a>
+          </p>
+          <p>
+            KakaoBank: <a href="tel:+1234567890" className="footer-link">3333-30-6931050</a>
+          </p>
         </div>
         <div className="footer-section social-media">
           <h3>Follow Us</h3>
@@ -100,7 +148,7 @@ const Footer = () => {
             <a href="#" className="social-icon twitter" aria-label="Twitter"></a>
             <a href="#" className="social-icon instagram" aria-label="Instagram"></a>
             <a href="#" className="social-icon linkedin" aria-label="LinkedIn"></a>
-            <a href="#" className="social-icon talk" aria-label="talk"></a>
+            <a href="#" className="social-icon talk" aria-label="Talk"></a>
           </div>
         </div>
       </div>
