@@ -1,44 +1,32 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import React, { useState } from 'react';
 import '../../styles/Hero.css';
 
 const Hero = () => {
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const [showVideo, setShowVideo] = useState(false); // State to manage video visibility
+
+  const handlePlayVideo = () => {
+    setShowVideo(true); // Show video when button is clicked
+  };
 
   return (
     <section className="hero">
       <div className="hero-video-container">
-        {/* Vimeo Video Embed */}
-        <iframe
-          src="https://player.vimeo.com/video/163099115?autoplay=1&loop=1&background=1&muted=1"
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          title="Earth Animation"
-          className="hero-video"
-        ></iframe>
-      </div>
-      <div className="hero-content">
-        <h1>Solving Global Issues Through Practical Love</h1>
-        <p>Fostering collaboration and innovation globally.</p>
-        <div className="hero-buttons">
-          {/* Navigate to About page */}
-          {/* <button
-            className="btn-learn"
-            onClick={() => navigate('/about')}
-            style={{ fontFamily: 'Helvetica75-Bold' }}
-          >
-            Learn More
-          </button> */}
-          {/* Navigate to Login page */}
-          {/* <button
-            className="btn-involved"
-            onClick={() => navigate('/login')}
-            style={{ fontFamily: 'Helvetica-Regular' }}
-          >
-            Get Involved
-          </button> */}
-        </div>
+        {showVideo ? (
+          // YouTube Video Embed
+          <iframe
+            src="https://www.youtube.com/embed/savPHzThsZc?autoplay=1"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            title="Lab4GPS Introduction Video"
+            className="hero-video"
+          ></iframe>
+        ) : (
+          // Video Thumbnail and Play Button
+          <div className="video-thumbnail">
+            <button onClick={handlePlayVideo} className="play-button" aria-label="Play Video"></button>
+          </div>
+        )}
       </div>
     </section>
   );

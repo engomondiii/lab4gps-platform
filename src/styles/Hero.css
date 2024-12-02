@@ -4,73 +4,65 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  text-align: center;
-  font-family: 'Helvetica-Regular', sans-serif; /* Set default font family */
   overflow: hidden; /* Ensure no overflow beyond the viewport */
+  background-color: #141e3f; /* Fallback background color */
 }
 
 /* Video Container */
 .hero-video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Place the video behind the content */
-  overflow: hidden; /* Prevent video overflow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Video Thumbnail */
+.video-thumbnail {
+  width: 100%;
+  height: 100%;
+  background: url('https://img.youtube.com/vi/savPHzThsZc/maxresdefault.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Play Button */
+.play-button {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.play-button::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 25px solid white;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  position: absolute;
+}
+
+.play-button:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Embedded Video Styling */
 .hero-video {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensure the video fills the container */
-}
-
-/* Content Styling */
-.hero-content {
-  max-width: 800px;
-  z-index: 2; /* Ensure content is above the video */
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  font-family: 'Helvetica75-Bold', sans-serif; /* Bold font for heading */
-}
-
-.hero p {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  font-family: 'Helvetica-Regular', sans-serif; /* Regular font for paragraph */
-}
-
-/* Buttons Styling */
-.hero-buttons .btn-learn,
-.hero-buttons .btn-involved {
-  margin: 0 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 5px;
-  transition: transform 0.3s ease;
-}
-
-.hero-buttons .btn-learn {
-  background-color: #00CC99;
-  color: black;
-}
-
-.hero-buttons .btn-learn:hover {
-  transform: scale(1.05); /* Slight zoom effect */
-}
-
-.hero-buttons .btn-involved {
-  background-color: white; /* Lab4GPS Blue */
-  color: #141e3f;
-}
-
-.hero-buttons .btn-involved:hover {
-  transform: scale(1.05); /* Slight zoom effect */
+  border: none; /* Remove default iframe border */
+  border-radius: 10px;
 }
