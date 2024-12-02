@@ -231,67 +231,56 @@ what: (
 
     where: (
       <div className="where-content">
-        <h3>Vision: Pioneering the Path to a Better World through Education, Innovation, and Collaboration</h3>
-        <p>
-        Leading a better world through education, innovation and collaboration
-
-        </p>
-        <p>
-        Lab4GPS envisions a future where education, innovation, and collaboration converge to solve the world's problems. 
-
-We aim to establish an  online university and  a platform that connects those with problems to those who can solve them ,  creating a comprehensive problem-solving ecosystem that supports global problem-solving.
-        </p>
-        <p>
-        Lab4GPS envisions a future where the world’s problems are solved through education, innovation, and collaboration.
-We aim to create a comprehensive ecosystem that supports global problem solving by establishing a platform and an online university that connects people with problems with people who can solve them .
-
-
-        </p>
+  <div className="content-left">
+    <h3>Vision: Pioneering the Path to a Better World through Education, Innovation, and Collaboration</h3>
+    <p>Leading a better world through education, innovation, and collaboration.</p>
+    <p>
+      Lab4GPS envisions a future where education, innovation, and collaboration converge to solve the world's problems.
+      We aim to establish an online university and a platform that connects those with problems to those who can solve them, creating a comprehensive problem-solving ecosystem that supports global problem-solving.
+    </p>
+    <p>
+      Lab4GPS envisions a future where the world’s problems are solved through education, innovation, and collaboration.
+      We aim to create a comprehensive ecosystem that supports global problem-solving by establishing a platform and an online university that connects people with problems with people who can solve them.
+    </p>
+    <div className="content-row">
+      <div className="text">
         <h4>Univ 4.0</h4>
         <p>
-        Univ 4.0 expands the GPS program online, making it accessible to students worldwide. This platform offers the GPS curriculum, equipping students with the skills and knowledge necessary to address global issues. By providing a robust educational foundation, Univ 4.0 empowers the next generation of global leaders to develop innovative solutions and drive sustainable change.
-
-
+          Univ 4.0 expands the GPS program online, making it accessible to students worldwide. This platform offers the GPS curriculum, equipping students with the skills and knowledge necessary to address global issues. By providing a robust educational foundation, Univ 4.0 empowers the next generation of global leaders to develop innovative solutions and drive sustainable change.
         </p>
         <p>
-        Univ 4.0 extends the GPS program online, making it accessible to students around the world.
-The platform provides the GPS curriculum with the skills and knowledge needed to solve global problems.
-By providing a strong educational foundation, Univ 4.0 enables the next generation of global leaders to develop innovative solutions and drive sustainable change.        </p>
-        <h4>SNS 4.0</h4>
-        <p>
-        SNS 4.0 is an online hub where people with problems can meet people who can solve them.
-The platform promotes collaboration by sharing ideas and solutions to solve global problems and promoting collaborative projects. 
-
-Each stage is gamified, providing clear goals and rewards, and participants gradually gain knowledge and skills by solving real-world problems. 
-
-You can acquire and challenge yourself with increasingly complex problems.        </p>
-        <p>
-        SNS 4.0 is an online hub where people with problems can meet people who can solve them.
-The platform promotes collaboration by sharing ideas and solutions to solve global problems and promoting collaborative projects. 
-
-Each stage is gamified, providing clear goals and rewards, and participants gradually gain knowledge and skills by solving real-world problems. 
-
-You can acquire and challenge yourself with increasingly complex problems.
-
-
-
-        </p>
-        
-        <h4>Our Vision</h4>
-        <p>
-        Our vision includes training the next generation of global leaders essential for addressing these issues and establishing companies focused on problem-solving. We aspire to play a leading role in creating a better world with global consumers. 
-
-Through our programs and support, the GPS we nurture will solve global problems and generate Joy, Money, and Love, positively impacting the world. They will lead research and innovation to address various global issues, collaborating with the global community to seek sustainable solutions. We will continuously support them in contributing to a better future by solving diverse world problems.
-
-
-        </p>
-        <p>
-        We aim to build a company focused on problem solving and to develop the next generation of global leaders who are essential to solving the world's problems.
-Through our programs and support, GPS will solve the world's problems, create joy, money, love, and make a positive impact on the world.
-
-
+          Univ 4.0 extends the GPS program online, making it accessible to students around the world. The platform provides the GPS curriculum with the skills and knowledge needed to solve global problems. By providing a strong educational foundation, Univ 4.0 enables the next generation of global leaders to develop innovative solutions and drive sustainable change.
         </p>
       </div>
+      <div className="image image-univ"></div>
+    </div>
+
+    <div className="content-row">
+      <div className="text">
+        <h4>SNS 4.0</h4>
+        <p>
+          SNS 4.0 is an online hub where people with problems can meet people who can solve them. The platform promotes collaboration by sharing ideas and solutions to solve global problems and promoting collaborative projects. Each stage is gamified, providing clear goals and rewards, and participants gradually gain knowledge and skills by solving real-world problems. You can acquire and challenge yourself with increasingly complex problems.
+        </p>
+        <p>
+          SNS 4.0 is an online hub where people with problems can meet people who can solve them. The platform promotes collaboration by sharing ideas and solutions to solve global problems and promoting collaborative projects. Each stage is gamified, providing clear goals and rewards, and participants gradually gain knowledge and skills by solving real-world problems. You can acquire and challenge yourself with increasingly complex problems.
+        </p>
+      </div>
+      <div className="image image-sns"></div>
+    </div>
+
+    <h4>Our Vision</h4>
+    <p>
+      Our vision includes training the next generation of global leaders essential for addressing these issues and establishing companies focused on problem-solving. We aspire to play a leading role in creating a better world with global consumers.
+      Through our programs and support, the GPS we nurture will solve global problems and generate Joy, Money, and Love, positively impacting the world. They will lead research and innovation to address various global issues, collaborating with the global community to seek sustainable solutions. We will continuously support them in contributing to a better future by solving diverse world problems.
+    </p>
+    <p>
+      We aim to build a company focused on problem-solving and to develop the next generation of global leaders who are essential to solving the world's problems. Through our programs and support, GPS will solve the world's problems, create joy, money, love, and make a positive impact on the world.
+    </p>
+  </div>
+</div>
+
+    
+
     ),
     how: (
       <div className="how-content">
