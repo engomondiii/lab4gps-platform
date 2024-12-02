@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1.5rem; /* Reduced padding for compact height */
+    padding: 0.2rem 1.5rem; /* Further reduced vertical padding */
     background-color: white; /* Default background color */
     position: sticky;
     top: 0;
@@ -19,7 +19,7 @@
 }
 
 .logo-image {
-    height: 40px; /* Reduced height for the logo */
+    height: 34px; /* Further reduced height for the logo */
     width: auto;
 }
 
@@ -31,25 +31,65 @@
     position: relative;
 }
 
+/* Navigation Group */
+.nav-group {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem; /* Space between items within a group */
+}
+
+/* Space Between Groups */
+.nav-space {
+    width: 4rem; /* Maintained space between the two groups */
+}
+
+/* Divider Between Login and Sign-Up */
+.divider {
+    color: #141e3f;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+}
+
+/* Navigation Items */
 .nav-links li {
-    margin: 0 0.5rem; /* Reduced margin for less spacing between links */
+    margin: 0; /* Remove extra margins */
     position: relative; /* To position dropdowns */
 }
 
 .nav-links li a {
     text-decoration: none;
-    font-size: 0.9rem; /* Slightly smaller font size */
+    font-size: 0.8rem; /* Slightly smaller font size */
     font-weight: bold;
     transition: color 0.3s ease-in-out;
-    padding: 0.25rem 0; /* Reduced padding for compact height */
-    display: inline-flex; /* Allows icon and text alignment */
-    align-items: center; /* Vertically aligns icon with text */
-    color: #141e3f; /* Dark text color before scrolling */
+    padding: 0.3rem 0; /* Further reduced vertical padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center text and icon vertically */
+    color: #141e3f; /* Default text color */
 }
 
 .nav-links li a .nav-icon {
-    margin-right: 0.5rem; /* Space between icon and text */
-    font-size: 1rem; /* Icon size */
+    font-size: 1.1rem; /* Slightly smaller icon size */
+    margin-bottom: 0.15rem; /* Reduced space between icon and text */
+    transition: color 0.3s ease-in-out;
+}
+
+/* Active Link Styling */
+.nav-links li.active a {
+    color: #00cc99; /* Highlight active link */
+}
+
+.nav-links li.active a .nav-icon {
+    color: #00cc99; /* Highlight icon for active link */
+}
+
+/* Hovered Link Styling */
+.nav-links li:hover a {
+    color: #00cc99; /* Highlight link text on hover */
+}
+
+.nav-links li:hover a .nav-icon {
+    color: #00cc99; /* Highlight icon on hover */
 }
 
 /* Dropdown Styles */
@@ -66,12 +106,12 @@
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Dropdown shadow */
     border-radius: 4px;
-    padding: 0.5rem 0;
+    padding: 0.3rem 0; /* Further reduced padding */
     z-index: 1000;
 }
 
 .dropdown-menu li {
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 1rem; /* Reduced padding for dropdown items */
     white-space: nowrap; /* Prevent text wrapping */
 }
 
@@ -79,7 +119,7 @@
     background: none;
     border: none;
     color: #141e3f;
-    font-size: 0.85rem;
+    font-size: 0.8rem; /* Slightly smaller font size */
     text-align: left;
     padding: 0;
     cursor: pointer;
@@ -95,41 +135,6 @@
     display: block; /* Show dropdown on hover */
 }
 
-/* Active Link Styling */
-.nav-links li.active a {
-    color: #00cc99; /* Highlight active link */
-}
-
-.nav-links li.active::after {
-    content: "";
-    position: absolute;
-    bottom: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px; /* Reduced size of the dot */
-    height: 8px; /* Reduced size of the dot */
-    background-color: #00cc99; /* Dot color */
-    border-radius: 50%; /* Make it a circle */
-    transition: all 0.3s ease;
-}
-
-/* Hovered Link Styling */
-.nav-links li:hover a {
-    color: #00cc99; /* Highlight link text on hover */
-}
-
-.nav-links li:hover::after {
-    content: "";
-    position: absolute;
-    bottom: -3px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 8px;
-    background-color: #00cc99;
-    border-radius: 50%;
-}
-
 /* Hamburger Menu for Mobile */
 .hamburger {
     display: none;
@@ -138,10 +143,10 @@
 }
 
 .hamburger div {
-    width: 20px;
+    width: 18px; /* Reduced width */
     height: 2px;
     background-color: #141e3f; /* Default hamburger color */
-    margin: 2px 0;
+    margin: 1.5px 0; /* Reduced margin between lines */
     transition: background-color 0.3s ease-in-out;
 }
 
@@ -155,7 +160,7 @@
         top: 100%;
         right: 0;
         width: 200px;
-        padding: 1rem;
+        padding: 0.8rem; /* Reduced padding */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
@@ -168,7 +173,7 @@
     }
 
     .nav-links li a {
-        font-size: 0.9rem;
+        font-size: 0.85rem; /* Slightly smaller font size */
         color: white !important;
     }
 

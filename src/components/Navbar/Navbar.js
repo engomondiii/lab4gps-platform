@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaHome, FaInfoCircle, FaHandshake } from "react-icons/fa"; // Import relevant icons
+import { FaHome, FaInfoCircle, FaHandshake, FaSignInAlt, FaUserPlus } from "react-icons/fa"; // Import relevant icons
 import "../../styles/Navbar.css";
 import logo from "../../assets/Images/Lab4GPS_Logo_2024-1.jpg"; // Import the logo
 
@@ -57,88 +57,77 @@ const Navbar = () => {
         <div></div>
       </div>
       <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
-        {/* Home Link */}
-        <li className={isActive("/") ? "active" : ""}>
-          <Link to="/" className={isScrolled ? "scrolled-text" : ""} onClick={handleLinkClick}>
-            <FaHome className="nav-icon" /> Home
-          </Link>
-        </li>
-
-        {/* About Dropdown */}
-        <li
-          className="dropdown"
-          onMouseEnter={() => setIsDropdownOpen({ ...isDropdownOpen, about: true })}
-          onMouseLeave={() => setIsDropdownOpen({ ...isDropdownOpen, about: false })}
-        >
-          <Link
-            to="/about"
-            className={`dropdown-link ${isScrolled ? "scrolled-text" : ""}`}
-            onClick={() => navigateToAboutTab("why")}
+        {/* First Group */}
+        <div className="nav-group">
+          <li className={isActive("/") ? "active" : ""}>
+            <Link to="/" className={isScrolled ? "scrolled-text" : ""} onClick={handleLinkClick}>
+              <FaHome className="nav-icon" />
+              <span>Home</span>
+            </Link>
+          </li>
+          <li
+            className="dropdown"
+            onMouseEnter={() => setIsDropdownOpen({ ...isDropdownOpen, about: true })}
+            onMouseLeave={() => setIsDropdownOpen({ ...isDropdownOpen, about: false })}
           >
-            <FaInfoCircle className="nav-icon" /> About
-          </Link>
-          <ul className={`dropdown-menu ${isDropdownOpen.about ? "show" : ""}`}>
-            <li>
-              <button onClick={() => navigateToAboutTab("why")}>Why</button>
-            </li>
-            <li>
-              <button onClick={() => navigateToAboutTab("who")}>Who</button>
-            </li>
-            <li>
-              <button onClick={() => navigateToAboutTab("what")}>What</button>
-            </li>
-            <li>
-              <button onClick={() => navigateToAboutTab("where")}>Where</button>
-            </li>
-            <li>
-              <button onClick={() => navigateToAboutTab("how")}>How</button>
-            </li>
-          </ul>
-        </li>
-
-        {/* Collaboration Hub Dropdown */}
-        <li
-          className="dropdown"
-          onMouseEnter={() => setIsDropdownOpen({ ...isDropdownOpen, collaboration: true })}
-          onMouseLeave={() => setIsDropdownOpen({ ...isDropdownOpen, collaboration: false })}
-        >
-          <Link
-            to="/collaboration-hub"
-            className={`dropdown-link ${isScrolled ? "scrolled-text" : ""}`}
-            onClick={() => navigateToCollaborationHub("startups")}
+            <Link
+              to="/about"
+              className={`dropdown-link ${isScrolled ? "scrolled-text" : ""}`}
+              onClick={() => navigateToAboutTab("why")}
+            >
+              <FaInfoCircle className="nav-icon" />
+              <span>About</span>
+            </Link>
+            <ul className={`dropdown-menu ${isDropdownOpen.about ? "show" : ""}`}>
+              <li><button onClick={() => navigateToAboutTab("why")}>Why</button></li>
+              <li><button onClick={() => navigateToAboutTab("who")}>Who</button></li>
+              <li><button onClick={() => navigateToAboutTab("what")}>What</button></li>
+              <li><button onClick={() => navigateToAboutTab("where")}>Where</button></li>
+              <li><button onClick={() => navigateToAboutTab("how")}>How</button></li>
+            </ul>
+          </li>
+          <li
+            className="dropdown"
+            onMouseEnter={() => setIsDropdownOpen({ ...isDropdownOpen, collaboration: true })}
+            onMouseLeave={() => setIsDropdownOpen({ ...isDropdownOpen, collaboration: false })}
           >
-            <FaHandshake className="nav-icon" /> Collaboration Hub
-          </Link>
-          <ul className={`dropdown-menu ${isDropdownOpen.collaboration ? "show" : ""}`}>
-            <li>
-              <button onClick={() => navigateToCollaborationHub("startups")}>GPS Startups</button>
-            </li>
-            <li>
-              <button onClick={() => navigateToCollaborationHub("projects")}>GPS Projects</button>
-            </li>
-            <li>
-              <button onClick={() => navigateToCollaborationHub("demo-day")}>GPS Demo Day</button>
-            </li>
-            <li>
-              <button onClick={() => navigateToCollaborationHub("sponsorship")}>Sponsorship</button>
-            </li>
-            <li>
-              <button onClick={() => navigate("/contact-us")}>Contact Us</button>
-            </li>
-          </ul>
-        </li>
+            <Link
+              to="/collaboration-hub"
+              className={`dropdown-link ${isScrolled ? "scrolled-text" : ""}`}
+              onClick={() => navigateToCollaborationHub("startups")}
+            >
+              <FaHandshake className="nav-icon" />
+              <span>Collaboration Hub</span>
+            </Link>
+            <ul className={`dropdown-menu ${isDropdownOpen.collaboration ? "show" : ""}`}>
+              <li><button onClick={() => navigateToCollaborationHub("startups")}>GPS Startups</button></li>
+              <li><button onClick={() => navigateToCollaborationHub("projects")}>GPS Projects</button></li>
+              <li><button onClick={() => navigateToCollaborationHub("demo-day")}>GPS Demo Day</button></li>
+              <li><button onClick={() => navigateToCollaborationHub("sponsorship")}>Sponsorship</button></li>
+              <li><button onClick={() => navigate("/contact-us")}>Contact Us</button></li>
+            </ul>
+          </li>
+        </div>
 
-        {/* Login and Sign-Up Links */}
-        <li className={isActive("/login") ? "active" : ""}>
-          <Link to="/login" className={isScrolled ? "scrolled-text" : ""} onClick={handleLinkClick}>
-            Login
-          </Link>
-        </li>
-        <li className={isActive("/signup") ? "active" : ""}>
-          <Link to="/signup" className={isScrolled ? "scrolled-text" : ""} onClick={handleLinkClick}>
-            Sign Up
-          </Link>
-        </li>
+        {/* Space Between Groups */}
+        <div className="nav-space"></div>
+
+        {/* Second Group */}
+        <div className="nav-group">
+          <li className={isActive("/login") ? "active" : ""}>
+            <Link to="/login" className={isScrolled ? "scrolled-text" : ""} onClick={handleLinkClick}>
+              <FaSignInAlt className="nav-icon" />
+              <span>Login</span>
+            </Link>
+          </li>
+          <span className="divider">|</span>
+          <li className={isActive("/signup") ? "active" : ""}>
+            <Link to="/signup" className={isScrolled ? "scrolled-text" : ""} onClick={handleLinkClick}>
+              <FaUserPlus className="nav-icon" />
+              <span>Sign Up</span>
+            </Link>
+          </li>
+        </div>
       </ul>
     </nav>
   );
