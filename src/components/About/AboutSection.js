@@ -1,14 +1,20 @@
-import React, { useState } from "react";
-import "../../styles/AboutSection.css"; // Import your CSS file for styling
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import "../../styles/AboutSection.css";
 import { FaHandsHelping, FaBuilding, FaUsers, FaTools, FaNetworkWired,  } from "react-icons/fa";
 
-
-
 const AboutSection = () => {
-  // State to track the active tab
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState("why");
 
-  // Content for the tabs
+  // Extract the `tab` query parameter from the URL
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tab = params.get("tab");
+    if (tab) {
+      setActiveTab(tab);
+    }
+  }, [location.search]);
   const content = {
     why: (
       <div className="why-content">
@@ -407,16 +413,15 @@ We believe that as people who love God and are called according to His purpose, 
 
   return (
     <div className="about-container">
-      {/* Description */}
-      <div className="about-description">
+       {/* Description */}
+       <div className="about-description">
         <h2>About Lab4GPS</h2>
         <p>
           Lab4GPS is committed to solving global challenges through practical love, collaboration,
           and innovative solutions. Discover our mission, vision, purpose, and the core values that guide us.
         </p>
       </div>
-
-      {/* Tab Navigation */}
+      {/* Tabs */}
       <div className="tabs">
         {["why", "who", "what", "where", "how"].map((tab) => (
           <button
@@ -428,11 +433,11 @@ We believe that as people who love God and are called according to His purpose, 
           </button>
         ))}
       </div>
-
-      {/* Tab Content */}
-      <div className="tab-content">{renderTabContent()}</div>
+      {/* Content */}
+      <div className="tab-content">{content[activeTab]}</div>
     </div>
   );
 };
 
 export default AboutSection;
+
