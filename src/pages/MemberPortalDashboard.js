@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { FaTachometerAlt, FaFileAlt, FaCommentDots, FaLightbulb, FaTasks, FaChalkboardTeacher, FaUsers, FaCalendarAlt, FaHome, FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Importing icons
+import { FaTachometerAlt, FaFileAlt, FaCommentDots, FaLightbulb, FaTasks, FaChalkboardTeacher, FaUsers, FaCalendarAlt, FaHome, FaChevronLeft, FaChevronRight, FaUserCircle, FaBell, FaCog, FaTh, FaQuestionCircle, FaLifeRing, FaSearch, FaHeadset } from 'react-icons/fa';
 import '../styles/MemberPortalDashboard.css';
 
 // Dashboard Component
 const MemberPortalDashboard = () => {
   const [activeSection, setActiveSection] = useState("dashboard");
   const [sidebarExpanded, setSidebarExpanded] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleNavigation = (section) => {
     setActiveSection(section);
@@ -15,11 +16,14 @@ const MemberPortalDashboard = () => {
     setSidebarExpanded(!sidebarExpanded);
   };
 
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
     <div className="dashboard-container">
       <div className={`sidebar ${sidebarExpanded ? 'expanded' : 'collapsed'}`}>
         <div className="sidebar-header">
-          {/* Logo Image replaced with background from CSS */}
           <div className="logo-img"></div>
           <button className="sidebar-toggle" onClick={toggleSidebar}>
             {sidebarExpanded ? <FaChevronLeft /> : <FaChevronRight />}
@@ -65,10 +69,48 @@ const MemberPortalDashboard = () => {
             <span className="user-name">Welcome, John Doe!</span>
           </div>
           <div className="header-buttons">
-            <button className="btn-settings">Settings</button>
-            <button className="btn-notifications">Notifications</button>
+            <button className="btn-settings">
+              <FaCog />
+            </button>
+            <button className="btn-notifications">
+              <FaBell />
+            </button>
+            <button className="btn-quick-actions">
+              <FaTh />
+            </button>
+            <button className="btn-user-profile">
+              <FaUserCircle />
+            </button>
           </div>
         </header>
+
+        {/* Help and Search Sections */}
+        <div className="help-search-container">
+          <div className="help-section">
+            <button className="help-btn">
+              <FaQuestionCircle /> Help
+            </button>
+            <button className="help-btn">
+              <FaLifeRing /> Support
+            </button>
+            <button className="help-btn">
+              <FaHeadset /> Contact Us
+            </button>
+          </div>
+
+          <div className="search-section">
+            <input
+              type="text"
+              className="search-input"
+              value={searchQuery}
+              onChange={handleSearch}
+              placeholder="Search resources..."
+            />
+            <button className="search-btn">
+              <FaSearch />
+            </button>
+          </div>
+        </div>
 
         <div className="content">
           {activeSection === "dashboard" && (
@@ -81,17 +123,8 @@ const MemberPortalDashboard = () => {
               </div>
             </div>
           )}
-          {activeSection === "archive" && (
-            <div className="internal-archive">
-              <h3>Internal Archive</h3>
-              <p>Filter and categorize your resources here.</p>
-              <div className="resource-list">
-                <div className="resource-item card">Resource 1</div>
-                <div className="resource-item card">Resource 2</div>
-              </div>
-            </div>
-          )}
-          {/* More Sections like Communication, Idea Hub, etc. */}
+          
+          {/* Other Sections... */}
         </div>
       </div>
     </div>
