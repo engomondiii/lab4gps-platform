@@ -1,4 +1,5 @@
 import api from './api';
+import { jwtDecode } from 'jwt-decode'; // Correct import of jwt-decode
 
 // Utility function to handle API errors consistently
 const handleApiError = (error) => {
@@ -23,7 +24,7 @@ export const logIn = async (credentials) => {
     const response = await api.post('/users/login/', credentials);
     const { access, refresh } = response.data.tokens;
 
-    // Store tokens in localStorage
+    // Store tokens in localStorage (or sessionStorage)
     localStorage.setItem('access_token', access);
     localStorage.setItem('refresh_token', refresh);
 
@@ -114,12 +115,50 @@ export const refreshAccessToken = async () => {
   }
 };
 
+// Decode JWT to check expiration time
+const decodeToken = (token) => {
+  try {
+    return jwtDecode(token); // Updated to use the correct named import
+  } catch (error) {
+    return null;
+  }
+};
+
+// Check if the access token is expired
+const isAccessTokenExpired = (token) => {
+  const decoded = decodeToken(token);
+  if (!decoded) return true;
+  const currentTime = Date.now() / 1000; // current time in seconds
+  return decoded.exp < currentTime;
+};
+
 // Get the current user's profile
 export const getUserProfile = async () => {
   try {
-    const response = await api.get('/users/profile/');
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken || isAccessTokenExpired(accessToken)) {
+      // If the token is expired, refresh it or log out
+      await refreshAccessToken();
+    }
+
+    const response = await api.get('/users/profile/', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`, // Attach token from localStorage
+      },
+    });
     return response.data;
   } catch (error) {
     handleApiError(error);
   }
+};
+
+// Utility function to check if the user is logged in (authentication check)
+export const isLoggedIn = () => {
+  const accessToken = localStorage.getItem('access_token');
+  return !!accessToken && !isAccessTokenExpired(accessToken); // Check if token exists and is not expired
+};
+
+// Utility function to get the access token (returns null if not available)
+export const getAccessToken = () => {
+  return localStorage.getItem('access_token');
 };

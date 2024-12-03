@@ -118,9 +118,7 @@ const AppRouter = () => {
           path="/member-portal/dashboard"
           element={
             <ProtectedRoute>
-              <DashboardLayout>
                 <MemberPortalDashboard />
-              </DashboardLayout>
             </ProtectedRoute>
           }
         />

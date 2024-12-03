@@ -19,8 +19,8 @@ const Login = () => {
       // Call the logIn function from auth.js
       await logIn({ email, password });
 
-      // Navigate to the dashboard or home page
-      navigate('/');
+      // Navigate to the member portal dashboard after successful login
+      navigate('/member-portal/dashboard');
     } catch (err) {
       setError(err.detail || 'Login failed. Please try again.');
     } finally {

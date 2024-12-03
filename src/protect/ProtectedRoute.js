@@ -1,13 +1,14 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import RestrictedAccess from './RestrictedAccess'; // Import the RestrictedAccess component
-
-const isAuthenticated = () => {
-  return localStorage.getItem('userToken') !== null; // Check for user token in local storage
-};
+import { isLoggedIn } from '../services/auth'; // Import the isLoggedIn function from auth.js
 
 const ProtectedRoute = ({ children }) => {
-  return isAuthenticated() ? children : <RestrictedAccess />;
+  if (!isLoggedIn()) {
+    return <RestrictedAccess />;
+  }
+
+  return children; // If the user is logged in, show the protected content
 };
 
 export default ProtectedRoute;
