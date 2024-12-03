@@ -10,24 +10,31 @@ const ForgotPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // Loading state to disable buttons during processing
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setIsLoading(true); // Start loading
+
     try {
       await requestPasswordReset(email); // Send email to request OTP
       setStep(2); // Move to OTP and Password Reset step
     } catch (err) {
       setError(err.detail || "Error sending OTP. Please try again.");
+    } finally {
+      setIsLoading(false); // End loading
     }
   };
 
   const handleOtpAndPasswordSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setIsLoading(true); // Start loading
 
     if (newPassword !== confirmPassword) {
       setError("Passwords do not match.");
+      setIsLoading(false); // End loading if there's an error
       return;
     }
 
@@ -38,6 +45,8 @@ const ForgotPassword = () => {
       setStep(3); // Success screen
     } catch (err) {
       setError(err.detail || "Invalid or expired OTP. Please try again.");
+    } finally {
+      setIsLoading(false); // End loading
     }
   };
 
@@ -55,7 +64,9 @@ const ForgotPassword = () => {
             required
           />
           {error && <p className="error-message">{error}</p>}
-          <button type="submit">Send OTP</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Sending..." : "Send OTP"}
+          </button>
         </form>
       )}
 
@@ -83,7 +94,9 @@ const ForgotPassword = () => {
             required
           />
           {error && <p className="error-message">{error}</p>}
-          <button type="submit">Reset Password</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Resetting..." : "Reset Password"}
+          </button>
         </form>
       )}
 

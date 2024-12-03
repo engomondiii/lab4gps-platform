@@ -15,6 +15,7 @@ const Signup = () => {
   const [step, setStep] = useState(1); // 1 = Signup, 2 = OTP Verification, 3 = Success
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Loading state to prevent multiple clicks
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,6 +25,8 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     setError('');
+    setIsLoading(true); // Start loading
+
     try {
       await signUp({
         email: formData.email,
@@ -37,18 +40,24 @@ const Signup = () => {
       setStep(2); // Move to OTP verification step
     } catch (err) {
       setError(err.detail || 'Signup failed. Please try again.');
+    } finally {
+      setIsLoading(false); // End loading
     }
   };
 
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     setError('');
+    setIsLoading(true); // Start loading
+
     try {
       await verifyEmailOtp({ email: formData.email, otp });
       setSuccess(true);
       setStep(3); // Move to success step
     } catch (err) {
       setError(err.detail || 'Invalid or expired OTP. Please try again.');
+    } finally {
+      setIsLoading(false); // End loading
     }
   };
 
@@ -110,7 +119,9 @@ const Signup = () => {
                 onChange={handleChange}
               />
               {error && <p className="error-message">{error}</p>}
-              <button type="submit">Sign Up</button>
+              <button type="submit" disabled={isLoading}>
+                {isLoading ? 'Signing Up...' : 'Sign Up'}
+              </button>
             </form>
           </div>
         )}
@@ -127,7 +138,9 @@ const Signup = () => {
                 required
               />
               {error && <p className="error-message">{error}</p>}
-              <button type="submit">Verify OTP</button>
+              <button type="submit" disabled={isLoading}>
+                {isLoading ? 'Verifying...' : 'Verify OTP'}
+              </button>
             </form>
           </div>
         )}

@@ -7,11 +7,13 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // Loading state to prevent multiple clicks
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
+    setIsLoading(true); // Start loading
 
     try {
       // Call the logIn function from auth.js
@@ -21,6 +23,8 @@ const Login = () => {
       navigate('/');
     } catch (err) {
       setError(err.detail || 'Login failed. Please try again.');
+    } finally {
+      setIsLoading(false); // End loading
     }
   };
 
@@ -45,7 +49,9 @@ const Login = () => {
               required
             />
             {error && <p className="error-message">{error}</p>}
-            <button type="submit">Login</button>
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? 'Logging in...' : 'Login'}
+            </button>
           </form>
           <p>
             Forgot your password? <a href="/forgot-password">Reset it here</a>
