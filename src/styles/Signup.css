@@ -135,13 +135,22 @@
 
 /* Success Message */
 .signup-success {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #141e3f, #00cc99);
+  padding: 2rem;
+  border-radius: 10px;
   text-align: center;
   color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .signup-success h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  font-family: "Helvetica75-Bold";
 }
 
 .signup-success p {
@@ -174,5 +183,10 @@
 
   .signup-poster {
     display: none;
+  }
+
+  .signup-success {
+    width: 90%;
+    margin: 0 auto;
   }
 }
