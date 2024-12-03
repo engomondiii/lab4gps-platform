@@ -8,15 +8,16 @@ import Startups from '../pages/Startups';
 import Resources from '../pages/Resources';
 import NewsEvents from '../pages/NewsEvents';
 import Sponsorship from '../pages/Sponsorship';
-import MemberPortalLogin from '../member/MemberPortalLogin'; // Member Login
-import RequestMembership from '../member/RequestMembership'; // Request Access
-import MemberPortalDashboard from '../member/MemberPortalDashboard'; // Member Dashboard
+import MemberPortalDashboard from '../pages/MemberPortalDashboard'; // Member Dashboard Page
+import InternalArchive from '../pages/InternalArchive'; // Internal Archive Page
+import IdeaHub from '../pages/IdeaHub'; // Idea Hub Page
+import EventManagement from '../pages/EventManagement'; // Event Management Page
 import Login from '../components/Auths/Login';
 import Signup from '../components/Auths/Signup';
 import ForgotPassword from '../components/Auths/ForgotPassword'; // Forgot Password
-import ProtectedRoute from '../protect/ProtectedRoute'; // Protected routes for general access
-import MemberProtectedRoute from '../protect/MemberProtectedRoute'; // Protected route for Member Portal
+import ProtectedRoute from '../protect/ProtectedRoute'; // Protected route for Member Portal
 import Layout from '../components/Layout/Layout'; // Layout for Navbar/Footer
+import DashboardLayout from '../components/Dashboard/DashboardLayout'; // Layout for Member Dashboard
 
 const AppRouter = () => {
   return (
@@ -63,93 +64,95 @@ const AppRouter = () => {
             </Layout>
           }
         />
-
-        {/* Private Routes */}
         <Route
           path="/collaboration-hub"
           element={
-              <Layout>
-                <CollaborationHub />
-              </Layout>
+            <Layout>
+              <CollaborationHub />
+            </Layout>
           }
         />
         <Route
           path="/projects"
           element={
-              <Layout>
-                <Projects />
-              </Layout>
+            <Layout>
+              <Projects />
+            </Layout>
           }
         />
         <Route
           path="/startups"
           element={
-              <Layout>
-                <Startups />
-              </Layout>
+            <Layout>
+              <Startups />
+            </Layout>
           }
         />
         <Route
           path="/resources"
           element={
-            <ProtectedRoute>
-              <Layout>
-                <Resources />
-              </Layout>
-            </ProtectedRoute>
+            <Layout>
+              <Resources />
+            </Layout>
           }
         />
         <Route
           path="/news-events"
           element={
-            <ProtectedRoute>
-              <Layout>
-                <NewsEvents />
-              </Layout>
-            </ProtectedRoute>
+            <Layout>
+              <NewsEvents />
+            </Layout>
           }
         />
         <Route
           path="/sponsorship"
           element={
-            
-              <Layout>
-                <Sponsorship />
-              </Layout>
+            <Layout>
+              <Sponsorship />
+            </Layout>
           }
         />
 
-        {/* Member Portal Routes */}
-        <Route
-          path="/member-portal/login"
-          element={
-            <Layout>
-              <MemberPortalLogin />
-            </Layout>
-          }
-        />
-        <Route
-          path="/member-portal/request"
-          element={
-            <Layout>
-              <RequestMembership />
-            </Layout>
-          }
-        />
+        {/* Protected Member Portal */}
         <Route
           path="/member-portal/dashboard"
           element={
-            <MemberProtectedRoute>
-              <Layout>
+            <ProtectedRoute>
+              <DashboardLayout>
                 <MemberPortalDashboard />
-              </Layout>
-            </MemberProtectedRoute>
+              </DashboardLayout>
+            </ProtectedRoute>
           }
         />
-        {/* Default redirect to login for /member-portal */}
         <Route
-          path="/member-portal"
-          element={<Layout><MemberPortalLogin /></Layout>}
+          path="/member-portal/archive"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <InternalArchive />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/member-portal/idea-hub"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <IdeaHub />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/member-portal/event-management"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <EventManagement />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
         />
       </Routes>
     </Router>
