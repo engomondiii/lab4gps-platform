@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { requestPasswordReset, verifyOtp } from "../../services/auth"; // Import from auth.js
 import "../../styles/ForgotPassword.css";
 
 const ForgotPassword = () => {
-  const [step, setStep] = useState(1); // Steps: 1 = Email Input, 2 = OTP Verification, 3 = Password Reset
+  const [step, setStep] = useState(1); // Steps: 1 = Email Input, 2 = OTP and Password Reset
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -15,25 +15,14 @@ const ForgotPassword = () => {
     e.preventDefault();
     setError("");
     try {
-      await axios.post("/api/forgot-password/", { email });
-      setStep(2); // Move to OTP Verification step
+      await requestPasswordReset(email); // Send email to request OTP
+      setStep(2); // Move to OTP and Password Reset step
     } catch (err) {
-      setError(err.response?.data?.error || "Error sending OTP. Try again.");
+      setError(err.detail || "Error sending OTP. Please try again.");
     }
   };
 
-  const handleOtpSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    try {
-      await axios.post("/api/verify-otp/", { email, otp });
-      setStep(3); // Move to Password Reset step
-    } catch (err) {
-      setError(err.response?.data?.error || "Invalid or expired OTP. Try again.");
-    }
-  };
-
-  const handlePasswordReset = async (e) => {
+  const handleOtpAndPasswordSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
@@ -43,11 +32,12 @@ const ForgotPassword = () => {
     }
 
     try {
-      await axios.post("/api/reset-password/", { email, otp, new_password: newPassword });
+      // Send email, otp, and new_password in a single API call
+      await verifyOtp({ email, otp, new_password: newPassword });
       setSuccessMessage("Password reset successful! You can now log in.");
-      setStep(4); // Success screen
+      setStep(3); // Success screen
     } catch (err) {
-      setError(err.response?.data?.error || "Error resetting password. Try again.");
+      setError(err.detail || "Invalid or expired OTP. Please try again.");
     }
   };
 
@@ -70,7 +60,7 @@ const ForgotPassword = () => {
       )}
 
       {step === 2 && (
-        <form onSubmit={handleOtpSubmit} className="forgot-password-form">
+        <form onSubmit={handleOtpAndPasswordSubmit} className="forgot-password-form">
           <label>Enter OTP:</label>
           <input
             type="text"
@@ -78,13 +68,6 @@ const ForgotPassword = () => {
             onChange={(e) => setOtp(e.target.value)}
             required
           />
-          {error && <p className="error-message">{error}</p>}
-          <button type="submit">Verify OTP</button>
-        </form>
-      )}
-
-      {step === 3 && (
-        <form onSubmit={handlePasswordReset} className="forgot-password-form">
           <label>New Password:</label>
           <input
             type="password"
@@ -104,10 +87,12 @@ const ForgotPassword = () => {
         </form>
       )}
 
-      {step === 4 && (
+      {step === 3 && (
         <div className="success-message">
           <h2>{successMessage}</h2>
-          <a href="/login" className="go-login">Go to Login</a>
+          <a href="/login" className="go-login">
+            Go to Login
+          </a>
         </div>
       )}
     </div>

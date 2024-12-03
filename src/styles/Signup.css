@@ -139,11 +139,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #141e3f, #00cc99);
+  background: linear-gradient(135deg, #c0cbdd, #98a8d0); /* Soft gradient background */
   padding: 2rem;
   border-radius: 10px;
   text-align: center;
-  color: #ffffff;
+  color: #141e3f; /* Updated text color */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 

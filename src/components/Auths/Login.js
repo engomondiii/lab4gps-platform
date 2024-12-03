@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { logIn } from '../../services/auth'; // Importing the logIn function from auth.js
 import '../../styles/Login.css';
 
 const Login = () => {
@@ -14,17 +14,13 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('/api/login/', { email, password });
-      const { access, refresh } = response.data.tokens;
-
-      // Store tokens in localStorage
-      localStorage.setItem('accessToken', access);
-      localStorage.setItem('refreshToken', refresh);
+      // Call the logIn function from auth.js
+      await logIn({ email, password });
 
       // Navigate to the dashboard or home page
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.detail || 'Login failed. Please try again.');
+      setError(err.detail || 'Login failed. Please try again.');
     }
   };
 
