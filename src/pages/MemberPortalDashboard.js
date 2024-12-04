@@ -1,15 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaTachometerAlt, FaFileAlt, FaCommentDots, FaLightbulb, FaTasks, FaChalkboardTeacher, FaUsers, FaCalendarAlt, FaHome, FaChevronLeft, FaChevronRight, FaUserCircle, FaBell, FaCog, FaTh, FaQuestionCircle, FaLifeRing, FaSearch, FaHeadset } from 'react-icons/fa';
 import '../styles/MemberPortalDashboard.css';
 
 // Dashboard Component
 const MemberPortalDashboard = () => {
-  const [activeSection, setActiveSection] = useState("dashboard");
+  const [activeSection, setActiveSection] = useState(localStorage.getItem("activeSection") || "home");
   const [sidebarExpanded, setSidebarExpanded] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [greeting, setGreeting] = useState("");
+  const [userName] = useState("John Doe"); // You can dynamically change the username
+
+  useEffect(() => {
+    const hours = new Date().getHours();
+    if (hours < 12) {
+      setGreeting("Good Morning");
+    } else if (hours < 18) {
+      setGreeting("Good Afternoon");
+    } else {
+      setGreeting("Good Evening");
+    }
+  }, []);
 
   const handleNavigation = (section) => {
     setActiveSection(section);
+    localStorage.setItem("activeSection", section); // Save active section in localStorage
   };
 
   const toggleSidebar = () => {
@@ -29,44 +43,52 @@ const MemberPortalDashboard = () => {
             {sidebarExpanded ? <FaChevronLeft /> : <FaChevronRight />}
           </button>
         </div>
-        <nav>
+        <div className="sidebar-navigation">
           <ul>
-            <li onClick={() => handleNavigation("home")}>
+            <li onClick={() => handleNavigation("home")} className={activeSection === "home" ? "active" : ""}>
               <FaHome /> {sidebarExpanded && "Home"}
+              {activeSection === "home" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("dashboard")}>
+            <li onClick={() => handleNavigation("dashboard")} className={activeSection === "dashboard" ? "active" : ""}>
               <FaTachometerAlt /> {sidebarExpanded && "Dashboard"}
+              {activeSection === "dashboard" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("archive")}>
+            <li onClick={() => handleNavigation("archive")} className={activeSection === "archive" ? "active" : ""}>
               <FaFileAlt /> {sidebarExpanded && "Internal Archive"}
+              {activeSection === "archive" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("communication")}>
+            <li onClick={() => handleNavigation("communication")} className={activeSection === "communication" ? "active" : ""}>
               <FaCommentDots /> {sidebarExpanded && "Communication"}
+              {activeSection === "communication" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("ideahub")}>
+            <li onClick={() => handleNavigation("ideahub")} className={activeSection === "ideahub" ? "active" : ""}>
               <FaLightbulb /> {sidebarExpanded && "Idea Hub"}
+              {activeSection === "ideahub" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("tasks")}>
+            <li onClick={() => handleNavigation("tasks")} className={activeSection === "tasks" ? "active" : ""}>
               <FaTasks /> {sidebarExpanded && "Tasks"}
+              {activeSection === "tasks" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("training")}>
+            <li onClick={() => handleNavigation("training")} className={activeSection === "training" ? "active" : ""}>
               <FaChalkboardTeacher /> {sidebarExpanded && "Training"}
+              {activeSection === "training" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("community")}>
+            <li onClick={() => handleNavigation("community")} className={activeSection === "community" ? "active" : ""}>
               <FaUsers /> {sidebarExpanded && "Community"}
+              {activeSection === "community" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("events")}>
+            <li onClick={() => handleNavigation("events")} className={activeSection === "events" ? "active" : ""}>
               <FaCalendarAlt /> {sidebarExpanded && "Events"}
+              {activeSection === "events" && <span className="active-indicator"></span>}
             </li>
           </ul>
-        </nav>
+        </div>
       </div>
 
       <div className="main-content">
         <header className="header">
           <div className="user-info">
-            <img className="profile-img" src="profile.jpg" alt="Profile" />
-            <span className="user-name">Welcome, John Doe!</span>
+            <span className="user-name">{greeting}, {userName}!</span>
           </div>
           <div className="header-buttons">
             <button className="btn-settings">
@@ -123,7 +145,7 @@ const MemberPortalDashboard = () => {
               </div>
             </div>
           )}
-          
+
           {/* Other Sections... */}
         </div>
       </div>

@@ -23,10 +23,10 @@ body {
     align-items: flex-start;
     color: white;
     transition: width 0.3s ease;
-    border-radius: 10px; /* Rounded corners */
-    border: 2px solid #00cc99; /* Border color */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    margin-right: 20px; /* Space between sidebar and main content */
+    border-radius: 10px;
+    border: 2px solid #00cc99;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-right: 20px;
 }
 
 .sidebar.collapsed {
@@ -45,18 +45,18 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo Image as background */
+/* Logo Image */
 .logo-img {
-    background-image: url('../assets/Images/Lab4GPS_Logo_2024-1.jpg'); /* Path to your logo image */
+    background-image: url('../assets/Images/Lab4GPS_Logo_2024-1.jpg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 100px;  /* Adjust width as needed */
-    height: 50px;  /* Adjust height as needed */
+    width: 100px;
+    height: 50px;
 }
 
 /* Sidebar Toggle Button */
@@ -68,14 +68,14 @@ body {
     cursor: pointer;
 }
 
-/* Navigation */
-nav ul {
+/* Sidebar Navigation */
+.sidebar-navigation ul {
     list-style: none;
     padding: 0;
     width: 100%;
 }
 
-nav ul li {
+.sidebar-navigation ul li {
     display: flex;
     align-items: center;
     padding: 12px;
@@ -83,24 +83,24 @@ nav ul li {
     cursor: pointer;
     transition: 0.3s;
     width: 100%;
-    border-radius: 8px; /* Rounded corners for navigation items */
+    border-radius: 8px;
 }
 
-nav ul li:hover {
+.sidebar-navigation ul li:hover {
     background-color: #00cc99;
 }
 
-nav ul li.active {
+.sidebar-navigation ul li.active {
     background-color: #00cc99;
     font-weight: bold;
 }
 
-nav ul li svg {
+.sidebar-navigation ul li svg {
     margin-right: 15px;
     font-size: 20px;
 }
 
-nav ul li.active svg {
+.sidebar-navigation ul li.active svg {
     color: white;
 }
 
@@ -110,7 +110,7 @@ nav ul li.active svg {
     background-color: white;
     padding: 30px;
     overflow-y: scroll;
-    border-radius: 10px; /* Rounded corners for main content */
+    border-radius: 10px;
 }
 
 /* Header Styles */
@@ -121,34 +121,103 @@ nav ul li.active svg {
     margin-bottom: 20px;
 }
 
+/* User Info */
 .user-info {
     display: flex;
     align-items: center;
 }
 
-.profile-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
+.user-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
 }
 
-.user-name {
-    font-size: 18px;
+/* Header Buttons */
+.header-buttons {
+    display: flex;
+    align-items: center;
 }
 
 .header-buttons button {
-    background-color: #141e3f;
-    color: white;
+    background-color: transparent;
     border: none;
-    padding: 10px 15px;
+    color: #141e3f;
+    font-size: 24px;
     margin-left: 10px;
     cursor: pointer;
-    border-radius: 5px;
+    padding: 10px;
 }
 
 .header-buttons button:hover {
     background-color: #00cc99;
+    border-radius: 50%;
+    color: white;
+}
+
+/* Help and Search Sections */
+.help-search-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.help-section,
+.search-section {
+    display: flex;
+    gap: 20px;
+}
+
+.help-btn {
+    background-color: #f4f7fa;
+    color: #141e3f;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.help-btn:hover {
+    background-color: #00cc99;
+    color: white;
+}
+
+.search-input {
+    width: 250px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #141e3f;
+}
+
+.search-btn {
+    background-color: #00cc99;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.search-btn:hover {
+    background-color: #007f6a;
+}
+
+/* Active Section Indicator */
+.active-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: green;
+    display: inline-block;
+    margin-left: 8px;
 }
 
 /* Dashboard Widgets */
@@ -212,7 +281,7 @@ nav ul li.active svg {
     .sidebar {
         width: 100%;
         padding: 10px;
-        border-radius: 0; /* No rounded corners on mobile */
+        border-radius: 0;
     }
 
     .main-content {
@@ -228,127 +297,68 @@ nav ul li.active svg {
     }
 }
 
-
-
-/* Header Styles */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  /* User Info Styling */
-  .user-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .profile-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .user-name {
-    font-size: 18px;
-  }
-  
-  /* Header Buttons */
-  .header-buttons {
-    display: flex;
-    align-items: center;
-  }
-  
-  .header-buttons button {
-    background-color: transparent;
-    border: none;
-    color: #141e3f;
-    font-size: 24px;
-    margin-left: 10px;
-    cursor: pointer;
-    padding: 10px;
-  }
-  
-  .header-buttons button:hover {
+/* Sidebar and Active Section Styles */
+.sidebar-navigation ul li.active {
     background-color: #00cc99;
-    border-radius: 50%;
     color: white;
-  }
-  
-  /* For specific icons */
-  .btn-settings:hover {
-    background-color: #ff9800;
-  }
-  
-  .btn-notifications:hover {
-    background-color: #f44336;
-  }
-  
-  .btn-quick-actions:hover {
-    background-color: #2196f3;
-  }
-  
-  .btn-user-profile:hover {
-    background-color: #4caf50;
-  }
-  
+}
 
+.active-pointer {
+    margin-left: 10px;
+    color: #00cc99;
+    font-size: 16px;
+}
 
+.sidebar-navigation ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-  /* Additional Styles for Help/Support and Search */
+.sidebar-navigation ul li:hover {
+    background-color: #f4f7fa;
+}
+
 .help-search-container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px; /* Add spacing from the content below */
-  }
-  
-  .help-section,
-  .search-section {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .help-btn {
+    margin-top: 20px;
+}
+
+.help-btn, .search-btn {
     background-color: #f4f7fa;
     color: #141e3f;
     border: none;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 10px;
     transition: 0.3s;
-  }
-  
-  .help-btn:hover {
+}
+
+.help-btn:hover, .search-btn:hover {
     background-color: #00cc99;
     color: white;
-  }
-  
-  .search-input {
-    width: 250px;
+}
+
+.user-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.search-input {
     padding: 10px;
     font-size: 16px;
-    border-radius: 8px;
-    border: 2px solid #141e3f;
-  }
-  
-  .search-btn {
-    background-color: #00cc99;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .search-btn:hover {
-    background-color: #007f6a;
-  }
-  
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.search-section input {
+    width: 250px;
+}
