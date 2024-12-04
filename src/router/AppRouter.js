@@ -18,6 +18,7 @@ import ForgotPassword from '../components/Auths/ForgotPassword'; // Forgot Passw
 import ProtectedRoute from '../protect/ProtectedRoute'; // Protected route for Member Portal
 import Layout from '../components/Layout/Layout'; // Layout for Navbar/Footer
 import DashboardLayout from '../components/Dashboard/DashboardLayout'; // Layout for Member Dashboard
+import AdvancedUserProfile from '../components/Auths/AdvancedUserProfile'; // Import the Profile component
 
 const AppRouter = () => {
   return (
@@ -118,7 +119,7 @@ const AppRouter = () => {
           path="/member-portal/dashboard"
           element={
             <ProtectedRoute>
-                <MemberPortalDashboard />
+              <MemberPortalDashboard />
             </ProtectedRoute>
           }
         />
@@ -149,6 +150,16 @@ const AppRouter = () => {
               <DashboardLayout>
                 <EventManagement />
               </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        
+        {/* Advanced User Profile Page under Protected Route */}
+        <Route
+          path="/member-portal/profile"
+          element={
+            <ProtectedRoute>
+              <AdvancedUserProfile />
             </ProtectedRoute>
           }
         />

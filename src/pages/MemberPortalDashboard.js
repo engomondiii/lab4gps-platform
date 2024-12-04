@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaTachometerAlt, FaFileAlt, FaCommentDots, FaLightbulb, FaTasks, FaChalkboardTeacher, FaUsers, FaCalendarAlt, FaHome, FaChevronLeft, FaChevronRight, FaUserCircle, FaBell, FaCog, FaTh, FaQuestionCircle, FaLifeRing, FaSearch, FaHeadset } from 'react-icons/fa';
+import AdvancedUserProfile from '../components/Auths/AdvancedUserProfile'; // Import the Profile component
 import '../styles/MemberPortalDashboard.css';
 
 // Dashboard Component
@@ -8,7 +9,8 @@ const MemberPortalDashboard = () => {
   const [sidebarExpanded, setSidebarExpanded] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [greeting, setGreeting] = useState("");
-  const [userName] = useState("John Doe"); // You can dynamically change the username
+  const [userName] = useState("John Doe");
+  const [viewingProfile, setViewingProfile] = useState(false); // New state to toggle profile view
 
   useEffect(() => {
     const hours = new Date().getHours();
@@ -23,7 +25,7 @@ const MemberPortalDashboard = () => {
 
   const handleNavigation = (section) => {
     setActiveSection(section);
-    localStorage.setItem("activeSection", section); // Save active section in localStorage
+    localStorage.setItem("activeSection", section);
   };
 
   const toggleSidebar = () => {
@@ -32,6 +34,10 @@ const MemberPortalDashboard = () => {
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
+  };
+
+  const toggleProfile = () => {
+    setViewingProfile(!viewingProfile); // Toggle the profile view
   };
 
   return (
@@ -100,7 +106,7 @@ const MemberPortalDashboard = () => {
             <button className="btn-quick-actions">
               <FaTh />
             </button>
-            <button className="btn-user-profile">
+            <button className="btn-user-profile" onClick={toggleProfile}> {/* On click, toggle profile */}
               <FaUserCircle />
             </button>
           </div>
@@ -134,19 +140,22 @@ const MemberPortalDashboard = () => {
           </div>
         </div>
 
+        {/* Display Profile or Dashboard content */}
         <div className="content">
-          {activeSection === "dashboard" && (
-            <div className="dashboard-overview">
-              <h3>Dashboard Overview</h3>
-              <div className="widgets">
-                <div className="widget card">Project Updates</div>
-                <div className="widget card">Notifications</div>
-                <div className="widget card">Upcoming Events</div>
+          {viewingProfile ? (
+            <AdvancedUserProfile />  
+          ) : (
+            activeSection === "dashboard" && (
+              <div className="dashboard-overview">
+                <h3>Dashboard Overview</h3>
+                <div className="widgets">
+                  <div className="widget card">Project Updates</div>
+                  <div className="widget card">Notifications</div>
+                  <div className="widget card">Upcoming Events</div>
+                </div>
               </div>
-            </div>
+            )
           )}
-
-          {/* Other Sections... */}
         </div>
       </div>
     </div>
