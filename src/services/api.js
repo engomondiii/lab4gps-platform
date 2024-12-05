@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Set the base URL directly to the ngrok URL
 const getBaseURL = () => {
-    return 'https://fa53-102-213-251-131.ngrok-free.app/lab4gps'; // Fixed ngrok URL
+    return 'https://3be6-102-213-251-138.ngrok-free.app/lab4gps'; // Fixed ngrok URL
 };
 
 // Create an Axios instance with the base URL
