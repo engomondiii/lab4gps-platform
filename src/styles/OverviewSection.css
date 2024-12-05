@@ -1,23 +1,17 @@
+/* OverviewSection.css */
+
 /* Overall Section */
 .overview-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #c0cbdd, #98a8d0); /* Soft gradient background */
+  background: linear-gradient(135deg, #c0cbdd, #98a8d0);
   width: 100%;
   position: relative;
 }
 
-
-
-
-
-
-
-
-
-/* Introduction Container */
+/* Container for Video and Text */
 .overview-container {
   display: flex;
   flex-wrap: wrap;
@@ -27,32 +21,69 @@
   width: 100%;
 }
 
-.overview-left {
+/* Video Section */
+.overview-video {
   flex: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
-.overview-right {
+.youtube-thumbnail-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.youtube-thumbnail {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 5px;
+  display: block;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.8);
+  transform: translate(-50%, -50%);
+}
+
+/* Option to Open in YouTube */
+.open-youtube-link {
+  margin-top: 0.5rem;
+  color: #141e3f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.open-youtube-link:hover {
+  text-decoration: underline;
+}
+
+/* Text Content Section */
+.overview-text {
   flex: 1;
   font-family: "Helvetica", sans-serif;
 }
 
 .overview-title {
-  color: #141e3f; /* Lab4GPS Blue */
-  font-family: "Helvetica75-Bold";
+  color: #141e3f;
+  font-family: "Helvetica75-Bold", sans-serif;
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
 .overview-description {
-  color: #666666; /* Dark Gray */
+  color: #666666;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
 
 .cta-button {
-  background-color: #141e3f; /* Lab4GPS Green */
+  background-color: #141e3f;
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -60,6 +91,9 @@
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -68,61 +102,79 @@
   transform: scale(1.05);
 }
 
-/* Wavy Separator */
-.section-separator svg {
-  width: 100%;
-  height: auto;
-}
-
-/* Features Section */
-.features-section {
-  background-color: transparent; /* Matches the gradient background */
-  text-align: center;
-  padding: 2rem 0;
-}
-
-.features-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.feature-text-container {
-  max-width: 800px;
-  text-align: center;
-}
-
-.feature-title {
-  font-family: "Helvetica75-Bold";
-  font-size: 2.2rem;
-  color: #141e3f; /* Lab4GPS Blue */
-  margin-bottom: 1rem;
-}
-
-.feature-description {
-  font-size: 1.2rem;
-  color: #666666;
-  line-height: 1.8;
-  margin-bottom: 2rem;
-}
-
-.demo-button {
-  background-color: #141e3f; /* Lab4GPS Blue */
-  color: white;
+/* Modal Styles */
+.video-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  background: #000;
+  padding: 0;
   border: none;
-  padding: 0.8rem 2rem;
-  border-radius: 50px; /* Rounded button */
-  font-size: 1rem;
-  font-weight: bold;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 80%;
+  overflow: hidden;
+}
+
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.close-modal-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.demo-button:hover {
-  background-color: #0f1533;
-  transform: scale(1.1);
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  padding-top: 25px;
+  height: 0;
 }
 
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
+/* Responsive Design */
+@media (max-width: 768px) {
+  .overview-container {
+    flex-direction: column;
+  }
 
+  .overview-video,
+  .overview-text {
+    width: 100%;
+  }
+
+  .overview-title {
+    font-size: 2rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

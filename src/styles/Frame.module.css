@@ -1,0 +1,47 @@
+/* Frame.module.css */
+.overlay {
+  position: absolute;
+  bottom: 50px; /* Adjust vertical position */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+  z-index: 1; /* Ensure the overlay is above the globe */
+  pointer-events: none; /* Optional: allow clicks to pass through */
+}
+
+.heading1 {
+  font-size: 48px;
+  margin: 0;
+}
+
+.solvingGlobalIssuesContainer {
+  margin: 0;
+}
+
+.solvingGlobalIssues {
+  margin: 0;
+}
+
+.container1 {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.subheading {
+  margin: 0;
+}
+
+.button {
+  margin-top: 20px;
+  padding: 12.8px 24px 13.8px;
+  font-size: 20px;
+  font-family: 'Helvetica75', sans-serif;
+  border: none;
+  border-radius: 5px;
+  background-color: #00cc99;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+  pointer-events: auto; /* Enable button clicks */
+}

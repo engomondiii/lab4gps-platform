@@ -1,5 +1,6 @@
 .hero {
   position: relative;
+  width: 100%;
   height: 100vh; /* Full viewport height */
   display: flex;
   align-items: center;
@@ -7,7 +8,10 @@
   overflow: hidden; /* Ensure no overflow beyond the viewport */
   background-color: #141e3f; /* Fallback background color */
 }
-
+.globe-container {
+  width: 100%;
+  height: 100%;
+}
 /* Video Container */
 .hero-video-container {
   position: relative;
