@@ -36,7 +36,7 @@ const OverviewSection = () => {
             scalable solutions for global challenges. Explore our tools, features, and
             collaborative spaces designed for impactful action.
           </p>
-          <Link to="/demo-day">
+          <Link to="/SNS40">
             <button className="cta-button">
               Learn More <FaArrowRight />
             </button>
