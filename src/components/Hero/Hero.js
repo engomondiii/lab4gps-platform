@@ -32,7 +32,7 @@ const Hero = () => {
       lat: 1.2921,
       lng: 36.8219,
       id: 1,
-      name: 'Problem in San Francisco',
+      name: 'Problem in Nairobi Kenya',
       type: 'problem',
     },
     {
