@@ -1,16 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { FaTachometerAlt, FaFileAlt, FaCommentDots, FaLightbulb, FaTasks, FaChalkboardTeacher, FaUsers, FaCalendarAlt, FaHome, FaChevronLeft, FaChevronRight, FaUserCircle, FaBell, FaCog, FaTh, FaQuestionCircle, FaLifeRing, FaSearch, FaHeadset } from 'react-icons/fa';
-import AdvancedUserProfile from '../components/Auths/AdvancedUserProfile'; // Import the Profile component
-import '../styles/MemberPortalDashboard.css';
+import {
+  FaTachometerAlt,
+  FaFileAlt,
+  FaCommentDots,
+  FaLightbulb,
+  FaTasks,
+  FaChalkboardTeacher,
+  FaUsers,
+  FaCalendarAlt,
+  FaHome,
+  FaChevronLeft,
+  FaChevronRight,
+  FaUserCircle,
+  FaBell,
+  FaCog,
+  FaTh,
+  FaQuestionCircle,
+  FaLifeRing,
+  FaSearch,
+  FaHeadset,
+} from "react-icons/fa";
+import AdvancedUserProfile from "../components/Auths/AdvancedUserProfile"; // Profile component
+import InternalArchive from "../components/Archive/InternalArchive"; // Internal Archive component
+import "../styles/MemberPortalDashboard.css";
 
 // Dashboard Component
 const MemberPortalDashboard = () => {
-  const [activeSection, setActiveSection] = useState(localStorage.getItem("activeSection") || "home");
+  const [activeSection, setActiveSection] = useState(
+    localStorage.getItem("activeSection") || "home"
+  );
   const [sidebarExpanded, setSidebarExpanded] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [greeting, setGreeting] = useState("");
   const [userName] = useState("John Doe");
-  const [viewingProfile, setViewingProfile] = useState(false); // New state to toggle profile view
+  const [viewingProfile, setViewingProfile] = useState(false); // State to toggle profile view
 
   useEffect(() => {
     const hours = new Date().getHours();
@@ -37,12 +60,12 @@ const MemberPortalDashboard = () => {
   };
 
   const toggleProfile = () => {
-    setViewingProfile(!viewingProfile); // Toggle the profile view
+    setViewingProfile(!viewingProfile); // Toggle profile view
   };
 
   return (
     <div className="dashboard-container">
-      <div className={`sidebar ${sidebarExpanded ? 'expanded' : 'collapsed'}`}>
+      <div className={`sidebar ${sidebarExpanded ? "expanded" : "collapsed"}`}>
         <div className="sidebar-header">
           <div className="logo-img"></div>
           <button className="sidebar-toggle" onClick={toggleSidebar}>
@@ -51,41 +74,59 @@ const MemberPortalDashboard = () => {
         </div>
         <div className="sidebar-navigation">
           <ul>
-            <li onClick={() => handleNavigation("home")} className={activeSection === "home" ? "active" : ""}>
+            <li
+              onClick={() => handleNavigation("home")}
+              className={activeSection === "home" ? "active" : ""}
+            >
               <FaHome /> {sidebarExpanded && "Home"}
-              {activeSection === "home" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("dashboard")} className={activeSection === "dashboard" ? "active" : ""}>
+            <li
+              onClick={() => handleNavigation("dashboard")}
+              className={activeSection === "dashboard" ? "active" : ""}
+            >
               <FaTachometerAlt /> {sidebarExpanded && "Dashboard"}
-              {activeSection === "dashboard" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("archive")} className={activeSection === "archive" ? "active" : ""}>
+            <li
+              onClick={() => handleNavigation("archive")}
+              className={activeSection === "archive" ? "active" : ""}
+            >
               <FaFileAlt /> {sidebarExpanded && "Internal Archive"}
-              {activeSection === "archive" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("communication")} className={activeSection === "communication" ? "active" : ""}>
+            <li
+              onClick={() => handleNavigation("communication")}
+              className={activeSection === "communication" ? "active" : ""}
+            >
               <FaCommentDots /> {sidebarExpanded && "Communication"}
-              {activeSection === "communication" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("ideahub")} className={activeSection === "ideahub" ? "active" : ""}>
+            <li
+              onClick={() => handleNavigation("ideahub")}
+              className={activeSection === "ideahub" ? "active" : ""}
+            >
               <FaLightbulb /> {sidebarExpanded && "Idea Hub"}
-              {activeSection === "ideahub" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("tasks")} className={activeSection === "tasks" ? "active" : ""}>
+            <li
+              onClick={() => handleNavigation("tasks")}
+              className={activeSection === "tasks" ? "active" : ""}
+            >
               <FaTasks /> {sidebarExpanded && "Tasks"}
-              {activeSection === "tasks" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("training")} className={activeSection === "training" ? "active" : ""}>
+            <li
+              onClick={() => handleNavigation("training")}
+              className={activeSection === "training" ? "active" : ""}
+            >
               <FaChalkboardTeacher /> {sidebarExpanded && "Training"}
-              {activeSection === "training" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("community")} className={activeSection === "community" ? "active" : ""}>
+            <li
+              onClick={() => handleNavigation("community")}
+              className={activeSection === "community" ? "active" : ""}
+            >
               <FaUsers /> {sidebarExpanded && "Community"}
-              {activeSection === "community" && <span className="active-indicator"></span>}
             </li>
-            <li onClick={() => handleNavigation("events")} className={activeSection === "events" ? "active" : ""}>
+            <li
+              onClick={() => handleNavigation("events")}
+              className={activeSection === "events" ? "active" : ""}
+            >
               <FaCalendarAlt /> {sidebarExpanded && "Events"}
-              {activeSection === "events" && <span className="active-indicator"></span>}
             </li>
           </ul>
         </div>
@@ -94,7 +135,9 @@ const MemberPortalDashboard = () => {
       <div className="main-content">
         <header className="header">
           <div className="user-info">
-            <span className="user-name">{greeting}, {userName}!</span>
+            <span className="user-name">
+              {greeting}, {userName}!
+            </span>
           </div>
           <div className="header-buttons">
             <button className="btn-settings">
@@ -106,7 +149,7 @@ const MemberPortalDashboard = () => {
             <button className="btn-quick-actions">
               <FaTh />
             </button>
-            <button className="btn-user-profile" onClick={toggleProfile}> {/* On click, toggle profile */}
+            <button className="btn-user-profile" onClick={toggleProfile}>
               <FaUserCircle />
             </button>
           </div>
@@ -140,21 +183,27 @@ const MemberPortalDashboard = () => {
           </div>
         </div>
 
-        {/* Display Profile or Dashboard content */}
+        {/* Conditional Content Rendering */}
         <div className="content">
           {viewingProfile ? (
-            <AdvancedUserProfile />  
-          ) : (
-            activeSection === "dashboard" && (
-              <div className="dashboard-overview">
-                <h3>Dashboard Overview</h3>
-                <div className="widgets">
-                  <div className="widget card">Project Updates</div>
-                  <div className="widget card">Notifications</div>
-                  <div className="widget card">Upcoming Events</div>
-                </div>
+            <AdvancedUserProfile />
+          ) : activeSection === "archive" ? (
+            <InternalArchive />
+          ) : activeSection === "dashboard" ? (
+            <div className="dashboard-overview">
+              <h3>Dashboard Overview</h3>
+              <div className="widgets">
+                <div className="widget card">Project Updates</div>
+                <div className="widget card">Notifications</div>
+                <div className="widget card">Upcoming Events</div>
               </div>
-            )
+            </div>
+          ) : (
+            <div className="section-placeholder">
+              {/* Add placeholders for other sections */}
+              <h3>{activeSection}</h3>
+              <p>Content for {activeSection} will appear here.</p>
+            </div>
           )}
         </div>
       </div>

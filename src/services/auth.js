@@ -1,5 +1,5 @@
 import api from './api';
-import { jwtDecode } from 'jwt-decode'; // Correct import of jwt-decode
+import { jwtDecode } from 'jwt-decode'; // Correctly import jwtDecode
 
 // Utility function to handle API errors consistently
 const handleApiError = (error) => {
@@ -118,18 +118,20 @@ export const refreshAccessToken = async () => {
 // Decode JWT to check expiration time
 const decodeToken = (token) => {
   try {
-    return jwtDecode(token); // Updated to use the correct named import
+    return jwtDecode(token); // Correctly decode the token
   } catch (error) {
+    console.error('Token decoding failed:', error);
     return null;
   }
 };
 
 // Check if the access token is expired
-const isAccessTokenExpired = (token) => {
+export const isAccessTokenExpired = (token) => {
+  if (!token) return true; // No token means it's expired
   const decoded = decodeToken(token);
-  if (!decoded) return true;
-  const currentTime = Date.now() / 1000; // current time in seconds
-  return decoded.exp < currentTime;
+  if (!decoded) return true; // Invalid token
+  const currentTime = Date.now() / 1000; // Convert to seconds
+  return decoded.exp < currentTime; // Compare expiry time with current time
 };
 
 // Get the current user's profile
