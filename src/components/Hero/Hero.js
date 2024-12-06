@@ -39,7 +39,7 @@ const Hero = () => {
       lat: 36.8219,
       lng: 1.2921,
       id: 2,
-      name: 'Solution in Nairobi Kenya',
+      name: 'Solution in , Morocco',
       type: 'solution',
     },
   ];
