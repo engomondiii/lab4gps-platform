@@ -9,7 +9,7 @@ import Resources from '../pages/Resources';
 import NewsEvents from '../pages/NewsEvents';
 import Sponsorship from '../pages/Sponsorship';
 import MemberPortalDashboard from '../pages/MemberPortalDashboard'; // Member Dashboard Page
-import InternalArchive from '../pages/InternalArchive'; // Internal Archive Page
+import InternalArchive from '../components/Archive/InternalArchive'; // Internal Archive Page
 import IdeaHub from '../pages/IdeaHub'; // Idea Hub Page
 import EventManagement from '../pages/EventManagement'; // Event Management Page
 import Login from '../components/Auths/Login';
@@ -119,7 +119,7 @@ const AppRouter = () => {
           path="/member-portal/dashboard"
           element={
             <ProtectedRoute>
-              <MemberPortalDashboard />
+                <MemberPortalDashboard />
             </ProtectedRoute>
           }
         />
@@ -127,9 +127,7 @@ const AppRouter = () => {
           path="/member-portal/archive"
           element={
             <ProtectedRoute>
-              <DashboardLayout>
                 <InternalArchive />
-              </DashboardLayout>
             </ProtectedRoute>
           }
         />
@@ -137,9 +135,7 @@ const AppRouter = () => {
           path="/member-portal/idea-hub"
           element={
             <ProtectedRoute>
-              <DashboardLayout>
                 <IdeaHub />
-              </DashboardLayout>
             </ProtectedRoute>
           }
         />
@@ -147,19 +143,15 @@ const AppRouter = () => {
           path="/member-portal/event-management"
           element={
             <ProtectedRoute>
-              <DashboardLayout>
                 <EventManagement />
-              </DashboardLayout>
             </ProtectedRoute>
           }
         />
-        
-        {/* Advanced User Profile Page under Protected Route */}
         <Route
           path="/member-portal/profile"
           element={
             <ProtectedRoute>
-              <AdvancedUserProfile />
+                <AdvancedUserProfile />
             </ProtectedRoute>
           }
         />

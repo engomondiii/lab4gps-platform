@@ -1,0 +1,110 @@
+/* InternalArchive.css */
+
+.internal-archive {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .archive-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .archive-header h1 {
+    color: #141e3f;
+    font-size: 2rem;
+  }
+  
+  .archive-header p {
+    color: #666;
+    font-size: 1rem;
+  }
+  
+  .archive-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .category-dropdown {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .file-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .file-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+  }
+  
+  .file-info h3 {
+    margin: 0 0 10px;
+    color: #141e3f;
+  }
+  
+  .file-info p {
+    margin: 5px 0;
+    color: #333;
+  }
+  
+  .file-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .download-btn,
+  .view-btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .download-btn {
+    background: #00cc99;
+    color: white;
+  }
+  
+  .download-btn:hover {
+    background: #009973;
+  }
+  
+  .view-btn {
+    background: #ff9900;
+    color: white;
+  }
+  
+  .view-btn:hover {
+    background: #cc7a00;
+  }
+  
+  .no-files-message {
+    text-align: center;
+    color: #666;
+    font-size: 1.2rem;
+  }
+  
