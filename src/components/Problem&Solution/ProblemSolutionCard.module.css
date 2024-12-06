@@ -1,0 +1,198 @@
+.card {
+    width: 100%;
+    max-width: 700px; /* Adjust as needed for layout */
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Helvetica75, sans-serif;
+    color: #000;
+  }
+  
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 8px;
+    border-bottom: 0.2px solid #666;
+    border-radius: 12px 12px 0 0;
+    background: #fff;
+  }
+  
+  .profileInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .authorImageWrapper {
+    width: 80px;
+    height: 80px;
+    position: relative;
+  }
+  
+  .authorImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .authorText {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .authorName {
+    font-size: 25px;
+    line-height: 30px;
+    margin: 0;
+  }
+  
+  .authorTitle {
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .dropdownIcon img {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .cardBody {
+    display: flex;
+    gap: 8px;
+    padding: 0 8px 8px;
+  }
+  
+  .leftPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 258px;
+    border-radius: 12px;
+    background: #fff;
+  }
+  
+  .imageSection {
+    position: relative;
+    height: 268px;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mainImage {
+    width: 310px;
+    height: 265px;
+    object-fit: cover;
+  }
+  
+  .overlayText {
+    position: absolute;
+    bottom: 20px;
+    width: 258px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: Helvetica75, sans-serif;
+    font-weight: 700;
+  }
+  
+  .typeTag {
+    height: 42px;
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: Helvetica75, sans-serif;
+    font-weight: 700;
+    line-height: 24px;
+    color: #000;
+  }
+  
+  .solutionTag {
+    background: #00cc99;
+  }
+  
+  .problemTag {
+    background: #ff9900;
+  }
+  
+  .rightPanel {
+    flex: 1;
+    border-radius: 12px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .contentSection {
+    padding: 12px;
+    overflow: auto;
+  }
+  
+  .sectionTitle {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 0 12px 0;
+  }
+  
+  .description {
+    font-size: 16px;
+    font-family: Helvetica, sans-serif;
+    line-height: 19.2px;
+    color: #090909;
+  }
+  
+  .descriptionLine {
+    margin-bottom: 12px;
+  }
+  
+  .ctaContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 4px 12px;
+  }
+  
+  .seeMoreButton {
+    padding: 12px;
+    background: #666666;
+    border-radius: 8px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .statsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 13px;
+    color: rgba(20, 30, 63, 0.5);
+    border-radius: 0 0 12px 12px;
+  }
+  
+  .statItem {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  
+  .statItem img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+  

@@ -39,7 +39,7 @@ const Hero = () => {
       lat: 36.8219,
       lng: 1.2921,
       id: 2,
-      name: 'Solution in , Morocco',
+      name: 'Solution in Rabbat, Morocco',
       type: 'solution',
     },
   ];
@@ -57,7 +57,7 @@ const Hero = () => {
 
     const material = new THREE.SpriteMaterial({ map: texture });
     const sprite = new THREE.Sprite(material);
-    sprite.scale.set(6, 6, 6); // Adjust as needed
+    sprite.scale.set(8, 8, 8); // Adjust as needed
     return sprite;
   };
 
@@ -78,7 +78,7 @@ const Hero = () => {
           }}
         />
       </div>
-      <Frame></Frame>
+      <Frame/>
     </section>
   );
 };

@@ -98,7 +98,7 @@ const Navbar = () => {
             <ul className={`dropdown-menu ${isDropdownOpen.collaboration ? "show" : ""}`}>
               <li><button onClick={() => navigateToCollaborationHub("startups")}>GPS Startups</button></li>
               <li><button onClick={() => navigateToCollaborationHub("projects")}>GPS Projects</button></li>
-              <li><button onClick={() => navigateToCollaborationHub("demo-day")}>GPS Demo Day</button></li>
+              <li><button onClick={() => navigateToCollaborationHub("sns4.0")}>SNS 4.0</button></li>
               <li><button onClick={() => navigateToCollaborationHub("sponsorship")}>Sponsorship</button></li>
               <li><button onClick={() => navigate("/contact-us")}>Contact Us</button></li>
             </ul>

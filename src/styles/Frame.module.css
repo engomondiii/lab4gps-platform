@@ -1,26 +1,32 @@
 /* Frame.module.css */
 .overlay {
   position: absolute;
-  bottom: 50px; /* Adjust vertical position */
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+  width: 100%; /* Inherit the width of the hero */
+  bottom: 10px; /* Adjust vertical position */
+  left: 0;
+  right: 20px;
+  display: flex;
+  align-items: center;
   color: #fff;
   z-index: 1; /* Ensure the overlay is above the globe */
-  pointer-events: none; /* Optional: allow clicks to pass through */
 }
 
+/* Center content when displaying Frame */
+.overlay {  flex-direction: column;
+  justify-content: center;
+  pointer-events: none; /* Disable interactions */
+}
+
+
 .heading1 {
+  justify-items: center;
   font-size: 48px;
   margin: 0;
 }
 
 .solvingGlobalIssuesContainer {
   margin: 0;
-}
-
-.solvingGlobalIssues {
-  margin: 0;
+  align-self: center;
 }
 
 .container1 {

@@ -1,0 +1,84 @@
+/* Problems.module.css */
+.problems {
+    width: 98%;
+    margin: 0 !important;
+    /* padding: 8px; */
+    font-family: Helvetica75, sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.problemsTitle {
+  font-size: 61px;
+  line-height: 73.2px;
+}
+
+.addButton {
+  padding: 12px 24px;
+  font-size: 20px;
+  background-color: #00cc99;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.notSolved523Container {
+  text-align: center;
+  flex: 1;
+}
+
+.notSolved {
+  margin: 0;
+  line-height: 46.8px;
+  font-size: 39px;
+  font-family: Helvetica, sans-serif;
+}
+
+.boldH3 {
+  margin: 0;
+  line-height: 73.2px;
+  font-size: 61px;
+  font-family: Helvetica75, sans-serif;
+}
+
+.featuredProblem {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.featuredTitle {
+  font-size: 39px;
+  line-height: 46.8px;
+  font-family: Helvetica, sans-serif;
+  margin: 0;
+}
+
+.featuredContent {
+  margin: 10px 0 0 0;
+}
+
+.quote {
+  font-size: 50px;
+  font-family: Inter, sans-serif;
+}
+
+.problemText {
+  font-size: 39px;
+  text-decoration: underline;
+  line-height: 46.8px;
+  font-family: 'Helvetica Light', sans-serif;
+}
