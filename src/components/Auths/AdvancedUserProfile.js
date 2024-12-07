@@ -5,7 +5,6 @@ import { useAuth } from "../../Context/AuthContext";
 const AdvancedUserProfile = () => {
   const { user, updateProfile, updateProfilePicture, changePassword, logout } = useAuth();
 
-  // Log the user object for debugging
   useEffect(() => {
     console.log("User object on load:", user);
     if (!user?.first_name || !user?.last_name) {
@@ -16,10 +15,9 @@ const AdvancedUserProfile = () => {
   const [editMode, setEditMode] = useState(false);
   const [changePasswordMode, setChangePasswordMode] = useState(false);
 
-  // Dynamically set form data with fallback values
   const [formData, setFormData] = useState({
-    firstName: user?.first_name || "",
-    lastName: user?.last_name || "",
+    first_name: user?.first_name || "",
+    last_name: user?.last_name || "",
     email: user?.email || "",
     username: user?.username || "",
   });
@@ -34,13 +32,12 @@ const AdvancedUserProfile = () => {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  // Update formData when user changes
   useEffect(() => {
     if (user) {
       console.log("Updating formData with user data:", user);
       setFormData({
-        firstName: user.first_name || "Unknown",
-        lastName: user.last_name || "Unknown",
+        first_name: user.first_name || "",
+        last_name: user.last_name || "",
         email: user.email || "",
         username: user.username || "",
       });
@@ -48,22 +45,25 @@ const AdvancedUserProfile = () => {
   }, [user]);
 
   const handleEditChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handlePasswordChange = (e) => {
-    setPasswordData({ ...passwordData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setPasswordData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleEditSubmit = async (e) => {
     e.preventDefault();
     try {
-      await updateProfile(formData);
+      await updateProfile(formData); // Ensure API expects `first_name` and `last_name`
       setEditMode(false);
       setSuccessMessage("Profile details updated successfully!");
       setTimeout(() => setSuccessMessage(""), 3000);
     } catch (error) {
       setError("Failed to update profile.");
+      console.error("Error during profile update:", error);
     }
   };
 
@@ -81,6 +81,7 @@ const AdvancedUserProfile = () => {
       setTimeout(() => setSuccessMessage(""), 3000);
     } catch (error) {
       setError("Failed to change password.");
+      console.error("Error during password change:", error);
     }
   };
 
@@ -94,6 +95,7 @@ const AdvancedUserProfile = () => {
         setTimeout(() => setSuccessMessage(""), 3000);
       } catch (error) {
         setError("Failed to update profile picture.");
+        console.error("Error updating profile picture:", error);
       }
     }
   };
@@ -134,8 +136,8 @@ const AdvancedUserProfile = () => {
               <label>First Name:</label>
               <input
                 type="text"
-                name="firstName"
-                value={formData.firstName}
+                name="first_name"
+                value={formData.first_name}
                 onChange={handleEditChange}
                 disabled={!editMode}
               />
@@ -144,8 +146,8 @@ const AdvancedUserProfile = () => {
               <label>Last Name:</label>
               <input
                 type="text"
-                name="lastName"
-                value={formData.lastName}
+                name="last_name"
+                value={formData.last_name}
                 onChange={handleEditChange}
                 disabled={!editMode}
               />
