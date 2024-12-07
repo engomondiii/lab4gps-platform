@@ -2,7 +2,10 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import {
   loginUser,
   logoutUser,
-  getUserDetails,
+  getUserProfile,
+  updateUserProfile,
+  updateUserProfilePicture,
+  changeUserPassword,
   refreshToken,
   forgotPassword,
   verifyResetOtp,
@@ -22,18 +25,18 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch user details on initial load
+  // Fetch user profile on initial load
   useEffect(() => {
     const initializeAuth = async () => {
       const token = localStorage.getItem("accessToken");
 
       if (token) {
         try {
-          const userData = await getUserDetails();
-          setUser(userData);
+          const userProfile = await getUserProfile();
+          setUser(userProfile);
         } catch (error) {
-          console.error("Failed to fetch user details:", error);
-          logout(); // Clear tokens if fetching user details fails
+          console.error("Failed to fetch user profile:", error);
+          logout(); // Clear tokens if fetching profile fails
         }
       }
 
@@ -46,8 +49,8 @@ export const AuthProvider = ({ children }) => {
   // Login function
   const login = async (email, password) => {
     try {
-      const { user: userData } = await loginUser(email, password);
-      setUser(userData);
+      const { user: userProfile } = await loginUser(email, password);
+      setUser(userProfile);
     } catch (error) {
       console.error("Login error:", error);
       throw error;
@@ -58,6 +61,41 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     logoutUser(); // Clear tokens and redirect
+  };
+
+  // Update user profile details
+  const updateProfile = async (profileData) => {
+    try {
+      const updatedProfile = await updateUserProfile(profileData);
+      setUser((prevUser) => ({ ...prevUser, ...updatedProfile }));
+      return "Profile updated successfully.";
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      throw error;
+    }
+  };
+
+  // Update profile picture
+  const updateProfilePicture = async (profilePicture) => {
+    try {
+      const updatedPicture = await updateUserProfilePicture(profilePicture);
+      setUser((prevUser) => ({ ...prevUser, profile_picture: updatedPicture.profile_picture }));
+      return "Profile picture updated successfully.";
+    } catch (error) {
+      console.error("Error updating profile picture:", error);
+      throw error;
+    }
+  };
+
+  // Change user password
+  const changePassword = async (oldPassword, newPassword) => {
+    try {
+      const response = await changeUserPassword({ old_password: oldPassword, new_password: newPassword });
+      return response.message;
+    } catch (error) {
+      console.error("Error changing password:", error);
+      throw error;
+    }
   };
 
   // Forgot Password - Send OTP
@@ -115,6 +153,9 @@ export const AuthProvider = ({ children }) => {
     user,
     login,
     logout,
+    updateProfile,
+    updateProfilePicture,
+    changePassword,
     initiateForgotPassword,
     verifyForgotPasswordOtp,
     resetUserPassword,

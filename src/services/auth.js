@@ -70,15 +70,65 @@ export const refreshToken = async (refreshToken) => {
 };
 
 /**
- * Fetch authenticated user's details
- * @returns {Promise} - Server response data containing user details
+ * Fetch authenticated user's profile
+ * @returns {Promise} - Server response data containing user profile details
  */
-export const getUserDetails = async () => {
+export const getUserProfile = async () => {
   try {
-    const response = await api.get("/auth/user/");
+    const response = await api.get("/auth/profile/");
     return response.data;
   } catch (error) {
-    console.error("Error fetching user details:", error);
+    console.error("Error fetching user profile:", error);
+    throw error.response?.data || error.message;
+  }
+};
+
+/**
+ * Update user profile details
+ * @param {Object} profileData - Updated user details (first name, last name, email, username)
+ * @returns {Promise} - Server response data
+ */
+export const updateUserProfile = async (profileData) => {
+  try {
+    const response = await api.put("/auth/profile/update/", profileData);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating user profile:", error);
+    throw error.response?.data || error.message;
+  }
+};
+
+/**
+ * Update user profile picture
+ * @param {File} profilePicture - New profile picture file
+ * @returns {Promise} - Server response data
+ */
+export const updateUserProfilePicture = async (profilePicture) => {
+  try {
+    const formData = new FormData();
+    formData.append("profile_picture", profilePicture);
+
+    const response = await api.put("/auth/profile/update-picture/", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating profile picture:", error);
+    throw error.response?.data || error.message;
+  }
+};
+
+/**
+ * Change user password
+ * @param {Object} passwordData - Object containing oldPassword and newPassword
+ * @returns {Promise} - Server response data
+ */
+export const changeUserPassword = async (passwordData) => {
+  try {
+    const response = await api.post("/auth/profile/change-password/", passwordData);
+    return response.data;
+  } catch (error) {
+    console.error("Error changing password:", error);
     throw error.response?.data || error.message;
   }
 };

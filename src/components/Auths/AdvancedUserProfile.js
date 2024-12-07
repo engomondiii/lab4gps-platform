@@ -1,286 +1,223 @@
-import React, { useState, useEffect } from 'react';
-import { FaEdit, FaCheckCircle, FaRegSave } from 'react-icons/fa';
-import '../../styles/AdvancedUserProfile.css';
-import {
-  getAdvancedProfile,
-  updateAdvancedProfile,
-  getProfileMetrics,
-  updateCollaborationStatus,
-} from '../../services/ProfileService';
+import React, { useState } from "react";
+import "../../styles/AdvancedUserProfile.css";
+import { useAuth } from "../../Context/AuthContext";
 
 const AdvancedUserProfile = () => {
-  const [profile, setProfile] = useState(null);
-  const [metrics, setMetrics] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
+  const { 
+    user, 
+    updateProfile, 
+    updateProfilePicture, 
+    changePassword, 
+    logout 
+  } = useAuth();
 
-  // Fetch the advanced user profile and metrics on component mount
-  useEffect(() => {
-    const fetchData = async () => {
+  const [editMode, setEditMode] = useState(false);
+  const [changePasswordMode, setChangePasswordMode] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: user?.first_name || "",
+    lastName: user?.last_name || "",
+    email: user?.email || "",
+    username: user?.username || "",
+  });
+  const [passwordData, setPasswordData] = useState({
+    oldPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const handleEditChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePasswordChange = (e) => {
+    setPasswordData({ ...passwordData, [e.target.name]: e.target.value });
+  };
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await updateProfile(formData);
+      setEditMode(false);
+      setSuccessMessage("Profile details updated successfully!");
+      setTimeout(() => setSuccessMessage(""), 3000);
+    } catch (error) {
+      setError("Failed to update profile.");
+    }
+  };
+
+  const handlePasswordSubmit = async (e) => {
+    e.preventDefault();
+    if (passwordData.newPassword !== passwordData.confirmPassword) {
+      setError("Passwords do not match!");
+      return;
+    }
+    try {
+      await changePassword(passwordData.oldPassword, passwordData.newPassword);
+      setPasswordData({ oldPassword: "", newPassword: "", confirmPassword: "" });
+      setChangePasswordMode(false);
+      setSuccessMessage("Password updated successfully!");
+      setTimeout(() => setSuccessMessage(""), 3000);
+    } catch (error) {
+      setError("Failed to change password.");
+    }
+  };
+
+  const handleProfilePictureChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setProfilePicture(file);
       try {
-        const profileData = await getAdvancedProfile();
-        setProfile(profileData);
-        const metricsData = await getProfileMetrics();
-        setMetrics(metricsData);
+        await updateProfilePicture(file);
+        setSuccessMessage("Profile picture updated successfully!");
+        setTimeout(() => setSuccessMessage(""), 3000);
       } catch (error) {
-        console.error('Failed to fetch data:', error);
+        setError("Failed to update profile picture.");
       }
-    };
-
-    fetchData();
-  }, []);
-
-  const handleEdit = () => setIsEditing(!isEditing);
-
-  const handleSave = async () => {
-    if (!profile) return;
-
-    setIsSaving(true);
-    try {
-      const updatedProfile = await updateAdvancedProfile(profile);
-      setProfile(updatedProfile);
-      setIsEditing(false);
-    } catch (error) {
-      console.error('Failed to save profile:', error);
-    } finally {
-      setIsSaving(false);
     }
   };
 
-  const handleCollaborationStatusChange = async (newStatus) => {
-    try {
-      await updateCollaborationStatus(newStatus);
-      setProfile((prevProfile) => ({
-        ...prevProfile,
-        collaboration_status: newStatus,
-      }));
-    } catch (error) {
-      console.error('Failed to update collaboration status:', error);
-    }
+  const handleLogout = () => {
+    logout();
   };
-
-  if (!profile || !metrics) {
-    return <div className="profile-container">Loading...</div>;
-  }
 
   return (
     <div className="profile-container">
       <header className="profile-header">
-        <div className="user-info">
-          <img
-            src={profile.profile_picture || "https://via.placeholder.com/150"}
-            alt="Profile"
-            className="profile-img"
-          />
-          <div className="user-details">
-            <h1>
-              {profile.user?.first_name || 'N/A'} {profile.user?.last_name || 'N/A'}
-            </h1>
-            <p>{profile.user?.email || 'N/A'}</p>
-          </div>
-        </div>
-        <div className="edit-button" onClick={handleEdit}>
-          {isEditing ? <FaRegSave /> : <FaEdit />}
-          <span>{isEditing ? "Save Changes" : "Edit Profile"}</span>
-        </div>
+        <h1>My Profile</h1>
       </header>
-
-      <div className="profile-body">
-        <div className="section">
-          <h2>Core Profile Information</h2>
-          <div className="info-group">
-            <label>Phone Number:</label>
-            {isEditing ? (
+      {successMessage && <p className="success-message">{successMessage}</p>}
+      {error && <p className="error-message">{error}</p>}
+      <div className="profile-content">
+        <div className="profile-sidebar">
+          <img
+            src={user?.profile_picture || "https://via.placeholder.com/150"}
+            alt="Profile"
+            className="profile-picture"
+          />
+          <div className="edit-icon-container">
+            <label className="edit-icon">
+              ✏️
               <input
-                type="text"
-                value={profile.phone_number || ''}
-                onChange={(e) =>
-                  setProfile({ ...profile, phone_number: e.target.value })
-                }
+                type="file"
+                accept="image/*"
+                onChange={handleProfilePictureChange}
+                hidden
               />
-            ) : (
-              <span>{profile.phone_number || 'N/A'}</span>
-            )}
-          </div>
-          <div className="info-group">
-            <label>Date of Birth:</label>
-            {isEditing ? (
-              <input
-                type="date"
-                value={profile.date_of_birth || ''}
-                onChange={(e) =>
-                  setProfile({ ...profile, date_of_birth: e.target.value })
-                }
-              />
-            ) : (
-              <span>{profile.date_of_birth || 'N/A'}</span>
-            )}
-          </div>
-          <div className="info-group">
-            <label>Gender:</label>
-            {isEditing ? (
-              <select
-                value={profile.gender || ''}
-                onChange={(e) =>
-                  setProfile({ ...profile, gender: e.target.value })
-                }
-              >
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            ) : (
-              <span>{profile.gender || 'N/A'}</span>
-            )}
+            </label>
           </div>
         </div>
-
-        <div className="section">
-          <h2>Professional Information</h2>
-          <div className="info-group">
-            <label>Job Title:</label>
-            {isEditing ? (
+        <div className="profile-details">
+          <form onSubmit={handleEditSubmit}>
+            <div className="detail-group">
+              <label>First Name:</label>
               <input
                 type="text"
-                value={profile.job_title || ''}
-                onChange={(e) =>
-                  setProfile({ ...profile, job_title: e.target.value })
-                }
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleEditChange}
+                disabled={!editMode}
               />
-            ) : (
-              <span>{profile.job_title || 'N/A'}</span>
-            )}
-          </div>
-          <div className="info-group">
-            <label>Organization:</label>
-            {isEditing ? (
+            </div>
+            <div className="detail-group">
+              <label>Last Name:</label>
               <input
                 type="text"
-                value={profile.organization || ''}
-                onChange={(e) =>
-                  setProfile({ ...profile, organization: e.target.value })
-                }
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleEditChange}
+                disabled={!editMode}
               />
-            ) : (
-              <span>{profile.organization || 'N/A'}</span>
-            )}
-          </div>
-          <div className="info-group">
-            <label>Skills:</label>
-            {isEditing ? (
+            </div>
+            <div className="detail-group">
+              <label>Email:</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleEditChange}
+                disabled={!editMode}
+              />
+            </div>
+            <div className="detail-group">
+              <label>Username:</label>
               <input
                 type="text"
-                value={profile.skills?.join(', ') || ''}
-                onChange={(e) =>
-                  setProfile({ ...profile, skills: e.target.value.split(', ') })
-                }
+                name="username"
+                value={formData.username}
+                onChange={handleEditChange}
+                disabled={!editMode}
               />
-            ) : (
-              <span>{profile.skills?.join(', ') || 'N/A'}</span>
-            )}
-          </div>
-        </div>
-
-        <div className="section">
-          <h2>Preferences</h2>
-          <div className="info-group">
-            <label>Preferred Communication Method:</label>
-            {isEditing ? (
-              <select
-                value={profile.preferred_communication_method || ''}
-                onChange={(e) =>
-                  setProfile({
-                    ...profile,
-                    preferred_communication_method: e.target.value,
-                  })
-                }
-              >
-                <option value="Email">Email</option>
-                <option value="Phone">Phone</option>
-                <option value="None">None</option>
-              </select>
-            ) : (
-              <span>{profile.preferred_communication_method || 'N/A'}</span>
-            )}
-          </div>
-          <div className="info-group">
-            <label>Language Preference:</label>
-            {isEditing ? (
+            </div>
+            <div className="detail-group">
+              <label>Registration Date:</label>
+              <input type="text" value={user?.registration_date || ""} disabled />
+            </div>
+            <div className="detail-group">
+              <label>Verified:</label>
               <input
                 type="text"
-                value={profile.language_preference || ''}
-                onChange={(e) =>
-                  setProfile({
-                    ...profile,
-                    language_preference: e.target.value,
-                  })
-                }
+                value={user?.is_verified ? "Yes" : "No"}
+                disabled
               />
-            ) : (
-              <span>{profile.language_preference || 'N/A'}</span>
-            )}
-          </div>
-        </div>
-
-        <div className="section">
-          <h2>Social Links</h2>
-          <div className="info-group">
-            <label>LinkedIn:</label>
-            <a
-              href={profile.social_links?.LinkedIn || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
+            </div>
+            <button
+              type="button"
+              onClick={() => setEditMode(!editMode)}
+              className="edit-button"
             >
-              {profile.social_links?.LinkedIn || 'N/A'}
-            </a>
-          </div>
-          <div className="info-group">
-            <label>GitHub:</label>
-            <a
-              href={profile.social_links?.GitHub || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {profile.social_links?.GitHub || 'N/A'}
-            </a>
-          </div>
+              {editMode ? "Cancel" : "Edit Details"}
+            </button>
+            {editMode && <button type="submit" className="save-button">Save Changes</button>}
+          </form>
         </div>
-
-        <div className="section">
-          <h2>Collaboration Status</h2>
-          <div className="info-group">
-            <label>Status:</label>
-            {isEditing ? (
-              <select
-                value={profile.collaboration_status || ''}
-                onChange={(e) => handleCollaborationStatusChange(e.target.value)}
-              >
-                <option value="Available for Projects">Available for Projects</option>
-                <option value="Busy">Busy</option>
-                <option value="Not Looking">Not Looking</option>
-              </select>
-            ) : (
-              <span>{profile.collaboration_status || 'N/A'}</span>
-            )}
-          </div>
-        </div>
-
-        <div className="section">
-          <h2>Profile Views</h2>
-          <p>{metrics.profile_views || 0} views</p>
-          <p>Profile Completeness: {metrics.profile_completeness || 0}%</p>
-        </div>
-
-        {isEditing && (
-          <button
-            className="save-button"
-            onClick={handleSave}
-            disabled={isSaving}
-          >
-            <FaCheckCircle /> {isSaving ? 'Saving...' : 'Save'}
-          </button>
+      </div>
+      <div className="password-section">
+        <h2>Change Password</h2>
+        <button
+          onClick={() => setChangePasswordMode(!changePasswordMode)}
+          className="password-button"
+        >
+          {changePasswordMode ? "Cancel" : "Change Password"}
+        </button>
+        {changePasswordMode && (
+          <form onSubmit={handlePasswordSubmit} className="password-form">
+            <div className="detail-group">
+              <label>Old Password:</label>
+              <input
+                type="password"
+                name="oldPassword"
+                value={passwordData.oldPassword}
+                onChange={handlePasswordChange}
+              />
+            </div>
+            <div className="detail-group">
+              <label>New Password:</label>
+              <input
+                type="password"
+                name="newPassword"
+                value={passwordData.newPassword}
+                onChange={handlePasswordChange}
+              />
+            </div>
+            <div className="detail-group">
+              <label>Confirm Password:</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                value={passwordData.confirmPassword}
+                onChange={handlePasswordChange}
+              />
+            </div>
+            <button type="submit">Update Password</button>
+          </form>
         )}
       </div>
+      <button onClick={handleLogout} className="logout-button">
+        Logout
+      </button>
     </div>
   );
 };
