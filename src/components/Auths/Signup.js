@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser, verifyOtp } from "../../services/auth"; // Import API functions
+import { registerUser, verifyOtp } from "../../services/auth";
 import "../../styles/Signup.css";
 
 const Signup = () => {
@@ -8,19 +8,20 @@ const Signup = () => {
     email: "",
     username: "",
     password: "",
-    firstName: "",
-    lastName: "",
+    first_name: "", // Updated to match backend naming convention
+    last_name: "", // Updated to match backend naming convention
   });
   const [otp, setOtp] = useState("");
-  const [step, setStep] = useState(1); // 1 = Signup, 2 = OTP Verification, 3 = Success
+  const [step, setStep] = useState(1); // Step 1 = Signup, Step 2 = OTP Verification, Step 3 = Success
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // Loading state to prevent multiple clicks
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   // Handle form input changes
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   // Handle user signup
@@ -30,10 +31,12 @@ const Signup = () => {
     setIsLoading(true);
 
     try {
-      await registerUser(formData); // Call the registerUser API function
-      setStep(2); // Move to OTP verification step
+      console.log("Signup payload:", formData); // Debugging payload
+      await registerUser(formData);
+      setStep(2); // Proceed to OTP verification step
     } catch (err) {
-      setError(err.message || "An error occurred during registration.");
+      console.error("Signup error:", err);
+      setError(err.message || "An error occurred during signup. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -48,8 +51,9 @@ const Signup = () => {
     try {
       await verifyOtp(formData.email, otp); // Call the verifyOtp API function
       setSuccess(true);
-      setStep(3); // Move to success step
+      setStep(3); // Proceed to success step
     } catch (err) {
+      console.error("OTP verification error:", err);
       setError(err.message || "Invalid or expired OTP. Please try again.");
     } finally {
       setIsLoading(false);
@@ -105,16 +109,18 @@ const Signup = () => {
               <label>First Name:</label>
               <input
                 type="text"
-                name="firstName"
-                value={formData.firstName}
+                name="first_name" // Backend requires "first_name"
+                value={formData.first_name}
                 onChange={handleChange}
+                required
               />
               <label>Last Name:</label>
               <input
                 type="text"
-                name="lastName"
-                value={formData.lastName}
+                name="last_name" // Backend requires "last_name"
+                value={formData.last_name}
                 onChange={handleChange}
+                required
               />
               {error && <p className="error-message">{error}</p>}
               <button type="submit" disabled={isLoading}>

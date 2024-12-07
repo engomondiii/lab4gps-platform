@@ -76,7 +76,25 @@ export const refreshToken = async (refreshToken) => {
 export const getUserProfile = async () => {
   try {
     const response = await api.get("/auth/profile/");
-    return response.data;
+    console.log("User Profile API Response:", response.data); // Debugging log
+
+    const { first_name, last_name, email, username, profile_picture, is_verified, registration_date } = response.data;
+
+    // Validate required fields
+    if (!first_name || !last_name) {
+      console.warn("Missing first_name or last_name in user profile:", response.data);
+      throw new Error("User profile is missing required fields: first_name or last_name.");
+    }
+
+    return {
+      first_name,
+      last_name,
+      email,
+      username,
+      profile_picture,
+      is_verified,
+      registration_date,
+    };
   } catch (error) {
     console.error("Error fetching user profile:", error);
     throw error.response?.data || error.message;

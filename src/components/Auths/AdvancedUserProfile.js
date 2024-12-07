@@ -1,32 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/AdvancedUserProfile.css";
 import { useAuth } from "../../Context/AuthContext";
 
 const AdvancedUserProfile = () => {
-  const { 
-    user, 
-    updateProfile, 
-    updateProfilePicture, 
-    changePassword, 
-    logout 
-  } = useAuth();
+  const { user, updateProfile, updateProfilePicture, changePassword, logout } = useAuth();
+
+  // Log the user object for debugging
+  useEffect(() => {
+    console.log("User object on load:", user);
+    if (!user?.first_name || !user?.last_name) {
+      console.warn("Missing first_name or last_name in user object:", user);
+    }
+  }, [user]);
 
   const [editMode, setEditMode] = useState(false);
   const [changePasswordMode, setChangePasswordMode] = useState(false);
+
+  // Dynamically set form data with fallback values
   const [formData, setFormData] = useState({
     firstName: user?.first_name || "",
     lastName: user?.last_name || "",
     email: user?.email || "",
     username: user?.username || "",
   });
+
   const [passwordData, setPasswordData] = useState({
     oldPassword: "",
     newPassword: "",
     confirmPassword: "",
   });
+
   const [profilePicture, setProfilePicture] = useState(null);
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+
+  // Update formData when user changes
+  useEffect(() => {
+    if (user) {
+      console.log("Updating formData with user data:", user);
+      setFormData({
+        firstName: user.first_name || "Unknown",
+        lastName: user.last_name || "Unknown",
+        email: user.email || "",
+        username: user.username || "",
+      });
+    }
+  }, [user]);
 
   const handleEditChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -157,11 +176,7 @@ const AdvancedUserProfile = () => {
             </div>
             <div className="detail-group">
               <label>Verified:</label>
-              <input
-                type="text"
-                value={user?.is_verified ? "Yes" : "No"}
-                disabled
-              />
+              <input type="text" value={user?.is_verified ? "Yes" : "No"} disabled />
             </div>
             <button
               type="button"
@@ -170,7 +185,11 @@ const AdvancedUserProfile = () => {
             >
               {editMode ? "Cancel" : "Edit Details"}
             </button>
-            {editMode && <button type="submit" className="save-button">Save Changes</button>}
+            {editMode && (
+              <button type="submit" className="save-button">
+                Save Changes
+              </button>
+            )}
           </form>
         </div>
       </div>
