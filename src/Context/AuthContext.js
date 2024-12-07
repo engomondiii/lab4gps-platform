@@ -1,5 +1,13 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { loginUser, logoutUser, getUserDetails, refreshToken } from "../services/auth";
+import {
+  loginUser,
+  logoutUser,
+  getUserDetails,
+  refreshToken,
+  forgotPassword,
+  verifyResetOtp,
+  resetPassword,
+} from "../services/auth";
 
 // Create a context for authentication
 const AuthContext = createContext();
@@ -52,6 +60,39 @@ export const AuthProvider = ({ children }) => {
     logoutUser(); // Clear tokens and redirect
   };
 
+  // Forgot Password - Send OTP
+  const initiateForgotPassword = async (email) => {
+    try {
+      const response = await forgotPassword(email);
+      return response.message; // Return success message
+    } catch (error) {
+      console.error("Forgot Password error:", error);
+      throw error;
+    }
+  };
+
+  // Forgot Password - Verify OTP
+  const verifyForgotPasswordOtp = async (email, otp) => {
+    try {
+      const response = await verifyResetOtp(email, otp);
+      return response.message; // Return success message
+    } catch (error) {
+      console.error("OTP Verification error:", error);
+      throw error;
+    }
+  };
+
+  // Forgot Password - Reset Password
+  const resetUserPassword = async (email, newPassword) => {
+    try {
+      const response = await resetPassword(email, newPassword);
+      return response.message; // Return success message
+    } catch (error) {
+      console.error("Reset Password error:", error);
+      throw error;
+    }
+  };
+
   // Refresh tokens periodically (optional)
   useEffect(() => {
     const interval = setInterval(async () => {
@@ -74,6 +115,9 @@ export const AuthProvider = ({ children }) => {
     user,
     login,
     logout,
+    initiateForgotPassword,
+    verifyForgotPasswordOtp,
+    resetUserPassword,
     isAuthenticated: !!user,
   };
 
