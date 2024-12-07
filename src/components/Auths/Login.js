@@ -1,30 +1,28 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { logIn } from '../../services/auth'; // Importing the logIn function from auth.js
-import '../../styles/Login.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/AuthContext"; // Import AuthContext
+import "../../styles/Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false); // Loading state to prevent multiple clicks
   const navigate = useNavigate();
+  const { login } = useAuth(); // Access login function from AuthContext
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError('');
-    setIsLoading(true); // Start loading
+    setError("");
+    setIsLoading(true);
 
     try {
-      // Call the logIn function from auth.js
-      await logIn({ email, password });
-
-      // Navigate to the member portal dashboard after successful login
-      navigate('/member-portal/dashboard');
+      await login(email, password); // Call the login function from AuthContext
+      navigate("/member-portal/dashboard"); // Redirect to the dashboard
     } catch (err) {
-      setError(err.detail || 'Login failed. Please try again.');
+      setError(err.message || "Invalid email or password. Please try again.");
     } finally {
-      setIsLoading(false); // End loading
+      setIsLoading(false);
     }
   };
 
@@ -50,7 +48,7 @@ const Login = () => {
             />
             {error && <p className="error-message">{error}</p>}
             <button type="submit" disabled={isLoading}>
-              {isLoading ? 'Logging in...' : 'Login'}
+              {isLoading ? "Logging in..." : "Login"}
             </button>
           </form>
           <p>
@@ -61,9 +59,12 @@ const Login = () => {
         <div className="login-poster">
           <h2>New here?</h2>
           <p>
-            If you haven't created an account yet, you can easily sign up and start exploring our features.
+            If you haven't created an account yet, you can easily sign up and
+            start exploring our features.
           </p>
-          <a href="/signup" className="signup-link">Sign Up Now</a>
+          <a href="/signup" className="signup-link">
+            Sign Up Now
+          </a>
         </div>
       </div>
     </div>

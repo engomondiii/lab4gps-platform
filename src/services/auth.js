@@ -1,166 +1,99 @@
-import api from './api';
-import { jwtDecode } from 'jwt-decode'; // Correctly import jwtDecode
+import api from "./api";
 
-// Utility function to handle API errors consistently
-const handleApiError = (error) => {
-  console.error('API Error:', error);
-  const errorResponse = error.response?.data || { detail: error.message };
-  throw errorResponse;
-};
-
-// Sign up a new user
-export const signUp = async (userData) => {
+/**
+ * Register a new user
+ * @param {Object} formData - User registration details
+ * @returns {Promise} - Server response data
+ */
+export const registerUser = async (formData) => {
   try {
-    const response = await api.post('/users/signup/', userData);
+    const response = await api.post("/auth/signup/", formData);
     return response.data;
   } catch (error) {
-    handleApiError(error);
+    console.error("Error during user registration:", error);
+    throw error.response?.data || error.message;
   }
 };
 
-// Log in a user and return tokens
-export const logIn = async (credentials) => {
+/**
+ * Verify OTP to activate user account
+ * @param {string} email - User's email
+ * @param {string} otp - OTP sent to the user's email
+ * @returns {Promise} - Server response data
+ */
+export const verifyOtp = async (email, otp) => {
   try {
-    const response = await api.post('/users/login/', credentials);
-    const { access, refresh } = response.data.tokens;
+    const response = await api.post("/auth/verify-otp/", { email, otp });
+    return response.data;
+  } catch (error) {
+    console.error("Error during OTP verification:", error);
+    throw error.response?.data || error.message;
+  }
+};
 
-    // Store tokens in localStorage (or sessionStorage)
-    localStorage.setItem('access_token', access);
-    localStorage.setItem('refresh_token', refresh);
+/**
+ * Login user and obtain JWT tokens
+ * @param {string} email - User's email
+ * @param {string} password - User's password
+ * @returns {Promise} - Server response data containing tokens
+ */
+export const loginUser = async (email, password) => {
+  try {
+    const response = await api.post("/auth/login/", { email, password });
+    const { access, refresh } = response.data;
+
+    // Store tokens in localStorage
+    localStorage.setItem("accessToken", access);
+    localStorage.setItem("refreshToken", refresh);
 
     return response.data;
   } catch (error) {
-    handleApiError(error);
+    console.error("Error during user login:", error);
+    throw error.response?.data || error.message;
   }
 };
 
-// Request password reset (send OTP to email)
-export const requestPasswordReset = async (email) => {
+/**
+ * Refresh the access token
+ * @param {string} refreshToken - JWT refresh token
+ * @returns {Promise} - Server response data containing a new access token
+ */
+export const refreshToken = async (refreshToken) => {
   try {
-    const response = await api.post('/users/forgot-password/', { email });
+    const response = await api.post("/auth/token/refresh/", { refresh: refreshToken });
+    localStorage.setItem("accessToken", response.data.access); // Save new access token
     return response.data;
   } catch (error) {
-    handleApiError(error);
+    console.error("Error during token refresh:", error);
+    throw error.response?.data || error.message;
   }
 };
 
-// Verify OTP for password reset
-export const verifyOtp = async (data) => {
+/**
+ * Fetch authenticated user's details
+ * @returns {Promise} - Server response data containing user details
+ */
+export const getUserDetails = async () => {
   try {
-    const response = await api.post('/users/verify-otp/', data);
+    const response = await api.get("/auth/user/");
     return response.data;
   } catch (error) {
-    handleApiError(error);
+    console.error("Error fetching user details:", error);
+    throw error.response?.data || error.message;
   }
 };
 
-// Reset the password
-export const resetPassword = async (data) => {
+/**
+ * Logout the user
+ * Clears tokens and redirects to login page
+ */
+export const logoutUser = () => {
   try {
-    const response = await api.post('/users/reset-password/', data);
-    return response.data;
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    window.location.href = "/login"; // Redirect to login
   } catch (error) {
-    handleApiError(error);
+    console.error("Error during logout:", error);
   }
 };
 
-// Log out the user
-export const logOut = async () => {
-  try {
-    await api.post('/users/logout/');
-    // Clear tokens from localStorage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-  } catch (error) {
-    handleApiError(error);
-  }
-};
-
-// Request email verification OTP
-export const requestEmailVerificationOtp = async (email) => {
-  try {
-    const response = await api.post('/users/request-email-verification/', { email });
-    return response.data;
-  } catch (error) {
-    handleApiError(error);
-  }
-};
-
-// Verify email OTP
-export const verifyEmailOtp = async (data) => {
-  try {
-    const response = await api.post('/users/verify-email-otp/', data);
-    return response.data;
-  } catch (error) {
-    handleApiError(error);
-  }
-};
-
-// Refresh the access token
-export const refreshAccessToken = async () => {
-  const refreshToken = localStorage.getItem('refresh_token');
-  if (!refreshToken) {
-    throw new Error('Refresh token is missing. Please log in again.');
-  }
-
-  try {
-    const response = await api.post('/auth/token/refresh/', { refresh: refreshToken });
-    const { access } = response.data;
-
-    // Update the access token
-    localStorage.setItem('access_token', access);
-    return access;
-  } catch (error) {
-    handleApiError(error);
-  }
-};
-
-// Decode JWT to check expiration time
-const decodeToken = (token) => {
-  try {
-    return jwtDecode(token); // Correctly decode the token
-  } catch (error) {
-    console.error('Token decoding failed:', error);
-    return null;
-  }
-};
-
-// Check if the access token is expired
-export const isAccessTokenExpired = (token) => {
-  if (!token) return true; // No token means it's expired
-  const decoded = decodeToken(token);
-  if (!decoded) return true; // Invalid token
-  const currentTime = Date.now() / 1000; // Convert to seconds
-  return decoded.exp < currentTime; // Compare expiry time with current time
-};
-
-// Get the current user's profile
-export const getUserProfile = async () => {
-  try {
-    const accessToken = localStorage.getItem('access_token');
-    if (!accessToken || isAccessTokenExpired(accessToken)) {
-      // If the token is expired, refresh it or log out
-      await refreshAccessToken();
-    }
-
-    const response = await api.get('/users/profile/', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`, // Attach token from localStorage
-      },
-    });
-    return response.data;
-  } catch (error) {
-    handleApiError(error);
-  }
-};
-
-// Utility function to check if the user is logged in (authentication check)
-export const isLoggedIn = () => {
-  const accessToken = localStorage.getItem('access_token');
-  return !!accessToken && !isAccessTokenExpired(accessToken); // Check if token exists and is not expired
-};
-
-// Utility function to get the access token (returns null if not available)
-export const getAccessToken = () => {
-  return localStorage.getItem('access_token');
-};

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { requestPasswordReset, verifyOtp } from "../../services/auth"; // Import from auth.js
 import "../../styles/ForgotPassword.css";
 
 const ForgotPassword = () => {
@@ -12,25 +11,26 @@ const ForgotPassword = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false); // Loading state to disable buttons during processing
 
-  const handleEmailSubmit = async (e) => {
+  const handleEmailSubmit = (e) => {
     e.preventDefault();
     setError("");
-    setIsLoading(true); // Start loading
+    setIsLoading(true);
 
-    try {
-      await requestPasswordReset(email); // Send email to request OTP
-      setStep(2); // Move to OTP and Password Reset step
-    } catch (err) {
-      setError(err.detail || "Error sending OTP. Please try again.");
-    } finally {
-      setIsLoading(false); // End loading
-    }
+    // Simulate sending OTP
+    setTimeout(() => {
+      if (email) {
+        setStep(2); // Move to OTP and Password Reset step
+      } else {
+        setError("Please enter a valid email.");
+      }
+      setIsLoading(false);
+    }, 1000);
   };
 
-  const handleOtpAndPasswordSubmit = async (e) => {
+  const handleOtpAndPasswordSubmit = (e) => {
     e.preventDefault();
     setError("");
-    setIsLoading(true); // Start loading
+    setIsLoading(true);
 
     if (newPassword !== confirmPassword) {
       setError("Passwords do not match.");
@@ -38,16 +38,16 @@ const ForgotPassword = () => {
       return;
     }
 
-    try {
-      // Send email, otp, and new_password in a single API call
-      await verifyOtp({ email, otp, new_password: newPassword });
-      setSuccessMessage("Password reset successful! You can now log in.");
-      setStep(3); // Success screen
-    } catch (err) {
-      setError(err.detail || "Invalid or expired OTP. Please try again.");
-    } finally {
-      setIsLoading(false); // End loading
-    }
+    // Simulate OTP verification and password reset
+    setTimeout(() => {
+      if (otp === "123456" && newPassword) {
+        setSuccessMessage("Password reset successful! You can now log in.");
+        setStep(3); // Success screen
+      } else {
+        setError("Invalid or expired OTP. Please try again.");
+      }
+      setIsLoading(false);
+    }, 1000);
   };
 
   return (
