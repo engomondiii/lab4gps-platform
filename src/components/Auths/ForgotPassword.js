@@ -1,52 +1,69 @@
 import React, { useState } from "react";
-import { requestPasswordReset, verifyOtp } from "../../services/auth"; // Import from auth.js
 import "../../styles/ForgotPassword.css";
+import { useAuth } from "../../Context/AuthContext";
 
 const ForgotPassword = () => {
-  const [step, setStep] = useState(1); // Steps: 1 = Email Input, 2 = OTP and Password Reset
+  const [step, setStep] = useState(1); // Steps: 1 = Email Input, 2 = OTP Verification, 3 = Password Reset
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // Loading state to disable buttons during processing
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { initiateForgotPassword, verifyForgotPasswordOtp, resetUserPassword } =
+    useAuth();
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setIsLoading(true); // Start loading
+    setIsLoading(true);
 
     try {
-      await requestPasswordReset(email); // Send email to request OTP
-      setStep(2); // Move to OTP and Password Reset step
-    } catch (err) {
-      setError(err.detail || "Error sending OTP. Please try again.");
+      await initiateForgotPassword(email);
+      setStep(2); // Move to OTP Verification step
+    } catch (error) {
+      setError(error?.message || "Failed to send OTP. Please try again.");
     } finally {
-      setIsLoading(false); // End loading
+      setIsLoading(false);
     }
   };
 
-  const handleOtpAndPasswordSubmit = async (e) => {
+  const handleOtpSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setIsLoading(true); // Start loading
+    setIsLoading(true);
+
+    try {
+      await verifyForgotPasswordOtp(email, otp);
+      setStep(3); // Move to Password Reset step
+    } catch (error) {
+      setError(error?.message || "Invalid or expired OTP. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handlePasswordReset = async (e) => {
+    e.preventDefault();
+    setError("");
+    setIsLoading(true);
 
     if (newPassword !== confirmPassword) {
       setError("Passwords do not match.");
-      setIsLoading(false); // End loading if there's an error
+      setIsLoading(false);
       return;
     }
 
     try {
-      // Send email, otp, and new_password in a single API call
-      await verifyOtp({ email, otp, new_password: newPassword });
+      await resetUserPassword(email, newPassword);
       setSuccessMessage("Password reset successful! You can now log in.");
-      setStep(3); // Success screen
-    } catch (err) {
-      setError(err.detail || "Invalid or expired OTP. Please try again.");
+      setStep(4); // Success screen
+    } catch (error) {
+      setError(error?.message || "Failed to reset password. Please try again.");
     } finally {
-      setIsLoading(false); // End loading
+      setIsLoading(false);
     }
   };
 
@@ -71,7 +88,7 @@ const ForgotPassword = () => {
       )}
 
       {step === 2 && (
-        <form onSubmit={handleOtpAndPasswordSubmit} className="forgot-password-form">
+        <form onSubmit={handleOtpSubmit} className="forgot-password-form">
           <label>Enter OTP:</label>
           <input
             type="text"
@@ -79,6 +96,15 @@ const ForgotPassword = () => {
             onChange={(e) => setOtp(e.target.value)}
             required
           />
+          {error && <p className="error-message">{error}</p>}
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Verifying..." : "Verify OTP"}
+          </button>
+        </form>
+      )}
+
+      {step === 3 && (
+        <form onSubmit={handlePasswordReset} className="forgot-password-form">
           <label>New Password:</label>
           <input
             type="password"
@@ -100,7 +126,7 @@ const ForgotPassword = () => {
         </form>
       )}
 
-      {step === 3 && (
+      {step === 4 && (
         <div className="success-message">
           <h2>{successMessage}</h2>
           <a href="/login" className="go-login">

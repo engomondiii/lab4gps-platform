@@ -20,20 +20,20 @@ import {
   FaSearch,
   FaHeadset,
 } from "react-icons/fa";
-import AdvancedUserProfile from "../components/Auths/AdvancedUserProfile"; // Profile component
-import InternalArchive from "../components/Archive/InternalArchive"; // Internal Archive component
+import { useAuth } from "../Context/AuthContext"; // Import AuthContext hook
+import AdvancedUserProfile from "../components/Auths/AdvancedUserProfile";
+import InternalArchive from "../components/Archive/InternalArchive";
 import "../styles/MemberPortalDashboard.css";
 
-// Dashboard Component
 const MemberPortalDashboard = () => {
+  const { user } = useAuth(); // Access user data from AuthContext
   const [activeSection, setActiveSection] = useState(
     localStorage.getItem("activeSection") || "home"
   );
   const [sidebarExpanded, setSidebarExpanded] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [greeting, setGreeting] = useState("");
-  const [userName] = useState("John Doe");
-  const [viewingProfile, setViewingProfile] = useState(false); // State to toggle profile view
+  const [viewingProfile, setViewingProfile] = useState(false);
 
   useEffect(() => {
     const hours = new Date().getHours();
@@ -60,7 +60,7 @@ const MemberPortalDashboard = () => {
   };
 
   const toggleProfile = () => {
-    setViewingProfile(!viewingProfile); // Toggle profile view
+    setViewingProfile(!viewingProfile);
   };
 
   return (
@@ -136,7 +136,7 @@ const MemberPortalDashboard = () => {
         <header className="header">
           <div className="user-info">
             <span className="user-name">
-              {greeting}, {userName}!
+              {greeting}, {user?.first_name} {user?.last_name}!
             </span>
           </div>
           <div className="header-buttons">
@@ -155,7 +155,6 @@ const MemberPortalDashboard = () => {
           </div>
         </header>
 
-        {/* Help and Search Sections */}
         <div className="help-search-container">
           <div className="help-section">
             <button className="help-btn">
@@ -183,7 +182,6 @@ const MemberPortalDashboard = () => {
           </div>
         </div>
 
-        {/* Conditional Content Rendering */}
         <div className="content">
           {viewingProfile ? (
             <AdvancedUserProfile />
@@ -200,7 +198,6 @@ const MemberPortalDashboard = () => {
             </div>
           ) : (
             <div className="section-placeholder">
-              {/* Add placeholders for other sections */}
               <h3>{activeSection}</h3>
               <p>Content for {activeSection} will appear here.</p>
             </div>
