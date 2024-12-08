@@ -18,7 +18,7 @@ const SNSBodyContent = () => {
             type={item.type}
             shortTitle={item.shortTitle}
             detailedDescription={item.detailedDescription}
-            // location={item.location} // if needed internally
+            location={item.location} // if needed internally
           />
         ))}
       </div>

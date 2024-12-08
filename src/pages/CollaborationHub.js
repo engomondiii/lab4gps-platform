@@ -34,32 +34,6 @@ const CollaborationHub = () => {
 
   return (
     <div className="collaboration-hub">
-      {/* <nav className="section-nav">
-        <button 
-          className={activeSection === 'startups' ? 'active' : ''}
-          onClick={() => setActiveSection('startups')}
-        >
-          GPS Startups
-        </button>
-        <button 
-          className={activeSection === 'projects' ? 'active' : ''}
-          onClick={() => setActiveSection('projects')}
-        >
-          GPS Projects
-        </button>
-        <button 
-          className={activeSection === 'sns4.0' ? 'active' : ''}
-          onClick={() => setActiveSection('sns4.0')}
-        >
-          SNS 4.0
-        </button>
-        <button 
-          className={activeSection === 'sponsorship' ? 'active' : ''}
-          onClick={() => setActiveSection('sponsorship')}
-        >
-          Sponsorship
-        </button>
-      </nav> */}
       <div className="section-content">
         {renderSection()}
       </div>
