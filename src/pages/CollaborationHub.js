@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import StartupsSection from '../components/CoolaborationHubSections/StartupsSection';
 import ProjectsSection from '../components/CoolaborationHubSections/ProjectsSection';
-import SNSSection from '../components/CoolaborationHubSections/SNSSection';
 import SponsorshipSection from '../components/CoolaborationHubSections/SponsorshipSection';
+import SNSPage from '../components/CoolaborationHubSections/SNSPage';
 
 const CollaborationHub = () => {
   const [searchParams] = useSearchParams();
@@ -24,7 +24,7 @@ const CollaborationHub = () => {
       case 'projects':
         return <ProjectsSection />;
       case 'sns4.0':
-        return <SNSSection />;
+        return <SNSPage />;
       case 'sponsorship':
         return <SponsorshipSection />;
       default:

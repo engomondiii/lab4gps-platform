@@ -1,5 +1,5 @@
 // ProblemSolutionCard.js
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ProblemSolutionCard.module.css';
 import { FaChevronDown, FaEye, FaComment, FaHeart, FaUserCircle } from 'react-icons/fa';
 
@@ -11,14 +11,15 @@ const ProblemSolutionCard = ({
   overlayText,
   type,
   shortTitle,
-  detailedDescription
+  detailedDescription,
+  onSeeMore // pass a function from parent to handle "See More" action
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   const renderDescription = (text) => {
     return text.split('\n').map((line, i) => {
       const trimmedLine = line.trim();
       const isNumbered = /^\d+\.\s/.test(trimmedLine);
+      // Adjusted regex to match original logic: 
+      // Ends with ':' or is a single line with letters/spaces only could be a subsection.
       const isSubsection = isNumbered || trimmedLine.endsWith(':') || /^[A-Za-z\s]+$/.test(trimmedLine);
       if (isSubsection) {
         const title = isNumbered ? trimmedLine.replace(/^\d+\.\s/, '') : trimmedLine;
@@ -29,9 +30,8 @@ const ProblemSolutionCard = ({
     });
   };
 
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
+  // Truncate the detailedDescription to a few lines (for example, show first 3 lines)
+  const truncatedDescription = detailedDescription.split('\n').slice(0,5).join('\n');
 
   return (
     <article className={styles.card}>
@@ -65,18 +65,17 @@ const ProblemSolutionCard = ({
           </div>
         </div>
 
-        <div className={`${styles.rightPanel} ${isExpanded ? styles.expanded : ''}`}>
+        <div className={styles.rightPanel}>
           <section className={styles.contentSection}>
             {shortTitle && <h4 className={styles.sectionTitle}>{shortTitle}</h4>}
             <div className={styles.description}>
-              {renderDescription(detailedDescription)}
+              {renderDescription(truncatedDescription)}
             </div>
           </section>
 
           <div className={styles.ctaContainer}>
-            <button className={styles.seeMoreButton} onClick={toggleExpand}>
-              {isExpanded ? 'See Less' : 'See More'}
-            </button>
+            {/* "See More" now triggers a function passed from parent, not expanding in place */}
+            <button className={styles.seeMoreButton} onClick={onSeeMore}>See More</button>
           </div>
           <div className={styles.statsContainer}>
             <div className={styles.statItem}>

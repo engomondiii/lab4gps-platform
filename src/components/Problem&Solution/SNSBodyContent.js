@@ -1,13 +1,12 @@
 import React from 'react';
 import ProblemSolutionCard from './ProblemSolutionCard';
-import mockData from './mockData';
+import styles from './SNSBodyContent.module.css';
 
-const SNSBodyContent = () => {
+const SNSBodyContent = ({ items, onSeeMore }) => {
   return (
-    <div>
-      <h1>Community Problems & Solutions</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-        {mockData.map((item, index) => (
+    <div className={styles.contentWrapper}>
+      <div className={styles.cardsContainer}>
+        {items.map((item, index) => (
           <ProblemSolutionCard
             key={index}
             authorName={item.authorName}
@@ -18,7 +17,8 @@ const SNSBodyContent = () => {
             type={item.type}
             shortTitle={item.shortTitle}
             detailedDescription={item.detailedDescription}
-            location={item.location} // if needed internally
+            location={item.location}
+            onSeeMore={() => onSeeMore(item)} // Pass entire item data
           />
         ))}
       </div>

@@ -2,7 +2,6 @@
 import React from 'react';
 import styles from './SNSSection.module.css'
 import heroImage from '../../assets/Images/SNSSection.png'; // replace with your actual image
-import SNSBodyContent from '../Problem&Solution/SNSBodyContent';
 
 const SNSSection = () => {
   return (
@@ -20,7 +19,6 @@ const SNSSection = () => {
       <img className={styles.heroImage} src={heroImage} alt="Illustration representing community problem-solving" />
     </section>
     {/* The following section is the body section */}
-    <SNSBodyContent/>
     </div>
   );
 };

@@ -1,0 +1,199 @@
+.pageContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+/* Filter Section styles */
+.filterSection {
+  width: 100%;
+  max-width: 1130px;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.problemsTitle {
+  font-size: 24px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 700;
+  color: black;
+  margin: 0;
+}
+
+.filterBar {
+  width: 100%;
+  max-width: 1122px;
+  height: 54px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filterButtons {
+  display: flex;
+  gap: 15px;
+  background: rgba(128, 128, 128, 0.20);
+  border-radius: 12px;
+  padding: 6px 8px;
+}
+
+.filterButton {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-family: Helvetica75, sans-serif;
+  font-weight: 700;
+  line-height: 24px;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.filterButton.active {
+  background: white;
+  border: 1px solid rgba(128,128,128,0.2);
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  width: 210px;
+  height: 52px;
+  padding: 6px 10px;
+  border: 0.8px solid rgba(128, 128, 128, 0.20);
+  border-radius: 12px;
+  background: white;
+}
+
+.searchBox input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+}
+
+.searchIcon {
+  width: 24px;
+  height: 24px;
+  justify-items: center;
+}
+
+/* Listing Section */
+.listSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 20px 0;
+  box-sizing: border-box;
+}
+
+/* Pagination Section */
+.paginationSection {
+  align-self: stretch;
+  max-width: 1130px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.arrowButton, .pageNumber {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-family: Helvetica75, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  color: #141E3F;
+}
+
+.currentPage {
+  background: #FF9900;
+  border-radius: 8px;
+  color: white;
+  padding: 12px;
+}
+
+.seeMoreBtn {
+  padding: 12px;
+  background: #141E3F;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+}
+
+/* Write Problem Section */
+.writeProblemSection {
+  align-self: stretch;
+  border-top: 0.20px solid black;
+  max-width: 1130px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.writeProblemContent {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.problemIcon {
+  width: 36px;
+  height: 36px;
+  background: #141E3F; /* Placeholder */
+}
+
+.writeProblemContent h2 {
+  color: #141E3F;
+  font-size: 20px;
+  font-family: Helvetica75, sans-serif;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0;
+}
+
+.writeProblemContent p {
+  color: #141E3F;
+  font-size: 16px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 19.20px;
+  margin: 0;
+}
+
+.writeProblemButton {
+  padding: 12px;
+  background: #141E3F;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+}
