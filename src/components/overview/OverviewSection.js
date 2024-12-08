@@ -36,35 +36,13 @@ const OverviewSection = () => {
             scalable solutions for global challenges. Explore our tools, features, and
             collaborative spaces designed for impactful action.
           </p>
-          <Link to="/SNS40">
+          <Link to="/About">
             <button className="cta-button">
               Learn More <FaArrowRight />
             </button>
           </Link>
         </div>
       </div>
-      {/* <div className="cards-grid">
-        <div className="card">
-          <h3 className="card-title">Innovate</h3>
-          <p className="card-description">
-            Innovate with our tools and resources to create solutions for global
-            challenges.
-          </p>
-        </div>
-        <div className="card">
-          <h3 className="card-title">Educate</h3>
-          <p className="card-description">
-            Educate yourself and others on global issues and how to take action.
-          </p>
-        </div>
-        <div className="card">
-          <h3 className="card-title">Collaborate</h3>
-          <p className="card-description">
-            Collaborate with a global community of problem-solvers to create
-            meaningful change.
-          </p>
-        </div>
-      </div> */}
       <h2 className="overview-title">We are Global Problem Solvers!</h2>
           <p className="overview-description">
           We are GPS striving to solve the world's problems.
@@ -72,7 +50,7 @@ const OverviewSection = () => {
             <br />
             Join us on our journey!
           </p>
-          <Link to="/demo-day">
+          <Link to="/collaboration-hub?section=sns4.0">
             <button className="cta-button">
               SNS 4.0
             </button>

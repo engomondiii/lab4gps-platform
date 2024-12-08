@@ -8,7 +8,7 @@ const mockData = [
      overlayText: "Through The village of Baseka is a poor area that makes a living based on garbage...",
      type: "Problem",
      shortTitle: "Problem Statement:",
-     detailedDescription: `The village of Baseka is a poor area that relies on garbage for livelihood. Residents face:
+     detailedDescription: `The village of Baseka is a poor area that relies on garbage for livelihood. Residents face;
      
  1. Environmental Pollution
     Toxic gases severely contaminate the environment.
