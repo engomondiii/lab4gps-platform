@@ -212,6 +212,16 @@
   color: #666666;
 }
 
+.file-actions .edit-btn {
+  background: #007bff;
+  color: white;
+}
+
+.file-actions .delete-btn {
+  background: #ff4d4d;
+  color: white;
+}
+
 .file-actions button:hover {
   filter: brightness(0.9);
 }
@@ -322,12 +332,14 @@
 
 .upload-form {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
-.upload-form input {
-  flex: 1;
+.upload-form input,
+.upload-form select,
+.upload-form textarea,
+.upload-form button {
   padding: 10px;
   border: 1px solid #cccccc;
   border-radius: 5px;
@@ -335,15 +347,23 @@
 }
 
 .upload-form button {
-  padding: 10px 15px;
   background: #00cc99;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 14px;
   cursor: pointer;
 }
 
 .upload-form button:hover {
   filter: brightness(0.9);
+}
+
+.upload-form fieldset {
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.upload-form legend {
+  font-size: 14px;
+  color: #666666;
 }

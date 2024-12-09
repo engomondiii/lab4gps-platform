@@ -16,14 +16,25 @@ import {
   FaShareAlt,
   FaPlusCircle,
 } from "react-icons/fa";
-import archiveService from "../../services/archiveService";
+import ArchiveService from "../../services/archiveService"; // Import the service
 
-const InternalArchive = () => {
+const InternalArchive = ({ userRole, user }) => {
   const [files, setFiles] = useState([]); // All files
   const [filteredFiles, setFilteredFiles] = useState([]); // Filtered files
+  const [categories, setCategories] = useState([
+    "Research Materials",
+    "Project Documentation",
+    "Key Achievements",
+  ]); // Static categories
+  const [tags, setTags] = useState([
+    "Sustainability",
+    "Research",
+    "AI",
+    "Innovation",
+    "Achievements",
+    "Summary",
+  ]); // Static tags
   const [searchQuery, setSearchQuery] = useState(""); // Search query
-  const [categories, setCategories] = useState([]); // Categories from backend
-  const [tags, setTags] = useState([]); // Tags from backend
   const [selectedCategory, setSelectedCategory] = useState("All"); // Selected category
   const [selectedTags, setSelectedTags] = useState([]); // Selected tags
   const [currentPage, setCurrentPage] = useState(1); // Pagination
@@ -31,108 +42,84 @@ const InternalArchive = () => {
   const [comments, setComments] = useState({}); // File comments
   const [viewingDocument, setViewingDocument] = useState(null); // Document viewer
   const [showComments, setShowComments] = useState({}); // Toggle comments visibility
+  const [editFile, setEditFile] = useState(null); // File being edited
+  const [totalPages, setTotalPages] = useState(1); // Total pages
   const filesPerPage = 5; // Pagination limit
 
-  // Fetch categories, tags, and files on component mount
+  // Fetch initial data (categories, tags, and files)
   useEffect(() => {
-    const fetchMetadata = async () => {
+    const fetchInitialData = async () => {
       try {
-        const [categoriesResponse, tagsResponse] = await Promise.all([
-          archiveService.fetchCategories(),
-          archiveService.fetchTags(),
-        ]);
+        // Fetch dynamic categories and tags from API
+        const categoriesResponse = await ArchiveService.getCategories();
+        const tagsResponse = await ArchiveService.getTags();
 
-        setCategories(
-          Array.isArray(categoriesResponse.data)
-            ? categoriesResponse.data
-            : ["Research Materials", "Project Documentation", "Key Achievements"]
-        );
-        setTags(
-          Array.isArray(tagsResponse.data)
-            ? tagsResponse.data
-            : ["Sustainability", "Research", "AI", "Innovation", "Achievements", "Summary"]
-        );
+        if (Array.isArray(categoriesResponse)) {
+          setCategories((prev) => [...prev, ...categoriesResponse.map((c) => c.name)]);
+        } else {
+          console.warn("Unexpected categories response:", categoriesResponse);
+        }
+
+        if (Array.isArray(tagsResponse)) {
+          setTags((prev) => [...prev, ...tagsResponse.map((t) => t.name)]);
+        } else {
+          console.warn("Unexpected tags response:", tagsResponse);
+        }
+
+        // Fetch files
+        fetchFiles();
       } catch (error) {
-        console.error("Error fetching metadata:", error);
-        setCategories(["Research Materials", "Project Documentation", "Key Achievements"]);
-        setTags(["Sustainability", "Research", "AI", "Innovation", "Achievements", "Summary"]);
+        console.error("Error fetching initial data:", error);
       }
     };
 
-    fetchMetadata();
+    fetchInitialData();
   }, []);
 
   // Fetch files with filters
-  useEffect(() => {
-    const fetchFiles = async () => {
-      try {
-        const params = {
-          category: selectedCategory !== "All" ? selectedCategory : undefined,
-          tags: selectedTags.length > 0 ? selectedTags : undefined,
-          search: searchQuery || undefined,
-        };
-        const response = await archiveService.fetchFiles(params);
-
-        const fetchedFiles = Array.isArray(response.data) ? response.data : [];
-        setFiles(fetchedFiles);
-        setFilteredFiles(fetchedFiles);
-
-        // Initialize likes, comments, and visibility
-        const initialLikes = {};
-        const initialComments = {};
-        const initialShowComments = {};
-        fetchedFiles.forEach((file) => {
-          initialLikes[file.id] = file.likes_count || 0;
-          initialComments[file.id] = file.comments || [];
-          initialShowComments[file.id] = false;
-        });
-        setLikes(initialLikes);
-        setComments(initialComments);
-        setShowComments(initialShowComments);
-      } catch (error) {
-        console.error("Error fetching files:", error);
-      }
-    };
-
-    fetchFiles();
-  }, [selectedCategory, selectedTags, searchQuery]);
-
-  // Handle filtering and searching
-  useEffect(() => {
-    let updatedFiles = files;
-
-    if (selectedCategory !== "All") {
-      updatedFiles = updatedFiles.filter((file) => file.category === selectedCategory);
+  const fetchFiles = async () => {
+    try {
+      const filters = {
+        category: selectedCategory,
+        tags: selectedTags,
+        search: searchQuery,
+        page: currentPage,
+      };
+      const data = await ArchiveService.getFiles(filters);
+      setFiles(data.files || []);
+      setFilteredFiles(data.files || []);
+      setTotalPages(data.total_pages || 1);
+      initializeFileStats(data.files || []);
+    } catch (error) {
+      console.error("Error fetching files:", error);
     }
+  };
 
-    if (selectedTags.length > 0) {
-      updatedFiles = updatedFiles.filter((file) =>
-        file.tags.some((tag) => selectedTags.includes(tag))
-      );
-    }
-
-    if (searchQuery) {
-      updatedFiles = updatedFiles.filter(
-        (file) =>
-          file.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          file.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-
-    setFilteredFiles(updatedFiles);
-    setCurrentPage(1);
-  }, [searchQuery, selectedCategory, selectedTags, files]);
+  // Initialize file stats (likes, comments, and visibility toggles)
+  const initializeFileStats = (files) => {
+    const initialLikes = {};
+    const initialComments = {};
+    const initialShowComments = {};
+    files.forEach((file) => {
+      initialLikes[file.id] = file.likes_count || 0;
+      initialComments[file.id] = [];
+      initialShowComments[file.id] = false;
+    });
+    setLikes(initialLikes);
+    setComments(initialComments);
+    setShowComments(initialShowComments);
+  };
 
   // Handle like action
   const handleLike = async (fileId) => {
     try {
-      await archiveService.toggleLike(fileId);
+      await ArchiveService.toggleLike(fileId);
       setLikes((prev) => ({
         ...prev,
         [fileId]: prev[fileId] + 1,
       }));
     } catch (error) {
-      console.error("Error toggling like:", error);
+      console.error("Error liking file:", error);
     }
   };
 
@@ -140,30 +127,15 @@ const InternalArchive = () => {
   const handleComment = async (fileId, comment) => {
     if (comment.trim() !== "") {
       try {
-        const response = await archiveService.addComment(fileId, { text: comment });
+        const newComment = await ArchiveService.addComment(fileId, comment);
         setComments((prev) => ({
           ...prev,
-          [fileId]: [...prev[fileId], response.data],
+          [fileId]: [...prev[fileId], newComment],
         }));
       } catch (error) {
         console.error("Error adding comment:", error);
       }
     }
-  };
-
-  // Handle tag selection
-  const toggleTag = (tag) => {
-    setSelectedTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-    );
-  };
-
-  // Handle comments visibility toggle
-  const toggleComments = (fileId) => {
-    setShowComments((prev) => ({
-      ...prev,
-      [fileId]: !prev[fileId],
-    }));
   };
 
   // Handle file upload
@@ -172,24 +144,78 @@ const InternalArchive = () => {
     const formData = new FormData(event.target);
 
     try {
-      const response = await archiveService.uploadFile(formData);
-      setFiles((prev) => [...prev, response.data]);
-      setFilteredFiles((prev) => [...prev, response.data]);
+      const newFile = await ArchiveService.uploadFile(formData);
+      setFiles((prev) => [...prev, newFile]);
+      setFilteredFiles((prev) => [...prev, newFile]);
       event.target.reset();
     } catch (error) {
       console.error("Error uploading file:", error);
     }
   };
 
+  // Handle file edit
+  const handleFileEdit = (fileId) => {
+    const fileToEdit = files.find((file) => file.id === fileId);
+    setEditFile(fileToEdit);
+  };
+
+  // Handle file update
+  const handleFileUpdate = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    const updatedData = {
+      title: formData.get("title"),
+      description: formData.get("description"),
+      category: formData.get("category"),
+      tags: formData.getAll("tags"),
+      version: parseInt(formData.get("version"), 10),
+    };
+
+    try {
+      const updatedFile = await ArchiveService.updateFile(editFile.id, updatedData);
+      setFiles((prev) =>
+        prev.map((file) => (file.id === editFile.id ? updatedFile : file))
+      );
+      setFilteredFiles((prev) =>
+        prev.map((file) => (file.id === editFile.id ? updatedFile : file))
+      );
+      setEditFile(null);
+    } catch (error) {
+      console.error("Error updating file:", error);
+    }
+  };
+
+  // Handle file delete
+  const handleFileDelete = async (fileId) => {
+    try {
+      await ArchiveService.deleteFile(fileId);
+      setFiles((prev) => prev.filter((file) => file.id !== fileId));
+      setFilteredFiles((prev) => prev.filter((file) => file.id !== fileId));
+    } catch (error) {
+      console.error("Error deleting file:", error);
+    }
+  };
+
+  // Toggle comments visibility
+  const toggleComments = (fileId) => {
+    setShowComments((prev) => ({
+      ...prev,
+      [fileId]: !prev[fileId],
+    }));
+  };
+
+  // Fetch files when filters change
+  useEffect(() => {
+    fetchFiles();
+  }, [searchQuery, selectedCategory, selectedTags, currentPage]);
+
   // Pagination logic
-  const paginatedFiles = filteredFiles.slice(
+  const paginatedFiles = (filteredFiles || []).slice(
     (currentPage - 1) * filesPerPage,
     currentPage * filesPerPage
   );
 
-  const totalPages = Math.ceil(filteredFiles.length / filesPerPage);
-
-  // Render file cards
   const renderFiles = () =>
     paginatedFiles.map((file) => (
       <div key={file.id} className="file-card">
@@ -203,7 +229,7 @@ const InternalArchive = () => {
             <FaUserCircle /> {file.author}
           </span>
           <span>
-            <FaClock /> {file.uploadDate}
+            <FaClock /> {file.upload_date}
           </span>
           <span>Version: {file.version}</span>
         </div>
@@ -224,7 +250,7 @@ const InternalArchive = () => {
         )}
         <button
           className="view-document-btn"
-          onClick={() => setViewingDocument(file.link)}
+          onClick={() => setViewingDocument(file.file_url)}
         >
           <FaEye /> View Document
         </button>
@@ -236,7 +262,7 @@ const InternalArchive = () => {
             <FaShareAlt /> Share
           </button>
           <button className="download-btn">
-            <FaDownload /> {file.downloads} Downloads
+            <FaDownload /> {file.downloads_count} Downloads
           </button>
           <button
             className="toggle-comments-btn"
@@ -244,13 +270,29 @@ const InternalArchive = () => {
           >
             <FaCommentDots /> {showComments[file.id] ? "Hide Comments" : "View Comments"}
           </button>
+          {userRole === "Administrator" && (
+            <>
+              <button
+                className="edit-btn"
+                onClick={() => handleFileEdit(file.id)}
+              >
+                <FaEdit /> Edit
+              </button>
+              <button
+                className="delete-btn"
+                onClick={() => handleFileDelete(file.id)}
+              >
+                <FaTrashAlt /> Delete
+              </button>
+            </>
+          )}
         </div>
         {showComments[file.id] && (
           <div className="file-comments">
             <h4>Comments:</h4>
             <ul>
               {comments[file.id].map((comment, index) => (
-                <li key={index}>{comment}</li>
+                <li key={index}>{comment.text}</li>
               ))}
             </ul>
             <div className="comment-input">
@@ -323,7 +365,11 @@ const InternalArchive = () => {
             <button
               key={index}
               className={`tag-btn ${selectedTags.includes(tag) ? "active" : ""}`}
-              onClick={() => toggleTag(tag)}
+              onClick={() =>
+                setSelectedTags((prev) =>
+                  prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+                )
+              }
             >
               {tag}
             </button>
@@ -332,11 +378,7 @@ const InternalArchive = () => {
       </div>
 
       <div className="file-list">
-        {paginatedFiles.length > 0 ? (
-          renderFiles()
-        ) : (
-          <p>No files found for the selected criteria.</p>
-        )}
+        {paginatedFiles.length > 0 ? renderFiles() : <p>No files found for the selected criteria.</p>}
       </div>
 
       <div className="pagination-controls">
@@ -351,18 +393,94 @@ const InternalArchive = () => {
         ))}
       </div>
 
-      {/* Allow all users to upload files */}
-      <div className="upload-section">
-        <h3>Upload New File</h3>
-        <form className="upload-form" onSubmit={handleFileUpload}>
-          <input type="text" name="title" placeholder="File Title" required />
-          <textarea name="description" placeholder="File Description" required></textarea>
-          <input type="file" name="file" required />
-          <button type="submit">
-            <FaPlusCircle /> Upload
-          </button>
-        </form>
-      </div>
+      {editFile ? (
+        <div className="upload-section">
+          <h3>Edit File</h3>
+          <form className="upload-form" onSubmit={handleFileUpdate}>
+            <input
+              type="text"
+              name="title"
+              placeholder="File Title"
+              defaultValue={editFile.title}
+              required
+            />
+            <textarea
+              name="description"
+              placeholder="File Description"
+              defaultValue={editFile.description}
+              required
+            ></textarea>
+            <select name="category" defaultValue={editFile.category} required>
+              <option value="">Select Category</option>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+            <fieldset>
+              <legend>Select Tags</legend>
+              {tags.map((tag, index) => (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    name="tags"
+                    value={tag}
+                    defaultChecked={editFile.tags.includes(tag)}
+                  />
+                  {tag}
+                </label>
+              ))}
+            </fieldset>
+            <input
+              type="number"
+              name="version"
+              placeholder="File Version"
+              defaultValue={editFile.version}
+              required
+            />
+            <button type="submit">
+              <FaPlusCircle /> Update
+            </button>
+          </form>
+        </div>
+      ) : (
+        <div className="upload-section">
+          <h3>Upload New File</h3>
+          <form className="upload-form" onSubmit={handleFileUpload}>
+            <input type="text" name="title" placeholder="File Title" required />
+            <textarea name="description" placeholder="File Description" required></textarea>
+            <select name="category" required>
+              <option value="">Select Category</option>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+            <fieldset>
+              <legend>Select Tags</legend>
+              {tags.map((tag, index) => (
+                <label key={index}>
+                  <input type="checkbox" name="tags" value={tag} />
+                  {tag}
+                </label>
+              ))}
+            </fieldset>
+            <input
+              type="number"
+              name="version"
+              placeholder="File Version"
+              defaultValue={1}
+              required
+            />
+            <input type="file" name="file" required />
+            <button type="submit">
+              <FaPlusCircle /> Upload
+            </button>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
