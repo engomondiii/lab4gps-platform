@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/AuthContext"; // Import AuthContext
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import visibility icons
 import "../../styles/Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false); // Loading state to prevent multiple clicks
   const navigate = useNavigate();
@@ -40,12 +42,20 @@ const Login = () => {
               required
             />
             <label>Password:</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div className="password-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <span
+                className="toggle-password-icon"
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
             {error && <p className="error-message">{error}</p>}
             <button type="submit" disabled={isLoading}>
               {isLoading ? "Logging in..." : "Login"}

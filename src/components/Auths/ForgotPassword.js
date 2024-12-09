@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import visibility icons
 import "../../styles/ForgotPassword.css";
 import { useAuth } from "../../Context/AuthContext";
 
@@ -8,6 +9,8 @@ const ForgotPassword = () => {
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showNewPassword, setShowNewPassword] = useState(false); // Toggle visibility for new password
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // Toggle visibility for confirm password
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -106,19 +109,35 @@ const ForgotPassword = () => {
       {step === 3 && (
         <form onSubmit={handlePasswordReset} className="forgot-password-form">
           <label>New Password:</label>
-          <input
-            type="password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
+          <div className="password-container">
+            <input
+              type={showNewPassword ? "text" : "password"}
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              required
+            />
+            <span
+              className="toggle-password-icon"
+              onClick={() => setShowNewPassword((prev) => !prev)}
+            >
+              {showNewPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
           <label>Confirm Password:</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
+          <div className="password-container">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+            <span
+              className="toggle-password-icon"
+              onClick={() => setShowConfirmPassword((prev) => !prev)}
+            >
+              {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
           {error && <p className="error-message">{error}</p>}
           <button type="submit" disabled={isLoading}>
             {isLoading ? "Resetting..." : "Reset Password"}
