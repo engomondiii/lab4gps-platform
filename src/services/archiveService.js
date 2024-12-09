@@ -1,90 +1,125 @@
-import api from "./api";
+import api from "./api"; // Import the configured Axios instance
 
-// Archive Service for managing files, categories, tags, likes, comments, and downloads
-const archiveService = {
-  /**
-   * Upload a new file to the archive.
-   * @param {FormData} fileData - FormData object containing file details.
-   * @returns {Promise} - Axios response promise.
-   */
-  uploadFile(fileData) {
-    return api.post("/archive/files/upload/", fileData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+const ArchiveService = {
+  // Fetch categories
+  getCategories: async () => {
+    try {
+      const response = await api.get("/archive/categories/");
+      return response.data; // Returns the list of categories
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+      throw error;
+    }
   },
 
-  /**
-   * Fetch all files with optional filters.
-   * @param {Object} params - Query parameters (e.g., category, tags, search).
-   * @returns {Promise} - Axios response promise.
-   */
-  fetchFiles(params = {}) {
-    return api.get("/archive/files/", { params });
+  // Fetch tags
+  getTags: async () => {
+    try {
+      const response = await api.get("/archive/tags/");
+      return response.data; // Returns the list of tags
+    } catch (error) {
+      console.error("Error fetching tags:", error);
+      throw error;
+    }
   },
 
-  /**
-   * Fetch details of a specific file by ID.
-   * @param {number} fileId - ID of the file.
-   * @returns {Promise} - Axios response promise.
-   */
-  fetchFileDetails(fileId) {
-    return api.get(`/archive/files/${fileId}/`);
+  // Fetch files with optional filters
+  getFiles: async (filters = {}) => {
+    try {
+      const params = {
+        category: filters.category || "All",
+        tags: filters.tags || [],
+        search: filters.search || "",
+        page: filters.page || 1,
+      };
+      const response = await api.get("/archive/files/", { params });
+      return response.data; // Includes paginated files and total pages
+    } catch (error) {
+      console.error("Error fetching files:", error);
+      throw error;
+    }
   },
 
-  /**
-   * Delete a file by ID.
-   * @param {number} fileId - ID of the file.
-   * @returns {Promise} - Axios response promise.
-   */
-  deleteFile(fileId) {
-    return api.delete(`/archive/files/${fileId}/`);
+  // Fetch a single file by ID
+  getFileById: async (fileId) => {
+    try {
+      const response = await api.get(`/archive/files/${fileId}/`);
+      return response.data; // Returns details of the file
+    } catch (error) {
+      console.error("Error fetching file:", error);
+      throw error;
+    }
   },
 
-  /**
-   * Like or unlike a file.
-   * @param {number} fileId - ID of the file.
-   * @returns {Promise} - Axios response promise.
-   */
-  toggleLike(fileId) {
-    return api.post(`/archive/files/${fileId}/like/`);
+  // Upload a new file
+  uploadFile: async (formData) => {
+    try {
+      const response = await api.post("/archive/files/upload/", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      return response.data; // Returns the uploaded file details
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      throw error;
+    }
   },
 
-  /**
-   * Add a comment to a file.
-   * @param {number} fileId - ID of the file.
-   * @param {Object} commentData - Comment data (e.g., text).
-   * @returns {Promise} - Axios response promise.
-   */
-  addComment(fileId, commentData) {
-    return api.post(`/archive/files/${fileId}/comments/`, commentData);
+  // Update a file
+  updateFile: async (fileId, updatedData) => {
+    try {
+      const response = await api.put(`/archive/files/${fileId}/`, updatedData);
+      return response.data; // Returns the updated file details
+    } catch (error) {
+      console.error("Error updating file:", error);
+      throw error;
+    }
   },
 
-  /**
-   * Increment the download count for a file.
-   * @param {number} fileId - ID of the file.
-   * @returns {Promise} - Axios response promise.
-   */
-  incrementDownloadCount(fileId) {
-    return api.post(`/archive/files/${fileId}/increment-download/`);
+  // Delete a file
+  deleteFile: async (fileId) => {
+    try {
+      const response = await api.delete(`/archive/files/${fileId}/`);
+      return response.data; // Confirms deletion
+    } catch (error) {
+      console.error("Error deleting file:", error);
+      throw error;
+    }
   },
 
-  /**
-   * Fetch all categories.
-   * @returns {Promise} - Axios response promise.
-   */
-  fetchCategories() {
-    return api.get("/archive/categories/");
+  // Like or unlike a file
+  toggleLike: async (fileId) => {
+    try {
+      const response = await api.post(`/archive/files/${fileId}/like/`);
+      return response.data; // Returns the like/unlike status
+    } catch (error) {
+      console.error("Error toggling like:", error);
+      throw error;
+    }
   },
 
-  /**
-   * Fetch all tags.
-   * @returns {Promise} - Axios response promise.
-   */
-  fetchTags() {
-    return api.get("/archive/tags/");
+  // Add a comment to a file
+  addComment: async (fileId, commentText) => {
+    try {
+      const response = await api.post(`/archive/files/${fileId}/comments/`, {
+        text: commentText,
+      });
+      return response.data; // Returns the added comment details
+    } catch (error) {
+      console.error("Error adding comment:", error);
+      throw error;
+    }
+  },
+
+  // Download a file and increment the download count
+  downloadFile: async (fileId) => {
+    try {
+      const response = await api.get(`/archive/files/${fileId}/download/`);
+      return response.data; // Returns the file details and increments downloads
+    } catch (error) {
+      console.error("Error downloading file:", error);
+      throw error;
+    }
   },
 };
 
-export default archiveService;
+export default ArchiveService;
