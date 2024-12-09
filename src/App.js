@@ -19,6 +19,7 @@ import Signup from "./components/Auths/Signup";
 import ForgotPassword from "./components/Auths/ForgotPassword"; // Forgot Password
 import Layout from "./components/Layout/Layout"; // Layout for Navbar/Footer
 import AdvancedUserProfile from "./components/Auths/AdvancedUserProfile"; // Import the Profile component
+import AddProblemSolution from './components/Problem&Solution/AddProblemSolution';
 import "./styles/global.css";
 
 const App = () => {
@@ -59,6 +60,7 @@ const App = () => {
               </Layout>
             }
           />
+          <Route path="/add" element={<AddProblemSolution />} />
           <Route
             path="/forgot-password"
             element={
