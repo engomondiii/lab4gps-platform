@@ -111,7 +111,7 @@ const Hero = () => {
 
   const handleCloseCard = () => {
     setSelectedMarker(null);
-    setShowCards(false);
+    // setShowCards(false);
   };
 
   return (

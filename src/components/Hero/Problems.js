@@ -44,7 +44,7 @@ const Problems = () => {
             <p className={styles.featuredTitle}>Problems which visitor clicked most</p>
             <p className={styles.featuredContent}>
               <span className={styles.quote}>"</span>
-              <span className={styles.problemText}>African Poverty Issues</span>
+              <span className={styles.problemText}>Africa Water Shortages</span>
               <span className={styles.quote}>"</span>
             </p>
           </div>

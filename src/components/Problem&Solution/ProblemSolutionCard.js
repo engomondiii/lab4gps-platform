@@ -127,11 +127,11 @@ const ProblemSolutionCard = ({
           </div>
         </div>
       </div>
-      {location && (
+      {/* {location && (
         <div className={styles.hoverOverlay}>
           {`${type.charAt(0).toUpperCase() + type.slice(1)} in ${location}`}
         </div>
-      )}
+      )} */}
     </article>
   );
 };

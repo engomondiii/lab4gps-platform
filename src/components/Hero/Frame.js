@@ -26,7 +26,8 @@ const Frame = ({ selectedMarker, setShowCards }) => {
           <div className={styles.container1}>
             <div className={styles.subheading}>Fostering collaboration and innovation globally.</div>
           </div>
-          <Button onClick={handleClick}>Look Around</Button>
+          {/* Pass the correct className to the Button */}
+          <Button className={styles.button} onClick={handleClick}>Look Around</Button>
         </>
       ) : (
         <Problems />
