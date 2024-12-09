@@ -1,3 +1,5 @@
+// src/components/Problem&Solution/SNSBodyContent.js
+
 import React from 'react';
 import ProblemSolutionCard from './ProblemSolutionCard';
 import styles from './SNSBodyContent.module.css';
@@ -6,9 +8,9 @@ const SNSBodyContent = ({ items, onSeeMore }) => {
   return (
     <div className={styles.contentWrapper}>
       <div className={styles.cardsContainer}>
-        {items.map((item, index) => (
+        {items.map((item) => (
           <ProblemSolutionCard
-            key={index}
+            key={item.id}
             authorName={item.authorName}
             authorTitle={item.authorTitle}
             authorImage={item.authorImage}
@@ -19,6 +21,7 @@ const SNSBodyContent = ({ items, onSeeMore }) => {
             detailedDescription={item.detailedDescription}
             location={item.location}
             onSeeMore={() => onSeeMore(item)} // Pass entire item data
+            floating={false} // Set to false to retain position
           />
         ))}
       </div>

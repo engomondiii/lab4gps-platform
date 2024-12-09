@@ -1,8 +1,9 @@
 // mockData.js
 const mockData = [
    {
+     id: 1, // Unique ID
      authorName: "Aice Gonzale",
-     authorTitle: "Chilippine Community Development Activist",
+     authorTitle: "Philippine Community Development Activist",
      authorImage: "https://i.pinimg.com/736x/1c/60/33/1c603382ca7ba9a1427d9eac71f4aa3f.jpg",
      mainImage: "https://images.unsplash.com/photo-1526951521990-620dc14c214b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
      overlayText: "Through The village of Baseka is a poor area that makes a living based on garbage...",
@@ -28,14 +29,10 @@ const mockData = [
  Resolution
  "With resilience, we aim to transform Baseka into a village of opportunity through sustainable resource management."`,
      location: "Baseka, Philippines",
- 
-     // Additional fields for detail view
-     age: 30,
-     yearsOldText: "Years old",
-     bio: "Graduated Handong Global University and is continuing 'ChakanCha', a startup that wants to share love with teas.",
-     country: "Philippines",
-     email: "aicegonzale@example.com",
-     solutionDescription: "Through innovation in the global value chain, Chakancha seeks to improve the quality of life of Tea-pickers and convey love to them.",
+     lat: 10.6157, // Example latitude for Baseka, Philippines
+     lng: 123.4700, // Example longitude for Baseka, Philippines
+     donationAmount: 250, // Current donation
+     donationGoal: 1000, // Donation goal
      comments: [
        {
          authorName: "User A",
@@ -54,8 +51,9 @@ const mockData = [
      ]
    },
    {
+     id: 2, // Unique ID
      authorName: "Jiin Yoo",
-     authorTitle: "CEO ChackanCha",
+     authorTitle: "CEO ChakanCha",
      authorImage: "https://via.placeholder.com/85x100",
      mainImage: "https://i.pinimg.com/736x/d8/34/e4/d834e4487a7f854452428668c8803e4f.jpg",
      overlayText: "Through innovation in the global value chain, Chakancha seeks to improve...",
@@ -69,14 +67,10 @@ const mockData = [
  About Us
  Chakancha, a start-up from Handong University, aims to deliver specialty tea and empower tea-pickers with stable incomes and better living conditions.`,
      location: "Barasandu, Kenya",
- 
-     // Additional detail fields
-     age: 25,
-     yearsOldText: "Years old",
-     bio: "Graduated Handong Global University and is continuing 'ChakanCha', a startup that wants to share love with teas.",
-     country: "S. Korea",
-     email: "jiinyoo@gmail.com",
-     solutionDescription: "Through innovation in the global value chain, Chakancha seeks to improve the quality of life of Tea-pickers and convey love to them.",
+     lat: -0.3213, // Example latitude for Barasandu, Kenya
+     lng: 36.8270, // Example longitude for Barasandu, Kenya
+     donationAmount: 500, // Current donation
+     donationGoal: 2000, // Donation goal
      comments: [
        {
          authorName: "Aice Gonzale A",

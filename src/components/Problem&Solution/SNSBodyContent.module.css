@@ -1,27 +1,26 @@
+/* src/components/Problem&Solution/SNSBodyContent.module.css */
+
 .contentWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 90%; 
-    gap: 20px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    padding: 0 10px;
-  }
-  
-  /* Use CSS Grid for cards, centered in the container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 90%; 
+  gap: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+@media (max-width: 768px) {
   .cardsContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    justify-items: center;
+    grid-template-columns: 1fr;
   }
-  
-  /* Responsive behavior: 
-     On screens smaller than 768px, revert to a single column */
-  @media (max-width: 768px) {
-    .cardsContainer {
-      grid-template-columns: 1fr;
-    }
-  }
+}

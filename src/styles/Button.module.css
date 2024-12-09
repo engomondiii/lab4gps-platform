@@ -1,0 +1,18 @@
+/* Button.module.css */
+.primaryButton {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    background-color: #367162;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .primaryButton:hover {
+    background-color: #28594c;
+  }
+  

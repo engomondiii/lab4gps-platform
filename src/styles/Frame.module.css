@@ -1,26 +1,21 @@
-/* Frame.module.css */
+/* src/styles/Frame.module.css */
+
 .overlay {
   position: absolute;
-  width: 100%; /* Inherit the width of the hero */
-  bottom: 10px; /* Adjust vertical position */
+  width: 100%;
+  bottom: 0.625rem; /* 10px */
   left: 0;
-  right: 20px;
+  right: 1.25rem; /* 20px */
   display: flex;
+  flex-direction: column;
   align-items: center;
   color: #fff;
-  z-index: 1; /* Ensure the overlay is above the globe */
+  z-index: 2;
 }
-
-/* Center content when displaying Frame */
-.overlay {  flex-direction: column;
-  justify-content: center;
-  pointer-events: none; /* Disable interactions */
-}
-
 
 .heading1 {
   justify-items: center;
-  font-size: 48px;
+  font-size: 3rem;
   margin: 0;
 }
 
@@ -30,24 +25,10 @@
 }
 
 .container1 {
-  font-size: 24px;
-  margin-top: 10px;
+  font-size: 1.5rem; /* 24px */
+  margin-top: 0.625rem; /* 10px */
 }
 
 .subheading {
   margin: 0;
-}
-
-.button {
-  margin-top: 20px;
-  padding: 12.8px 24px 13.8px;
-  font-size: 20px;
-  font-family: 'Helvetica75', sans-serif;
-  border: none;
-  border-radius: 5px;
-  background-color: #00cc99;
-  color: #fff;
-  cursor: pointer;
-  z-index: 2;
-  pointer-events: auto; /* Enable button clicks */
 }
