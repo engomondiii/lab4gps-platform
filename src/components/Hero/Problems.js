@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Problems.module.css';
 import Button from '../common/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Problems = () => {
+  const navigate = useNavigate();
   const [showStats, setShowStats] = useState(true);
   const [stats] = useState({
     notSolved: 523,
@@ -50,7 +52,7 @@ const Problems = () => {
           </div>
         )}
       </div>
-      <Button className={styles.addButton}>Add</Button>
+      <Button  onClick={() => navigate('/add')} className={styles.addButton}>Add</Button>
     </div>
   );
 };

@@ -75,7 +75,7 @@ const Hero = () => {
           lat: latitude,
           lng: longitude,
           id: item.id || index,
-          name: item.shortTitle || item.type,
+          name: item.type + " in " + item.location,
           type: item.type.toLowerCase(),
           cardData: item
         };

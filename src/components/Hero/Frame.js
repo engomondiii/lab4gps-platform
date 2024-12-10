@@ -20,7 +20,7 @@ const Frame = ({ selectedMarker, setShowCards }) => {
         <>
           <div className={styles.heading1}>
             <h1 className={styles.solvingGlobalIssuesContainer}>
-              Love In Action
+              Global Problem Solvers
             </h1>
           </div>
           <div className={styles.container1}>

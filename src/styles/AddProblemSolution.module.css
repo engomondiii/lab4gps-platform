@@ -1,0 +1,152 @@
+/* src/components/Problem&Solution/AddProblemSolution.module.css */
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #141e3f; /* Dark background */
+  border-radius: 12px;
+  color: #fff;
+  font-family: Helvetica, sans-serif;
+}
+
+.title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  background-color: #1e2a4e; /* Slightly lighter dark */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #00cc99; /* Accent color */
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.label input,
+.label select,
+.label textarea {
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.label input:focus,
+.label select:focus,
+.label textarea:focus {
+  outline: none;
+  box-shadow: 0 0 5px #00cc99;
+}
+
+.input {
+  background-color: #2a3b65; /* Input background */
+  color: #fff;
+}
+
+.select {
+  background-color: #2a3b65;
+  color: #fff;
+  cursor: pointer;
+}
+
+.textarea {
+  background-color: #2a3b65;
+  color: #fff;
+  resize: vertical;
+}
+
+.richText {
+  background-color: #2a3b65;
+  color: #fff;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.submitButton {
+  padding: 12px 24px;
+  background-color: #00cc99;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #009977;
+}
+
+.cancelButton {
+  padding: 12px 24px;
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancelButton:hover {
+  background-color: #e60000;
+}
+
+.required {
+  color: #ff4d4d;
+  margin-left: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .sectionTitle {
+    font-size: 20px;
+  }
+
+  .label input,
+  .label select,
+  .label textarea {
+    font-size: 14px;
+  }
+
+  .submitButton,
+  .cancelButton {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
