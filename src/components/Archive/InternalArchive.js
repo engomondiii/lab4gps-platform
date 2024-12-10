@@ -45,6 +45,8 @@ const InternalArchive = ({ userRole, user }) => {
   const [editFile, setEditFile] = useState(null); // File being edited
   const [totalPages, setTotalPages] = useState(1); // Total pages
   const filesPerPage = 5; // Pagination limit
+  const [showUploadForm, setShowUploadForm] = useState(false); // Toggle upload form visibility
+
 
   // Fetch initial data (categories, tags, and files)
   useEffect(() => {
@@ -53,28 +55,30 @@ const InternalArchive = ({ userRole, user }) => {
         // Fetch dynamic categories and tags from API
         const categoriesResponse = await ArchiveService.getCategories();
         const tagsResponse = await ArchiveService.getTags();
-
+  
+        // Set categories and tags without duplication
         if (Array.isArray(categoriesResponse)) {
-          setCategories((prev) => [...prev, ...categoriesResponse.map((c) => c.name)]);
+          setCategories(categoriesResponse.map((c) => c.name));
         } else {
           console.warn("Unexpected categories response:", categoriesResponse);
         }
-
+  
         if (Array.isArray(tagsResponse)) {
-          setTags((prev) => [...prev, ...tagsResponse.map((t) => t.name)]);
+          setTags(tagsResponse.map((t) => t.name));
         } else {
           console.warn("Unexpected tags response:", tagsResponse);
         }
-
+  
         // Fetch files
         fetchFiles();
       } catch (error) {
         console.error("Error fetching initial data:", error);
       }
     };
-
+  
     fetchInitialData();
   }, []);
+  
 
   // Fetch files with filters
   const fetchFiles = async () => {
@@ -142,16 +146,44 @@ const InternalArchive = ({ userRole, user }) => {
   const handleFileUpload = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-
+  
     try {
       const newFile = await ArchiveService.uploadFile(formData);
-      setFiles((prev) => [...prev, newFile]);
-      setFilteredFiles((prev) => [...prev, newFile]);
+  
+      // Prepend the new file to the files and filteredFiles arrays
+      setFiles((prev) => [newFile, ...prev]);
+      setFilteredFiles((prev) => [newFile, ...prev]);
+  
+      // Reset the form after a successful upload
       event.target.reset();
+  
+      // Close the upload form after submission (if applicable)
+      setShowUploadForm(false);
+  
+      // Scroll to the top to highlight the new file
+      setTimeout(() => {
+        const fileList = document.querySelector(".file-list");
+        if (fileList) {
+          fileList.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
     } catch (error) {
       console.error("Error uploading file:", error);
     }
   };
+  
+
+
+  const handleShowUploadForm = () => {
+    setShowUploadForm(true);
+    setTimeout(() => {
+      const uploadSection = document.querySelector(".upload-section");
+      if (uploadSection) {
+        uploadSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100); // Slight delay for DOM rendering
+  };
+  
 
   // Handle file edit
   const handleFileEdit = (fileId) => {
@@ -319,170 +351,211 @@ const InternalArchive = ({ userRole, user }) => {
       </div>
     ));
 
-  return (
-    <div className="internal-archive">
-      <header className="archive-header">
-        <h1>Internal Archive</h1>
-        <p>Centralized hub for research materials, project outcomes, and documentation.</p>
-      </header>
-
-      {viewingDocument && (
-        <div className="document-viewer">
-          <iframe src={viewingDocument} title="Document Viewer" frameBorder="0"></iframe>
-          <button onClick={() => setViewingDocument(null)}>Close</button>
-        </div>
-      )}
-
-      <div className="archive-controls">
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search files..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button>
-            <FaSearch />
-          </button>
-        </div>
-
-        <div className="category-filter">
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="All">All Categories</option>
-            {categories.map((category, index) => (
-              <option key={index} value={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="tag-filter">
-          {tags.map((tag, index) => (
-            <button
-              key={index}
-              className={`tag-btn ${selectedTags.includes(tag) ? "active" : ""}`}
-              onClick={() =>
-                setSelectedTags((prev) =>
-                  prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-                )
-              }
+    return (
+      <div className="internal-archive">
+        <header className="archive-header">
+          <h1>Internal Archive</h1>
+          <p>Centralized hub for research materials, project outcomes, and documentation.</p>
+        </header>
+    
+        {viewingDocument && (
+          <div className="document-viewer">
+            <iframe src={viewingDocument} title="Document Viewer" frameBorder="0"></iframe>
+            <button onClick={() => setViewingDocument(null)}>Close</button>
+          </div>
+        )}
+    
+        <div className="archive-controls">
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Search files..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button>
+              <FaSearch />
+            </button>
+          </div>
+    
+          <div className="category-filter">
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
             >
-              {tag}
+              <option value="All">All Categories</option>
+              {categories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+    
+          <div className="tag-filter">
+            {tags.map((tag, index) => (
+              <button
+                key={index}
+                className={`tag-btn ${selectedTags.includes(tag) ? "active" : ""}`}
+                onClick={() =>
+                  setSelectedTags((prev) =>
+                    prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+                  )
+                }
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        </div>
+    
+        <div className="file-list">
+          {paginatedFiles.length > 0 ? renderFiles() : <p>No files found for the selected criteria.</p>}
+        </div>
+    
+        <div className="pagination-controls">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              className={`pagination-btn ${page === currentPage ? "active" : ""}`}
+              onClick={() => setCurrentPage(page)}
+            >
+              {page}
             </button>
           ))}
         </div>
-      </div>
-
-      <div className="file-list">
-        {paginatedFiles.length > 0 ? renderFiles() : <p>No files found for the selected criteria.</p>}
-      </div>
-
-      <div className="pagination-controls">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <button
-            key={page}
-            className={`pagination-btn ${page === currentPage ? "active" : ""}`}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </button>
-        ))}
-      </div>
-
-      {editFile ? (
-        <div className="upload-section">
-          <h3>Edit File</h3>
-          <form className="upload-form" onSubmit={handleFileUpdate}>
-            <input
-              type="text"
-              name="title"
-              placeholder="File Title"
-              defaultValue={editFile.title}
-              required
-            />
-            <textarea
-              name="description"
-              placeholder="File Description"
-              defaultValue={editFile.description}
-              required
-            ></textarea>
-            <select name="category" defaultValue={editFile.category} required>
-              <option value="">Select Category</option>
-              {categories.map((category, index) => (
-                <option key={index} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-            <fieldset>
-              <legend>Select Tags</legend>
-              {tags.map((tag, index) => (
-                <label key={index}>
-                  <input
-                    type="checkbox"
-                    name="tags"
-                    value={tag}
-                    defaultChecked={editFile.tags.includes(tag)}
-                  />
-                  {tag}
-                </label>
-              ))}
-            </fieldset>
-            <input
-              type="number"
-              name="version"
-              placeholder="File Version"
-              defaultValue={editFile.version}
-              required
-            />
-            <button type="submit">
-              <FaPlusCircle /> Update
+    
+        {/* Add New File Button */}
+        {!showUploadForm && (
+          <div className="floating-add-button">
+            <button
+              onClick={() => {
+                setShowUploadForm(true);
+                setTimeout(() => {
+                  const uploadSection = document.querySelector(".upload-section");
+                  if (uploadSection) {
+                    uploadSection.scrollIntoView({ behavior: "smooth" });
+                  }
+                }, 100); // Ensures the form renders before scrolling
+              }}
+              title="Click to add a new file"
+            >
+              <FaPlusCircle size={24} /> {/* Larger icon for emphasis */}
+              <span>Add File</span>
             </button>
-          </form>
-        </div>
-      ) : (
-        <div className="upload-section">
-          <h3>Upload New File</h3>
-          <form className="upload-form" onSubmit={handleFileUpload}>
-            <input type="text" name="title" placeholder="File Title" required />
-            <textarea name="description" placeholder="File Description" required></textarea>
-            <select name="category" required>
-              <option value="">Select Category</option>
-              {categories.map((category, index) => (
-                <option key={index} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-            <fieldset>
-              <legend>Select Tags</legend>
-              {tags.map((tag, index) => (
-                <label key={index}>
-                  <input type="checkbox" name="tags" value={tag} />
-                  {tag}
-                </label>
-              ))}
-            </fieldset>
-            <input
-              type="number"
-              name="version"
-              placeholder="File Version"
-              defaultValue={1}
-              required
-            />
-            <input type="file" name="file" required />
-            <button type="submit">
-              <FaPlusCircle /> Upload
-            </button>
-          </form>
-        </div>
-      )}
-    </div>
-  );
+          </div>
+        )}
+    
+        {/* Upload Form */}
+        {showUploadForm && (
+          <div className="upload-section">
+            <h3>Upload New File</h3>
+            <form className="upload-form" onSubmit={handleFileUpload}>
+              <input type="text" name="title" placeholder="File Title" required />
+              <textarea name="description" placeholder="File Description" required></textarea>
+              <select name="category" required>
+                <option value="">Select Category</option>
+                {categories.map((category, index) => (
+                  <option key={index} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+              <fieldset className="tags-fieldset">
+                <legend>Select Tags</legend>
+                <div className="tags-container">
+                  {tags.map((tag, index) => (
+                    <label key={index} className="tag-label">
+                      <input type="checkbox" name="tags" value={tag} className="tag-checkbox" />
+                      <span>{tag}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <input
+                type="number"
+                name="version"
+                placeholder="File Version"
+                defaultValue={1}
+                required
+              />
+              <input type="file" name="file" required />
+              <button type="submit">
+                <FaPlusCircle /> Upload
+              </button>
+              <button
+                type="button"
+                className="cancel-upload-btn"
+                onClick={() => setShowUploadForm(false)}
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        )}
+    
+        {/* Edit File Section */}
+        {editFile && (
+          <div className="upload-section">
+            <h3>Edit File</h3>
+            <form className="upload-form" onSubmit={handleFileUpdate}>
+              <input
+                type="text"
+                name="title"
+                placeholder="File Title"
+                defaultValue={editFile.title}
+                required
+              />
+              <textarea
+                name="description"
+                placeholder="File Description"
+                defaultValue={editFile.description}
+                required
+              ></textarea>
+              <select name="category" defaultValue={editFile.category} required>
+                <option value="">Select Category</option>
+                {categories.map((category, index) => (
+                  <option key={index} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
+              <fieldset className="tags-fieldset">
+                <legend>Select Tags</legend>
+                <div className="tags-container">
+                  {tags.map((tag, index) => (
+                    <label key={index} className="tag-label">
+                      <input
+                        type="checkbox"
+                        name="tags"
+                        value={tag}
+                        defaultChecked={editFile.tags.includes(tag)}
+                        className="tag-checkbox"
+                      />
+                      <span>{tag}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <input
+                type="number"
+                name="version"
+                placeholder="File Version"
+                defaultValue={editFile.version}
+                required
+              />
+              <button type="submit">
+                <FaPlusCircle /> Update
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
+    );
+    
+    
+    
+    
 };
 
 export default InternalArchive;
