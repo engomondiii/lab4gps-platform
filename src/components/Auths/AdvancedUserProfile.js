@@ -19,11 +19,16 @@ const ProfileSidebar = ({ user, handleProfilePictureChange }) => {
   return (
     <aside className="profile-sidebar">
       <div className="profile-picture-wrapper">
-        <img
-          src={profilePictureUrl || "https://via.placeholder.com/150"}
-          alt="Profile"
+        <div
           className="profile-picture"
-        />
+          style={{
+            backgroundImage: `url(${
+              profilePictureUrl || "https://via.placeholder.com/150"
+            })`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
         <div className="edit-icon-container">
           <label className="edit-icon">
             ✏️

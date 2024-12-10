@@ -8,29 +8,30 @@ body {
 }
 
 .profile-container {
-  max-width: 1200px;
+  max-width: 600px; /* Compact layout */
   margin: 30px auto;
-  padding: 20px;
+  padding: 15px;
   background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
+/* Profile Header */
 .profile-header {
-  text-align: center;
-  padding: 20px 0;
+  text-align: center; /* Center the text */
+  padding: 10px 0;
   border-bottom: 1px solid #e0e0e0;
 }
 
 .profile-header h1 {
-  font-size: 32px;
+  font-size: 28px; /* Increased size */
   font-weight: bold;
   color: #141e3f; /* Lab4GPS Blue */
 }
 
 .profile-header p {
-  font-size: 18px;
+  font-size: 16px; /* Slightly increased size */
   color: #666;
   margin-top: 5px;
 }
@@ -38,90 +39,110 @@ body {
 /* Profile Sidebar */
 .profile-sidebar {
   text-align: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 .profile-picture-wrapper {
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
 .profile-picture {
-  width: 150px;
-  height: 150px;
+  width: 100px; /* Compact size */
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  border: 3px solid #141e3f;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid #141e3f; /* Highlight border */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-picture:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .edit-icon-container {
   position: absolute;
-  bottom: 0;
-  right: 10px;
+  top: 70px; /* Adjusted closer to the profile picture */
+  right: -5px;
   background: #141e3f;
   color: #ffffff;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .edit-icon-container:hover {
   background: #00cc99; /* Accent color for hover */
+  transform: scale(1.1);
+}
+
+.profile-basic-info {
+  margin-top: 10px; /* Slight spacing below profile picture */
 }
 
 .profile-basic-info h2 {
-  font-size: 24px;
+  font-size: 20px; /* Increased size */
   color: #141e3f;
   margin-bottom: 5px;
+  font-weight: bold;
+  text-align: center; /* Centered below the photo */
 }
 
 .profile-basic-info p {
-  font-size: 16px;
+  font-size: 14px; /* Increased size */
   color: #666;
+  text-align: center; /* Centered below the photo */
 }
 
 /* Profile Details */
 .profile-details {
-  padding: 20px;
+  padding: 10px;
   background: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 15px 0;
 }
 
 .info-group {
-  margin-bottom: 20px;
-}
-
-.info-group h3 {
-  font-size: 20px;
-  color: #141e3f;
   margin-bottom: 10px;
 }
 
+.info-group h3 {
+  font-size: 18px; /* Increased size */
+  color: #141e3f;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-align: left; /* Align to the left */
+}
+
 .detail-group {
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
 .detail-group label {
-  font-size: 14px;
+  font-size: 14px; /* Increased size */
   color: #666;
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
+  text-align: left; /* Align to the left */
 }
 
 .detail-group input {
   width: 100%;
-  padding: 10px;
+  padding: 8px; /* Increased padding */
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px; /* Increased size */
   color: #333;
   transition: border-color 0.3s;
 }
@@ -133,7 +154,8 @@ body {
 
 .buttons {
   display: flex;
-  gap: 15px;
+  justify-content: center;
+  gap: 10px;
 }
 
 .edit-button,
@@ -142,7 +164,7 @@ body {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px; /* Increased size */
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -177,18 +199,19 @@ body {
 
 /* Password Section */
 .password-section {
-  padding: 20px;
+  padding: 10px;
   background: #ffffff;
   border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
 }
 
 .password-section h2 {
-  font-size: 22px;
+  font-size: 20px; /* Increased size */
   color: #141e3f;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  text-align: left; /* Align to the left */
 }
 
 .password-button {
@@ -197,17 +220,18 @@ body {
   color: #ffffff;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px; /* Increased size */
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .password-button:hover {
   background: #00cc99;
+  transform: scale(1.05);
 }
 
 .password-form .detail-group {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .update-password-button {
@@ -216,40 +240,41 @@ body {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px; /* Increased size */
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .update-password-button:hover {
   background: #00cc99;
+  transform: scale(1.05);
 }
 
 /* Logout Button */
 .logout-button {
-  margin: 20px 0;
+  margin: 10px auto;
   background: #ff6666;
   color: #ffffff;
-  padding: 12px 25px;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 16px; /* Increased size */
   font-weight: bold;
   cursor: pointer;
   display: block;
-  width: 100%;
   text-align: center;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .logout-button:hover {
   background: #cc0000;
+  transform: scale(1.05);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .profile-container {
-    padding: 15px;
+    padding: 10px;
   }
 
   .profile-layout {
@@ -258,10 +283,15 @@ body {
   }
 
   .profile-sidebar {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .profile-details {
-    padding: 15px;
+    padding: 10px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 8px;
   }
 }
