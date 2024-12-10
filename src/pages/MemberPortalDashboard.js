@@ -22,6 +22,7 @@ import {
 import { useAuth } from "../Context/AuthContext"; // Import AuthContext hook
 import AdvancedUserProfile from "../components/Auths/AdvancedUserProfile";
 import InternalArchive from "../components/Archive/InternalArchive";
+import IdeaHubDashboard from "../components/IdeaHub/IdeaHubDashboard";
 import "../styles/MemberPortalDashboard.css";
 
 const MemberPortalDashboard = () => {
@@ -199,6 +200,8 @@ const MemberPortalDashboard = () => {
             <AdvancedUserProfile />
           ) : activeSection === "archive" ? (
             <InternalArchive />
+          ) : activeSection === "ideahub" ? (
+            <IdeaHubDashboard />
           ) : activeSection === "dashboard" ? (
             <div className="dashboard-overview">
               <h3>Dashboard Overview</h3>

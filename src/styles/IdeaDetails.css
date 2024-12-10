@@ -1,0 +1,88 @@
+/* General Container Styles */
+.idea-details-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Arial", sans-serif;
+  }
+  
+  /* Header */
+  .idea-details-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .idea-details-header h1 {
+    font-size: 2rem;
+    color: #141e3f;
+  }
+  
+  .idea-details-header p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Section Styles */
+  .idea-details-section {
+    margin-bottom: 20px;
+  }
+  
+  .idea-details-section h2 {
+    font-size: 1.25rem;
+    color: #141e3f;
+    margin-bottom: 10px;
+  }
+  
+  .idea-details-section p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Tags */
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .tag {
+    background-color: #00cc99;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+  }
+  
+  /* Footer */
+  .idea-details-footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .collaborate-btn {
+    background-color: #141e3f;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .collaborate-btn:hover {
+    background-color: #0b132b;
+  }
+  
+  /* Loading and Error States */
+  .loading,
+  .error {
+    text-align: center;
+    color: #555;
+    font-size: 1.2rem;
+  }
+  
