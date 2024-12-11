@@ -1,224 +1,297 @@
-/* Container Styling */
+/* General Styles */
+body {
+  font-family: "Helvetica", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5; /* Subtle background color */
+  color: #333;
+}
+
 .profile-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 30px;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: "Arial", sans-serif;
-    position: relative;
-  }
-  
-  /* Header Styling */
-  .profile-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-  
-  .profile-header h1 {
-    font-size: 28px;
-    font-weight: bold;
-    color: #141e3f;
-  }
-  
-  /* Logout Button Styling */
-  .logout-button {
-    position: absolute;
-    bottom: 20px;
-    right: 30px;
-    background-color: #ff4d4d;
-    color: #ffffff;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .logout-button:hover {
-    background-color: #d83434;
-    transform: translateY(-2px);
-  }
-  
-  /* Success Message Styling */
-  .success-message {
-    color: #00cc99;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 16px;
-  }
-  
-  /* Main Content Styling */
-  .profile-content {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-  }
-  
-  /* Sidebar Styling */
-  .profile-sidebar {
-    flex: 1;
-    text-align: center;
-  }
-  
-  .profile-picture {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 3px solid #00cc99;
-    object-fit: cover;
-    margin-bottom: 20px;
-  }
-  
-  .edit-icon-container {
-    display: inline-block;
-    background-color: #00cc99;
-    border-radius: 50%;
+  max-width: 600px; /* Compact layout */
+  margin: 30px auto;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Profile Header */
+.profile-header {
+  text-align: center; /* Center the text */
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.profile-header h1 {
+  font-size: 28px; /* Increased size */
+  font-weight: bold;
+  color: #141e3f; /* Lab4GPS Blue */
+}
+
+.profile-header p {
+  font-size: 16px; /* Slightly increased size */
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Profile Sidebar */
+.profile-sidebar {
+  text-align: center;
+  padding: 10px;
+}
+
+.profile-picture-wrapper {
+  position: relative;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.profile-picture {
+  width: 100px; /* Compact size */
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid #141e3f; /* Highlight border */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-picture:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.edit-icon-container {
+  position: absolute;
+  top: 70px; /* Adjusted closer to the profile picture */
+  right: -5px;
+  background: #141e3f;
+  color: #ffffff;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.edit-icon-container:hover {
+  background: #00cc99; /* Accent color for hover */
+  transform: scale(1.1);
+}
+
+.profile-basic-info {
+  margin-top: 10px; /* Slight spacing below profile picture */
+}
+
+.profile-basic-info h2 {
+  font-size: 20px; /* Increased size */
+  color: #141e3f;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-align: center; /* Centered below the photo */
+}
+
+.profile-basic-info p {
+  font-size: 14px; /* Increased size */
+  color: #666;
+  text-align: center; /* Centered below the photo */
+}
+
+/* Profile Details */
+.profile-details {
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 15px 0;
+}
+
+.info-group {
+  margin-bottom: 10px;
+}
+
+.info-group h3 {
+  font-size: 18px; /* Increased size */
+  color: #141e3f;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-align: left; /* Align to the left */
+}
+
+.detail-group {
+  margin-bottom: 8px;
+}
+
+.detail-group label {
+  font-size: 14px; /* Increased size */
+  color: #666;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-align: left; /* Align to the left */
+}
+
+.detail-group input {
+  width: 100%;
+  padding: 8px; /* Increased padding */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px; /* Increased size */
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+.detail-group input:focus {
+  border-color: #141e3f;
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.edit-button,
+.cancel-button,
+.save-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px; /* Increased size */
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-button {
+  background: #141e3f;
+  color: #ffffff;
+}
+
+.edit-button:hover {
+  background: #00cc99;
+}
+
+.cancel-button {
+  background: #ff6666;
+  color: #ffffff;
+}
+
+.cancel-button:hover {
+  background: #cc0000;
+}
+
+.save-button {
+  background: #141e3f;
+  color: #ffffff;
+}
+
+.save-button:hover {
+  background: #00cc99;
+}
+
+/* Password Section */
+.password-section {
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.password-section h2 {
+  font-size: 20px; /* Increased size */
+  color: #141e3f;
+  margin-bottom: 8px;
+  text-align: left; /* Align to the left */
+}
+
+.password-button {
+  padding: 10px 20px;
+  background: #141e3f;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px; /* Increased size */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.password-button:hover {
+  background: #00cc99;
+  transform: scale(1.05);
+}
+
+.password-form .detail-group {
+  margin-bottom: 10px;
+}
+
+.update-password-button {
+  background: #141e3f;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px; /* Increased size */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.update-password-button:hover {
+  background: #00cc99;
+  transform: scale(1.05);
+}
+
+/* Logout Button */
+.logout-button {
+  margin: 10px auto;
+  background: #ff6666;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px; /* Increased size */
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #cc0000;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-container {
     padding: 10px;
-    margin-top: -40px;
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
   }
-  
-  .edit-icon-container:hover {
-    background-color: #00b388;
-    transform: scale(1.1);
+
+  .profile-layout {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .edit-icon {
-    font-size: 20px;
-    color: #ffffff;
-  }
-  
-  /* Profile Details Styling */
-  .profile-details {
-    flex: 2;
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-  }
-  
-  .detail-group {
-    margin-bottom: 20px;
-  }
-  
-  .detail-group label {
-    display: block;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333333;
-    margin-bottom: 8px;
-  }
-  
-  .detail-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    font-size: 16px;
-    color: #333333;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  
-  .detail-group input:focus {
-    border-color: #00cc99;
-  }
-  
-  .edit-button,
-  .save-button {
-    background-color: #0073e6;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .edit-button:hover,
-  .save-button:hover {
-    background-color: #005bb5;
-    transform: translateY(-2px);
-  }
-  
-  /* Password Section Styling */
-  .password-section {
-    margin-top: 40px;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-  }
-  
-  .password-section h2 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #141e3f;
-    margin-bottom: 15px;
-  }
-  
-  .password-button {
-    background-color: #0073e6;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .password-button:hover {
-    background-color: #005bb5;
-    transform: translateY(-2px);
-  }
-  
-  .password-form .detail-group {
-    margin-bottom: 20px;
-  }
-  
-  .error-message {
-    color: #ff4d4d;
-    font-weight: bold;
-    text-align: center;
+
+  .profile-sidebar {
     margin-bottom: 10px;
-    font-size: 14px;
   }
-  
-  /* Responsive Styling */
-  @media screen and (max-width: 768px) {
-    .profile-content {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .profile-sidebar {
-      margin-bottom: 20px;
-    }
-  
-    .profile-details,
-    .password-section {
-      width: 100%;
-    }
-  
-    .logout-button {
-      position: static;
-      margin-top: 20px;
-      display: block;
-      width: 100%;
-      text-align: center;
-    }
+
+  .profile-details {
+    padding: 10px;
   }
-  
+
+  .buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

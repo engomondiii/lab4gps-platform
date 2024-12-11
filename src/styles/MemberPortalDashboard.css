@@ -133,10 +133,53 @@ body {
     color: #333;
 }
 
+/* Header Profile */
+.header-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between buttons and profile */
+    justify-content: flex-end; /* Align to the far-right */
+    flex-grow: 1; /* Push profile to the end */
+}
+
+/* Avatar Container */
+.profile-avatar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Avatar Image */
+.profile-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border: 2px solid #141e3f;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Username */
+.profile-name {
+    font-size: 12px;
+    color: #333;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
 /* Header Buttons */
 .header-buttons {
     display: flex;
     align-items: center;
+    gap: 15px; /* Space between buttons */
 }
 
 .header-buttons button {
@@ -144,14 +187,14 @@ body {
     border: none;
     color: #141e3f;
     font-size: 24px;
-    margin-left: 10px;
     cursor: pointer;
     padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .header-buttons button:hover {
     background-color: #00cc99;
-    border-radius: 50%;
     color: white;
 }
 
@@ -208,16 +251,6 @@ body {
 
 .search-btn:hover {
     background-color: #007f6a;
-}
-
-/* Active Section Indicator */
-.active-indicator {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: green;
-    display: inline-block;
-    margin-left: 8px;
 }
 
 /* Dashboard Widgets */

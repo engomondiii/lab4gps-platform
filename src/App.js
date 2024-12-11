@@ -20,6 +20,16 @@ import ForgotPassword from "./components/Auths/ForgotPassword"; // Forgot Passwo
 import Layout from "./components/Layout/Layout"; // Layout for Navbar/Footer
 import AdvancedUserProfile from "./components/Auths/AdvancedUserProfile"; // Import the Profile component
 import AddProblemSolution from './components/Problem&Solution/AddProblemSolution';
+
+// IdeaHub Pages
+import IdeaHubDashboard from "./components/IdeaHub/IdeaHubDashboard";
+import ProposeIdea from "./components/IdeaHub/ProposeIdea";
+import IdeaDetails from "./components/IdeaHub/IdeaDetails";
+import IdeaDiscussion from "./components/IdeaHub/IdeaDiscussion";
+import IdeaVoting from "./components/IdeaHub/IdeaVoting";
+import IdeaTracking from "./components/IdeaHub/IdeaTracking";
+import Leaderboard from "./components/IdeaHub/Leaderboard";
+
 import "./styles/global.css";
 
 const App = () => {
@@ -156,6 +166,64 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <AdvancedUserProfile />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* IdeaHub Pages - Protected Routes */}
+          <Route
+            path="/member-portal/idea-hub/dashboard"
+            element={
+              <ProtectedRoute>
+                <IdeaHubDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/member-portal/idea-hub/propose"
+            element={
+              <ProtectedRoute>
+                <ProposeIdea />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/member-portal/idea-hub/idea/:id"
+            element={
+              <ProtectedRoute>
+                <IdeaDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/member-portal/idea-hub/idea/:id/discussion"
+            element={
+              <ProtectedRoute>
+                <IdeaDiscussion />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/member-portal/idea-hub/vote"
+            element={
+              <ProtectedRoute>
+                <IdeaVoting />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/member-portal/idea-hub/tracking"
+            element={
+              <ProtectedRoute>
+                <IdeaTracking />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/member-portal/idea-hub/leaderboard"
+            element={
+              <ProtectedRoute>
+                <Leaderboard />
               </ProtectedRoute>
             }
           />

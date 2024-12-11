@@ -11,7 +11,6 @@ import {
   FaHome,
   FaChevronLeft,
   FaChevronRight,
-  FaUserCircle,
   FaBell,
   FaCog,
   FaTh,
@@ -23,6 +22,7 @@ import {
 import { useAuth } from "../Context/AuthContext"; // Import AuthContext hook
 import AdvancedUserProfile from "../components/Auths/AdvancedUserProfile";
 import InternalArchive from "../components/Archive/InternalArchive";
+import IdeaHubDashboard from "../components/IdeaHub/IdeaHubDashboard";
 import "../styles/MemberPortalDashboard.css";
 
 const MemberPortalDashboard = () => {
@@ -62,6 +62,12 @@ const MemberPortalDashboard = () => {
   const toggleProfile = () => {
     setViewingProfile(!viewingProfile);
   };
+
+  const baseUrl = process.env.REACT_APP_API_URL || "http://127.0.0.1:8080";
+
+  const profilePictureUrl = user?.profile_picture?.startsWith("http")
+    ? user.profile_picture
+    : `${baseUrl}${user?.profile_picture || ""}`;
 
   return (
     <div className="dashboard-container">
@@ -149,9 +155,16 @@ const MemberPortalDashboard = () => {
             <button className="btn-quick-actions">
               <FaTh />
             </button>
-            <button className="btn-user-profile" onClick={toggleProfile}>
-              <FaUserCircle />
-            </button>
+            <div className="profile-avatar-container" onClick={toggleProfile}>
+              <img
+                className="profile-avatar"
+                src={
+                  profilePictureUrl || "https://via.placeholder.com/50?text=Avatar"
+                }
+                alt="User Avatar"
+              />
+              <p className="profile-name">{user?.username || "User"}</p>
+            </div>
           </div>
         </header>
 
@@ -187,6 +200,8 @@ const MemberPortalDashboard = () => {
             <AdvancedUserProfile />
           ) : activeSection === "archive" ? (
             <InternalArchive />
+          ) : activeSection === "ideahub" ? (
+            <IdeaHubDashboard />
           ) : activeSection === "dashboard" ? (
             <div className="dashboard-overview">
               <h3>Dashboard Overview</h3>

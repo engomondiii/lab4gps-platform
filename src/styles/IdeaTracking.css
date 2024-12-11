@@ -1,0 +1,83 @@
+/* General Container */
+.tracking-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Arial", sans-serif;
+  }
+  
+  /* Header */
+  .tracking-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .tracking-header h1 {
+    font-size: 2rem;
+    color: #141e3f;
+  }
+  
+  .tracking-header p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Ideas List */
+  .ideas-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Idea Card */
+  .idea-card {
+    background-color: #f4f4f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .idea-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .idea-card h3 {
+    font-size: 1.25rem;
+    color: #141e3f;
+    margin-bottom: 10px;
+  }
+  
+  .idea-card p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* View Details Button */
+  .view-details-btn {
+    background-color: #00cc99;
+    color: #fff;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-details-btn:hover {
+    background-color: #009977;
+  }
+  
+  /* Loading State */
+  .loading {
+    text-align: center;
+    color: #555;
+    font-size: 1.2rem;
+  }
+  
