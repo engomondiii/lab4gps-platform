@@ -1,343 +1,375 @@
 /* DetailView.module.css */
 
 .container {
-    width: 90%;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .backButton {
-    align-self: flex-start;
-    margin: 20px;
-    padding: 8px 12px;
-    background: #141E3F;
-    color: #FCF8F8;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .card {
-    width: 100%;
-    padding: 12px;
-    background: white;
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.10);
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .profileSection {
-    align-self: stretch;
-    padding: 6px 8px;
-    background: white;
-    border-bottom: 0.20px #666666 solid;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .profileInfo {
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-  }
-  
-  .authorImageWrapper {
-    width: 80px;
-    height: 80px;
-    position: relative;
-    border-radius: 9999px;
-    background: #D9D9D9;
-    overflow: hidden;
-  }
-  
-  .authorImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .authorDetails {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .authorName {
-    color: black;
-    font-size: 25px;
-    font-weight: 700;
-    line-height: 30px;
-  }
-  
-  .authorTitle {
-    color: black;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    text-align: center;
-  }
-  
-  .dropdownIcon {
-    width: 36px;
-    height: 36px;
-    background: transparent;
-    position: relative;
-  }
-  
-  .dropdownArrow {
-    width: 12.73px;
-    height: 8.48px;
-    /* background: black; */
-    position: absolute;
-    left: 11.64px;
-    top: 14.02px;
-  }
-  
-  .infoSection {
-    align-self: stretch;
-    padding: 0 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .ageInfo {
-    font-size: 20px;
-    line-height: 24px;
-  }
-  
-  .ageBold {
-    font-weight: 700;
-  }
-  
-  .ageNormal {
-    font-weight: 400;
-  }
-  
-  .bio {
-    color: #666666;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 24px;
-  }
-  
-  .contactInfo {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 12px;
-  }
-  
-  .contactItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-  }
-  
-  .contactIcon {
-    width: 24px;
-    height: 24px;
-    /* place the icon at the center */
-    display: flex;
-    justify-content: center;
-    color: #666666;
-    /* background: black; */
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
 
-  }
-  
-  .mainImageSection {
+.backButton {
+  align-self: flex-start;
+  margin: 2rem;
+  padding: 0.5rem 0.75rem;
+  background: #141E3F;
+  color: #FCF8F8;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.card {
+  width: 100%;
+  padding: 1rem;
+  background: white;
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.10);
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.profileSection, .infoSection, .descriptionSection, .commentsSection {
+  width: 100%;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profileSection {
+  border-bottom: 0.0125rem #666666 solid;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profileInfo {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.authorImageWrapper {
+  width: 5rem;
+  height: 5rem;
+  position: relative;
+  border-radius: 50%;
+  background: #D9D9D9;
+  overflow: hidden;
+}
+
+.authorImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.authorDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.authorName {
+  color: black;
+  font-size: 1.5625rem;
+  font-weight: 700;
+  line-height: 1.875rem;
+}
+
+.authorTitle {
+  color: black;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+.dropdownIcon {
+  width: 2.25rem;
+  height: 2.25rem;
+  background: transparent;
+  position: relative;
+}
+
+.dropdownArrow {
+  width: 0.8rem;
+  height: 0.5rem;
+  position: absolute;
+  left: 0.75rem;
+  top: 0.875rem;
+}
+
+.ageInfo {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+.ageBold {
+  font-weight: 700;
+}
+
+.ageNormal {
+  font-weight: 400;
+}
+
+.bio {
+  color: #666666;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.contactInfo {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.75rem;
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.contactIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  color: #666666;
+}
+
+.mainImageSection {
+  width: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.mainImage {
+  width: 100%;
+  border: 0.0625rem solid black;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+  height: 27.375rem;
+  object-fit: cover;
+}
+
+.overlayText {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.banner {
+  width: 100%;
+  height: 3.875rem;
+  background: #00CC99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-top: -0.0625rem;
+}
+
+.bannerText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+}
+
+.descriptionContent {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sectionTitle {
+  color: black;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+}
+
+.detailedDescription {
+  color: #090909;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+  white-space: pre-wrap;
+}
+
+.statsSection {
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  font-size: 0.8125rem;
+  color: rgba(20, 30, 63, 0.5);
+}
+
+.statCount {
+  font-size: 1rem;
+  color: rgba(20, 30, 63, 0.5);
+}
+
+.likesSection {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.comment {
+  display: flex;
+  gap: 1.3125rem;
+}
+
+.commenterImageWrapper {
+  width: 5rem;
+  height: 5rem;
+  position: relative;
+  border-radius: 50%;
+  background: #D9D9D9;
+  overflow: hidden;
+}
+
+.commenterImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.commentContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5625rem;
+}
+
+.commentHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.commentAuthor {
+  font-size: 1.5625rem;
+  font-weight: 700;
+}
+
+.commentTime {
+  color: #666666;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.commentText {
+  font-size: 1rem;
+  font-weight: 400;
+  color: black;
+}
+
+.commentActions {
+  display: flex;
+  gap: 1.5625rem;
+}
+
+.actionItem {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  font-size: 0.8125rem;
+  color: rgba(20, 30, 63, 0.5);
+}
+
+.separator {
+  font-size: 1.25rem;
+  color: #666666;
+  font-weight: 700;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .container {
     width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+    padding: 0.5rem;
   }
-  
+
+  .profileSection, .infoSection, .descriptionSection, .commentsSection {
+    padding: 0.5rem;
+  }
+
+  .authorName, .authorTitle, .commentAuthor, .commentTime {
+    font-size: 1rem;
+  }
+
+  .bannerText, .sectionTitle, .bio, .detailedDescription {
+    font-size: 1rem;
+  }
+
   .mainImage {
-    width: 100%;
-    border: 1px solid black;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    height: 438px;
-    object-fit: cover;
+    height: auto;
   }
-  
+
   .overlayText {
-    width: 976px;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 90%;
+    font-size: 1rem;
   }
-  
-  .banner {
+}
+
+@media (max-width: 480px) {
+  .container {
     width: 100%;
-    height: 62px;
-    background: #00CC99;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    margin-top: -1px;
+    padding: 0.25rem;
   }
-  
-  .bannerText {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
+
+  .profileSection, .infoSection, .descriptionSection, .commentsSection {
+    padding: 0.25rem;
   }
-  
-  .descriptionSection {
-    width: 1118px;
-    background: white;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+
+  .authorName, .authorTitle, .commentAuthor, .commentTime {
+    font-size: 0.875rem;
   }
-  
-  .descriptionContent {
-    padding: 12px;
-    border-radius: 12px;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+
+  .bannerText, .sectionTitle, .bio, .detailedDescription {
+    font-size: 0.875rem;
   }
-  
-  .sectionTitle {
-    color: black;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
+
+  .mainImage {
+    height: auto;
   }
-  
-  .detailedDescription {
-    color: #090909;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.2px;
-    white-space: pre-wrap;
+
+  .overlayText {
+    width: 80%;
+    font-size: 0.875rem;
   }
-  
-  .statsSection {
-    padding: 8px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .statItem {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    font-size: 13px;
-    color: rgba(20, 30, 63, 0.5);
-  }
-  
-  .statCount {
-    font-size: 16px;
-    color: rgba(20, 30, 63, 0.5);
-  }
-  
-  .likesSection {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-  }
-  
-  .commentsSection {
-    padding-top: 9px;
-    padding-bottom: 26px;
-    padding-left: 10px;
-    padding-right: 68px;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  
-  .comment {
-    display: flex;
-    gap: 21px;
-  }
-  
-  .commenterImageWrapper {
-    width: 80px;
-    height: 80px;
-    position: relative;
-    border-radius: 9999px;
-    background: #D9D9D9;
-    overflow: hidden;
-  }
-  
-  .commenterImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .commentContent {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-  
-  .commentHeader {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .commentAuthor {
-    font-size: 25px;
-    font-weight: 700;
-  }
-  
-  .commentTime {
-    color: #666666;
-    font-size: 20px;
-    font-weight: 400;
-  }
-  
-  .commentText {
-    font-size: 16px;
-    font-weight: 400;
-    color: black;
-  }
-  
-  .commentActions {
-    display: flex;
-    gap: 25px;
-  }
-  
-  .actionItem {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    font-size: 13px;
-    color: rgba(20, 30, 63, 0.5);
-  }
-  
-  .separator {
-    font-size: 20px;
-    color: #666666;
-    font-weight: 700;
-  }
-  
+}

@@ -11,8 +11,6 @@ import ProblemSolutionCard from '../Problem&Solution/ProblemSolutionCard';
 import mockData from '../Problem&Solution/mockData'; // Importing the mockData
 import styles from '../../styles/Hero.module.css';
 
-// A sample dictionary for converting known locations to lat/lng.
-// In a production scenario, you might use a geocoding API.
 const locationDictionary = {
   "Nairobi, Kenya": { lat: 1.2921, lng: 36.8219 },
   "Rabat, Morocco": { lat: 34.0209, lng: -6.8417 },
@@ -22,13 +20,10 @@ const locationDictionary = {
 };
 
 function convertLocationToLatLng(location, country) {
-  // Try to find a matching key in the dictionary
   const key = `${location}, ${country}`;
   if (locationDictionary[key]) {
     return locationDictionary[key];
   }
-  // If not found, return a default or null
-  // In a real implementation, you'd have a fallback or a geocoding call here.
   return null;
 }
 
@@ -51,7 +46,6 @@ const Hero = () => {
 
   useEffect(() => {
     if (globeEl.current) {
-      // Allow user to drag/move globe only when showCards is true
       globeEl.current.controls().enabled = showCards;
     }
   }, [showCards]);
@@ -141,7 +135,6 @@ const Hero = () => {
           authorTitle={selectedMarker.cardData.authorTitle}
           authorImage={selectedMarker.cardData.authorImage}
           mainImage={selectedMarker.cardData.mainImage}
-          overlayText={selectedMarker.cardData.overlayText}
           type={selectedMarker.type.charAt(0).toUpperCase() + selectedMarker.type.slice(1)}
           shortTitle={selectedMarker.cardData.shortTitle}
           detailedDescription={selectedMarker.cardData.detailedDescription}
@@ -150,8 +143,10 @@ const Hero = () => {
           onSeeMore={() => {
             navigate(`/location/${selectedMarker.id}`);
           }}
-          onClose={handleCloseCard} // Pass the onClose handler
-          floating={true}
+          onClose={handleCloseCard}
+          floating={true} // Floating is true for Hero
+          showDonation={true} // Ensure donation section is shown
+          size="small" // Pass the new size prop
           location={selectedMarker.cardData.location ? `${selectedMarker.cardData.location}, ${selectedMarker.cardData.country || ''}` : 'Unknown Location'} 
         />
       )}

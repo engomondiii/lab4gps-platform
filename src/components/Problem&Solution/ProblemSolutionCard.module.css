@@ -1,5 +1,16 @@
 /* src/components/Problem&Solution/ProblemSolutionCard.module.css */
 
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the card and donation section */
+  width: 100%;
+  max-width: 700px; /* Ensure consistency with card max-width */
+  margin: 0 auto; /* Center the wrapper */
+  box-sizing: border-box;
+}
+
+/* Existing .card styles remain unchanged */
 .card {
   width: 100%;
   max-width: 700px;
@@ -12,6 +23,7 @@
   font-family: Helvetica75, sans-serif;
   color: #000;
   position: relative; /* For hover overlay */
+  box-sizing: border-box;
 }
 
 .floating {
@@ -20,8 +32,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000; 
-  width: 90%;
-  max-width: 700px;
+  width: 80%; /* Reduced from 90% to make it smaller */
+  max-width: 600px; /* Reduced from 700px to make it smaller */
   animation: fadeIn 0.3s ease-out;
   pointer-events: none; /* Allow clicking through except where specified */
 }
@@ -31,9 +43,10 @@
   to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
+/* Existing styles continue... */
+
 .cardHeader, 
 .ctaContainer, 
-.donationSection,
 .closeIcon, 
 .seeMoreButton, 
 .donateButton {
@@ -123,15 +136,15 @@
 }
 
 .mainImage {
-  width: 310px;
-  height: 265px;
+  width: 100%; /* Changed to 100% for responsiveness */
+  height: 100%;
   object-fit: cover;
 }
 
 .overlayText {
   position: absolute;
   bottom: 20px;
-  width: 258px;
+  width: 100%; /* Changed to 100% for responsiveness */
   text-align: center;
   color: #fff;
   font-size: 20px;
@@ -211,12 +224,15 @@
 }
 
 .donationSection {
+  width: 100%; /* Ensure it spans the full width */
   padding: 12px;
   background-color: #f9f9f9;
   border-top: 1px solid #eee;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  box-sizing: border-box;
+  margin-top: 10px; /* Space between card and donation section */
 }
 
 .donationInfo {
@@ -225,7 +241,6 @@
   gap: 8px;
   font-size: 16px;
   color: #367162;
-  pointer-events: none; 
 }
 
 .donationIcon {
@@ -239,7 +254,6 @@
   background-color: #ddd;
   border-radius: 5px;
   overflow: hidden;
-  pointer-events: none;
 }
 
 .progress {
@@ -247,10 +261,23 @@
   background-color: #00cc99;
   width: 0%;
   transition: width 0.3s ease;
-  pointer-events: none;
 }
 
-.donationAmount {
+.donationDetails {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+}
+
+.donationStats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Fill the container width */
+  gap: 4px;
+}
+
+.donationAmount, .donationPercentage {
   font-size: 14px;
   color: #666;
   text-align: right;
@@ -265,6 +292,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  align-self: flex-end;
 }
 
 .donateButton:hover {
@@ -299,14 +327,12 @@
   font-size: 13px;
   color: rgba(20, 30, 63, 0.5);
   border-radius: 0 0 12px 12px;
-  pointer-events: none; /* Non-interactive */
 }
 
 .statItem {
   display: flex;
   align-items: center;
   gap: 2px;
-  pointer-events: none;
 }
 
 .hoverOverlay {
@@ -321,7 +347,6 @@
   background-color: rgba(0,0,0,0.5);
   padding: 4px 8px;
   border-radius: 4px;
-  pointer-events: none;
 }
 
 .card:hover .hoverOverlay {
@@ -354,4 +379,21 @@
   .overlayText {
     width: 100%;
   }
+
+  .donationDetails {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .donationDetails span {
+    margin-bottom: 4px;
+  }
 }
+
+/* New .smallCard class for Hero section */
+.smallCard {
+  max-width: 500px; /* Reduced max-width for smaller size */
+  width: 70%; /* Reduced width to 70% */
+}
+
+/* Optional: Adjust the progress bar colors or styles */

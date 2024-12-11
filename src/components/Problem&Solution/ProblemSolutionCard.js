@@ -1,5 +1,3 @@
-// src/components/Problem&Solution/ProblemSolutionCard.js
-
 import React from 'react';
 import styles from './ProblemSolutionCard.module.css';
 import { FaEye, FaComment, FaHeart, FaUserCircle, FaTimes, FaDonate } from 'react-icons/fa';
@@ -13,12 +11,12 @@ const ProblemSolutionCard = ({
   type,
   shortTitle,
   detailedDescription,
-  onSeeMore, // Function to handle "See More" action
-  onClose,   // Function to handle closing the card
-  floating = false, // Determines if the card should be floating (Hero) or fixed (SNSPage)
-  location, // Location string
-  donationAmount = 0, // Current donation
-  donationGoal = 1000, // Donation goal
+  onSeeMore,
+  onClose,
+  floating = false,
+  location,
+  donationAmount = 0,
+  donationGoal = 1000,
 }) => {
   const renderDescription = (text) => {
     return text.split('\n').map((line, i) => {
@@ -89,22 +87,6 @@ const ProblemSolutionCard = ({
             </div>
           </section>
 
-          {floating && (
-            <div className={styles.donationSection}>
-              <div className={styles.donationInfo}>
-                <FaDonate className={styles.donationIcon} />
-                <span>Donate to this cause</span>
-              </div>
-              <div className={styles.progressBar}>
-                <div className={styles.progress} style={{ width: `${donationProgress}%` }}></div>
-              </div>
-              <div className={styles.donationAmount}>
-                ${donationAmount} raised of ${donationGoal}
-              </div>
-              <button className={styles.donateButton}>Donate Now</button>
-            </div>
-          )}
-
           <div className={styles.ctaContainer}>
             <button className={styles.seeMoreButton} onClick={onSeeMore}>See More</button>
           </div>
@@ -127,11 +109,27 @@ const ProblemSolutionCard = ({
           </div>
         </div>
       </div>
-      {/* {location && (
-        <div className={styles.hoverOverlay}>
-          {`${type.charAt(0).toUpperCase() + type.slice(1)} in ${location}`}
+
+      {floating && (
+        <div className={styles.donationSection}>
+          <div className={styles.donationInfo}>
+            <FaDonate className={styles.donationIcon} />
+            <span>Donate to this cause</span>
+          </div>
+          <div className={styles.progressBar}>
+            <div className={styles.progress} style={{ width: `${donationProgress}%` }}></div>
+          </div>
+          <div className={styles.donationStats}>
+            <span className={styles.donationAmount}>
+              ${donationAmount.toLocaleString()} raised of ${donationGoal.toLocaleString()}
+            </span>
+            <span className={styles.donationPercentage}>
+              {donationProgress.toFixed(0)}% donated
+            </span>
+          </div>
+          <button className={styles.donateButton}>Donate Now</button>
         </div>
-      )} */}
+      )}
     </article>
   );
 };
