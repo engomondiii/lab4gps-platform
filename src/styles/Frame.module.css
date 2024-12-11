@@ -1,54 +1,50 @@
-/* src/styles/Frame.module.css */
-
-.overlay {
+.frame {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 100%;
+  z-index: 2; /* Ensure it's above the globe */
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #fff;
-  z-index: 2;
-  pointer-events: none; /* Allow interactions to pass through */
+  justify-content: center;
+  pointer-events: none; /* Allow interactions to pass through except for the button */
 }
 
 .heading1 {
-  justify-items: center;
+  text-align: center;
   font-size: 3rem;
   margin: 0;
-  pointer-events: none; /* Allow interactions to pass through */
-  
+  pointer-events: none;
 }
 
 .solvingGlobalIssuesContainer {
   margin: 0;
-  align-self: center;
-  pointer-events: none; /* Allow interactions to pass through */
   color: #fff;
+  pointer-events: none;
 }
 
 .container1 {
   font-size: 1.5rem; /* 24px */
   margin-top: 0.625rem; /* 10px */
-  pointer-events: none; /* Allow interactions to pass through */
+  pointer-events: none;
+  text-align: center;
 }
 
 .subheading {
   margin: 0;
-  pointer-events: none; /* Allow interactions to pass through */
+  pointer-events: none;
 }
 
-/* Updated button styles */
 .button {
-  margin-top: 1.25rem; 
+  margin-top: 1.25rem;
   padding: 0.8rem 1.5rem 0.8625rem;
   font-size: 1.25rem;
   font-family: 'Helvetica75', sans-serif;
   border: none;
   border-radius: 0.3125rem;
-  background-color: #00cc99;
+  background-color: #367162;
   color: #fff;
   cursor: pointer;
   z-index: 3; /* Ensure the button is above other elements */
@@ -58,4 +54,21 @@
 
 .button:hover {
   background-color: #009977;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .heading1 {
+    font-size: 2rem;
+  }
+
+  .container1 {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem 0.7rem;
+  }
 }

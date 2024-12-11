@@ -1,5 +1,3 @@
-// src/components/Hero/Frame.js
-
 import React, { useState } from 'react';
 import styles from '../../styles/Frame.module.css';
 import Problems from './Problems';
@@ -15,7 +13,7 @@ const Frame = ({ selectedMarker, setShowCards }) => {
   };
 
   return (
-    <div className={styles.overlay}>
+    <div className={styles.frame}>
       {!showProblems ? (
         <>
           <div className={styles.heading1}>

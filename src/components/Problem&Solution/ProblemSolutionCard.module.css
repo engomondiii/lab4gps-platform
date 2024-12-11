@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center; /* Center the card and donation section */
   width: 100%;
-  max-width: 700px; /* Ensure consistency with card max-width */
+  max-width: 90vw; /* Ensure consistency with card max-width */
   margin: 0 auto; /* Center the wrapper */
   box-sizing: border-box;
 }
@@ -13,13 +13,13 @@
 /* Existing .card styles remain unchanged */
 .card {
   width: 100%;
-  max-width: 700px;
+  max-width: 90vw;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
   border-radius: 12px;
   background: #fff;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1rem;
   font-family: Helvetica75, sans-serif;
   color: #000;
   position: relative; /* For hover overlay */
@@ -32,8 +32,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000; 
-  width: 80%; /* Reduced from 90% to make it smaller */
-  max-width: 600px; /* Reduced from 700px to make it smaller */
+  width: 80vw; /* Reduced from 90% to make it smaller */
+  max-width: 80vw; /* Reduced from 700px to make it smaller */
   animation: fadeIn 0.3s ease-out;
   pointer-events: none; /* Allow clicking through except where specified */
 }
@@ -57,7 +57,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 8px;
+  padding: 0.5rem;
   border-bottom: 0.2px solid #666;
   border-radius: 12px 12px 0 0;
   background: #fff;
@@ -66,18 +66,18 @@
 .profileInfo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .authorImageWrapper {
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
   position: relative;
 }
 
 .authorImage {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -85,25 +85,25 @@
 .authorText {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .authorName {
-  font-size: 25px;
-  line-height: 30px;
+  font-size: 1.5rem;
+  line-height: 1.875rem;
   margin: 0;
 }
 
 .authorTitle {
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
   text-align: center;
   margin: 0;
 }
 
 .closeIcon {
   cursor: pointer;
-  font-size: 24px;
+  font-size: 1.5rem;
   color: #666;
   background: none;
   border: none;
@@ -111,15 +111,17 @@
 
 .cardBody {
   display: flex;
-  gap: 8px;
-  padding: 0 8px 8px;
+  gap: 0.5rem;
+  /* bottom radius */
+  border-radius: 0 0 0.75rem 0.75rem;
+  padding: 0 0.5rem 0.5rem;
 }
 
 .leftPanel {
   display: flex;
   flex-direction: column;
   gap: 0;
-  width: 258px;
+  width: 35vw;
   border-radius: 12px;
   background: #fff;
   pointer-events: none; /* Non-interactive */
@@ -127,7 +129,7 @@
 
 .imageSection {
   position: relative;
-  height: 268px;
+  height: 35vw;
   border-radius: 12px 12px 0 0;
   overflow: hidden;
   display: flex;
@@ -143,26 +145,26 @@
 
 .overlayText {
   position: absolute;
-  bottom: 20px;
+  bottom: 1.25rem;
   width: 100%; /* Changed to 100% for responsiveness */
   text-align: center;
   color: #fff;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
   font-family: Helvetica75, sans-serif;
   font-weight: 700;
 }
 
 .typeTag {
-  height: 42px;
+  height: 2.625rem;
   border-radius: 0 0 12px 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: Helvetica75, sans-serif;
   font-weight: 700;
-  line-height: 24px;
+  line-height: 1.5rem;
   color: #000;
   pointer-events: none; /* Non-interactive */
 }
@@ -182,75 +184,75 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-height: 350px;
+  max-height: 50vh;
   overflow: hidden;
   transition: max-height 0.3s ease;
   pointer-events: none; /* Non-interactive by default */
 }
 
 .contentSection {
-  padding: 12px;
+  padding: 0.75rem;
   overflow: auto;
   pointer-events: none; /* Text is see-through; globe can be interacted with behind */
 }
 
 .sectionTitle {
-  font-size: 20px;
-  line-height: 24px;
-  margin: 0 0 12px 0;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  margin: 0 0 0.75rem 0;
   pointer-events: none;
 }
 
 .description {
-  font-size: 16px;
+  font-size: 1rem;
   font-family: Helvetica, sans-serif;
-  line-height: 19.2px;
+  line-height: 1.2rem;
   color: #090909;
   pointer-events: none;
 }
 
 .descriptionLine {
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
   pointer-events: none;
 }
 
 .subsectionTitle {
-  font-size: 16px;
+  font-size: 1rem;
   font-family: Helvetica75, sans-serif;
   font-weight: 700;
-  margin-top: 16px;
-  margin-bottom: 8px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
   pointer-events: none;
 }
 
 .donationSection {
   width: 100%; /* Ensure it spans the full width */
-  padding: 12px;
+  padding: 0.75rem;
   background-color: #f9f9f9;
   border-top: 1px solid #eee;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
   box-sizing: border-box;
-  margin-top: 10px; /* Space between card and donation section */
+  margin-top: 0.625rem; /* Space between card and donation section */
 }
 
 .donationInfo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 16px;
+  gap: 0.5rem;
+  font-size: 1rem;
   color: #367162;
 }
 
 .donationIcon {
-  font-size: 24px;
+  font-size: 1.5rem;
   color: #367162;
 }
 
 .progressBar {
   width: 100%;
-  height: 10px;
+  height: 0.625rem;
   background-color: #ddd;
   border-radius: 5px;
   overflow: hidden;
@@ -266,7 +268,7 @@
 .donationDetails {
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #666;
 }
 
@@ -274,18 +276,18 @@
   display: flex;
   justify-content: space-between;
   width: 100%; /* Fill the container width */
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .donationAmount, .donationPercentage {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #666;
   text-align: right;
   pointer-events: none;
 }
 
 .donateButton {
-  padding: 10px 16px;
+  padding: 0.625rem 1rem;
   background-color: #367162;
   color: #fff;
   border: none;
@@ -302,11 +304,11 @@
 .ctaContainer {
   display: flex;
   justify-content: flex-end;
-  padding: 4px 12px;
+  padding: 0.25rem 0.75rem;
 }
 
 .seeMoreButton {
-  padding: 12px;
+  padding: 0.75rem;
   background: #666666;
   border-radius: 8px;
   color: #fff;
@@ -323,8 +325,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  font-size: 13px;
+  padding: 0.5rem 0;
+  font-size: 0.8125rem;
   color: rgba(20, 30, 63, 0.5);
   border-radius: 0 0 12px 12px;
 }
@@ -332,20 +334,20 @@
 .statItem {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 0.125rem;
 }
 
 .hoverOverlay {
   display: none;
   position: absolute;
-  bottom: 10px;
+  bottom: 0.625rem;
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
   background-color: rgba(0,0,0,0.5);
-  padding: 4px 8px;
+  padding: 0.25rem 0.5rem;
   border-radius: 4px;
 }
 
@@ -368,7 +370,7 @@
   }
 
   .donationSection {
-    padding: 8px;
+    padding: 0.5rem;
   }
 
   .mainImage {
@@ -386,13 +388,13 @@
   }
 
   .donationDetails span {
-    margin-bottom: 4px;
+    margin-bottom: 0.25rem;
   }
 }
 
 /* New .smallCard class for Hero section */
 .smallCard {
-  max-width: 500px; /* Reduced max-width for smaller size */
+  max-width: 70vw; /* Reduced max-width for smaller size */
   width: 70%; /* Reduced width to 70% */
 }
 
