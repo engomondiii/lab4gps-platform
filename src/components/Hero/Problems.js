@@ -26,7 +26,6 @@ const Problems = () => {
     <div className={styles.problems}>
       <div className={styles.overlay}>
         <h1 className={styles.problemsTitle}>Problems</h1>
-        {showStats ? (
           <div className={styles.stats}>
             <div className={styles.notSolved523Container}>
               <p className={styles.notSolved}>not solved</p>
@@ -41,16 +40,7 @@ const Problems = () => {
               <h3 className={styles.boldH3}>{stats.beingSolved}</h3>
             </div>
           </div>
-        ) : (
-          <div className={styles.featuredProblem}>
-            <p className={styles.featuredTitle}>Problems which visitor clicked most</p>
-            <p className={styles.featuredContent}>
-              <span className={styles.quote}>"</span>
-              <span className={styles.problemText}>Africa Water Shortages</span>
-              <span className={styles.quote}>"</span>
-            </p>
-          </div>
-        )}
+      
       </div>
       <Button  onClick={() => navigate('/add')} className={styles.addButton}>Add</Button>
     </div>

@@ -25,7 +25,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      {/* Wavy Separator */}
+      {/* Wavy Separator
       <div className="footer-separator">
         <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -40,7 +40,7 @@ const Footer = () => {
             fill="url(#footer-gradient-colors)"
           />
         </svg>
-      </div>
+      </div> */}
 
       <div className="footer-container">
         <div className="footer-section">
