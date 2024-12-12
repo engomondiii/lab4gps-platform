@@ -57,7 +57,7 @@
 }
 
 .login-form input:focus {
-  border: 1px solid #00cc99;
+  border: 1px solid #367162;
   outline: none;
   box-shadow: 0 0 5px rgba(0, 204, 153, 0.5);
 }
@@ -69,7 +69,7 @@
 }
 
 .login-form button {
-  background: #00cc99;
+  background: #367162;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -81,7 +81,7 @@
 }
 
 .login-form button:hover {
-  background: #009977;
+  background: #367162;
   transform: scale(1.05);
 }
 
@@ -92,20 +92,20 @@
 }
 
 .login-form-container p a {
-  color: #00cc99;
+  color: #367162;
   font-weight: bold;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .login-form-container p a:hover {
-  color: #009977;
+  color: #367162;
 }
 
 /* Poster Section */
 .login-poster {
   flex: 1;
-  background: linear-gradient(135deg, #141e3f, #00cc99); /* Lab4GPS Blue to Green */
+  background: linear-gradient(135deg, #141e3f, #367162); /* Lab4GPS Blue to Green */
   color: #ffffff;
   display: flex;
   flex-direction: column;

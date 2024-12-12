@@ -63,7 +63,7 @@
 
 .signup-form input:focus,
 .otp-form input:focus {
-  border: 1px solid #00cc99;
+  border: 1px solid #367162;
   outline: none;
   box-shadow: 0 0 5px rgba(0, 204, 153, 0.5);
 }
@@ -76,7 +76,7 @@
 
 .signup-form button,
 .otp-form button {
-  background: #00cc99;
+  background: #367162;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -89,14 +89,14 @@
 
 .signup-form button:hover,
 .otp-form button:hover {
-  background: #009977;
+  background: #367162;
   transform: scale(1.05);
 }
 
 /* Poster Section */
 .signup-poster {
   flex: 1;
-  background: linear-gradient(135deg, #141e3f, #00cc99);
+  background: linear-gradient(135deg, #141e3f, #367162);
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -159,7 +159,7 @@
 }
 
 .signup-success .go-login {
-  background: #00cc99;
+  background: #367162;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -171,7 +171,7 @@
 }
 
 .signup-success .go-login:hover {
-  background: #009977;
+  background: #367162;
   transform: scale(1.05);
 }
 

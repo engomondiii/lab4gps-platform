@@ -48,7 +48,7 @@
 
 .search-bar button {
   padding: 10px 15px;
-  background: #00cc99;
+  background: #367162;
   color: white;
   border: none;
   border-radius: 0 5px 5px 0;
@@ -75,7 +75,7 @@
 }
 
 .tag-filter .tag-btn.active {
-  background: #00cc99;
+  background: #367162;
   color: white;
 }
 
@@ -122,7 +122,7 @@
   display: inline-block;
   margin-right: 10px;
   font-size: 14px;
-  color: #00cc99;
+  color: #367162;
 }
 
 .file-media {
@@ -193,7 +193,7 @@
 }
 
 .file-actions .like-btn {
-  background: #00cc99;
+  background: #367162;
   color: white;
 }
 
@@ -271,7 +271,7 @@
 
 .file-comments button {
   padding: 10px 15px;
-  background: #00cc99;
+  background: #367162;
   color: white;
   border: none;
   border-radius: 5px;
@@ -311,7 +311,7 @@
 }
 
 .pagination-btn.active {
-  background: #00cc99;
+  background: #367162;
   color: white;
 }
 
@@ -347,7 +347,7 @@
 }
 
 .upload-form button {
-  background: #00cc99;
+  background: #367162;
   color: white;
   border: none;
   cursor: pointer;
@@ -553,7 +553,7 @@
 }
 
 .pagination-btn.active {
-  background: #00cc99; /* Accent orange */
+  background: #367162; /* Accent orange */
   color: #000000;
   font-weight: bold;
   box-shadow: 0px 4px 10px rgba(255, 153, 0, 0.4);

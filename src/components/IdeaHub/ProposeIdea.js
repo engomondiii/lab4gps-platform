@@ -17,6 +17,7 @@ const ProposeIdea = () => {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [expandedSection, setExpandedSection] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -42,13 +43,16 @@ const ProposeIdea = () => {
     e.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length === 0) {
-      // Mock submission process
       console.log("Form Submitted:", formData);
       setSubmitted(true);
       setTimeout(() => navigate("/idea-hub"), 2000);
     } else {
       setErrors(formErrors);
     }
+  };
+
+  const toggleSection = (section) => {
+    setExpandedSection((prev) => (prev === section ? null : section));
   };
 
   if (submitted) {
@@ -60,96 +64,105 @@ const ProposeIdea = () => {
     );
   }
 
+  const sections = [
+    {
+      id: "title",
+      label: "Idea Title",
+      placeholder: "Enter a compelling title for your idea",
+      value: formData.title,
+      type: "text",
+      error: errors.title,
+    },
+    {
+      id: "problem",
+      label: "Problem Addressed",
+      placeholder: "Describe the problem your idea aims to solve",
+      value: formData.problem,
+      type: "textarea",
+      error: errors.problem,
+    },
+    {
+      id: "solution",
+      label: "Proposed Solution",
+      placeholder: "Provide a detailed solution for the problem",
+      value: formData.solution,
+      type: "textarea",
+      error: errors.solution,
+    },
+    {
+      id: "resources",
+      label: "Estimated Resources Required",
+      placeholder: "List the resources needed to implement your idea",
+      value: formData.resources,
+      type: "textarea",
+      error: errors.resources,
+    },
+    {
+      id: "alignment",
+      label: "Alignment with Lab4GPS Goals",
+      placeholder: "Explain how this idea aligns with Lab4GPS's mission",
+      value: formData.alignment,
+      type: "textarea",
+      error: errors.alignment,
+    },
+    {
+      id: "tags",
+      label: "Tags (comma-separated)",
+      placeholder: "E.g., Environment, Health, Technology",
+      value: formData.tags,
+      type: "text",
+      error: errors.tags,
+    },
+  ];
+
   return (
-    <div className="propose-idea-container">
-      <h1>Propose a New Idea</h1>
-      <p>
-        Fill in the form below to propose your innovative idea. Provide as much
-        detail as possible to help others understand and support your
-        initiative.
+    <div className="propose-idea">
+      <h1 className="propose-idea-title">Propose a New Idea</h1>
+      <p className="propose-idea-description">
+        Drag and drop sections to reorder them. Click a section to expand and fill in the details.
       </p>
       <form className="idea-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="title">Idea Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleInputChange}
-            placeholder="Enter a compelling title for your idea"
-          />
-          {errors.title && <small className="error">{errors.title}</small>}
-        </div>
+        {sections.map((section, index) => (
+          <div
+            key={index}
+            className={`form-section ${expandedSection === section.id ? "expanded" : "collapsed"}`}
+          >
+            <div
+              className="form-section-header"
+              onClick={() => toggleSection(section.id)}
+            >
+              <span>{section.label}</span>
+              <span className="form-section-toggle">
+                {expandedSection === section.id ? "▲" : "▼"}
+              </span>
+            </div>
+            {expandedSection === section.id && (
+              <div className="form-section-body">
+                {section.type === "text" ? (
+                  <input
+                    type="text"
+                    id={section.id}
+                    name={section.id}
+                    value={section.value}
+                    onChange={handleInputChange}
+                    placeholder={section.placeholder}
+                  />
+                ) : (
+                  <textarea
+                    id={section.id}
+                    name={section.id}
+                    value={section.value}
+                    onChange={handleInputChange}
+                    placeholder={section.placeholder}
+                  />
+                )}
+                {section.error && <small className="error">{section.error}</small>}
+              </div>
+            )}
+          </div>
+        ))}
 
-        <div className="form-group">
-          <label htmlFor="problem">Problem Addressed</label>
-          <textarea
-            id="problem"
-            name="problem"
-            value={formData.problem}
-            onChange={handleInputChange}
-            placeholder="Describe the problem your idea aims to solve"
-          />
-          {errors.problem && <small className="error">{errors.problem}</small>}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="solution">Proposed Solution</label>
-          <textarea
-            id="solution"
-            name="solution"
-            value={formData.solution}
-            onChange={handleInputChange}
-            placeholder="Provide a detailed solution for the problem"
-          />
-          {errors.solution && (
-            <small className="error">{errors.solution}</small>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="resources">Estimated Resources Required</label>
-          <textarea
-            id="resources"
-            name="resources"
-            value={formData.resources}
-            onChange={handleInputChange}
-            placeholder="List the resources needed to implement your idea"
-          />
-          {errors.resources && (
-            <small className="error">{errors.resources}</small>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="alignment">Alignment with Lab4GPS Goals</label>
-          <textarea
-            id="alignment"
-            name="alignment"
-            value={formData.alignment}
-            onChange={handleInputChange}
-            placeholder="Explain how this idea aligns with Lab4GPS's mission"
-          />
-          {errors.alignment && (
-            <small className="error">{errors.alignment}</small>
-          )}
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="tags">Tags (comma-separated)</label>
-          <input
-            type="text"
-            id="tags"
-            name="tags"
-            value={formData.tags}
-            onChange={handleInputChange}
-            placeholder="E.g., Environment, Health, Technology"
-          />
-          {errors.tags && <small className="error">{errors.tags}</small>}
-        </div>
-
-        <div className="form-group">
+        <div className="form-section">
           <label htmlFor="attachments">Attachments (optional)</label>
           <input
             type="file"
