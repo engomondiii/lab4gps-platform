@@ -1,125 +1,226 @@
-/* General Container */
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+/* Container Styles */
 .discussion-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: "Arial", sans-serif;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.discussion-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.discussion-header h1 {
+  font-size: 36px;
+  color: #141e3f;
+  margin: 0;
+}
+
+.discussion-header p {
+  font-size: 18px;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Idea List Styles */
+.idea-list {
+  text-align: center;
+}
+
+.ideas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.idea-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: left;
+}
+
+.idea-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.idea-title {
+  font-size: 20px;
+  color: #141e3f;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.idea-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.join-discussion-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: #141e3f;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.join-discussion-btn:hover {
+  background-color: #367162;
+  transform: scale(1.03);
+}
+
+/* Chat Room Styles */
+.chat-room {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+
+.back-button:hover {
+  color: #367162;
+}
+
+.messages-container {
+  margin: 20px 0;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #f9fafa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+/* Message Styles */
+.message {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.profile-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.message-content {
+  background: #ffffff;
+  padding: 10px 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #888;
+}
+
+.message-header strong {
+  color: #333;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* Input Area Styles */
+.message-input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.message-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  resize: none;
+  height: 50px;
+}
+
+.message-input:focus {
+  outline: none;
+  border-color: #367162;
+}
+
+.send-button {
+  padding: 10px 15px;
+  background-color: #141e3f;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.send-button:hover {
+  background-color: #367162;
+  transform: scale(1.03);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ideas-grid {
+    grid-template-columns: 1fr;
   }
-  
-  /* Header */
-  .discussion-header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
+
   .discussion-header h1 {
-    font-size: 2rem;
-    color: #141e3f;
+    font-size: 28px;
   }
-  
+
   .discussion-header p {
-    font-size: 1rem;
-    color: #555;
+    font-size: 16px;
   }
-  
-  .back-to-details {
-    background-color: #00cc99;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
+
+  .message-input {
+    height: 40px;
   }
-  
-  .back-to-details:hover {
-    background-color: #009977;
-  }
-  
-  /* Comments Section */
-  .comments-section h2 {
-    font-size: 1.5rem;
-    color: #141e3f;
-    margin-bottom: 20px;
-  }
-  
-  .comments-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .comment-card {
-    background-color: #f4f4f9;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .comment-card strong {
-    color: #333;
-    font-size: 1rem;
-  }
-  
-  .comment-card p {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 5px 0 0 0;
-  }
-  
-  /* Add Comment Section */
-  .add-comment-section {
-    margin-top: 30px;
-  }
-  
-  .add-comment-section h2 {
-    font-size: 1.5rem;
-    color: #141e3f;
-    margin-bottom: 10px;
-  }
-  
-  .add-comment-section textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: vertical;
-    height: 100px;
-  }
-  
-  .add-comment-section textarea:focus {
-    border-color: #00cc99;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 204, 153, 0.5);
-  }
-  
-  .add-comment-btn {
-    background-color: #141e3f;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-  }
-  
-  .add-comment-btn:hover {
-    background-color: #0b132b;
-  }
-  
-  /* Loading and Error States */
-  .loading,
-  .error {
-    text-align: center;
-    color: #555;
-    font-size: 1.2rem;
-  }
-  
+}

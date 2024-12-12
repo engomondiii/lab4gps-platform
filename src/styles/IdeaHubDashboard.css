@@ -1,124 +1,222 @@
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background-color: #f4f6f9;
     color: #333;
 }
 
-.dashboard-container {
-    padding: 20px;
-}
-
-/* Header Styles */
-.dashboard-header {
+/* Introductory Header */
+.idea-hub-intro-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    background: linear-gradient(90deg, #141e3f 0%, #367162 100%);
+    color: #ffffff;
+    padding: 40px 20px;
+    border-radius: 8px;
 }
 
-.dashboard-header h1 {
-    font-size: 2.5rem;
-    color: #141e3f;
+.idea-hub-title {
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 1px;
 }
 
-.dashboard-header p {
-    font-size: 1rem;
-    color: #555;
-    margin: 10px 0 20px;
+.idea-hub-subtitle {
+    font-size: 18px;
+    margin-top: 10px;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 15px auto 0;
+    color: #e0e0e0;
 }
 
-/* Action Buttons */
-.actions-section {
+/* Navigation Tabs */
+.idea-hub-tabs {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 40px;
+    margin: 20px 0;
+    position: relative;
+    z-index: 2;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
 }
 
-.dashboard-action-btn {
-    background-color: #00cc99;
-    color: #fff;
+.idea-hub-tab {
+    position: relative;
     padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    background-color: #ffffff;
+    border: 2px solid #dddddd;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.dashboard-action-btn:hover {
-    background-color: #009977;
+.idea-hub-tab.active {
+    background-color: #141e3f;
+    color: #ffffff;
+    border-color: #141e3f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Ideas Overview Section */
-.ideas-overview-section {
-    margin: 0 auto;
-    max-width: 1200px;
+.idea-hub-tab:hover {
+    background-color: #367162;
+    color: #ffffff;
+    border-color: #367162;
+    transform: translateY(-2px);
 }
 
-.ideas-overview-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+/* Protruding Dots Effect */
+.idea-hub-tab:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border: 2px solid #dddddd;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* Content Section */
+.idea-hub-content {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+/* Overview Section */
+.idea-hub-overview {
+    margin-top: 20px;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+}
+
+.idea-hub-section-title {
+    font-size: 30px;
     color: #141e3f;
-    text-align: center;
+    margin-bottom: 20px;
+    border-left: 5px solid #367162;
+    padding-left: 15px;
+}
+
+.idea-hub-section-description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.8;
 }
 
 /* Ideas Grid */
-.ideas-grid {
+.idea-hub-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 
-/* Idea Card */
-.idea-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.idea-hub-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
     padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.idea-card:hover {
-    transform: translateY(-5px);
+.idea-hub-card:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
 }
 
-.idea-card h3 {
-    font-size: 1.25rem;
-    color: #333;
+.idea-hub-card-title {
+    font-size: 22px;
+    color: #141e3f;
     margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
-.idea-card p {
-    font-size: 0.9rem;
+.idea-hub-card-status {
+    font-size: 15px;
     color: #555;
-    margin: 5px 0;
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
-/* Action Button Inside Idea Card */
-.idea-action-btn {
-    background-color: #141e3f;
-    color: #fff;
-    padding: 8px 15px;
+/* Buttons */
+.idea-hub-card-action {
+    background: #141e3f;
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
-    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.idea-action-btn:hover {
-    background-color: #0b132b;
+.idea-hub-card-action:hover {
+    background-color: #367162;
+    transform: scale(1.05);
 }
 
-/* Footer Styles */
-.dashboard-footer {
-    text-align: center;
+/* Footer */
+.idea-hub-footer {
     margin-top: 40px;
-    font-size: 0.9rem;
-    color: #555;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.idea-hub-footer p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .idea-hub-intro-header {
+        padding: 10px 0;
+    }
+
+    .idea-hub-tabs {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .idea-hub-tab {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .idea-hub-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .idea-hub-title {
+        font-size: 28px;
+    }
+
+    .idea-hub-section-title {
+        font-size: 24px;
+    }
+
+    .idea-hub-section-description {
+        font-size: 15px;
+    }
 }

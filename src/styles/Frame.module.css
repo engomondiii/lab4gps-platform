@@ -48,7 +48,7 @@
   font-family: 'Helvetica75', sans-serif;
   border: none;
   border-radius: 0.3125rem;
-  background-color: #00cc99;
+  background-color: #367162;
   color: #fff;
   cursor: pointer;
   z-index: 3; /* Ensure the button is above other elements */
@@ -57,5 +57,5 @@
 }
 
 .button:hover {
-  background-color: #009977;
+  background-color: #367162;
 }

@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import ProposeIdea from "./ProposeIdea";
 import IdeaDetails from "./IdeaDetails";
 import IdeaDiscussion from "./IdeaDiscussion";
@@ -10,6 +9,44 @@ import "../../styles/IdeaHubDashboard.css";
 
 const IdeaHubDashboard = () => {
   const [activePage, setActivePage] = useState("dashboard");
+  const [ideas, setIdeas] = useState([
+    {
+      id: "1",
+      title: "Community Solar Lighting Program",
+      description:
+        "A project to bring sustainable solar lighting to underserved communities.",
+      attachments: "https://via.placeholder.com/300",
+      problem: "Lack of reliable lighting in rural areas.",
+      solution: "Deploy solar-powered lights in key locations.",
+      resources: "$10,000 for initial deployment.",
+      alignment: "Supports sustainability and rural development goals.",
+      tags: "Environment, Sustainability, Renewable Energy",
+    },
+    {
+      id: "2",
+      title: "Mobile Health Clinic",
+      description:
+        "A mobile solution to provide healthcare services to remote areas.",
+      attachments: "https://via.placeholder.com/300",
+      problem: "Limited access to healthcare in remote regions.",
+      solution: "Deploy mobile clinics with essential medical equipment.",
+      resources: "$20,000 for a fully equipped van.",
+      alignment: "Improves healthcare accessibility.",
+      tags: "Health, Accessibility, Innovation",
+    },
+    {
+      id: "3",
+      title: "AI-Powered Education Platform",
+      description:
+        "An AI-driven platform to revolutionize the way students learn.",
+      attachments: "https://via.placeholder.com/300",
+      problem: "Lack of personalized learning tools.",
+      solution: "Create an AI platform that adapts to individual student needs.",
+      resources: "$50,000 for platform development.",
+      alignment: "Advances educational technology.",
+      tags: "Education, AI, Technology",
+    },
+  ]);
 
   const renderActivePage = () => {
     switch (activePage) {
@@ -19,120 +56,124 @@ const IdeaHubDashboard = () => {
         return <IdeaTracking />;
       case "leaderboard":
         return <Leaderboard />;
-      case "ideaDetails":
-        return <IdeaDetails />;
       case "discussion":
         return <IdeaDiscussion />;
       case "voting":
         return <IdeaVoting />;
+      case "ideaDetails":
+        return <IdeaDetails />;
       default:
         return (
-          <div>
-            <header className="dashboard-header">
-              <h1>Idea Hub Dashboard</h1>
-              <p>Welcome to the Idea Hub, your space for proposing, refining, and tracking innovative ideas. Select an option below to navigate to the specific section you need.</p>
-            </header>
-
-            <div className="ideas-overview-section">
-              <h2>Ideas Overview</h2>
-              <div className="ideas-grid">
-                <div
-                  className="idea-card"
-                  onClick={() => setActivePage("ideaDetails")}
-                >
-                  <h3>Community Solar Lighting Program</h3>
-                  <p>Status: Under Review</p>
-                  <button
-                    className="idea-action-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActivePage("voting");
-                    }}
-                  >
-                    Vote
-                  </button>
+          <div className="idea-feed">
+            {ideas.map((idea) => (
+              <div key={idea.id} className="idea-post">
+                <h3 className="idea-title">{idea.title}</h3>
+                <p className="idea-description">{idea.description}</p>
+                {idea.attachments && (
+                  <div className="idea-attachment">
+                    <img
+                      src={idea.attachments}
+                      alt={`${idea.title} attachment`}
+                    />
+                  </div>
+                )}
+                <div className="idea-details">
+                  <p>
+                    <strong>Problem:</strong> {idea.problem}
+                  </p>
+                  <p>
+                    <strong>Solution:</strong> {idea.solution}
+                  </p>
+                  <p>
+                    <strong>Resources:</strong> {idea.resources}
+                  </p>
+                  <p>
+                    <strong>Alignment:</strong> {idea.alignment}
+                  </p>
+                  <p>
+                    <strong>Tags:</strong> {idea.tags}
+                  </p>
                 </div>
-                <div
-                  className="idea-card"
-                  onClick={() => setActivePage("ideaDetails")}
-                >
-                  <h3>Mobile Health Clinic</h3>
-                  <p>Status: Submitted</p>
+                <div className="idea-actions">
                   <button
-                    className="idea-action-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActivePage("voting");
-                    }}
+                    className="discussion-button"
+                    onClick={() => setActivePage("discussion")}
                   >
-                    Vote
+                    Join Discussion
                   </button>
-                </div>
-                <div
-                  className="idea-card"
-                  onClick={() => setActivePage("ideaDetails")}
-                >
-                  <h3>AI-Powered Education Platform</h3>
-                  <p>Status: In Development</p>
                   <button
-                    className="idea-action-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActivePage("voting");
-                    }}
+                    className="vote-button"
+                    onClick={() => setActivePage("voting")}
                   >
-                    Vote
+                    Vote for Idea
+                  </button>
+                  <button
+                    className="track-button"
+                    onClick={() => setActivePage("tracking")}
+                  >
+                    Track Idea
                   </button>
                 </div>
               </div>
-            </div>
-
-            <footer className="dashboard-footer">
-              <p>
-                Use the Idea Hub to turn your innovative concepts into actionable projects. Explore, collaborate, and track the progress of ideas that matter.
-              </p>
-            </footer>
+            ))}
           </div>
         );
     }
   };
 
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-header">
+    <div className="idea-hub-container">
+      {/* Introduction Header */}
+      <header className="idea-hub-intro-header">
+        <h1 className="idea-hub-title">Idea Hub Dashboard</h1>
+        <p className="idea-hub-subtitle">
+          Welcome to the Idea Hub, where innovation meets collaboration. Explore,
+          refine, and track groundbreaking ideas that drive progress.
+        </p>
+      </header>
+
+      {/* Navigation Tabs */}
+      <nav className="idea-hub-tabs">
         <button
-          className={`header-tab ${activePage === "propose" ? "active" : ""}`}
-          onClick={() => setActivePage("propose")}
+          className={`idea-hub-tab ${activePage === "dashboard" ? "active" : ""}`}
+          onClick={() => setActivePage("dashboard")}
         >
-          Propose Idea
+          Ideas
         </button>
         <button
-          className={`header-tab ${activePage === "tracking" ? "active" : ""}`}
+          className={`idea-hub-tab ${activePage === "propose" ? "active" : ""}`}
+          onClick={() => setActivePage("propose")}
+        >
+          Propose an Idea
+        </button>
+        <button
+          className={`idea-hub-tab ${activePage === "tracking" ? "active" : ""}`}
           onClick={() => setActivePage("tracking")}
         >
           Track Ideas
         </button>
         <button
-          className={`header-tab ${activePage === "leaderboard" ? "active" : ""}`}
+          className={`idea-hub-tab ${activePage === "leaderboard" ? "active" : ""}`}
           onClick={() => setActivePage("leaderboard")}
         >
           Leaderboard
         </button>
         <button
-          className={`header-tab ${activePage === "discussion" ? "active" : ""}`}
+          className={`idea-hub-tab ${activePage === "discussion" ? "active" : ""}`}
           onClick={() => setActivePage("discussion")}
         >
-          Discussion
+          Discussions
         </button>
         <button
-          className={`header-tab ${activePage === "voting" ? "active" : ""}`}
+          className={`idea-hub-tab ${activePage === "voting" ? "active" : ""}`}
           onClick={() => setActivePage("voting")}
         >
           Voting
         </button>
-      </div>
+      </nav>
 
-      <div className="content-container">{renderActivePage()}</div>
+      {/* Dynamic Content Below Tabs */}
+      <main className="idea-hub-content">{renderActivePage()}</main>
     </div>
   );
 };

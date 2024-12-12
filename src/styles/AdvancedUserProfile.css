@@ -81,7 +81,7 @@ body {
 }
 
 .edit-icon-container:hover {
-  background: #00cc99; /* Accent color for hover */
+  background: #367162; /* Accent color for hover */
   transform: scale(1.1);
 }
 
@@ -176,7 +176,7 @@ body {
 }
 
 .edit-button:hover {
-  background: #00cc99;
+  background: #367162;
 }
 
 .cancel-button {
@@ -194,7 +194,7 @@ body {
 }
 
 .save-button:hover {
-  background: #00cc99;
+  background: #367162;
 }
 
 /* Password Section */
@@ -226,7 +226,7 @@ body {
 }
 
 .password-button:hover {
-  background: #00cc99;
+  background: #367162;
   transform: scale(1.05);
 }
 
@@ -246,7 +246,7 @@ body {
 }
 
 .update-password-button:hover {
-  background: #00cc99;
+  background: #367162;
   transform: scale(1.05);
 }
 

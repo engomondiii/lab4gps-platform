@@ -34,7 +34,7 @@
 }
 
 .footer-section h3 {
-  color: #00CC99;
+  color: #367162;
   font-weight: bold;
   margin-bottom: 1rem;
 }
@@ -54,7 +54,7 @@
 }
 
 .subsection h4 {
-  color: #00CC99;
+  color: #367162;
   font-weight: bold;
   margin-bottom: 0.5rem;
   font-size: 1.1rem; /* Keep headings distinct */
@@ -78,7 +78,7 @@
 }
 
 .subsection ul li button:hover {
-  color: #00CC99;
+  color: #367162;
   text-decoration: underline;
 }
 
@@ -90,7 +90,7 @@
 .social-media h3 {
   margin-bottom: 1rem;
   font-weight: bold;
-  color: #00CC99;
+  color: #367162;
 }
 
 .social-icons {
@@ -146,11 +146,11 @@
   text-decoration: none;
   font-size: 0.8rem; /* Matches Navbar font size */
   transition: color 0.3s;
-  color: #00CC99;
+  color: #367162;
 }
 
 .footer-link:hover {
-  color: #00CC99;
+  color: #367162;
 }
 
 /* Buttons in Footer Links */
@@ -163,5 +163,5 @@
 }
 
 .footer-section .footer-link button:hover {
-  color: #00CC99;
+  color: #367162;
 }

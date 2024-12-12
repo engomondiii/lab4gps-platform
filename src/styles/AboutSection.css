@@ -34,7 +34,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #ffffff, #00cc99, #ffffff);
+  background: linear-gradient(90deg, #ffffff, #367162, #ffffff);
   opacity: 0.6;
   animation: shine 1.5s infinite linear;
 }
@@ -75,7 +75,7 @@
 .tab-button.active {
   color: #ffffff;
   background: #141e3f;
-  border-left: 4px solid #00cc99; /* Green accent for active tab */
+  border-left: 4px solid #367162; /* Green accent for active tab */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   animation: pulse 0.6s ease-in-out;
 }

@@ -67,7 +67,7 @@
   
   .upvote-btn,
   .downvote-btn {
-    background-color: #00cc99;
+    background-color: #367162;
     color: #fff;
     padding: 8px 15px;
     font-size: 0.9rem;
@@ -82,7 +82,7 @@
   }
   
   .upvote-btn:hover {
-    background-color: #009977;
+    background-color: #367162;
   }
   
   .downvote-btn:hover {

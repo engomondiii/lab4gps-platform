@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #141e3f, #00cc99); /* Lab4GPS Blue to Green Gradient */
+    background: linear-gradient(135deg, #141e3f, #367162); /* Lab4GPS Blue to Green Gradient */
     font-family: "Helvetica", sans-serif;
     color: #ffffff;
     padding: 2rem;
@@ -59,7 +59,7 @@
   }
   
   .login-form input:focus {
-    border: 1px solid #00cc99; /* Lab4GPS Green */
+    border: 1px solid #367162; /* Lab4GPS Green */
     outline: none;
     box-shadow: 0 0 5px rgba(0, 204, 153, 0.5);
   }
@@ -71,7 +71,7 @@
   }
   
   .login-form button {
-    background: #00cc99; /* Lab4GPS Green */
+    background: #367162; /* Lab4GPS Green */
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -83,7 +83,7 @@
   }
   
   .login-form button:hover {
-    background: #009977; /* Darker Green */
+    background: #367162; /* Darker Green */
     transform: scale(1.05);
   }
   

@@ -1,114 +1,156 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import "../../styles/IdeaDiscussion.css";
 
 const IdeaDiscussion = () => {
-  const { id } = useParams(); // Retrieve idea ID from the URL
-  const navigate = useNavigate();
-
-  const [idea, setIdea] = useState(null);
+  const [ideas, setIdeas] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
   const [loading, setLoading] = useState(true);
-  const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState("");
+  const [currentIdea, setCurrentIdea] = useState(null);
 
-  // Simulate fetching idea details and existing comments
   useEffect(() => {
-    // Replace with API calls
-    const fetchIdeaDetails = () => {
+    // Simulate fetching ideas from an API
+    const fetchIdeas = () => {
       const dummyIdeas = [
         {
           id: "1",
           title: "Community Solar Lighting Program",
-          problem:
-            "Energy access is a significant issue in rural areas, leaving many communities without reliable lighting solutions.",
+          description:
+            "A project to bring sustainable solar lighting to underserved communities.",
         },
         {
           id: "2",
           title: "Mobile Health Clinic",
-          problem:
-            "Lack of access to medical facilities in remote areas results in preventable health issues.",
-        },
-      ];
-      const selectedIdea = dummyIdeas.find((idea) => idea.id === id);
-      setIdea(selectedIdea);
-
-      // Dummy comments
-      const dummyComments = [
-        {
-          id: 1,
-          user: "Alice",
-          text: "This is a great initiative! Have you considered integrating community training?",
+          description:
+            "A mobile solution to provide healthcare services to remote areas.",
         },
         {
-          id: 2,
-          user: "Bob",
-          text: "I suggest adding solar battery storage for reliability.",
+          id: "3",
+          title: "AI-Powered Education Platform",
+          description:
+            "An AI-driven platform to revolutionize the way students learn.",
         },
       ];
-      setComments(dummyComments);
-
+      setIdeas(dummyIdeas);
       setLoading(false);
     };
 
-    fetchIdeaDetails();
-  }, [id]);
+    fetchIdeas();
+  }, []);
 
-  const handleAddComment = () => {
-    if (newComment.trim()) {
-      setComments([
-        ...comments,
-        { id: comments.length + 1, user: "You", text: newComment.trim() },
-      ]);
-      setNewComment("");
+  useEffect(() => {
+    // Simulate fetching messages for the selected idea
+    if (currentIdea) {
+      const fetchMessages = () => {
+        const dummyMessages = [
+          {
+            id: 1,
+            user: "Alice Johnson",
+            profilePhoto: "https://via.placeholder.com/40",
+            timestamp: "2023-12-10 12:45",
+            content: `Discussion about ${currentIdea.title}.`,
+          },
+          {
+            id: 2,
+            user: "Bob Smith",
+            profilePhoto: "https://via.placeholder.com/40",
+            timestamp: "2023-12-10 13:00",
+            content: "This idea has great potential for real-world impact.",
+          },
+        ];
+        setMessages(dummyMessages);
+      };
+
+      fetchMessages();
+    }
+  }, [currentIdea]);
+
+  const handleSendMessage = () => {
+    if (newMessage.trim() !== "") {
+      const newMsg = {
+        id: messages.length + 1,
+        user: "You",
+        profilePhoto: "https://via.placeholder.com/40",
+        timestamp: new Date().toISOString().slice(0, 16).replace("T", " "),
+        content: newMessage,
+      };
+      setMessages([...messages, newMsg]);
+      setNewMessage("");
     }
   };
 
   if (loading) {
-    return <div className="loading">Loading discussion...</div>;
-  }
-
-  if (!idea) {
-    return <div className="error">Idea not found.</div>;
+    return <div className="loading">Loading ideas...</div>;
   }
 
   return (
     <div className="discussion-container">
-      <header className="discussion-header">
-        <h1>Discussion: {idea.title}</h1>
-        <p>
-          <strong>Problem:</strong> {idea.problem}
-        </p>
-        <button
-          className="back-to-details"
-          onClick={() => navigate(`/idea-hub/idea/${id}`)}
-        >
-          Back to Idea Details
-        </button>
-      </header>
-
-      <section className="comments-section">
-        <h2>Discussion Thread</h2>
-        <div className="comments-list">
-          {comments.map((comment) => (
-            <div key={comment.id} className="comment-card">
-              <strong>{comment.user}</strong>
-              <p>{comment.text}</p>
-            </div>
-          ))}
+      {!currentIdea && (
+        <div className="idea-list">
+          <header className="discussion-header">
+            <h1>Idea Discussions</h1>
+            <p>Select an idea to join its discussion.</p>
+          </header>
+          <div className="ideas-grid">
+            {ideas.map((idea) => (
+              <div key={idea.id} className="idea-card">
+                <h3 className="idea-title">{idea.title}</h3>
+                <p className="idea-description">{idea.description}</p>
+                <button
+                  className="join-discussion-btn"
+                  onClick={() => setCurrentIdea(idea)}
+                >
+                  Join Discussion
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+      )}
 
-      <section className="add-comment-section">
-        <h2>Add Your Comment</h2>
-        <textarea
-          placeholder="Share your thoughts, suggestions, or feedback..."
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-        />
-        <button className="add-comment-btn" onClick={handleAddComment}>
-          Post Comment
-        </button>
-      </section>
+      {currentIdea && (
+        <div className="chat-room">
+          <button
+            className="back-button"
+            onClick={() => setCurrentIdea(null)}
+          >
+            ← Back to Idea List
+          </button>
+          <header className="discussion-header">
+            <h1>Discussion: {currentIdea.title}</h1>
+            <p>{currentIdea.description}</p>
+          </header>
+          <div className="messages-container">
+            {messages.map((message) => (
+              <div key={message.id} className="message">
+                <img
+                  src={message.profilePhoto}
+                  alt={`${message.user}'s profile`}
+                  className="profile-photo"
+                />
+                <div className="message-content">
+                  <div className="message-header">
+                    <strong>{message.user}</strong>
+                    <span className="timestamp">{message.timestamp}</span>
+                  </div>
+                  <p>{message.content}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="message-input-container">
+            <textarea
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder="Type your message here..."
+              className="message-input"
+            />
+            <button onClick={handleSendMessage} className="send-button">
+              Send
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
