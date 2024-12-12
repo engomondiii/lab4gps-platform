@@ -1,3 +1,4 @@
+/* Frame.module.css */
 .frame {
   position: absolute;
   top: 0;
@@ -34,6 +35,7 @@
 
 .subheading {
   margin: 0;
+  color: #fff;
   pointer-events: none;
 }
 

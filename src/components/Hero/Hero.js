@@ -33,6 +33,7 @@ const Hero = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [showCards, setShowCards] = useState(false); 
   const [markers, setMarkers] = useState([]);
+  const [showProblems, setShowProblems] = useState(false); // New state
 
   useEffect(() => {
     if (globeEl.current) {
@@ -80,6 +81,12 @@ const Hero = () => {
     setMarkers(newMarkers);
   }, []);
 
+  useEffect(() => {
+    if (globeEl.current) {
+      globeEl.current.controls().enabled = showProblems;
+    }
+  }, [showProblems]);
+
   const pinTextures = {
     problem: new THREE.TextureLoader().load(problemPin),
     solution: new THREE.TextureLoader().load(solutionPin),
@@ -119,7 +126,7 @@ const Hero = () => {
           ref={globeEl}
           globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
           backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
-          objectsData={markers}
+          objectsData={showProblems ? markers : []} // Conditionally render markers
           objectLat="lat"
           objectLng="lng"
           objectLabel="name"
@@ -132,6 +139,8 @@ const Hero = () => {
           <Frame
           selectedMarker={selectedMarker}
           setShowCards={setShowCards} 
+          showProblems={showProblems}
+          setShowProblems={setShowProblems}
           />
           {showCards && selectedMarker && (
           <ProblemSolutionCard
@@ -147,9 +156,9 @@ const Hero = () => {
             onSeeMore={() => handleSeeMore(selectedMarker.cardData)}
             onClose={handleCloseCard}
             floating={true} // Floating is true for Hero
-          showDonation={true} // Ensure donation section is shown
-          size="small" // Pass the new size prop
-          location={selectedMarker.cardData.location ? `${selectedMarker.cardData.location}, ${selectedMarker.cardData.country || ''}` : 'Unknown Location'} 
+            showDonation={true} // Ensure donation section is shown
+            size="small" // Pass the new size prop
+            location={selectedMarker.cardData.location ? `${selectedMarker.cardData.location}, ${selectedMarker.cardData.country || ''}` : 'Unknown Location'} 
         />
       )}
     </section>

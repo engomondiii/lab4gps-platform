@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './ProblemSolutionCard.module.css';
 import { FaEye, FaComment, FaHeart, FaUserCircle, FaTimes, FaDonate } from 'react-icons/fa';
+import DonationModal from '../DonationModal/DonationModal'; // Import the DonationModal component
 
 const ProblemSolutionCard = ({
   authorName,
@@ -18,9 +19,11 @@ const ProblemSolutionCard = ({
   donationAmount = 0,
   donationGoal = 1000,
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
+
   const renderDescription = (text) => {
     return text.split('\n').map((line, i) => {
-      const trimmedLine = line.trim(2);
+      const trimmedLine = line.trim();
       const isNumbered = /^\d+\.\s/.test(trimmedLine);
       const isSubsection = isNumbered || trimmedLine.endsWith(':') || /^[A-Za-z\s]+$/.test(trimmedLine);
       if (isSubsection) {
@@ -41,8 +44,25 @@ const ProblemSolutionCard = ({
   // Combine class names based on floating prop
   const cardClassName = floating ? `${styles.card} ${styles.floating}` : styles.card;
 
+  const handleCardClick = () => {
+    if (floating && onSeeMore) {
+      onSeeMore();
+    }
+  };
+  const openModal = (e) => {
+    e.stopPropagation(); // Prevent triggering card click
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <article className={cardClassName}>
+    <>
+    <article className={cardClassName}
+      onClick={floating ? handleCardClick : undefined}
+    >
       <header className={styles.cardHeader}>
         <div className={styles.profileInfo}>
           <div className={styles.authorImageWrapper}>
@@ -60,8 +80,10 @@ const ProblemSolutionCard = ({
         {floating && (
           <button
             className={styles.closeIcon}
-            onClick={onClose}
-            aria-label="Close card"
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent click from propagating to the card
+              onClose();
+            }}
           >
             <FaTimes />
           </button>
@@ -87,9 +109,16 @@ const ProblemSolutionCard = ({
             </div>
           </section>
 
-          <div className={styles.ctaContainer}>
-            <button className={styles.seeMoreButton} onClick={onSeeMore}>See More</button>
-          </div>
+          {!floating && (
+            <div className={styles.buttonDiv}>
+            <button
+              className={styles.seeMoreButton}
+              onClick={onSeeMore}
+            >
+              See More
+            </button>
+            </div>
+          )}
           <div className={styles.statsContainer}>
             <div className={styles.statItem}>
               <FaEye />
@@ -112,25 +141,45 @@ const ProblemSolutionCard = ({
 
       {floating && (
         <div className={styles.donationSection}>
-          <div className={styles.donationInfo}>
-            <FaDonate className={styles.donationIcon} />
-            <span>Donate to this cause</span>
+          {/* First Row: donationInfo and donationStats */}
+          <div className={styles.donationRow}>
+            <div className={styles.donationInfo}>
+              <FaDonate className={styles.donationIcon} />
+              <span>Donate to this cause</span>
+            </div>
+            <div className={styles.donationStats}>
+              <span className={styles.donationAmount}>
+                ${donationAmount.toLocaleString()} raised
+                of ${donationGoal.toLocaleString()}
+              </span>
+            </div>
           </div>
-          <div className={styles.progressBar}>
-            <div className={styles.progress} style={{ width: `${donationProgress}%` }}></div>
-          </div>
-          <div className={styles.donationStats}>
-            <span className={styles.donationAmount}>
-              ${donationAmount.toLocaleString()} raised of ${donationGoal.toLocaleString()}
-            </span>
+
+          {/* Second Row: Progress Bar and Donation Percentage */}
+          <div className={styles.donationRow}>
+            <div className={styles.progressBar}>
+              <div className={styles.progress} style={{ width: `${donationProgress}%` }}></div>
+            </div>
             <span className={styles.donationPercentage}>
-              {donationProgress.toFixed(0)}% donated
+              {donationProgress.toFixed(0)}%
             </span>
           </div>
-          <button className={styles.donateButton}>Donate Now</button>
+
+          {/* Third Row: Donate Button */}
+          <div className={styles.donationRow}>
+          <button className={styles.donateButton} onClick={openModal}>Donate Now</button>
+          </div>
         </div>
-      )}
+      )} 
     </article>
+          {/* Donation Modal */}
+          <DonationModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          donationAmount={donationAmount}
+          donationGoal={donationGoal}
+        />
+      </>
   );
 };
 
