@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ProposeIdeaService from "../../services/ProposeIdeaService";
 import "../../styles/ProposeIdea.css";
 
 const ProposeIdea = () => {
@@ -39,17 +40,31 @@ const ProposeIdea = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length === 0) {
-      console.log("Form Submitted:", formData);
-      setSubmitted(true);
-      setTimeout(() => navigate("/idea-hub"), 2000);
+      const ideaData = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        ideaData.append(key, value);
+      });
+
+      try {
+        const response = await ProposeIdeaService.submitIdea(ideaData);
+        if (response.status === 201) {
+          console.log("Idea submitted successfully:", response.data);
+          setSubmitted(true);
+          // Removed the navigation to ensure the page doesn't redirect
+        }
+      } catch (error) {
+        console.error("Error submitting idea:", error);
+        setErrors({ form: "An error occurred while submitting your idea." });
+      }
     } else {
       setErrors(formErrors);
     }
   };
+
 
   const toggleSection = (section) => {
     setExpandedSection((prev) => (prev === section ? null : section));
@@ -59,7 +74,7 @@ const ProposeIdea = () => {
     return (
       <div className="success-message">
         <h2>Thank you for your submission!</h2>
-        <p>Redirecting to the Idea Hub Dashboard...</p>
+        <p>Your idea will be reviewed. You can track the progress on TRACK IDEAS page...</p>
       </div>
     );
   }
@@ -119,7 +134,7 @@ const ProposeIdea = () => {
     <div className="propose-idea">
       <h1 className="propose-idea-title">Propose a New Idea</h1>
       <p className="propose-idea-description">
-        Drag and drop sections to reorder them. Click a section to expand and fill in the details.
+        Submit your idea to contribute to solving global challenges. Admins will review your submission for alignment with organizational goals.
       </p>
       <form className="idea-form" onSubmit={handleSubmit}>
         {sections.map((section, index) => (
@@ -171,6 +186,8 @@ const ProposeIdea = () => {
             onChange={handleFileChange}
           />
         </div>
+
+        {errors.form && <small className="error form-error">{errors.form}</small>}
 
         <button type="submit" className="submit-btn">
           Submit Idea
