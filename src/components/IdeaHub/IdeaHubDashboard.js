@@ -48,6 +48,15 @@ const IdeaHubDashboard = () => {
     },
   ]);
 
+  // Added state to track selected idea
+  const [selectedIdea, setSelectedIdea] = useState(null);
+
+  // Handle idea click to show details in full page
+  const handleIdeaClick = (idea) => {
+    setSelectedIdea(idea);
+    setActivePage("ideaDetails");
+  };
+
   const renderActivePage = () => {
     switch (activePage) {
       case "propose":
@@ -61,12 +70,18 @@ const IdeaHubDashboard = () => {
       case "voting":
         return <IdeaVoting />;
       case "ideaDetails":
-        return <IdeaDetails />;
+        // Passing selectedIdea to IdeaDetails
+        return <IdeaDetails idea={selectedIdea} />;
       default:
         return (
           <div className="idea-feed">
             {ideas.map((idea) => (
-              <div key={idea.id} className="idea-post">
+              <div
+                key={idea.id}
+                className="idea-post"
+                style={{ cursor: "pointer" }}
+                onClick={() => handleIdeaClick(idea)}
+              >
                 <h3 className="idea-title">{idea.title}</h3>
                 <p className="idea-description">{idea.description}</p>
                 {idea.attachments && (
@@ -77,43 +92,99 @@ const IdeaHubDashboard = () => {
                     />
                   </div>
                 )}
-                <div className="idea-details">
-                  <p>
-                    <strong>Problem:</strong> {idea.problem}
-                  </p>
-                  <p>
-                    <strong>Solution:</strong> {idea.solution}
-                  </p>
-                  <p>
-                    <strong>Resources:</strong> {idea.resources}
-                  </p>
-                  <p>
-                    <strong>Alignment:</strong> {idea.alignment}
-                  </p>
-                  <p>
-                    <strong>Tags:</strong> {idea.tags}
-                  </p>
-                </div>
-                <div className="idea-actions">
-                  <button
-                    className="discussion-button"
-                    onClick={() => setActivePage("discussion")}
-                  >
-                    Join Discussion
-                  </button>
-                  <button
-                    className="vote-button"
-                    onClick={() => setActivePage("voting")}
-                  >
-                    Vote for Idea
-                  </button>
-                  <button
-                    className="track-button"
-                    onClick={() => setActivePage("tracking")}
-                  >
-                    Track Idea
-                  </button>
-                </div>
+
+                {/* Keep the original details and actions, but show them only if in ideaDetails view */}
+                {activePage === "ideaDetails" && selectedIdea && selectedIdea.id === idea.id && (
+                  <div className="idea-details">
+                    <p>
+                      <strong>Problem:</strong> {idea.problem}
+                    </p>
+                    <p>
+                      <strong>Solution:</strong> {idea.solution}
+                    </p>
+                    <p>
+                      <strong>Resources:</strong> {idea.resources}
+                    </p>
+                    <p>
+                      <strong>Alignment:</strong> {idea.alignment}
+                    </p>
+                    <p>
+                      <strong>Tags:</strong> {idea.tags}
+                    </p>
+                  </div>
+                )}
+
+                {activePage === "ideaDetails" && selectedIdea && selectedIdea.id === idea.id && (
+                  <div className="idea-actions">
+                    <button
+                      className="discussion-button"
+                      onClick={() => setActivePage("discussion")}
+                    >
+                      Join Discussion
+                    </button>
+                    <button
+                      className="vote-button"
+                      onClick={() => setActivePage("voting")}
+                    >
+                      Vote for Idea
+                    </button>
+                    <button
+                      className="track-button"
+                      onClick={() => setActivePage("tracking")}
+                    >
+                      Track Idea
+                    </button>
+                  </div>
+                )}
+
+                {/* Added a "Click to read more" prompt if not in details view */}
+                {!(activePage === "ideaDetails" && selectedIdea && selectedIdea.id === idea.id) && (
+                  <>
+                    <p
+                      style={{
+                        color: "#367162",
+                        fontWeight: "bold",
+                        marginTop: "10px",
+                      }}
+                    >
+                      Click to read more...
+                    </p>
+
+                    {/* Added icons for discussion, vote, and track below "click to read more" */}
+                    <div className="quick-actions" style={{ marginTop: "10px", display: "flex", gap: "10px" }}>
+                      <button
+                        className="discussion-button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActivePage("discussion");
+                        }}
+                        style={{ display: "flex", alignItems: "center", gap: "5px" }}
+                      >
+                        💬 <span>Discussion</span>
+                      </button>
+                      <button
+                        className="vote-button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActivePage("voting");
+                        }}
+                        style={{ display: "flex", alignItems: "center", gap: "5px" }}
+                      >
+                        👍 <span>Vote</span>
+                      </button>
+                      <button
+                        className="track-button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActivePage("tracking");
+                        }}
+                        style={{ display: "flex", alignItems: "center", gap: "5px" }}
+                      >
+                        👀 <span>Track</span>
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>

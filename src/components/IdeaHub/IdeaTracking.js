@@ -5,6 +5,7 @@ const IdeaTracking = () => {
   const [ideas, setIdeas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedIdea, setSelectedIdea] = useState(null);
+  const [viewMode, setViewMode] = useState("my"); // 'my' or 'others'
 
   useEffect(() => {
     // Simulate fetching ideas from an API
@@ -17,7 +18,7 @@ const IdeaTracking = () => {
           lastUpdated: "2023-12-10",
           proposer: {
             name: "John Doe",
-            profilePhoto: "https://via.placeholder.com/50",
+            profilePhoto: "https://via.placeholder.com/100x50",
           },
           description:
             "A project to bring sustainable solar lighting to underserved communities.",
@@ -34,7 +35,7 @@ const IdeaTracking = () => {
           lastUpdated: "2023-12-08",
           proposer: {
             name: "Jane Smith",
-            profilePhoto: "https://via.placeholder.com/50",
+            profilePhoto: "https://via.placeholder.com/100x50",
           },
           description:
             "A mobile solution to provide healthcare services to remote areas.",
@@ -51,7 +52,7 @@ const IdeaTracking = () => {
           lastUpdated: "2023-12-05",
           proposer: {
             name: "Alex Johnson",
-            profilePhoto: "https://via.placeholder.com/50",
+            profilePhoto: "https://via.placeholder.com/100x50",
           },
           description:
             "An AI-driven platform to revolutionize the way students learn.",
@@ -74,45 +75,83 @@ const IdeaTracking = () => {
     return <div className="loading">Loading tracked ideas...</div>;
   }
 
+  const myIdeas = ideas.filter((idea) => idea.proposer.name === "John Doe");
+  const othersIdeas = ideas.filter((idea) => idea.proposer.name !== "John Doe");
+
+  const displayedIdeas = viewMode === "my" ? myIdeas : othersIdeas;
+
   return (
     <div className="tracking-container">
+      {/* Top Section with Title and Description */}
       <header className="tracking-header">
-        <h1>Idea Tracking</h1>
-        <p>Monitor the progress of submitted ideas and explore their details.</p>
+        <h1 className="tracking-title">Idea Tracking</h1>
+        <p className="tracking-description">
+          Keep track of the progress of ideas you have proposed and explore those proposed by others.
+        </p>
       </header>
 
-      <div className="ideas-grid">
-        {!selectedIdea &&
-          ideas.map((idea) => (
-            <div key={idea.id} className="idea-card">
-              <div className="card-header">
-                <img
-                  src={idea.proposer.profilePhoto}
-                  alt={`${idea.proposer.name}'s profile`}
-                  className="profile-photo"
-                />
-                <div className="proposer-info">
-                  <h4 className="proposer-name">{idea.proposer.name}</h4>
+      {/* Toggle between My Ideas and Other Ideas */}
+      <div className="view-mode-toggle">
+        <button
+          className={`toggle-btn ${viewMode === "my" ? "active" : ""}`}
+          onClick={() => {
+            setSelectedIdea(null);
+            setViewMode("my");
+          }}
+        >
+          My Ideas
+        </button>
+        <button
+          className={`toggle-btn ${viewMode === "others" ? "active" : ""}`}
+          onClick={() => {
+            setSelectedIdea(null);
+            setViewMode("others");
+          }}
+        >
+          Other People's Ideas
+        </button>
+      </div>
+
+      <div className="ideas-section">
+        {!selectedIdea && (
+          <div className="ideas-grid">
+            {displayedIdeas.map((idea) => (
+              <div key={idea.id} className="idea-card">
+                <div className="card-content">
+                  <h3 className="idea-title">{idea.title}</h3>
+                  <p className="idea-description">{idea.description}</p>
+                  <p className="idea-status">
+                    <strong>Status:</strong> {idea.status}
+                  </p>
                   <small className="last-updated">
                     Last Updated: {idea.lastUpdated}
                   </small>
                 </div>
+                <div className="proposer-section">
+                  <img
+                    src={idea.proposer.profilePhoto}
+                    alt={`${idea.proposer.name}'s profile`}
+                    className="proposer-photo"
+                  />
+                  <div className="proposer-details">
+                    <strong className="proposer-name">{idea.proposer.name}</strong>
+                  </div>
+                </div>
+                <button
+                  className="view-details-btn"
+                  onClick={() => setSelectedIdea(idea)}
+                >
+                  View Details
+                </button>
               </div>
-              <div className="card-content">
-                <h3 className="idea-title">{idea.title}</h3>
-                <p className="idea-description">{idea.description}</p>
-                <p className="idea-status">
-                  <strong>Status:</strong> {idea.status}
-                </p>
+            ))}
+            {displayedIdeas.length === 0 && (
+              <div className="no-ideas">
+                {viewMode === "my" ? "You haven't proposed any ideas yet." : "No ideas from others at the moment."}
               </div>
-              <button
-                className="view-details-btn"
-                onClick={() => setSelectedIdea(idea)}
-              >
-                View Details
-              </button>
-            </div>
-          ))}
+            )}
+          </div>
+        )}
 
         {selectedIdea && (
           <div className="idea-details">
@@ -120,16 +159,19 @@ const IdeaTracking = () => {
               className="back-btn"
               onClick={() => setSelectedIdea(null)}
             >
-              ← Back to Ideas
+              ← Back
             </button>
-            <h2>{selectedIdea.title}</h2>
-            <p><strong>Proposer:</strong> {selectedIdea.proposer.name}</p>
-            <p><strong>Problem:</strong> {selectedIdea.problem}</p>
-            <p><strong>Solution:</strong> {selectedIdea.solution}</p>
-            <p><strong>Resources:</strong> {selectedIdea.resources}</p>
-            <p><strong>Alignment:</strong> {selectedIdea.alignment}</p>
-            <p><strong>Tags:</strong> {selectedIdea.tags}</p>
-            <p><strong>Status:</strong> {selectedIdea.status}</p>
+            <h2 className="details-title">{selectedIdea.title}</h2>
+            <div className="details-info">
+              <p><strong>Proposer:</strong> {selectedIdea.proposer.name}</p>
+              <p><strong>Problem:</strong> {selectedIdea.problem}</p>
+              <p><strong>Solution:</strong> {selectedIdea.solution}</p>
+              <p><strong>Resources:</strong> {selectedIdea.resources}</p>
+              <p><strong>Alignment:</strong> {selectedIdea.alignment}</p>
+              <p><strong>Tags:</strong> {selectedIdea.tags}</p>
+              <p><strong>Status:</strong> {selectedIdea.status}</p>
+              <p><strong>Last Updated:</strong> {selectedIdea.lastUpdated}</p>
+            </div>
           </div>
         )}
       </div>

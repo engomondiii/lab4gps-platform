@@ -18,6 +18,7 @@ const Leaderboard = () => {
           contributions: 12,
           recognition: "Top Contributor of the Month",
           profilePhoto: "https://via.placeholder.com/50",
+          bio: "Alice has been a key player in sustainable projects, focusing on renewable energy solutions.",
         },
         {
           id: 2,
@@ -25,6 +26,7 @@ const Leaderboard = () => {
           contributions: 10,
           recognition: "Best Innovator",
           profilePhoto: "https://via.placeholder.com/50",
+          bio: "Bob specializes in healthcare innovations, with several deployed mobile clinics under his belt.",
         },
         {
           id: 3,
@@ -32,6 +34,7 @@ const Leaderboard = () => {
           contributions: 8,
           recognition: "Community Builder Award",
           profilePhoto: "https://via.placeholder.com/50",
+          bio: "Catherine's efforts in education have changed how remote learning is perceived and implemented.",
         },
       ];
 
@@ -79,7 +82,7 @@ const Leaderboard = () => {
     <div className="leaderboard-container">
       <header className="leaderboard-header">
         <h1>Leaderboard</h1>
-        <p>Recognizing our top contributors and impactful ideas.</p>
+        <p>Recognizing our top contributors and their impactful ideas.</p>
       </header>
 
       <section className="contributors-section">
@@ -96,12 +99,9 @@ const Leaderboard = () => {
                 <h3 className="contributor-name">{contributor.name}</h3>
               </div>
               <div className="card-content">
-                <p>
-                  <strong>Contributions:</strong> {contributor.contributions}
-                </p>
-                <p>
-                  <strong>Recognition:</strong> {contributor.recognition}
-                </p>
+                <p><strong>Bio:</strong> {contributor.bio}</p>
+                <p><strong>Contributions:</strong> {contributor.contributions}</p>
+                <p><strong>Recognition:</strong> {contributor.recognition}</p>
               </div>
             </div>
           ))}
