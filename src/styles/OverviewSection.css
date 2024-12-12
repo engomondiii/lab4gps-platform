@@ -7,7 +7,6 @@
   align-items: center;
   padding: 4rem 2rem;
   background: linear-gradient(135deg, #c0cbdd, #98a8d0);
-  /* width: 100%; */
   position: relative;
 }
 
@@ -15,7 +14,6 @@
 .overview-container {
   display: flex;
   flex-wrap: wrap;
-  /* max-width: 1200px; */
   gap: 2rem;
   align-items: center;
   width: 100%;
@@ -72,7 +70,7 @@
 .overview-title {
   color: #141e3f;
   font-family: "Helvetica75-Bold", sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem; /* Reduced from 2.5rem */
   margin-bottom: 1rem;
 }
 
@@ -80,6 +78,7 @@
   color: #666666;
   line-height: 1.6;
   margin-bottom: 2rem;
+  font-size: 1rem; /* Added font-size */
 }
 
 .cta-button {
@@ -89,7 +88,7 @@
   padding: 0.8rem 1.5rem;
   border-radius: 0.3125rem; /* 5px to rem */
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.875rem; /* Reduced from 1rem */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -177,7 +176,7 @@
   }
 
   .overview-title {
-    font-size: 2rem;
+    font-size: 1.5rem; /* Reduced from 2rem */
   }
 
   .cta-button {

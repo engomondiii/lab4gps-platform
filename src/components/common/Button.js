@@ -1,5 +1,3 @@
-// src/components/common/Button.js
-
 import React from 'react';
 import styles from '../../styles/Button.module.css';
 import PropTypes from 'prop-types';

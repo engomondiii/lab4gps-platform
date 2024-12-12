@@ -1,15 +1,24 @@
+/* Problems.module.css */
+
 .problems {
-  position: relative; /* Ensure .addButton is positioned relative to .problems */
-  top: 0;
+  position: relative; /* Ensures that .addButton is positioned relative to .problems */
+  margin-top: 5%;
   left: 0;
   width: 100%;
   height: 100%;
   color: #fff;
-  z-index: 3; /* Ensure it's above the globe */
+  z-index: 3; /* Above the globe */
   pointer-events: none; /* Allow interactions to pass through except for the button */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Distribute space between top and bottom */
+}
+.problemsContainer{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 20px;
+  pointer-events: none;
 }
 
 .overlay {
@@ -42,6 +51,7 @@
   margin: 0;
   font-size: 1.2rem;
   font-family: Helvetica, sans-serif;
+  color: #fff;
 }
 
 .boldH3 {
@@ -50,11 +60,14 @@
   font-family: Helvetica75, sans-serif;
 }
 
-/* The Add button for larger screens */
+.addButtonSmallContainer{
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
 .addButton {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
   width: fit-content; 
   pointer-events: auto; /* Enable pointer events for the button */
   background-color: #367162;
@@ -74,14 +87,12 @@
 
 /* The Add button as a small '+' icon for smaller screens */
 .addButtonSmall {
-  position: fixed; /* Fixed so it stays in bottom-right of viewport on mobile */
-  bottom: 20px;
-  right: 20px;
+  bottom: 5%;        /* 5% from the bottom */
   width: 50px;
   height: 50px;
   padding: 0;
   font-size: 2rem;
-  border-radius: 50%;
+  border-radius: 50%; /* Changed to 50% for perfect circle */
   background-color: #367162;
   color: #fff;
   display: flex;
@@ -103,12 +114,13 @@
   }
 
   .stats {
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
   }
 
   .notSolved {
     font-size: 1rem;
+    color: #fff;
   }
 
   .boldH3 {

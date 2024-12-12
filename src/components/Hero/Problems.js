@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../../styles/Problems.module.css';
 import Button from '../common/Button';
 import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive'; // Install this package if not already
+import { useMediaQuery } from 'react-responsive'; // Ensure this is installed
 
 const Problems = () => {
   const navigate = useNavigate();
@@ -18,24 +18,28 @@ const Problems = () => {
   return (
     <div className={styles.problems}>
       <div className={styles.overlay}>
-        <h1 className={styles.problemsTitle}>Problems</h1>
-        <div className={styles.stats}>
-          <div className={styles.notSolved523Container}>
-            <p className={styles.notSolved}>not solved</p>
-            <h3 className={styles.boldH3}>{stats.notSolved}</h3>
-          </div>
-          <div className={styles.notSolved523Container}>
-            <p className={styles.notSolved}>to be solved</p>
-            <h3 className={styles.boldH3}>{stats.toBeSolved}</h3>
-          </div>
-          <div className={styles.notSolved523Container}>
-            <p className={styles.notSolved}>being solved</p>
-            <h3 className={styles.boldH3}>{stats.beingSolved}</h3>
+        <div className={styles.problemsContainer}>
+          <h1 className={styles.problemsTitle}>Problems</h1>
+          <div className={styles.stats}>
+            <div className={styles.notSolved523Container}>
+              <p className={styles.notSolved}>not solved</p>
+              <h3 className={styles.boldH3}>{stats.notSolved}</h3>
+            </div>
+            <div className={styles.notSolved523Container}>
+              <p className={styles.notSolved}>to be solved</p>
+              <h3 className={styles.boldH3}>{stats.toBeSolved}</h3>
+            </div>
+            <div className={styles.notSolved523Container}>
+              <p className={styles.notSolved}>being solved</p>
+              <h3 className={styles.boldH3}>{stats.beingSolved}</h3>
+            </div>
           </div>
         </div>
       </div>
       {/* Conditionally render the button based on device size */}
+      <div className={styles.addButtonSmallContainer}>
       {isSmallDevice ? (
+        
         <Button onClick={() => navigate('/add')} className={styles.addButtonSmall}>
           +
         </Button>
@@ -44,6 +48,7 @@ const Problems = () => {
           Add
         </Button>
       )}
+      </div>
     </div>
   );
 };

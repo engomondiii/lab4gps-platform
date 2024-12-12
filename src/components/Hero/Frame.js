@@ -3,8 +3,8 @@ import styles from '../../styles/Frame.module.css';
 import Problems from './Problems';
 import Button from '../common/Button';
 
-const Frame = ({ selectedMarker, setShowCards }) => {
-  const [showProblems, setShowProblems] = useState(false);
+const Frame = ({ selectedMarker, setShowCards, showProblems, setShowProblems }) => {
+  // const [showProblems, setShowProblems] = useState(false);
 
   const handleClick = () => {
     // Once "Look Around" is clicked, show the problems and allow card display

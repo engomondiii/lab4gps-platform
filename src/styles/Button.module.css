@@ -13,15 +13,12 @@
     /* Add gradient for depth */
     /* background-image: linear-gradient(to bottom, #4CAF50, #367162); */
     /* Add shadow for 3D effect */
-    box-shadow: 0 5px 2px #28594c;
+    box-shadow: 2px 3px 1px #589485;
     position: relative;
 }
 
-/* .primaryButton:hover {
-    background-color: #3e8e41;
-} */
-
 .primaryButton:active {
-    top: 5px;
+    /* Removed top: 5px; to prevent movement */
+    /* top: 1px; */
     box-shadow: 0 0 0 #28594c;
 }

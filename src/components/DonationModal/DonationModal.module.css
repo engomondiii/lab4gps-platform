@@ -1,0 +1,126 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Ensure it sits above other elements */
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .modalContent {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(0); }
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .closeButton:hover {
+    color: #333;
+  }
+  
+  .modalTitle {
+    margin-top: 0;
+    font-size: 24px;
+    color: #367162;
+    text-align: center;
+  }
+  
+  .modalDescription {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .donationForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .formLabel {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .formInput {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 4px;
+    font-size: 16px;
+  }
+  
+  .formInput:focus {
+    outline: none;
+    border-color: #367162;
+    box-shadow: 0 0 0 2px rgba(54, 113, 98, 0.2);
+  }
+  
+  .submitButton {
+    padding: 12px;
+    background-color: #367162;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submitButton:hover {
+    background-color: #28594c;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .modalContent {
+      padding: 16px;
+    }
+  
+    .modalTitle {
+      font-size: 20px;
+    }
+  
+    .formInput {
+      font-size: 14px;
+    }
+  
+    .submitButton {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  

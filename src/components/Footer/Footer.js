@@ -25,14 +25,15 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      {/* Wavy Separator
+      {/* Wavy Separator */}
       <div className="footer-separator">
-        <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 1200 120 120" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="footer-gradient-colors" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#141e3f" />
-              <stop offset="50%" stopColor="#00cc99" />
+              <stop offset="50%" stopColor="#367162" />
               <stop offset="100%" stopColor="#FF9900" />
+              <stop offset="10%" stopColor="#141e3f" />
             </linearGradient>
           </defs>
           <path
@@ -40,7 +41,7 @@ const Footer = () => {
             fill="url(#footer-gradient-colors)"
           />
         </svg>
-      </div> */}
+      </div>
 
       <div className="footer-container">
         <div className="footer-section">
@@ -147,7 +148,7 @@ const Footer = () => {
             <a href="#" className="social-icon facebook" aria-label="Facebook"></a>
             <a href="#" className="social-icon twitter" aria-label="Twitter"></a>
             <a href="#" className="social-icon instagram" aria-label="Instagram"></a>
-            <a href="#" className="social-icon linkedin" aria-label="LinkedIn"></a>
+            <a href="https://www.linkedin.com/in/jiin-yoo-b496a130b/" className="social-icon linkedin" aria-label="LinkedIn"></a>
             <a href="#" className="social-icon talk" aria-label="Talk"></a>
           </div>
         </div>
