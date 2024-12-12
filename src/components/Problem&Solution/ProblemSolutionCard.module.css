@@ -112,6 +112,8 @@
 .cardBody {
   display: flex;
   gap: 8px;
+  /* bottom radius */
+  border-radius: 0 0 0.75rem 0.75rem;
   padding: 0 8px 8px;
 }
 
@@ -207,11 +209,13 @@
   line-height: 19.2px;
   color: #090909;
   pointer-events: none;
+  text-align: left;
 }
 
 .descriptionLine {
   margin-bottom: 12px;
   pointer-events: none;
+  text-align: left;
 }
 
 .subsectionTitle {

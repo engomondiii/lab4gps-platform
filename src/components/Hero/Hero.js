@@ -108,6 +108,10 @@ const Hero = () => {
     // setShowCards(false);
   };
 
+  const handleSeeMore = (item) => {
+    navigate(`/details/${item.id}`, { state: { item } });
+  };
+
   return (
     <section className={styles.hero}>
       <div className={styles.globeContainer}>
@@ -122,29 +126,27 @@ const Hero = () => {
           objectThreeObject={markerRenderer}
           onObjectClick={(marker) => {
             handleMarkerClick(marker);
-          }}
-        />
-      </div>
-      <Frame
-        selectedMarker={selectedMarker}
-        setShowCards={setShowCards} 
-      />
-      {showCards && selectedMarker && (
-        <ProblemSolutionCard
-          authorName={selectedMarker.cardData.authorName}
-          authorTitle={selectedMarker.cardData.authorTitle}
-          authorImage={selectedMarker.cardData.authorImage}
-          mainImage={selectedMarker.cardData.mainImage}
-          type={selectedMarker.type.charAt(0).toUpperCase() + selectedMarker.type.slice(1)}
-          shortTitle={selectedMarker.cardData.shortTitle}
-          detailedDescription={selectedMarker.cardData.detailedDescription}
-          donationAmount={selectedMarker.cardData.donationAmount}
-          donationGoal={selectedMarker.cardData.donationGoal}
-          onSeeMore={() => {
-            navigate(`/location/${selectedMarker.id}`);
-          }}
-          onClose={handleCloseCard}
-          floating={true} // Floating is true for Hero
+            }}
+          />
+          </div>
+          <Frame
+          selectedMarker={selectedMarker}
+          setShowCards={setShowCards} 
+          />
+          {showCards && selectedMarker && (
+          <ProblemSolutionCard
+            authorName={selectedMarker.cardData.authorName}
+            authorTitle={selectedMarker.cardData.authorTitle}
+            authorImage={selectedMarker.cardData.authorImage}
+            mainImage={selectedMarker.cardData.mainImage}
+            type={selectedMarker.type.charAt(0).toUpperCase() + selectedMarker.type.slice(1)}
+            shortTitle={selectedMarker.cardData.shortTitle}
+            detailedDescription={selectedMarker.cardData.detailedDescription.length >210 ? `${selectedMarker.cardData.detailedDescription.substring(0, 210)}...` : selectedMarker.cardData.detailedDescription}
+            donationAmount={selectedMarker.cardData.donationAmount}
+            donationGoal={selectedMarker.cardData.donationGoal}
+            onSeeMore={() => handleSeeMore(selectedMarker.cardData)}
+            onClose={handleCloseCard}
+            floating={true} // Floating is true for Hero
           showDonation={true} // Ensure donation section is shown
           size="small" // Pass the new size prop
           location={selectedMarker.cardData.location ? `${selectedMarker.cardData.location}, ${selectedMarker.cardData.country || ''}` : 'Unknown Location'} 
