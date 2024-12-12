@@ -1,7 +1,8 @@
+// App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./Context/AuthContext"; // Import AuthContext
-import ProtectedRoute from "./protect/ProtectedRoute"; // Import ProtectedRoute
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./Context/AuthContext";
+import ProtectedRoute from "./protect/ProtectedRoute";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import CollaborationHub from "./pages/CollaborationHub";
@@ -10,15 +11,15 @@ import Startups from "./pages/Startups";
 import Resources from "./pages/Resources";
 import NewsEvents from "./pages/NewsEvents";
 import Sponsorship from "./pages/Sponsorship";
-import MemberPortalDashboard from "./pages/MemberPortalDashboard"; // Member Dashboard Page
-import InternalArchive from "./components/Archive/InternalArchive"; // Internal Archive Page
-import IdeaHub from "./pages/IdeaHub"; // Idea Hub Page
-import EventManagement from "./pages/EventManagement"; // Event Management Page
+import MemberPortalDashboard from "./pages/MemberPortalDashboard";
+import InternalArchive from "./components/Archive/InternalArchive";
+import IdeaHub from "./pages/IdeaHub";
+import EventManagement from "./pages/EventManagement";
 import Login from "./components/Auths/Login";
 import Signup from "./components/Auths/Signup";
-import ForgotPassword from "./components/Auths/ForgotPassword"; // Forgot Password
-import Layout from "./components/Layout/Layout"; // Layout for Navbar/Footer
-import AdvancedUserProfile from "./components/Auths/AdvancedUserProfile"; // Import the Profile component
+import ForgotPassword from "./components/Auths/ForgotPassword";
+import Layout from "./components/Layout/Layout";
+import AdvancedUserProfile from "./components/Auths/AdvancedUserProfile";
 import AddProblemSolution from './components/Problem&Solution/AddProblemSolution';
 
 // IdeaHub Pages
@@ -70,7 +71,6 @@ const App = () => {
               </Layout>
             }
           />
-          <Route path="/add" element={<AddProblemSolution />} />
           <Route
             path="/forgot-password"
             element={
@@ -79,14 +79,34 @@ const App = () => {
               </Layout>
             }
           />
+          <Route path="/add" element={<AddProblemSolution />} />
+
+          {/* Collaboration Hub Routes with Path Parameters */}
+          {/* Redirect /collaboration-hub to /collaboration-hub/startups */}
           <Route
             path="/collaboration-hub"
+            element={<Navigate to="/collaboration-hub/startups" replace />}
+          />
+          {/* Detailed View Route */}
+          <Route
+            path="/collaboration-hub/:section/:cardId"
             element={
               <Layout>
                 <CollaborationHub />
               </Layout>
             }
           />
+          {/* Section Route */}
+          <Route
+            path="/collaboration-hub/:section"
+            element={
+              <Layout>
+                <CollaborationHub />
+              </Layout>
+            }
+          />
+
+          {/* Other Public Routes */}
           <Route
             path="/projects"
             element={

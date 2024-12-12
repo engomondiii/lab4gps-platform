@@ -1,3 +1,4 @@
+// Navbar.js
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../../styles/Navbar.css";
@@ -28,9 +29,9 @@ const Navbar = () => {
     setIsMenuOpen(false); // Close the mobile menu
   };
 
-  // Function to navigate to the Collaboration Hub page with a specific section
+  // Function to navigate to the Collaboration Hub section using path parameters
   const navigateToCollaborationHub = (section) => {
-    navigate(`/collaboration-hub?section=${section}`);
+    navigate(`/collaboration-hub/${section}`);
     handleLinkClick();
   };
 
@@ -89,7 +90,7 @@ const Navbar = () => {
             onMouseLeave={() => setIsDropdownOpen({ ...isDropdownOpen, collaboration: false })}
           >
             <Link
-              to="/collaboration-hub"
+              to="/collaboration-hub/startups" // Default path without query parameters
               className={`dropdown-link ${isScrolled ? "scrolled-text" : ""}`}
               onClick={() => navigateToCollaborationHub("startups")}
             >

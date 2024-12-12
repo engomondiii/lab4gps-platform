@@ -1,5 +1,4 @@
-// src/components/Hero/Hero.js
-
+// Hero.js
 import React, { useRef, useEffect, useState } from 'react';
 import Globe from 'react-globe.gl';
 import * as THREE from 'three';
@@ -8,7 +7,7 @@ import problemPin from '../../assets/eva_pin-fill-Problem.png';
 import solutionPin from '../../assets/eva_pin-fill.png';
 import Frame from './Frame';
 import ProblemSolutionCard from '../Problem&Solution/ProblemSolutionCard';
-import mockData from '../Problem&Solution/mockData'; // Importing the mockData
+import mockData from '../Problem&Solution/mockData';
 import styles from '../../styles/Hero.module.css';
 
 const locationDictionary = {
@@ -33,7 +32,7 @@ const Hero = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [showCards, setShowCards] = useState(false); 
   const [markers, setMarkers] = useState([]);
-  const [showProblems, setShowProblems] = useState(false); // New state
+  const [showProblems, setShowProblems] = useState(false);
 
   useEffect(() => {
     if (globeEl.current) {
@@ -41,7 +40,7 @@ const Hero = () => {
       globeEl.current.controls().autoRotateSpeed = 0.5;
       globeEl.current.controls().enableZoom = false;
       globeEl.current.pointOfView({ altitude: 2.5 });
-      globeEl.current.controls().enabled = false; // Disable interactions initially
+      globeEl.current.controls().enabled = false;
     }
   }, []);
 
@@ -52,7 +51,6 @@ const Hero = () => {
   }, [showCards]);
 
   useEffect(() => {
-    // Prepare markers from mockData
     const newMarkers = mockData.map((item, index) => {
       let latitude = item.lat;
       let longitude = item.lng;
@@ -70,7 +68,7 @@ const Hero = () => {
           lat: latitude,
           lng: longitude,
           id: item.id || index,
-          name: item.type + " in " + item.location,
+          name: `${item.type} in ${item.location}`,
           type: item.type.toLowerCase(),
           cardData: item
         };
@@ -112,11 +110,10 @@ const Hero = () => {
 
   const handleCloseCard = () => {
     setSelectedMarker(null);
-    // setShowCards(false);
   };
 
-  const handleSeeMore = (item) => {
-    navigate(`/details/${item.id}`, { state: { item } });
+  const handleSeeMore = (cardId) => {
+    navigate(`/collaboration-hub/sns4.0/${cardId}`);
   };
 
   return (
@@ -126,39 +123,43 @@ const Hero = () => {
           ref={globeEl}
           globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
           backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
-          objectsData={showProblems ? markers : []} // Conditionally render markers
+          objectsData={showProblems ? markers : []}
           objectLat="lat"
           objectLng="lng"
           objectLabel="name"
           objectThreeObject={markerRenderer}
           onObjectClick={(marker) => {
             handleMarkerClick(marker);
-            }}
-          />
-          </div>
-          <Frame
-          selectedMarker={selectedMarker}
-          setShowCards={setShowCards} 
-          showProblems={showProblems}
-          setShowProblems={setShowProblems}
-          />
-          {showCards && selectedMarker && (
-          <ProblemSolutionCard
-            authorName={selectedMarker.cardData.authorName}
-            authorTitle={selectedMarker.cardData.authorTitle}
-            authorImage={selectedMarker.cardData.authorImage}
-            mainImage={selectedMarker.cardData.mainImage}
-            type={selectedMarker.type.charAt(0).toUpperCase() + selectedMarker.type.slice(1)}
-            shortTitle={selectedMarker.cardData.shortTitle}
-            detailedDescription={selectedMarker.cardData.detailedDescription.length >210 ? `${selectedMarker.cardData.detailedDescription.substring(0, 210)}...` : selectedMarker.cardData.detailedDescription}
-            donationAmount={selectedMarker.cardData.donationAmount}
-            donationGoal={selectedMarker.cardData.donationGoal}
-            onSeeMore={() => handleSeeMore(selectedMarker.cardData)}
-            onClose={handleCloseCard}
-            floating={true} // Floating is true for Hero
-            showDonation={true} // Ensure donation section is shown
-            size="small" // Pass the new size prop
-            location={selectedMarker.cardData.location ? `${selectedMarker.cardData.location}, ${selectedMarker.cardData.country || ''}` : 'Unknown Location'} 
+          }}
+        />
+      </div>
+      <Frame
+        selectedMarker={selectedMarker}
+        setShowCards={setShowCards} 
+        showProblems={showProblems}
+        setShowProblems={setShowProblems}
+      />
+      {showCards && selectedMarker && (
+        <ProblemSolutionCard
+          authorName={selectedMarker.cardData.authorName}
+          authorTitle={selectedMarker.cardData.authorTitle}
+          authorImage={selectedMarker.cardData.authorImage}
+          mainImage={selectedMarker.cardData.mainImage}
+          type={selectedMarker.type.charAt(0).toUpperCase() + selectedMarker.type.slice(1)}
+          shortTitle={selectedMarker.cardData.shortTitle}
+          detailedDescription={
+            selectedMarker.cardData.detailedDescription.length > 210 
+              ? `${selectedMarker.cardData.detailedDescription.substring(0, 210)}...` 
+              : selectedMarker.cardData.detailedDescription
+          }
+          donationAmount={selectedMarker.cardData.donationAmount}
+          donationGoal={selectedMarker.cardData.donationGoal}
+          onSeeMore={() => handleSeeMore(selectedMarker.cardData.id)} // Pass only cardId
+          onClose={handleCloseCard}
+          floating={true}
+          showDonation={true}
+          size="small"
+          location={selectedMarker.cardData.location ? `${selectedMarker.cardData.location}, ${selectedMarker.cardData.country || ''}` : 'Unknown Location'} 
         />
       )}
     </section>

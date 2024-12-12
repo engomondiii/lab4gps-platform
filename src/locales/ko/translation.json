@@ -1,0 +1,28 @@
+{
+    "navbar": {
+      "home": "홈",
+      "about": "소개",
+      "collaborationHub": "협업 허브",
+      "login": "로그인",
+      "signup": "회원가입",
+      "translate": "번역"
+    },
+    "home": {
+      "welcome": "우리 웹사이트에 오신 것을 환영합니다"
+    },
+    "about": {
+      "title": "회사 소개",
+      "content": "우리는 전 세계적으로 협업과 혁신을 촉진합니다."
+    },
+    "collaborationHub": {
+      "title": "협업 허브",
+      "content": "우리의 프로젝트와 스타트업에 참여하세요."
+    },
+    "login": {
+      "title": "로그인"
+    },
+    "signup": {
+      "title": "회원가입"
+    }
+  }
+  

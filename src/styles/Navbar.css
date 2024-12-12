@@ -183,3 +183,65 @@
     background-color: #f5f5f5;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Language Switcher */
+.language-switcher {
+    position: relative;
+}
+
+.language-dropdown {
+    position: relative;
+}
+
+.language-button {
+    background: none;
+    border: none;
+    color: #141e3f; /* Adjust color as needed */
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.language-button:hover {
+    color: #367162; /* Highlight color on hover */
+}
+
+.language-text {
+    margin-left: 0.3rem; /* Space between icon and text */
+    font-weight: bold;
+}
+
+/* Language Menu */
+.language-menu {
+    display: none;
+    position: absolute;
+    top: 120%; /* Position below the button */
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    z-index: 1000;
+}
+
+.language-menu li {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.language-menu li:hover {
+    background-color: #f5f5f5;
+}
+
+/* Show the language menu on hover */
+.language-dropdown:hover .language-menu {
+    display: block;
+}
+
+/* Alternatively, show on click using JavaScript */
+/* You can add JavaScript to toggle the display if you prefer click over hover */

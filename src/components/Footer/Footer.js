@@ -27,7 +27,7 @@ const Footer = () => {
     <footer className="footer">
       {/* Wavy Separator */}
       <div className="footer-separator">
-        <svg viewBox="0 0 1200 120 120" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="footer-gradient-colors" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#141e3f" />

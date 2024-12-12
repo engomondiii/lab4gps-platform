@@ -20,7 +20,7 @@ const SNSBodyContent = ({ items, onSeeMore }) => {
             shortTitle={item.shortTitle}
             detailedDescription={item.detailedDescription}
             location={item.location}
-            onSeeMore={() => onSeeMore(item)} // Pass entire item data
+            onSeeMore={() => onSeeMore(item.id)} // Pass only cardId
             floating={false} // Set to false to retain position
           />
         ))}

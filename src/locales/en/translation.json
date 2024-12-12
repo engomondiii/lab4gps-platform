@@ -1,0 +1,28 @@
+{
+    "navbar": {
+      "home": "Home",
+      "about": "About",
+      "collaborationHub": "Collaboration Hub",
+      "login": "Login",
+      "signup": "Sign Up",
+      "translate": "Translate"
+    },
+    "home": {
+      "welcome": "Welcome to Our Website"
+    },
+    "about": {
+      "title": "About Us",
+      "content": "We foster collaboration and innovation globally."
+    },
+    "collaborationHub": {
+      "title": "Collaboration Hub",
+      "content": "Join our projects and startups."
+    },
+    "login": {
+      "title": "Login"
+    },
+    "signup": {
+      "title": "Sign Up"
+    }
+  }
+  
