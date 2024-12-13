@@ -37,7 +37,9 @@ const DetailView = ({ cardData, onBack }) => {
 
         <div className={styles.card}>
           {/* TOP PROFILE SECTION */}
+
           <div className={styles.profileSection}>
+            <div className={styles.profileImageNameTitle}>
             <div className={styles.profileInfo}>
               <div className={styles.authorImageWrapper}>
                 {authorImage ? (
@@ -54,9 +56,8 @@ const DetailView = ({ cardData, onBack }) => {
             <div className={styles.dropdownIcon}>
               <div className={styles.dropdownArrow}><FaChevronDown /></div>
             </div>
-          </div>
-
-          {/* AGE, BIO, and CONTACT INFO */}
+            </div>
+            {/* AGE, BIO, and CONTACT INFO */}
           <div className={styles.infoSection}>
             <div className={styles.ageInfo}>
               <span className={styles.ageBold}>Age: {age} </span>
@@ -77,6 +78,9 @@ const DetailView = ({ cardData, onBack }) => {
               </div>
             </div>
           </div>
+          </div>
+
+          
 
           {/* MAIN IMAGE & SOLUTION BANNER */}
           <div className={styles.mainImageSection}>

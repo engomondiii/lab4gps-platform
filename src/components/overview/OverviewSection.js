@@ -50,7 +50,7 @@ const OverviewSection = () => {
             <br />
             Join us on our journey!
           </p>
-          <Link to="/collaboration-hub?section=sns4.0">
+          <Link to="/collaboration-hub/sns4.0">
             <button className="cta-button">
               SNS 4.0
             </button>

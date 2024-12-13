@@ -33,7 +33,7 @@
   align-items: center;
 }
 
-.profileSection, .infoSection, .descriptionSection, .commentsSection {
+.profileSection, .descriptionSection, .commentsSection {
   width: 100%;
   padding: 0.5rem;
   background: white;
@@ -43,12 +43,32 @@
   gap: 0.5rem;
 }
 
+
+
 .profileSection {
   border-bottom: 0.0125rem #666666 solid;
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
   justify-content: space-between;
   align-items: center;
+}
+
+.profileImageNameTitle {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.infoSection{
+  width: 100%;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .profileInfo {
