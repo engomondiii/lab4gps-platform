@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "../../styles/InternalArchive.css";
 import {
   FaSearch,
@@ -17,6 +16,7 @@ import {
   FaPlusCircle,
 } from "react-icons/fa";
 import ArchiveService from "../../services/archiveService";
+import UploadFile from "./UploadFile"; // Import the UploadFile component
 
 const InternalArchive = ({ userRole, user }) => {
   const [files, setFiles] = useState([]);
@@ -44,7 +44,7 @@ const InternalArchive = ({ userRole, user }) => {
   const [filesPerPage] = useState(5);
   const [tagDropdownOpen, setTagDropdownOpen] = useState(false);
   const [viewingFile, setViewingFile] = useState(null);
-  const navigate = useNavigate();
+  const [isUploading, setIsUploading] = useState(false); // Toggle between archive and upload views
 
   useEffect(() => {
     const fetchInitialData = async () => {
@@ -214,6 +214,41 @@ const InternalArchive = ({ userRole, user }) => {
         </div>
       ));
 
+  const renderContent = () => {
+    if (isUploading) {
+      return (
+        <>
+          <button
+            className="back-to-archive-btn"
+            onClick={() => setIsUploading(false)}
+          >
+            &larr; Back to Archive
+          </button>
+          <UploadFile setFiles={setFiles} setFilteredFiles={setFilteredFiles} />
+        </>
+      );
+    }
+
+    return (
+      <>
+        <div className="file-list">
+          {filteredFiles.length > 0 ? renderFiles() : <p>No files found for the selected criteria.</p>}
+        </div>
+        <div className="pagination-controls">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              className={`pagination-btn ${page === currentPage ? "active" : ""}`}
+              onClick={() => setCurrentPage(page)}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
+      </>
+    );
+  };
+
   return (
     <div className="internal-archive">
       <header className="archive-header">
@@ -223,10 +258,7 @@ const InternalArchive = ({ userRole, user }) => {
 
       {viewingFile && (
         <div className="file-viewer">
-          <button
-            className="close-viewer"
-            onClick={() => setViewingFile(null)}
-          >
+          <button className="close-viewer" onClick={() => setViewingFile(null)}>
             &times;
           </button>
           <h2>{viewingFile.title}</h2>
@@ -282,29 +314,11 @@ const InternalArchive = ({ userRole, user }) => {
         </div>
       </div>
 
-      <div className="file-list">
-        {filteredFiles.length > 0 ? (
-          renderFiles()
-        ) : (
-          <p>No files found for the selected criteria.</p>
-        )}
-      </div>
-
-      <div className="pagination-controls">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <button
-            key={page}
-            className={`pagination-btn ${page === currentPage ? "active" : ""}`}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </button>
-        ))}
-      </div>
+      <main className="archive-content">{renderContent()}</main>
 
       <div
         className="floating-upload-button"
-        onClick={() => navigate("/member-portal/upload")}
+        onClick={() => setIsUploading(true)} // Switch to upload view
       >
         <FaPlusCircle size={40} />
       </div>
