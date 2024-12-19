@@ -14,7 +14,7 @@ const SNSSection = () => {
           Together, we foster collaboration, understanding, and impactful solutions to make a difference.<br/>
           Speak Up – Let’s Find Solutions Together</p>
         </div>
-        <button className={styles.heroButton}>Get Heard</button>
+        {/* <button className={styles.heroButton}>Get Heard</button> */}
       </div>
       <img className={styles.heroImage} src={heroImage} alt="Illustration representing community problem-solving" />
     </section>
