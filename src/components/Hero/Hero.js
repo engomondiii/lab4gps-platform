@@ -96,7 +96,7 @@ const Hero = () => {
 
     const material = new THREE.SpriteMaterial({ map: texture });
     const sprite = new THREE.Sprite(material);
-    sprite.scale.set(8, 8, 8);
+    sprite.scale.set(6, 6, 6);
     return sprite;
   };
 

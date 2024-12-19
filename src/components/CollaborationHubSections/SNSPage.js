@@ -50,10 +50,9 @@ const SNSPage = ({ selectedCard }) => {
 
   return (
     <div className={styles.pageContainer}>
-      <SNSSection />
+      {!selectedCard && <SNSSection />}
 
       {selectedCard ? (
-        // Render DetailView, replacing SNSBodyContent
         <DetailView cardData={selectedCard} onBack={handleBackToList} />
       ) : (
         <>

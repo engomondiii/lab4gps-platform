@@ -1,0 +1,13 @@
+:root {
+  /* Major Third Type Scale */
+  --font-size-h1: 32px;
+  --font-size-h2: 26px;
+  --font-size-h3: 21px;
+  --font-size-h4: 17px;
+  --font-size-h5: 14px;
+  --font-size-h6: 11px;
+  
+  /* Font Families */
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-bold: 'Inter', sans-serif;
+}
