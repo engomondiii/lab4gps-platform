@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "../../styles/InternalArchive.css";
 import {
   FaSearch,
   FaFileAlt,
   FaFolder,
+  FaImage,
+  FaVideo,
   FaTag,
   FaUserCircle,
   FaTrashAlt,
@@ -15,8 +16,10 @@ import {
   FaClock,
   FaChevronDown,
   FaPlusCircle,
+  FaEllipsisV,
 } from "react-icons/fa";
 import ArchiveService from "../../services/archiveService";
+import UploadFile from "./UploadFile";
 
 const InternalArchive = ({ userRole, user }) => {
   const [files, setFiles] = useState([]);
@@ -44,7 +47,8 @@ const InternalArchive = ({ userRole, user }) => {
   const [filesPerPage] = useState(5);
   const [tagDropdownOpen, setTagDropdownOpen] = useState(false);
   const [viewingFile, setViewingFile] = useState(null);
-  const navigate = useNavigate();
+  const [isUploading, setIsUploading] = useState(false);
+  const [activeFileActions, setActiveFileActions] = useState(null);
 
   useEffect(() => {
     const fetchInitialData = async () => {
@@ -142,6 +146,10 @@ const InternalArchive = ({ userRole, user }) => {
     }
   };
 
+  const toggleFileActions = (fileId) => {
+    setActiveFileActions((prev) => (prev === fileId ? null : fileId));
+  };
+
   const toggleTagDropdown = () => {
     setTagDropdownOpen((prev) => !prev);
   };
@@ -159,60 +167,81 @@ const InternalArchive = ({ userRole, user }) => {
         <div key={file.id} className="file-card">
           <div className="file-info" onClick={() => setViewingFile(file)}>
             <div className="file-icon">
-              {file.type === "file" ? <FaFileAlt /> : <FaFolder />}
+              {file.type === "file" ? <FaFileAlt /> : file.type === "image" ? <FaImage /> : file.type === "video" ? <FaVideo /> : <FaFolder />}
             </div>
             <div className="file-details">
-              <h3>{file.title}</h3>
+              <h3 className="file-title">{file.title}</h3>
               <p>{file.description}</p>
-              <span>
-                <FaTag /> {file.category}
-              </span>
-              <span>
-                <FaUserCircle /> {file.author}
-              </span>
-              <span>
-                <FaClock /> {file.upload_date}
-              </span>
+              <span><FaTag /> {file.category}</span>
+              <span><FaUserCircle /> {file.author}</span>
+              <span><FaClock /> {file.upload_date}</span>
               <span>Version: {file.version}</span>
             </div>
-          </div>
-          <div className="file-actions">
-            <button
-              className="action-btn"
-              onClick={() => handleLike(file.id)}
-            >
-              <FaThumbsUp /> {likes[file.id]} Likes
+            <button className="more-options" onClick={() => toggleFileActions(file.id)}>
+              <FaEllipsisV />
             </button>
-            <button className="action-btn">
-              <FaShareAlt /> Share
-            </button>
-            <a
-              className="action-btn"
-              href={file.download_url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaDownload /> Download
-            </a>
-            {userRole === "Administrator" && (
-              <>
-                <button
-                  className="action-btn"
-                  onClick={() => handleFileEdit(file.id)}
-                >
-                  <FaEdit /> Edit
-                </button>
-                <button
-                  className="action-btn"
-                  onClick={() => handleFileDelete(file.id)}
-                >
-                  <FaTrashAlt /> Delete
-                </button>
-              </>
-            )}
           </div>
+          {activeFileActions === file.id && (
+            <div className="file-actions">
+              <button className="action-btn" onClick={() => handleLike(file.id)}>
+                <FaThumbsUp /> {likes[file.id]} Likes
+              </button>
+              <button className="action-btn">
+                <FaShareAlt /> Share
+              </button>
+              <a
+                className="action-btn"
+                href={file.download_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaDownload /> Download
+              </a>
+              {userRole === "Administrator" && (
+                <>
+                  <button className="action-btn" onClick={() => handleFileEdit(file.id)}>
+                    <FaEdit /> Edit
+                  </button>
+                  <button className="action-btn" onClick={() => handleFileDelete(file.id)}>
+                    <FaTrashAlt /> Delete
+                  </button>
+                </>
+              )}
+            </div>
+          )}
         </div>
       ));
+
+  const renderContent = () => {
+    if (isUploading) {
+      return (
+        <>
+          <button className="back-to-archive-btn" onClick={() => setIsUploading(false)}>
+            &larr; Back to Archive
+          </button>
+          <UploadFile setFiles={setFiles} setFilteredFiles={setFilteredFiles} />
+        </>
+      );
+    }
+    return (
+      <>
+        <div className="file-list">
+          {filteredFiles.length > 0 ? renderFiles() : <p>No files found for the selected criteria.</p>}
+        </div>
+        <div className="pagination-controls">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              className={`pagination-btn ${page === currentPage ? "active" : ""}`}
+              onClick={() => setCurrentPage(page)}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
+      </>
+    );
+  };
 
   return (
     <div className="internal-archive">
@@ -223,10 +252,7 @@ const InternalArchive = ({ userRole, user }) => {
 
       {viewingFile && (
         <div className="file-viewer">
-          <button
-            className="close-viewer"
-            onClick={() => setViewingFile(null)}
-          >
+          <button className="close-viewer" onClick={() => setViewingFile(null)}>
             &times;
           </button>
           <h2>{viewingFile.title}</h2>
@@ -242,9 +268,7 @@ const InternalArchive = ({ userRole, user }) => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button>
-            <FaSearch />
-          </button>
+          <button><FaSearch /></button>
         </div>
         <div className="category-filter">
           <select
@@ -253,9 +277,7 @@ const InternalArchive = ({ userRole, user }) => {
           >
             <option value="All">All Categories</option>
             {categories.map((category, index) => (
-              <option key={index} value={category}>
-                {category}
-              </option>
+              <option key={index} value={category}>{category}</option>
             ))}
           </select>
         </div>
@@ -282,30 +304,9 @@ const InternalArchive = ({ userRole, user }) => {
         </div>
       </div>
 
-      <div className="file-list">
-        {filteredFiles.length > 0 ? (
-          renderFiles()
-        ) : (
-          <p>No files found for the selected criteria.</p>
-        )}
-      </div>
+      <main className="archive-content">{renderContent()}</main>
 
-      <div className="pagination-controls">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-          <button
-            key={page}
-            className={`pagination-btn ${page === currentPage ? "active" : ""}`}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </button>
-        ))}
-      </div>
-
-      <div
-        className="floating-upload-button"
-        onClick={() => navigate("/member-portal/upload")}
-      >
+      <div className="floating-upload-button" onClick={() => setIsUploading(true)}>
         <FaPlusCircle size={40} />
       </div>
     </div>

@@ -1,169 +1,196 @@
+/* General Styling */
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f9fa; /* Light, neutral background */
+    color: #141e3f; /* Neutral dark color for text */
+}
+
 /* Upload Section */
 .upload-section {
-    background: rgba(255, 255, 255, 0.95); /* Glassy white */
-    border: 1px solid rgba(20, 30, 63, 0.3); /* Subtle blue border */
-    border-radius: 10px; /* Slight rounding for modern aesthetic */
-    padding: 40px 60px;
-    max-width: 750px;
-    margin: 30px auto;
-    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2); /* Prominent shadow */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 800px;
+    margin: 50px auto; /* Center on the page */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width */
     animation: fadeIn 0.6s ease-in-out;
-    backdrop-filter: blur(10px); /* Enhance modern aesthetic */
 }
 
 .upload-section h3 {
-    font-size: 24px;
-    color: #141e3f; /* Lab4GPS Blue */
+    font-size: 32px;
+    color: #141e3f;
     text-align: center;
     margin-bottom: 30px;
-    font-family: "Helvetica75-Bold", sans-serif;
-    text-transform: uppercase; /* Professional look */
-    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    border-bottom: 2px solid #dcdcdc;
+    padding-bottom: 10px;
 }
 
 /* Form Inputs Styling */
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all form elements */
+    gap: 20px; /* Consistent spacing between elements */
+    width: 100%;
+}
+
 .upload-form input,
 .upload-form textarea,
 .upload-form select {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(20, 30, 63, 0.3); /* Subtle blue border */
-    border-radius: 5px; /* Slight rounding */
+    max-width: 750px;
+    padding: 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
     font-size: 16px;
-    font-family: "Helvetica-Regular", sans-serif;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    background: #ffffff;
+    color: #141e3f;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
 .upload-form input:focus,
 .upload-form textarea:focus,
 .upload-form select:focus {
-    border-color: #141e3f; /* Lab4GPS Blue */
-    box-shadow: 0px 4px 15px rgba(20, 30, 63, 0.4); /* Glow effect */
+    border-color: #367162; /* Subtle green accent */
+    box-shadow: 0px 4px 12px rgba(54, 113, 98, 0.3); /* Highlight shadow */
     outline: none;
+}
+
+/* Textarea for description */
+.upload-form textarea {
+    min-height: 150px;
+    resize: vertical; /* Allow resizing only vertically */
 }
 
 /* Tags Fieldset Styling */
 .upload-form fieldset {
-    border: 1px solid rgba(20, 30, 63, 0.3); /* Subtle blue border */
-    padding: 15px 20px;
+    border: 1px solid #dcdcdc;
+    padding: 15px;
     border-radius: 8px;
-    margin-bottom: 20px;
+    background: #ffffff;
+    max-width: 750px;
+    width: 100%;
+    margin: 0;
 }
 
 .upload-form fieldset legend {
-    font-family: "Helvetica-Regular", sans-serif;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 600;
     color: #141e3f;
-    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .tags-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
 }
 
 .tag-label {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: "Helvetica-Regular", sans-serif;
+    background: #e9ecef; /* Subtle light background */
+    padding: 6px 12px;
+    border-radius: 4px;
     font-size: 14px;
-    color: #141e3f; /* Lab4GPS Blue */
+    color: #141e3f;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.tag-label:hover {
+    background: #367162; /* Green accent on hover */
+    color: #ffffff;
 }
 
 .tag-checkbox {
     width: 16px;
     height: 16px;
-    accent-color: #141e3f; /* Checkbox in Lab4GPS Blue */
+    accent-color: #367162;
     cursor: pointer;
 }
 
-/* Form Buttons Styling */
+/* Buttons Styling */
 .upload-form button {
-    background: linear-gradient(to right, #141e3f, #000000); /* Gradient from blue to black */
-    color: #ffffff; /* White text */
+    background: linear-gradient(90deg, #367162, #141e3f); /* Gradient from green to dark blue */
+    color: #ffffff;
     border: none;
-    padding: 14px 30px;
+    padding: 14px 28px;
     border-radius: 5px;
     font-size: 16px;
-    font-family: "Helvetica75-Bold", sans-serif;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.upload-form button:hover {
-    background: linear-gradient(to right, #000000, #141e3f); /* Reverse gradient on hover */
-    transform: translateY(-3px);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.cancel-upload-btn {
-    background: rgba(255, 102, 102, 0.1); /* Transparent red */
-    color: #ff6666; /* Soft red for cancel */
-    border: 1px solid #ff6666;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-family: "Helvetica-Regular", sans-serif;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.cancel-upload-btn:hover {
-    background: #ff6666; /* Solid red */
-    color: #ffffff; /* White text */
-    transform: translateY(-3px);
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Floating Add New File Button Styling */
-.floating-add-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-.floating-add-button button {
-    background: rgba(20, 30, 63, 0.7); /* Semi-transparent Lab4GPS Blue */
-    color: #ffffff; /* White text */
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Soft white border */
-    border-radius: 8px; /* Modern, reduced rounding */
-    padding: 12px 24px;
-    font-size: 16px;
-    font-family: "Helvetica75-Bold", sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-    backdrop-filter: blur(8px); /* Glass-like effect */
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
-    transition: all 0.3s ease;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
 }
 
-.floating-add-button button:hover {
-    background: rgba(255, 255, 255, 0.2); /* Transparent hover effect */
-    color: #141e3f; /* Lab4GPS Blue text */
-    border-color: #ffffff; /* Solid white border */
-    transform: scale(1.05); /* Slight enlargement */
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4); /* Glow effect */
+.upload-form button:hover {
+    background: linear-gradient(90deg, #141e3f, #367162); /* Reverse gradient */
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cancel-upload-btn {
+    background: #ff4d4d;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.cancel-upload-btn:hover {
+    background: #cc0000;
+    box-shadow: 0px 6px 15px rgba(204, 0, 0, 0.3);
+}
+
+/* File Input Styling */
+.upload-form input[type="file"] {
+    border: 1px dashed #dcdcdc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    color: #6c757d; /* Neutral placeholder text */
+    max-width: 750px;
+    margin: 0;
+}
+
+.upload-form input[type="file"]:hover {
+    border-color: #367162;
+    background: #f8f9fa;
+    color: #141e3f;
+}
+
+/* Submit and Cancel Buttons Wrapper */
+.upload-form .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
 }
 
 /* Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: scale(0.95);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0);
     }
 }

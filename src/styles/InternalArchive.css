@@ -1,5 +1,323 @@
 /* InternalArchive.css */
 
+
+
+
+/* Styles for the file card */
+.file-card {
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1; /* Keeps the card on top of non-interacting elements */
+}
+
+/* Styles for the three-dotted button */
+.more-options {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #666;
+  position: relative;
+  z-index: 2; /* Ensure the button remains clickable */
+}
+
+/* Styles for the file actions container */
+.file-actions {
+  position: fixed; /* Place it relative to the viewport */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10000; /* Ensure it appears above all elements */
+  top: 0; /* Default position, can be dynamically updated */
+  left: 0; /* Default position, can be dynamically updated */
+  transform: translate(-50%, -50%); /* Adjust for center alignment based on cursor */
+}
+
+/* Individual action button styles */
+.file-actions .action-btn {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.file-actions .action-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/* Hide the file actions by default */
+.file-actions.hidden {
+  display: none;
+}
+
+/* Additional spacing for file details to align with the new layout */
+.file-details {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+
+
+
+
+
+
+/* Styles for file cards */
+.file-card {
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.file-info {
+  cursor: pointer;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.file-icon {
+  margin-right: 10px;
+  font-size: 24px;
+  color: #666;
+}
+
+.file-details {
+  flex-grow: 1;
+}
+
+.file-title {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.file-details span {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.more-options {
+  margin-left: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+}
+
+/* Styles for file actions */
+.file-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.action-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Enhancements for viewing large images or videos like a social media post */
+.file-info.image, .file-info.video {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.file-info.image .file-icon, .file-info.video .file-icon {
+  color: #007bff;
+}
+
+/* Styles for closing the file viewer */
+.close-viewer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Miscellaneous UI enhancements */
+.tag-dropdown-toggle {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tag-dropdown-content {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.tag-dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.tag-dropdown-item input {
+  margin-right: 5px;
+}
+
+/* Floating upload button */
+.floating-upload-button {
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.floating-upload-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+
+
+/* Styles for the floating upload button */
+.floating-upload-button {
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(20, 30, 63, 0.8); /* Semi-transparent blue */
+  border-radius: 50%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.floating-upload-button:hover {
+  transform: scale(1.1);
+  background: rgba(20, 30, 63, 1); /* Solid blue on hover */
+}
+
+/* Styles for the Back to Archive button */
+.back-to-archive-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background: #367162; /* Green */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-to-archive-btn:hover {
+  background: #285649; /* Darker green on hover */
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles for the archive content section */
+.archive-content {
+  margin-top: 20px;
+}
+
+/* Adjustments for pagination controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-btn {
+  padding: 10px 15px;
+  margin: 0 5px;
+  background: #141e3f; /* Dark blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-btn:hover {
+  background: #000000; /* Black */
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pagination-btn.active {
+  background: #367162; /* Green */
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Adjustments for the upload section */
+.upload-section {
+  margin-top: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+
+
+
 /* General Styles */
 .internal-archive {
   max-width: 1200px;

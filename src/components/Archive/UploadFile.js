@@ -17,7 +17,7 @@ const UploadFile = ({ setFiles, setFilteredFiles }) => {
     "Achievements",
     "Summary",
   ]); // Static tags
-  const [showUploadForm, setShowUploadForm] = useState(false); // Toggle upload form visibility
+  const [showUploadForm, setShowUploadForm] = useState(true); // Always show upload form
 
   useEffect(() => {
     const fetchCategoriesAndTags = async () => {
@@ -70,26 +70,6 @@ const UploadFile = ({ setFiles, setFilteredFiles }) => {
 
   return (
     <div className="upload-file-container">
-      {/* Add New File Button */}
-      {!showUploadForm && (
-        <div className="floating-add-button">
-          <button
-            onClick={() => {
-              setShowUploadForm(true);
-              setTimeout(() => {
-                const uploadSection = document.querySelector(".upload-section");
-                if (uploadSection) {
-                  uploadSection.scrollIntoView({ behavior: "smooth" });
-                }
-              }, 100);
-            }}
-            title="Click to add a new file"
-          >
-            <FaPlusCircle size={24} /> <span>Add File</span>
-          </button>
-        </div>
-      )}
-
       {/* Upload Form */}
       {showUploadForm && (
         <div className="upload-section">
