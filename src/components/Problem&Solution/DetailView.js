@@ -1,11 +1,11 @@
 // DetailView.js
 import React from 'react';
-import styles from './DetailView.module.css'; // Import the CSS module
-import Comment from './Comment'; // Import the Comment sub-component
+import styles from './DetailView.module.css';
+import Comment from './Comment';
 import { FaMapMarkerAlt, FaEye, FaComment, FaHeart, FaEnvelope, FaChevronDown } from 'react-icons/fa';
+import { Donation } from './Donation'; // import the Donation component
 
 const DetailView = ({ cardData, onBack }) => {
-  // Destructure the cardData object for easy access
   const {
     authorName,
     authorTitle,
@@ -26,66 +26,56 @@ const DetailView = ({ cardData, onBack }) => {
   return (
     <div className={styles.overlay}>
       <div className={styles.container}>
-        {/* Back button */}
-        <button 
-          onClick={onBack} 
-          className={styles.backButton}
-          aria-label="Go back to SNS 4.0 list"
-        >
+        <button onClick={onBack} className={styles.backButton} aria-label="Go back to SNS 4.0 list">
           &larr; Back
         </button>
 
         <div className={styles.card}>
           {/* TOP PROFILE SECTION */}
-
           <div className={styles.profileSection}>
             <div className={styles.profileImageNameTitle}>
-            <div className={styles.profileInfo}>
-              <div className={styles.authorImageWrapper}>
-                {authorImage ? (
-                  <img src={authorImage} alt={authorName} className={styles.authorImage} />
-                ) : (
-                  <div className={styles.authorImage}></div>
-                )}
+              <div className={styles.profileInfo}>
+                <div className={styles.authorImageWrapper}>
+                  {authorImage ? (
+                    <img src={authorImage} alt={authorName} className={styles.authorImage} />
+                  ) : (
+                    <div className={styles.authorImage}></div>
+                  )}
+                </div>
+                <div className={styles.authorDetails}>
+                  <div className={styles.authorName}>{authorName}</div>
+                  <div className={styles.authorTitle}>{authorTitle}</div>
+                </div>
               </div>
-              <div className={styles.authorDetails}>
-                <div className={styles.authorName}>{authorName}</div>
-                <div className={styles.authorTitle}>{authorTitle}</div>
-              </div>
-            </div>
-            <div className={styles.dropdownIcon}>
-              <div className={styles.dropdownArrow}><FaChevronDown /></div>
-            </div>
-            </div>
-            {/* AGE, BIO, and CONTACT INFO */}
-          <div className={styles.infoSection}>
-            <div className={styles.ageInfo}>
-              <span className={styles.ageBold}>Age: {age} </span>
-              <span className={styles.ageNormal}>Years Old</span>
-            </div>
-            <div className={styles.bio}>
-              {bio}
-            </div>
-            <div className={styles.contactInfo}>
-              <div className={styles.contactItem}>
-                <div className={styles.contactIcon}><FaMapMarkerAlt/></div>
-                <div>{location}, {country}</div>
-              </div>
-              <div className={styles.contactItem}>
-                {/* email icon */}
-                <div className={styles.contactIcon}> <FaEnvelope/></div>
-                <div>{email}</div>
+              <div className={styles.dropdownIcon}>
+                <div className={styles.dropdownArrow}><FaChevronDown /></div>
               </div>
             </div>
-          </div>
-          </div>
 
-          
+            <div className={styles.infoSection}>
+              <div className={styles.ageInfo}>
+                <span className={styles.ageBold}>Age: {age} </span>
+                <span className={styles.ageNormal}>Years Old</span>
+              </div>
+              <div className={styles.bio}>
+                {bio}
+              </div>
+              <div className={styles.contactInfo}>
+                <div className={styles.contactItem}>
+                  <div className={styles.contactIcon}><FaMapMarkerAlt/></div>
+                  <div>{location}, {country}</div>
+                </div>
+                <div className={styles.contactItem}>
+                  <div className={styles.contactIcon}> <FaEnvelope/></div>
+                  <div>{email}</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* MAIN IMAGE & SOLUTION BANNER */}
           <div className={styles.mainImageSection}>
             <img src={mainImage} alt="Main" className={styles.mainImage} />
-            {/* overlayText or solutionDescription as text over the image */}
             <div className={styles.overlayText}>
               {solutionDescription}
             </div>
@@ -131,6 +121,8 @@ const DetailView = ({ cardData, onBack }) => {
               <Comment key={index} comment={comment} />
             ))}
 
+            {/* Donation Section */}
+            <Donation />
           </div>
         </div>
       </div>

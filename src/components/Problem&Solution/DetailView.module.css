@@ -1,5 +1,4 @@
-/* DetailView.module.css */
-
+/* Base Container */
 .container {
   width: 100%;
   background: white;
@@ -10,6 +9,7 @@
   padding: 1rem;
 }
 
+/* Back Button */
 .backButton {
   align-self: flex-start;
   margin: 2rem;
@@ -21,6 +21,7 @@
   cursor: pointer;
 }
 
+/* Main Card Wrapper */
 .card {
   width: 100%;
   padding: 1rem;
@@ -33,7 +34,10 @@
   align-items: center;
 }
 
-.profileSection, .descriptionSection, .commentsSection {
+/* Sections of the Card */
+.profileSection, 
+.descriptionSection, 
+.commentsSection {
   width: 100%;
   padding: 0.5rem;
   background: white;
@@ -43,8 +47,7 @@
   gap: 0.5rem;
 }
 
-
-
+/* Profile Section */
 .profileSection {
   border-bottom: 0.0125rem #666666 solid;
   border-top-left-radius: 0.75rem;
@@ -53,6 +56,7 @@
   align-items: center;
 }
 
+/* Profile Section: Top Row with Image/Name/Title and Dropdown */
 .profileImageNameTitle {
   display: flex;
   width: 100%;
@@ -61,7 +65,8 @@
   align-items: center;
 }
 
-.infoSection{
+/* Additional Info Section inside Profile */
+.infoSection {
   width: 100%;
   padding: 0.5rem;
   background: white;
@@ -71,6 +76,7 @@
   gap: 0.5rem;
 }
 
+/* Profile Info: Author Image and Details */
 .profileInfo {
   display: flex;
   gap: 0.5rem;
@@ -98,21 +104,23 @@
   gap: 0.5rem;
 }
 
+/* Author Name and Title */
 .authorName {
   color: black;
-  font-size: 1.5625rem;
+  font-size: 1.5625rem; /* 25px */
   font-weight: 700;
   line-height: 1.875rem;
 }
 
 .authorTitle {
   color: black;
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* 20px */
   font-weight: 700;
   line-height: 1.5rem;
   text-align: center;
 }
 
+/* Dropdown Icon (if any) */
 .dropdownIcon {
   width: 2.25rem;
   height: 2.25rem;
@@ -128,8 +136,9 @@
   top: 0.875rem;
 }
 
+/* Age and Bio */
 .ageInfo {
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* 20px */
   line-height: 1.5rem;
 }
 
@@ -143,11 +152,12 @@
 
 .bio {
   color: #666666;
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* 20px */
   font-weight: 400;
   line-height: 1.5rem;
 }
 
+/* Contact Information */
 .contactInfo {
   display: flex;
   justify-content: space-between;
@@ -169,6 +179,7 @@
   color: #666666;
 }
 
+/* Main Image and Banner Section */
 .mainImageSection {
   width: 100%;
   border-radius: 0.75rem;
@@ -184,7 +195,7 @@
   border: 0.0625rem solid black;
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
-  height: 27.375rem;
+  height: 27.375rem; /* ~438px */
   object-fit: cover;
 }
 
@@ -192,7 +203,7 @@
   width: 100%;
   text-align: center;
   color: white;
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* 20px */
   font-weight: 700;
   line-height: 1.5rem;
   position: absolute;
@@ -201,25 +212,27 @@
   transform: translate(-50%, -50%);
 }
 
+/* Banner beneath the Main Image */
 .banner {
   width: 100%;
-  height: 3.875rem;
+  height: 3.875rem; /* ~62px */
   background: #367162;
   display: flex;
   justify-content: center;
   align-items: center;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  margin-top: -0.0625rem;
+  margin-top: -0.0625rem; /* slight overlap */
   color: white;
 }
 
 .bannerText {
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* 20px */
   font-weight: 700;
   line-height: 1.5rem;
 }
 
+/* Description Section */
 .descriptionContent {
   padding: 0.75rem;
   border-radius: 0.75rem;
@@ -231,19 +244,20 @@
 
 .sectionTitle {
   color: black;
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* 20px */
   font-weight: 700;
   line-height: 1.5rem;
 }
 
 .detailedDescription {
   color: #090909;
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   font-weight: 400;
   line-height: 1.2rem;
   white-space: pre-wrap;
 }
 
+/* Stats Section (Views, Comments, Likes) */
 .statsSection {
   padding: 0.5rem 1.5rem;
   display: flex;
@@ -255,12 +269,12 @@
   display: flex;
   align-items: center;
   gap: 0.125rem;
-  font-size: 0.8125rem;
+  font-size: 0.8125rem; /* ~13px */
   color: rgba(20, 30, 63, 0.5);
 }
 
 .statCount {
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   color: rgba(20, 30, 63, 0.5);
 }
 
@@ -270,14 +284,15 @@
   gap: 0.125rem;
 }
 
+/* Comments Section */
 .comment {
   display: flex;
-  gap: 1.3125rem;
+  gap: 1.3125rem; /* ~21px */
 }
 
 .commenterImageWrapper {
-  width: 5rem;
-  height: 5rem;
+  width: 5rem; /* 80px */
+  height: 5rem; /* 80px */
   position: relative;
   border-radius: 50%;
   background: #D9D9D9;
@@ -293,7 +308,7 @@
 .commentContent {
   display: flex;
   flex-direction: column;
-  gap: 1.5625rem;
+  gap: 1.5625rem; /* ~25px */
 }
 
 .commentHeader {
@@ -303,42 +318,43 @@
 }
 
 .commentAuthor {
-  font-size: 1.5625rem;
+  font-size: 1.5625rem; /* ~25px */
   font-weight: 700;
 }
 
 .commentTime {
   color: #666666;
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* 20px */
   font-weight: 400;
 }
 
 .commentText {
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   font-weight: 400;
   color: black;
 }
 
 .commentActions {
   display: flex;
-  gap: 1.5625rem;
+  gap: 1.5625rem; /* ~25px */
 }
 
 .actionItem {
   display: flex;
   align-items: center;
   gap: 0.125rem;
-  font-size: 0.8125rem;
+  font-size: 0.8125rem; /* ~13px */
   color: rgba(20, 30, 63, 0.5);
 }
 
 .separator {
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* 20px */
   color: #666666;
   font-weight: 700;
 }
 
-/* Media Queries for Responsiveness */
+/* Responsive Design */
+/* Medium Screens (Tablets) */
 @media (max-width: 768px) {
   .container {
     width: 100%;
@@ -349,11 +365,17 @@
     padding: 0.5rem;
   }
 
-  .authorName, .authorTitle, .commentAuthor, .commentTime {
+  .authorName, 
+  .authorTitle, 
+  .commentAuthor, 
+  .commentTime {
     font-size: 1rem;
   }
 
-  .bannerText, .sectionTitle, .bio, .detailedDescription {
+  .bannerText, 
+  .sectionTitle, 
+  .bio, 
+  .detailedDescription {
     font-size: 1rem;
   }
 
@@ -367,6 +389,7 @@
   }
 }
 
+/* Small Screens (Mobile) */
 @media (max-width: 480px) {
   .container {
     width: 100%;
@@ -377,11 +400,17 @@
     padding: 0.25rem;
   }
 
-  .authorName, .authorTitle, .commentAuthor, .commentTime {
-    font-size: 0.875rem;
+  .authorName, 
+  .authorTitle, 
+  .commentAuthor, 
+  .commentTime {
+    font-size: 0.875rem; /* ~14px */
   }
 
-  .bannerText, .sectionTitle, .bio, .detailedDescription {
+  .bannerText, 
+  .sectionTitle, 
+  .bio, 
+  .detailedDescription {
     font-size: 0.875rem;
   }
 
