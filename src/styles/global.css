@@ -3,6 +3,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arial:wght@700&display=swap');
 
+:root {
+  --body-bold-font-family: "Inter", Helvetica;
+  --body-bold-font-size: 16px;
+  --body-bold-font-style: normal;
+  --body-bold-font-weight: 700;
+  --body-bold-letter-spacing: 0px;
+  --body-bold-line-height: 24px;
+  /* Add all your variable definitions here */
+
+  /* ...rest of your CSS variables and global styles... */
+}
+
 body {
   margin: 0;
   line-height: normal;
