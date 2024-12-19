@@ -13,8 +13,8 @@
   align-items: center;
   background-color: #f9f9f9;
   border-radius: 8px;
-  position: relative;
-  z-index: 1; /* Keeps the card on top of non-interacting elements */
+  position: relative; /* Ensures .file-actions is positioned relative to this container */
+  z-index: 1; /* Ensure it appears over non-interacting elements but under actions */
 }
 
 /* Styles for the three-dotted button */
@@ -25,23 +25,22 @@
   font-size: 20px;
   color: #666;
   position: relative;
-  z-index: 2; /* Ensure the button remains clickable */
+  z-index: 2; /* Ensure the button is clickable over other elements */
 }
 
 /* Styles for the file actions container */
 .file-actions {
-  position: fixed; /* Place it relative to the viewport */
+  position: absolute; /* Position relative to .file-card */
+  top: 100%; /* Position directly below the three-dotted button */
+  right: 10px;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 10000; /* Ensure it appears above all elements */
-  top: 0; /* Default position, can be dynamically updated */
-  left: 0; /* Default position, can be dynamically updated */
-  transform: translate(-50%, -50%); /* Adjust for center alignment based on cursor */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhance visibility with a stronger shadow */
+  z-index: 9999; /* Ensure it appears above all other elements */
 }
 
 /* Individual action button styles */
@@ -69,6 +68,18 @@
 .file-details {
   flex-grow: 1;
   margin-left: 10px;
+}
+
+/* Ensure proper positioning on small screens */
+@media (max-width: 768px) {
+  .file-card {
+    flex-wrap: wrap;
+  }
+
+  .file-actions {
+    right: 0;
+    left: auto; /* Ensure proper alignment on smaller screens */
+  }
 }
 
 
