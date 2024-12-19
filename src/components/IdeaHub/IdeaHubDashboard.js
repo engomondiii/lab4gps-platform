@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ProposeIdea from "./ProposeIdea";
 import IdeaDetails from "./IdeaDetails";
 import IdeaDiscussion from "./IdeaDiscussion";
@@ -6,77 +6,55 @@ import IdeaVoting from "./IdeaVoting";
 import IdeaTracking from "./IdeaTracking";
 import Leaderboard from "./Leaderboard";
 import "../../styles/IdeaHubDashboard.css";
-import IdeaHubDashboardService from "../../services/IdeaHubDashboardService";
 
 const IdeaHubDashboard = () => {
   const [activePage, setActivePage] = useState("dashboard");
-  const [ideas, setIdeas] = useState([]);
+  const [ideas, setIdeas] = useState([
+    {
+      id: "1",
+      title: "Community Solar Lighting Program",
+      description:
+        "A project to bring sustainable solar lighting to underserved communities.",
+      attachments: "https://via.placeholder.com/300",
+      problem: "Lack of reliable lighting in rural areas.",
+      solution: "Deploy solar-powered lights in key locations.",
+      resources: "$10,000 for initial deployment.",
+      alignment: "Supports sustainability and rural development goals.",
+      tags: "Environment, Sustainability, Renewable Energy",
+    },
+    {
+      id: "2",
+      title: "Mobile Health Clinic",
+      description:
+        "A mobile solution to provide healthcare services to remote areas.",
+      attachments: "https://via.placeholder.com/300",
+      problem: "Limited access to healthcare in remote regions.",
+      solution: "Deploy mobile clinics with essential medical equipment.",
+      resources: "$20,000 for a fully equipped van.",
+      alignment: "Improves healthcare accessibility.",
+      tags: "Health, Accessibility, Innovation",
+    },
+    {
+      id: "3",
+      title: "AI-Powered Education Platform",
+      description:
+        "An AI-driven platform to revolutionize the way students learn.",
+      attachments: "https://via.placeholder.com/300",
+      problem: "Lack of personalized learning tools.",
+      solution: "Create an AI platform that adapts to individual student needs.",
+      resources: "$50,000 for platform development.",
+      alignment: "Advances educational technology.",
+      tags: "Education, AI, Technology",
+    },
+  ]);
+
+  // State to track selected idea
   const [selectedIdea, setSelectedIdea] = useState(null);
 
-  // Fetch real proposed ideas from the backend rather than using dummy data
-  useEffect(() => {
-    const fetchDashboardIdeas = async () => {
-      try {
-        const response = await IdeaHubDashboardService.fetchDashboardIdeas();
-        const dashboardData = response.data; 
-        // dashboardData is expected to contain an array of objects with 'idea' and metadata fields
-        // The frontend currently expects: id, title, description, problem, solution, resources, alignment, tags, attachments
-        // DashboardIdeaSerializer includes idea fields via IdeaSerializer which should provide these fields.
-        // We'll map them into a similar structure as previously used by the frontend:
-        
-        const formattedIdeas = dashboardData.map(entry => {
-          const idea = entry.idea; // Contains fields from IdeaSerializer
-          return {
-            id: idea.id.toString(),
-            title: idea.title,
-            description: idea.description,
-            attachments: idea.attachments,
-            problem: idea.problem,
-            solution: idea.solution,
-            resources: idea.resources,
-            alignment: idea.alignment,
-            tags: idea.tags,
-          };
-        });
-
-        setIdeas(formattedIdeas);
-      } catch (error) {
-        console.error("Error fetching dashboard ideas:", error);
-      }
-    };
-
-    if (activePage === "dashboard") {
-      fetchDashboardIdeas();
-    }
-  }, [activePage]);
-
-  const handleIdeaClick = async (idea) => {
-    // Fetch full details from the backend if needed
-    // The dashboard provides partial info already, but let's fetch full details to ensure we have everything updated
-    try {
-      const response = await IdeaHubDashboardService.fetchIdeaDetail(idea.id);
-      const fullIdea = response.data;
-      // Format and combine the fetched data with existing fields for consistency
-      // fullIdea fields: id, title, description, attachments, problem, solution, resources, alignment, tags
-      const selected = {
-        id: fullIdea.id.toString(),
-        title: fullIdea.title,
-        description: fullIdea.description,
-        attachments: fullIdea.attachments,
-        problem: fullIdea.problem,
-        solution: fullIdea.solution,
-        resources: fullIdea.resources,
-        alignment: fullIdea.alignment,
-        tags: fullIdea.tags,
-      };
-      setSelectedIdea(selected);
-      setActivePage("ideaDetails");
-
-      // Optionally record that the user viewed this idea (if authenticated)
-      // await IdeaHubDashboardService.recordIdeaView(fullIdea.id); // only if user is authenticated
-    } catch (error) {
-      console.error("Error fetching idea detail:", error);
-    }
+  // Handle idea click to show details
+  const handleIdeaClick = (idea) => {
+    setSelectedIdea(idea);
+    setActivePage("ideaDetails");
   };
 
   const handleMinimize = () => {

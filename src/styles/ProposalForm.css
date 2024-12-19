@@ -1,0 +1,76 @@
+/* ProposalForm.css */
+
+.proposal-form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.proposal-form-title {
+    color: #141e3f;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.proposal-form-field {
+    margin-bottom: 15px;
+}
+
+.proposal-form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #367162;
+    font-weight: bold;
+}
+
+.proposal-form-input,
+.proposal-form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical; /* Allows only vertical resizing of the textarea */
+}
+
+.proposal-form-textarea {
+    min-height: 100px;
+}
+
+.proposal-form-submit-btn {
+    background-color: #FF9900;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.proposal-form-submit-btn:hover {
+    background-color: #e68a00;
+}
+
+/* Additional styles for responsiveness */
+@media (max-width: 768px) {
+    .proposal-form-container {
+        width: calc(100% - 40px);
+        padding: 10px;
+    }
+
+    .proposal-form-title {
+        font-size: 18px;
+    }
+
+    .proposal-form-submit-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

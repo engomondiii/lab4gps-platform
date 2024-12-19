@@ -7,7 +7,7 @@ body {
   color: #333;
 }
 
-.profile-container {
+.advanced-profile-container {
   max-width: 600px; /* Compact layout */
   margin: 30px auto;
   padding: 15px;
@@ -18,37 +18,37 @@ body {
 }
 
 /* Profile Header */
-.profile-header {
-  text-align: center; /* Center the text */
+.advanced-profile-header {
+  text-align: center;
   padding: 10px 0;
   border-bottom: 1px solid #e0e0e0;
 }
 
-.profile-header h1 {
+.advanced-profile-header h1 {
   font-size: 28px; /* Increased size */
   font-weight: bold;
   color: #141e3f; /* Lab4GPS Blue */
 }
 
-.profile-header p {
+.advanced-profile-header p {
   font-size: 16px; /* Slightly increased size */
   color: #666;
   margin-top: 5px;
 }
 
 /* Profile Sidebar */
-.profile-sidebar {
+.advanced-profile-sidebar {
   text-align: center;
   padding: 10px;
 }
 
-.profile-picture-wrapper {
+.advanced-profile-picture-wrapper {
   position: relative;
   margin-bottom: 10px;
   display: inline-block;
 }
 
-.profile-picture {
+.advanced-profile-picture {
   width: 100px; /* Compact size */
   height: 100px;
   border-radius: 50%;
@@ -58,12 +58,12 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.profile-picture:hover {
+.advanced-profile-picture:hover {
   transform: scale(1.1);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.edit-icon-container {
+.advanced-edit-icon-container {
   position: absolute;
   top: 70px; /* Adjusted closer to the profile picture */
   right: -5px;
@@ -80,16 +80,16 @@ body {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.edit-icon-container:hover {
-  background: #367162; /* Accent color for hover */
+.advanced-edit-icon-container:hover {
+  background: #265040; /* Accent color for hover */
   transform: scale(1.1);
 }
 
-.profile-basic-info {
+.advanced-profile-basic-info {
   margin-top: 10px; /* Slight spacing below profile picture */
 }
 
-.profile-basic-info h2 {
+.advanced-profile-basic-info h2 {
   font-size: 20px; /* Increased size */
   color: #141e3f;
   margin-bottom: 5px;
@@ -97,14 +97,14 @@ body {
   text-align: center; /* Centered below the photo */
 }
 
-.profile-basic-info p {
+.advanced-profile-basic-info p {
   font-size: 14px; /* Increased size */
   color: #666;
   text-align: center; /* Centered below the photo */
 }
 
 /* Profile Details */
-.profile-details {
+.advanced-profile-details {
   padding: 10px;
   background: #f9f9f9;
   border-radius: 8px;
@@ -112,11 +112,11 @@ body {
   margin: 15px 0;
 }
 
-.info-group {
+.advanced-info-group {
   margin-bottom: 10px;
 }
 
-.info-group h3 {
+.advanced-info-group h3 {
   font-size: 18px; /* Increased size */
   color: #141e3f;
   margin-bottom: 8px;
@@ -124,11 +124,11 @@ body {
   text-align: left; /* Align to the left */
 }
 
-.detail-group {
+.advanced-detail-group {
   margin-bottom: 8px;
 }
 
-.detail-group label {
+.advanced-detail-group label {
   font-size: 14px; /* Increased size */
   color: #666;
   display: block;
@@ -137,7 +137,7 @@ body {
   text-align: left; /* Align to the left */
 }
 
-.detail-group input {
+.advanced-detail-group input {
   width: 100%;
   padding: 8px; /* Increased padding */
   border: 1px solid #ddd;
@@ -147,20 +147,20 @@ body {
   transition: border-color 0.3s;
 }
 
-.detail-group input:focus {
+.advanced-detail-group input:focus {
   border-color: #141e3f;
   outline: none;
 }
 
-.buttons {
+.advanced-buttons {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
 
-.edit-button,
-.cancel-button,
-.save-button {
+.advanced-edit-button,
+.advanced-cancel-button,
+.advanced-save-button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -170,35 +170,35 @@ body {
   transition: all 0.3s ease;
 }
 
-.edit-button {
+.advanced-edit-button {
   background: #141e3f;
   color: #ffffff;
 }
 
-.edit-button:hover {
-  background: #367162;
+.advanced-edit-button:hover {
+  background: #265040;
 }
 
-.cancel-button {
+.advanced-cancel-button {
   background: #ff6666;
   color: #ffffff;
 }
 
-.cancel-button:hover {
+.advanced-cancel-button:hover {
   background: #cc0000;
 }
 
-.save-button {
+.advanced-save-button {
   background: #141e3f;
   color: #ffffff;
 }
 
-.save-button:hover {
-  background: #367162;
+.advanced-save-button:hover {
+  background: #265040;
 }
 
 /* Password Section */
-.password-section {
+.advanced-password-section {
   padding: 10px;
   background: #ffffff;
   border: 1px solid #e0e0e0;
@@ -207,14 +207,14 @@ body {
   margin-bottom: 15px;
 }
 
-.password-section h2 {
+.advanced-password-section h2 {
   font-size: 20px; /* Increased size */
   color: #141e3f;
   margin-bottom: 8px;
   text-align: left; /* Align to the left */
 }
 
-.password-button {
+.advanced-password-button {
   padding: 10px 20px;
   background: #141e3f;
   color: #ffffff;
@@ -225,16 +225,16 @@ body {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.password-button:hover {
-  background: #367162;
+.advanced-password-button:hover {
+  background: #265040;
   transform: scale(1.05);
 }
 
-.password-form .detail-group {
+.advanced-password-form .advanced-detail-group {
   margin-bottom: 10px;
 }
 
-.update-password-button {
+.advanced-update-password-button {
   background: #141e3f;
   color: #ffffff;
   padding: 10px 20px;
@@ -245,13 +245,13 @@ body {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.update-password-button:hover {
-  background: #367162;
+.advanced-update-password-button:hover {
+  background: #265040;
   transform: scale(1.05);
 }
 
 /* Logout Button */
-.logout-button {
+.advanced-logout-button {
   margin: 10px auto;
   background: #ff6666;
   color: #ffffff;
@@ -266,31 +266,31 @@ body {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.logout-button:hover {
+.advanced-logout-button:hover {
   background: #cc0000;
   transform: scale(1.05);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .profile-container {
+  .advanced-profile-container {
     padding: 10px;
   }
 
-  .profile-layout {
+  .advanced-profile-layout {
     flex-direction: column;
     align-items: center;
   }
 
-  .profile-sidebar {
+  .advanced-profile-sidebar {
     margin-bottom: 10px;
   }
 
-  .profile-details {
+  .advanced-profile-details {
     padding: 10px;
   }
 
-  .buttons {
+  .advanced-buttons {
     flex-direction: column;
     gap: 8px;
   }

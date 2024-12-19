@@ -1,8 +1,12 @@
-/* General Styling */
+/* InternalArchive.css */
+
+/* General Styles */
 .internal-archive {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  background: #f9f9f9;
-  font-family: "Helvetica", sans-serif;
+  font-family: 'Inter', sans-serif;
+  color: #333;
 }
 
 .archive-header {
@@ -11,562 +15,359 @@
 }
 
 .archive-header h1 {
-  color: #141e3f;
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 2.8rem;
+  color: #141e3f; /* Lab4GPS Blue */
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .archive-header p {
-  font-size: 18px;
-  color: #666666;
+  font-size: 1.2rem;
+  color: #666666; /* Dark Gray */
+  margin-top: 10px;
 }
 
-/* Controls Section */
 .archive-controls {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 20px;
-  gap: 10px;
+  gap: 15px;
 }
 
+/* Modern Search Bar */
 .search-bar {
   display: flex;
+  align-items: center;
   flex: 1;
+  max-width: 500px;
+  background-color: #f5f5f5;
+  border-radius: 50px;
+  padding: 5px 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.search-bar input {
+.search-bar input[type="text"] {
   flex: 1;
-  padding: 10px 15px;
-  border: 1px solid #cccccc;
-  border-radius: 5px 0 0 5px;
+  border: none;
+  background: none;
+  padding: 10px;
+  font-size: 1rem;
+  color: #333;
   outline: none;
-  font-size: 16px;
 }
 
 .search-bar button {
-  padding: 10px 15px;
-  background: #367162;
+  background-color: #367162; /* Lab4GPS Green */
   color: white;
   border: none;
-  border-radius: 0 5px 5px 0;
+  border-radius: 50%;
+  padding: 10px;
   cursor: pointer;
-  font-size: 18px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar button:hover {
+  background-color: #276b4b; /* Darker Green */
 }
 
 .category-filter select {
-  padding: 10px 15px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  font-size: 16px;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #CCCCCC; /* Light Gray */
+  border-radius: 4px;
+  background-color: white;
+  transition: border-color 0.3s ease;
 }
 
-.tag-filter .tag-btn {
-  padding: 8px 12px;
-  margin: 0 5px;
-  background: #f0f0f0;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+.category-filter select:focus {
+  border-color: #367162; /* Lab4GPS Green */
+  outline: none;
 }
 
-.tag-filter .tag-btn.active {
-  background: #367162;
-  color: white;
+/* Modern Tag Dropdown */
+.tag-filter {
+  position: relative;
 }
 
-/* File List Section */
-.file-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
-}
-
-.file-card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+.tag-dropdown {
   display: flex;
   flex-direction: column;
+}
+
+.tag-dropdown-toggle {
+  background-color: #141e3f; /* Lab4GPS Blue */
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  transition: transform 0.3s, box-shadow 0.3s;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.tag-dropdown-toggle:hover {
+  background-color: #276b4b; /* Darker Blue */
+}
+
+.tag-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  background-color: white;
+  border: 1px solid #CCCCCC; /* Light Gray */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 250px;
+  overflow-y: auto;
+  margin-top: 10px;
+  width: 220px;
+  padding: 10px;
+}
+
+.tag-dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  font-size: 0.9rem;
+  color: #141e3f; /* Lab4GPS Blue */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.tag-dropdown-item input {
+  margin-right: 10px;
+  accent-color: #367162; /* Lab4GPS Green */
+}
+
+.tag-dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.file-list {
+  margin-bottom: 20px;
+}
+
+/* File Cards */
+.file-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
 }
 
 .file-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-.file-card h3 {
-  font-size: 20px;
-  color: #141e3f;
-  margin-bottom: 10px;
+.file-info {
+  display: flex;
+  flex: 1;
+  cursor: pointer;
 }
 
-.file-card p {
-  font-size: 14px;
-  color: #666666;
-  margin-bottom: 15px;
+.file-icon {
+  font-size: 2.5rem;
+  margin-right: 20px;
+  color: #FF9900; /* Orange */
+}
+
+.file-preview {
+  max-width: 100%;
+  max-height: 200px;
+  margin-top: 10px;
+  border-radius: 8px;
 }
 
 .file-details {
-  margin-bottom: 15px;
+  flex: 1;
+}
+
+.file-details h3 {
+  font-size: 1.3rem;
+  color: #141e3f; /* Lab4GPS Blue */
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.file-details p {
+  color: #666666; /* Dark Gray */
+  margin-bottom: 10px;
 }
 
 .file-details span {
-  display: inline-block;
-  margin-right: 10px;
-  font-size: 14px;
-  color: #367162;
+  display: block;
+  color: #666666; /* Dark Gray */
+  font-size: 0.9rem;
+  margin-bottom: 5px;
 }
 
-.file-media {
-  margin-bottom: 15px;
-}
-
-.file-media img {
-  width: 100%;
-  border-radius: 5px;
-  object-fit: cover;
-}
-
-.file-media iframe {
-  width: 100%;
-  height: 200px;
-  border: none;
-  border-radius: 5px;
-}
-
-/* Document Viewer */
-.document-viewer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.document-viewer iframe {
-  width: 80%;
-  height: 80%;
-  border: none;
-}
-
-.document-viewer button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #ff4d4d;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-/* File Actions Section */
 .file-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.file-actions button {
-  flex: 1;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-}
-
-.file-actions .like-btn {
-  background: #367162;
-  color: white;
-}
-
-.file-actions .share-btn {
-  background: #141e3f;
-  color: white;
-}
-
-.file-actions .download-btn {
-  background: #ff9900;
-  color: white;
-}
-
-.file-actions .toggle-comments-btn {
-  background: #f0f0f0;
-  color: #666666;
-}
-
-.file-actions .edit-btn {
-  background: #007bff;
-  color: white;
-}
-
-.file-actions .delete-btn {
-  background: #ff4d4d;
-  color: white;
-}
-
-.file-actions button:hover {
-  filter: brightness(0.9);
-}
-
-/* Comments Section */
-.file-comments {
-  margin-top: 10px;
-  background: #f7f7f7;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.file-comments h4 {
-  font-size: 16px;
-  color: #141e3f;
-  margin-bottom: 10px;
-}
-
-.file-comments ul {
-  list-style-type: none;
-  padding: 0;
-  margin-bottom: 10px;
-}
-
-.file-comments ul li {
-  background: #e6e6e6;
-  padding: 8px 10px;
-  border-radius: 5px;
-  margin-bottom: 5px;
-  font-size: 14px;
-}
-
-.file-comments .comment-input {
-  display: flex;
-  gap: 10px;
-}
-
-.file-comments input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  font-size: 14px;
-  outline: none;
-}
-
-.file-comments button {
-  padding: 10px 15px;
-  background: #367162;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-/* File Stats Section */
-.file-stats {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #666666;
-  display: flex;
+  gap: 15px;
   align-items: center;
 }
 
-.file-stats svg {
-  margin-right: 5px;
+.action-btn {
+  background-color: #367162; /* Lab4GPS Green */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Pagination Section */
+.action-btn:hover {
+  background-color: #276b4b; /* Darker Green */
+  transform: scale(1.05);
+}
+
+.action-btn svg {
+  margin-right: 8px;
+}
+
+/* File Viewer */
+.file-viewer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 20px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+}
+
+.file-viewer h2 {
+  margin-bottom: 15px;
+  color: #141e3f; /* Lab4GPS Blue */
+  font-size: 1.5rem;
+}
+
+.file-viewer .file-preview {
+  display: block;
+  margin: 0 auto 15px;
+}
+
+.file-viewer p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.close-viewer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+}
+
+.close-viewer:hover {
+  color: #141e3f; /* Lab4GPS Blue */
+}
+
 .pagination-controls {
   display: flex;
   justify-content: center;
+  margin-top: 30px;
   gap: 10px;
-  margin-top: 20px;
 }
 
 .pagination-btn {
-  padding: 10px 15px;
-  background: #f0f0f0;
+  background-color: #367162; /* Lab4GPS Green */
+  color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 14px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 20px;
   cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .pagination-btn.active {
-  background: #367162;
-  color: white;
-}
-
-/* Upload Section */
-.upload-section {
-  margin-top: 30px;
-  padding: 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.upload-section h3 {
-  font-size: 18px;
-  color: #141e3f;
-  margin-bottom: 15px;
-}
-
-.upload-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.upload-form input,
-.upload-form select,
-.upload-form textarea,
-.upload-form button {
-  padding: 10px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.upload-form button {
-  background: #367162;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.upload-form button:hover {
-  filter: brightness(0.9);
-}
-
-.upload-form fieldset {
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-.upload-form legend {
-  font-size: 14px;
-  color: #666666;
-}
-
-
-/* Floating Add New File Button Styling */
-.floating-add-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.floating-add-button button {
-  background: rgba(20, 30, 63, 0.7); /* Semi-transparent Lab4GPS Blue */
-  color: #ffffff; /* White text */
-  border: 1px solid rgba(255, 255, 255, 0.5); /* Soft white border */
-  border-radius: 8px; /* Modern, reduced rounding */
-  padding: 12px 24px;
-  font-size: 16px;
-  font-family: "Helvetica75-Bold", sans-serif;
-  font-weight: bold;
-  cursor: pointer;
-  backdrop-filter: blur(8px); /* Glass-like effect */
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.floating-add-button button:hover {
-  background: rgba(255, 255, 255, 0.2); /* Transparent hover effect */
-  color: #141e3f; /* Lab4GPS Blue text */
-  border-color: #ffffff; /* Solid white border */
-  transform: scale(1.05); /* Slight enlargement */
-  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.4); /* Glow effect */
-}
-
-/* Upload Section Styling */
-.upload-section {
-  background: rgba(255, 255, 255, 0.95); /* Glassy white */
-  border: 1px solid rgba(20, 30, 63, 0.3); /* Subtle blue border */
-  border-radius: 10px; /* Slight rounding for modern aesthetic */
-  padding: 40px 60px;
-  max-width: 750px;
-  margin: 30px auto;
-  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2); /* Prominent shadow */
-  animation: fadeIn 0.6s ease-in-out;
-  backdrop-filter: blur(10px); /* Enhance modern aesthetic */
-}
-
-.upload-section h3 {
-  font-size: 24px;
-  color: #141e3f; /* Lab4GPS Blue */
-  text-align: center;
-  margin-bottom: 30px;
-  font-family: "Helvetica75-Bold", sans-serif;
-  text-transform: uppercase; /* Professional look */
-  letter-spacing: 1.5px;
-}
-
-/* Form Inputs Styling */
-.upload-form input,
-.upload-form textarea,
-.upload-form select {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(20, 30, 63, 0.3); /* Subtle blue border */
-  border-radius: 5px; /* Slight rounding */
-  font-size: 16px;
-  font-family: "Helvetica-Regular", sans-serif;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.upload-form input:focus,
-.upload-form textarea:focus,
-.upload-form select:focus {
-  border-color: #141e3f; /* Lab4GPS Blue */
-  box-shadow: 0px 4px 15px rgba(20, 30, 63, 0.4); /* Glow effect */
-  outline: none;
-}
-
-/* Tags Fieldset Styling */
-.upload-form fieldset {
-  border: 1px solid rgba(20, 30, 63, 0.3); /* Subtle blue border */
-  padding: 15px 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.upload-form fieldset legend {
-  font-family: "Helvetica-Regular", sans-serif;
-  font-weight: bold;
-  color: #141e3f;
-  font-size: 14px;
-}
-
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.tag-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: "Helvetica-Regular", sans-serif;
-  font-size: 14px;
-  color: #141e3f; /* Lab4GPS Blue */
-}
-
-.tag-checkbox {
-  width: 16px;
-  height: 16px;
-  accent-color: #141e3f; /* Checkbox in Lab4GPS Blue */
-  cursor: pointer;
-}
-
-/* Form Buttons Styling */
-.upload-form button {
-  background: linear-gradient(to right, #141e3f, #000000); /* Gradient from blue to black */
-  color: #ffffff; /* White text */
-  border: none;
-  padding: 14px 30px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-family: "Helvetica75-Bold", sans-serif;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.upload-form button:hover {
-  background: linear-gradient(to right, #000000, #141e3f); /* Reverse gradient on hover */
-  transform: translateY(-3px);
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.cancel-upload-btn {
-  background: rgba(255, 102, 102, 0.1); /* Transparent red */
-  color: #ff6666; /* Soft red for cancel */
-  border: 1px solid #ff6666;
-  padding: 12px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-family: "Helvetica-Regular", sans-serif;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.cancel-upload-btn:hover {
-  background: #ff6666; /* Solid red */
-  color: #ffffff; /* White text */
-  transform: translateY(-3px);
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Pagination Controls */
-.pagination-controls {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.pagination-btn {
-  background: #141e3f; /* Lab4GPS Blue */
-  color: #ffffff;
-  border: none;
-  padding: 10px 15px;
-  margin: 0 5px;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  background-color: #141e3f; /* Lab4GPS Blue */
 }
 
 .pagination-btn:hover {
-  background: #000000;
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  background-color: #276b4b; /* Darker Green */
+  transform: scale(1.1);
 }
 
-.pagination-btn.active {
-  background: #367162; /* Accent orange */
-  color: #000000;
-  font-weight: bold;
-  box-shadow: 0px 4px 10px rgba(255, 153, 0, 0.4);
+/* Responsive Design */
+@media (max-width: 768px) {
+  .archive-controls {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .file-card {
+    flex-direction: column;
+  }
+
+  .file-details {
+    margin-top: 10px;
+  }
+
+  .file-viewer {
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+
+
+/* Floating Upload Button */
+.floating-upload-button {
+  bottom: 20px;
+  right: 20px;
+  background-color: #141e3f; /* Lab4GPS Blue */
+  color: white;
+  border-radius: 20%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
 }
+
+.floating-upload-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.floating-upload-button svg {
+  font-size: 1.8rem;
+}
+
+

@@ -1,0 +1,108 @@
+/* Announcements Container */
+.announcements-container-unique {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Search Bar Styles */
+.announcements-search-bar-unique {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: 2px solid #888888; /* Neutral border */
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.announcements-search-bar-unique:focus {
+    border-color: #141e3f; /* Focused border color */
+    outline: none;
+}
+
+/* Title Styling */
+.announcements-title-unique {
+    text-align: center;
+    font-size: 24px;
+    color: #141e3f;
+    margin-bottom: 20px;
+}
+
+/* Single Announcement Block */
+.announcement-unique {
+    border-left: 5px solid transparent; /* Default no color for non-urgent */
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Title and Message Styling */
+.announcement-title-unique {
+    color: #141e3f;
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.announcement-message-unique {
+    color: #666666;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* Category Tag */
+.announcement-category-tag-unique {
+    display: inline-block;
+    background-color: #367162; /* Default category color */
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+/* Urgent Tag Styling */
+.announcement-urgent-tag-unique {
+    background-color: #FF9900; /* Bright color for urgency */
+    color: #ffffff;
+    padding: 3px 7px;
+    margin-left: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* Styling for Pinned Announcements */
+.announcement-pinned-unique {
+    border-color: #367162; /* Green border for pinned items */
+    box-shadow: 0 4px 20px rgba(54, 113, 98, 0.2); /* Subtle shadow */
+}
+
+/* Urgent Announcements Styling */
+.announcement-urgent-unique {
+    background-color: #FFEEEE; /* Soft red background */
+    border-color: #FF9900; /* Orange border for urgency */
+}
+
+/* Hover Effects for Announcements */
+.announcement-unique:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .announcements-container-unique {
+        padding: 10px;
+    }
+
+    .announcements-search-bar-unique {
+        font-size: 14px;
+    }
+}

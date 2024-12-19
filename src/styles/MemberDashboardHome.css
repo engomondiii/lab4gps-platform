@@ -1,0 +1,305 @@
+/* MemberDashboardHome.css */
+
+.member-dashboard-home-unique {
+    font-family: "Helvetica", sans-serif;
+    color: #141e3f;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #f7f9fc;
+}
+
+/* Welcome Section */
+.welcome-section-unique {
+    text-align: center;
+    background: linear-gradient(to right, #141e3f, #4b6575);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-section-unique h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.welcome-section-unique p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.welcome-section-unique blockquote {
+    font-style: italic;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Quick Links */
+.quick-links-unique {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.quick-links-unique h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.quick-links-grid-unique {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.quick-link-card-unique {
+    text-align: center;
+    padding: 20px;
+    background-color: #f3f5f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.quick-link-card-unique:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.quick-link-card-unique .icon-unique {
+    font-size: 2rem;
+    color: #4b6575;
+    margin-bottom: 10px;
+}
+
+.quick-link-card-unique h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.quick-link-card-unique p {
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+/* Notifications and Updates */
+.notifications-updates-unique {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-updates-unique h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.notifications-updates-unique ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notifications-updates-unique li {
+    background-color: #f9fafb;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+/* Highlights and Announcements */
+.highlights-section-unique {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.highlights-section-unique h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.highlights-section-unique ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.highlights-section-unique li {
+    background-color: #f9fafb;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+/* Widgets */
+.widgets-unique {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.widgets-unique h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.widget-unique {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f7f9fc;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.widget-unique:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.widget-unique svg {
+    font-size: 2rem;
+    color: #4b6575;
+    margin-right: 15px;
+}
+
+.widget-content-unique h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.widget-content-unique p {
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+/* Interactive Help */
+.interactive-help-unique {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.interactive-help-unique h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.help-options-unique {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.help-btn-unique {
+    background-color: #4b6575;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.help-btn-unique:hover {
+    background-color: #3a535e;
+    transform: scale(1.1);
+}
+
+/* Recent Activity */
+.recent-activity-unique {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.recent-activity-unique h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.recent-activity-unique ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-activity-unique li {
+    background-color: #f9fafb;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+/* User Avatar and Progress */
+.user-progress-unique {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-unique img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.progress-details-unique {
+    font-size: 1rem;
+}
+
+.progress-details-unique a {
+    color: #4b6575;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.progress-details-unique a:hover {
+    text-decoration: underline;
+}
+
+/* Inspirational Section */
+.inspirational-section-unique {
+    text-align: center;
+    background-color: #141e3f;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.inspirational-section-unique h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.inspirational-section-unique p {
+    font-size: 1.2rem;
+    margin: 0;
+}

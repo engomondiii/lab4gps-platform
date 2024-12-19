@@ -1,0 +1,127 @@
+/* Feedback Container */
+.feedback-container-unique {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.feedback-title-unique {
+    color: #141e3f;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Feedback Form */
+.feedback-form-unique {
+    margin-bottom: 30px;
+}
+
+.feedback-input-unique {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #cccccc;
+    border-radius: 5px;
+    resize: none;
+    height: 120px;
+    box-sizing: border-box;
+}
+
+.feedback-options-unique {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.feedback-checkbox-label-unique {
+    font-size: 14px;
+    color: #666666;
+}
+
+.feedback-submit-button-unique {
+    padding: 8px 16px;
+    background-color: #367162;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-submit-button-unique:hover {
+    background-color: #285c4d;
+}
+
+/* Feedback List */
+.feedback-list-unique {
+    margin-top: 20px;
+}
+
+.feedback-item-unique {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #367162;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.feedback-item-unique.feedback-anonymous-unique {
+    border-color: #cccccc;
+}
+
+.feedback-topic-unique {
+    color: #141e3f;
+    margin-top: 0;
+}
+
+.feedback-detail-unique {
+    color: #666666;
+    font-size: 16px;
+}
+
+/* Feedback Actions */
+.feedback-actions-unique {
+    margin-top: 10px;
+}
+
+.feedback-vote-button-unique {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-vote-button-unique:hover {
+    background-color: #e58900;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feedback-container-unique {
+        padding: 10px;
+    }
+
+    .feedback-input-unique {
+        font-size: 14px;
+    }
+
+    .feedback-submit-button-unique {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .feedback-vote-button-unique {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+}

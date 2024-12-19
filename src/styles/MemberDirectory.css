@@ -1,0 +1,196 @@
+/* Member Directory Main Wrapper */
+.member-directory-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Header Styling */
+.member-directory-title {
+  font-size: 2rem;
+  color: #141e3f; /* Lab4GPS Blue */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Controls - Search and Filter */
+.member-directory-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.search-bar-wrapper {
+  position: relative;
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #367162; /* Lab4GPS Green */
+  font-size: 1.2rem;
+}
+
+.member-directory-search-bar {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  font-size: 1rem;
+  border: 2px solid #cccccc;
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.member-directory-search-bar:focus {
+  border-color: #367162;
+  box-shadow: 0 0 5px rgba(54, 113, 98, 0.5);
+}
+
+.member-directory-filter-dropdown {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #cccccc;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.member-directory-filter-dropdown:focus {
+  border-color: #367162;
+}
+
+/* Member List Container */
+.member-directory-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Individual Member Card */
+.member-directory-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.member-directory-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.member-directory-name {
+  font-size: 1.5rem;
+  color: #141e3f;
+  margin-bottom: 0.5rem;
+}
+
+.member-directory-role,
+.member-directory-expertise,
+.member-directory-projects {
+  margin: 0.25rem 0;
+  color: #666666;
+}
+
+.member-directory-role strong,
+.member-directory-expertise strong,
+.member-directory-projects strong {
+  color: #141e3f;
+}
+
+/* Contact Links */
+.member-directory-contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  color: #367162;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.contact-icon:hover {
+  color: #2b574d;
+}
+
+/* Suggestions Section */
+.member-directory-suggestions {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #cccccc;
+}
+
+.suggestions-title {
+  font-size: 1.5rem;
+  color: #141e3f;
+  margin-bottom: 1rem;
+}
+
+.suggested-member-item {
+  background-color: #ffffff;
+  padding: 1rem;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suggested-member-item p {
+  margin: 0;
+  color: #666666;
+  font-size: 0.9rem;
+}
+
+/* Recognition System */
+.member-directory-recognition {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.recognition-title {
+  font-size: 1.5rem;
+  color: #141e3f;
+  margin-bottom: 1rem;
+}
+
+.recognition-icon {
+  font-size: 2rem;
+  color: #ff9900;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.recognition-icon:hover {
+  transform: scale(1.2);
+  color: #e68a00;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .member-directory-controls {
+      flex-direction: column;
+      gap: 1rem;
+  }
+
+  .search-bar-wrapper {
+      margin-right: 0;
+  }
+}
