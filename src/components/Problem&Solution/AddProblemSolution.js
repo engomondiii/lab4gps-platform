@@ -228,8 +228,12 @@ const AddProblemSolutionForm = ({ onSubmit, onCancel }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit(onFormSubmit)}>
       <h2 className={styles.title}>
-        {currentStep === 1 ? 'Select Contribution Type' : 'Add New Problem/Solution'}
-      </h2>
+  {currentStep === 1
+    ? 'Select Contribution Type'
+    : `Add New ${selectedType}`
+  }
+</h2>
+
 
       {currentStep === 1 && (
         <div className={styles.typeSelection}>

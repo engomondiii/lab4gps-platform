@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../../styles/Problems.module.css';
 import Button from '../common/Button';
 import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from 'react-responsive'; // Ensure this is installed
+import { useMediaQuery } from 'react-responsive';
 
 const Problems = () => {
   const navigate = useNavigate();
@@ -12,7 +12,6 @@ const Problems = () => {
     beingSolved: 24,
   });
 
-  // Define a media query for small devices (e.g., max-width: 768px)
   const isSmallDevice = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
@@ -36,18 +35,17 @@ const Problems = () => {
           </div>
         </div>
       </div>
-      {/* Conditionally render the button based on device size */}
+
       <div className={styles.addButtonSmallContainer}>
-      {isSmallDevice ? (
-        
-        <Button onClick={() => navigate('/add')} className={styles.addButtonSmall}>
-          +
-        </Button>
-      ) : (
-        <Button onClick={() => navigate('/add')} className={styles.addButton}>
-          Add
-        </Button>
-      )}
+        {isSmallDevice ? (
+          <Button onClick={() => navigate('/add')} className={styles.addButtonSmall}>
+            +
+          </Button>
+        ) : (
+          <Button onClick={() => navigate('/add')} className={styles.addButton}>
+            Add
+          </Button>
+        )}
       </div>
     </div>
   );

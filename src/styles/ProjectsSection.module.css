@@ -1,0 +1,105 @@
+.bodySection {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.5rem 0 0; /* Converted 8px to 0.5rem */
+    box-sizing: border-box;
+    gap: 1.25rem; /* Converted 20px to 1.25rem */
+    text-align: left;
+    font-size: 1.25rem; /* Converted 20px to 1.25rem */
+    color: #000;
+    font-family: Inter;
+}
+
+.makeAnImpact {
+    font-size: 3.8125rem; /* Converted 61px to 3.8125rem */
+    line-height: 4.575rem; /* Converted 73.2px to 4.575rem */
+    position: relative;
+    font-weight: bold;
+}
+
+.gpsProjectParent {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem; /* Converted 12px to 0.75rem */
+}
+
+.gpsProject {
+    line-height: 1.5rem; /* Converted 24px to 1.5rem */
+}
+
+.searchWrapper {
+    width: 11.8125rem; /* Converted 189px to 11.8125rem */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1); /* Converted to rem */
+    border-radius: 0.5rem; /* Converted 8px to 0.5rem */
+    background-color: #fff;
+    border-top: 0.00625rem solid #000; /* Converted 0.1px to 0.00625rem */
+    box-sizing: border-box;
+    height: 2.375rem; /* Converted 38px to 2.375rem */
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 0.5rem; /* Converted 8px to 0.5rem */
+}
+
+.searchIcon {
+    width: 1.5rem; /* Converted 24px to 1.5rem */
+    height: 1.5rem;
+    position: relative;
+    color: #000;
+}
+
+.projects {
+    width: 70.5rem; /* Converted 1128px to 70.5rem */
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 1.25rem;
+    padding-bottom: 1.25rem; /* Converted 20px to 1.25rem */
+}
+
+/* Responsive adjustments */
+@media (max-width: 48rem) { /* Converted 768px to 48rem */
+    .bodySection {
+        width: 100%;
+        padding: 0.5rem; /* Converted 8px to 0.5rem */
+    }
+
+    .projects {
+        justify-content: center;
+        gap: 1.25rem;
+        padding-bottom: 2rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: 30rem) { /* Converted 480px to 30rem */
+    .makeAnImpact {
+        font-size: 2.859375rem; /* Converted to rem */
+    }
+
+    .gpsProject {
+        font-size: 1.125rem; /* Converted to rem */
+    }
+
+    .searchWrapper {
+        width: 9.375rem; /* Converted 150px to 9.375rem */
+    }
+
+    .projects {
+        gap: 0.625rem; /* Converted 10px to 0.625rem */
+    }
+}
