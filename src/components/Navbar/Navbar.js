@@ -90,7 +90,7 @@ const Navbar = () => {
             onMouseLeave={() => setIsDropdownOpen({ ...isDropdownOpen, collaboration: false })}
           >
             <Link
-              to="/collaboration-hub/startups" // Default path without query parameters
+              to="/collaboration-hub/sns4.0" // Default path without query parameters
               className={`dropdown-link ${isScrolled ? "scrolled-text" : ""}`}
               onClick={() => navigateToCollaborationHub("startups")}
             >

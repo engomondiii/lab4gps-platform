@@ -1,7 +1,7 @@
 /* Button.module.css */
 .primaryButton {
     padding: 12px 24px;
-    font-size: 16px;
+    font-size: 1rem;
     font-family: 'Arial', sans-serif;
     font-weight: 700;
     color: #fff;
@@ -9,16 +9,31 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    /* Add gradient for depth */
-    /* background-image: linear-gradient(to bottom, #4CAF50, #367162); */
-    /* Add shadow for 3D effect */
-    box-shadow: 2px 3px 1px #589485;
+    transition: all 0.3s ease;
+    box-shadow: 2px 3px 1px rgba(88, 148, 133, 0.7);
     position: relative;
+    /* Add a subtle pulse animation */
+    animation: pulse 2s infinite;
+}
+
+.primaryButton:hover {
+    background-color: #00a582;
+    transform: scale(1.05);
 }
 
 .primaryButton:active {
-    /* Removed top: 5px; to prevent movement */
-    /* top: 1px; */
-    box-shadow: 0 0 0 #28594c;
+    box-shadow: 0 0 0 0 rgba(40, 89, 76, 1);
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(54, 113, 98, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(54, 113, 98, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(54, 113, 98, 0.7);
+    }
 }

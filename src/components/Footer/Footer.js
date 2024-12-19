@@ -142,7 +142,7 @@ const Footer = () => {
             KakaoBank: <a href="tel:+1234567890" className="footer-link">3333-30-6931050</a>
           </p>
         </div>
-        <div className="footer-section social-media">
+        {/* <div className="footer-section social-media">
           <h3>Follow Us</h3>
           <div className="social-icons">
             <a href="#" className="social-icon facebook" aria-label="Facebook"></a>
@@ -151,7 +151,7 @@ const Footer = () => {
             <a href="https://www.linkedin.com/in/jiin-yoo-b496a130b/" className="social-icon linkedin" aria-label="LinkedIn"></a>
             <a href="#" className="social-icon talk" aria-label="Talk"></a>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Lab4GPS. All rights reserved.</p>

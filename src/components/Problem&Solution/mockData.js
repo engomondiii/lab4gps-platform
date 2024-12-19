@@ -1,7 +1,7 @@
 // mockData.js
 const mockData = [
    {
-     id: 1, // Unique ID
+     id: 1, 
      authorName: "Aice Gonzale",
      authorTitle: "Philippine Community Development Activist",
      authorImage: "https://i.pinimg.com/736x/1c/60/33/1c603382ca7ba9a1427d9eac71f4aa3f.jpg",
@@ -54,7 +54,7 @@ const mockData = [
      id: 2, // Unique ID
      authorName: "Jiin Yoo",
      authorTitle: "CEO ChakanCha",
-     authorImage: "https://via.placeholder.com/85x100",
+     authorImage: "https://www.linkedin.com/in/jiin-yoo-b496a130b/overlay/photo/",
      mainImage: "https://i.pinimg.com/736x/d8/34/e4/d834e4487a7f854452428668c8803e4f.jpg",
      overlayText: "Through innovation in the global value chain, Chakancha seeks to improve...",
      type: "Solution",

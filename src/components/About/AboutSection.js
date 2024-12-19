@@ -71,8 +71,6 @@ const AboutSection = () => {
   </div>
 </div>
 
-    
-
     ),
     
     
@@ -233,11 +231,6 @@ what: (
   </div>
 ),
 
-
-
-
-
-
     where: (
       <div className="where-content">
   <div className="content-left">
@@ -287,8 +280,6 @@ what: (
     </p>
   </div>
 </div>
-
-    
 
     ),
     how: (
@@ -362,11 +353,6 @@ what: (
 
 
     ),
-    
-    
-    
-    
-    
 
   };
 

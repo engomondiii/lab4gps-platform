@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-family: Helvetica75, sans-serif;
+  font-family: Inter, sans-serif;
   color: #000;
   position: relative; /* For hover overlay */
   box-sizing: border-box;
@@ -66,12 +66,14 @@
   border-bottom: 0.2px solid #666;
   border-radius: 12px 12px 0 0;
   background: #fff;
+  font-family: Inter, sans-serif;
 }
 
 .profileInfo {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  font-family: Inter, sans-serif;
 }
 
 .authorImageWrapper {
@@ -91,12 +93,14 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  font-family: Inter, sans-serif;
 }
 
 .authorName {
   font-size: 1.5625rem;
   line-height: 1.875rem;
   margin: 0;
+  font-family: Inter, sans-serif;
 }
 
 .authorTitle {
@@ -104,6 +108,7 @@
   line-height: 1.5rem;
   text-align: center;
   margin: 0;
+  font-family: Inter, sans-serif;
 }
 
 .closeIcon {
@@ -159,7 +164,7 @@
   color: #fff;
   font-size: 1.25rem;
   line-height: 1.5rem;
-  font-family: Helvetica75, sans-serif;
+  font-family: Inter, sans-serif;
   font-weight: 700;
 }
 
@@ -170,7 +175,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1.25rem;
-  font-family: Helvetica75, sans-serif;
+  font-family: Inter, sans-serif;
   font-weight: 700;
   line-height: 1.5rem;
   color: #000;
@@ -178,11 +183,13 @@
 }
 
 .solutionTag {
-  background: #00cc99;
+  background: #367162;
+  color: #fff;
 }
 
 .problemTag {
   background: #ff9900;
+  color: #fff;
 }
 
 .rightPanel {
@@ -203,6 +210,7 @@
   padding: 0.75rem;
   overflow: auto;
   pointer-events: none; /* Text is see-through; globe can be interacted with behind */
+  font-family: Inter, sans-serif;
 }
 
 .sectionTitle {
@@ -210,11 +218,12 @@
   line-height: 1.5rem;
   margin: 0 0 0.75rem 0;
   pointer-events: none;
+  font-family: Inter, sans-serif;
 }
 
 .description {
   font-size: 1rem;
-  font-family: Helvetica, sans-serif;
+  font-family: Inter, sans-serif;
   line-height: 1.2rem;
   color: #090909;
   pointer-events: none;
@@ -225,11 +234,12 @@
   margin-bottom: 0.75rem;
   pointer-events: none;
   text-align: left;
+  font-family: Inter, sans-serif;
 }
 
 .subsectionTitle {
   font-size: 1rem;
-  font-family: Helvetica75, sans-serif;
+  font-family: Inter, sans-serif;
   font-weight: 700;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
@@ -247,6 +257,7 @@
   box-sizing: border-box;
   margin-top: 0.625rem; /* Space between card and donation section */
   border-radius: 0 0 12px 12px;
+  font-family: Inter, sans-serif;
 }
 
 .donationRow {
@@ -262,6 +273,7 @@
   gap: 0.5rem;
   font-size: 1rem;
   color: #367162;
+  font-family: Inter, sans-serif;
 }
 
 .donationIcon {
@@ -275,6 +287,7 @@
   align-items: flex-end;
   font-size: 0.875rem;
   color: #666;
+  font-family: Inter, sans-serif;
 }
 
 .donationAmount {
@@ -282,6 +295,7 @@
   color: #666;
   text-align: right;
   pointer-events: none;
+  font-family: Inter, sans-serif;
 }
 
 .donationGoal {
@@ -289,6 +303,7 @@
   color: #666;
   text-align: right;
   pointer-events: none;
+  font-family: Inter, sans-serif;
 }
 
 .progressBar {
@@ -302,7 +317,7 @@
 
 .progress {
   height: 100%;
-  background-color: #00cc99;
+  background-color: #367162;
   width: 0%;
   transition: width 0.3s ease;
 }
@@ -311,6 +326,7 @@
   font-size: 0.875rem;
   color: #666;
   white-space: nowrap;
+  font-family: Inter, sans-serif;
 }
 
 .donateButton {
@@ -323,6 +339,7 @@
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: Inter, sans-serif;
 }
 
 .donateButton:hover {
@@ -333,6 +350,7 @@
   display: flex;
   justify-content: flex-end;
   padding: 0.25rem 0.75rem;
+  font-family: Inter, sans-serif;
 }
 
 .seeMoreButton {
@@ -346,6 +364,7 @@
   width: auto;
   display: inline-block;
   transition: background-color 0.3s ease;
+  font-family: Inter, sans-serif;
 }
 
 .seeMoreButton:hover {
@@ -360,12 +379,14 @@
   font-size: 0.8125rem;
   color: rgba(20, 30, 63, 0.5);
   border-radius: 0 0 12px 12px;
+  font-family: Inter, sans-serif;
 }
 
 .statItem {
   display: flex;
   align-items: center;
   gap: 0.125rem;
+  font-family: Inter, sans-serif;
 }
 
 .hoverOverlay {
@@ -380,6 +401,7 @@
   background-color: rgba(0,0,0,0.5);
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
+  font-family: Inter, sans-serif;
 }
 
 .card:hover .hoverOverlay {
@@ -442,6 +464,7 @@
 .smallCard {
   max-width: 500px; /* Reduced max-width for smaller size */
   width: 70%; /* Reduced width to 70% */
+  font-family: Inter, sans-serif;
 }
 
 /* Optional: Adjust the progress bar colors or styles */

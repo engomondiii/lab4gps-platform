@@ -91,7 +91,7 @@ const ProblemSolutionCard = ({
           <div className={styles.leftPanel}>
             <div className={styles.imageSection}>
               <img className={styles.mainImage} src={mainImage} alt={type === 'Solution' ? 'Solution Image' : 'Problem Image'} />
-              {type && <p className={styles.overlayText}>{type}</p>}
+              {/* {type && <p className={styles.overlayText}>{type}</p>} */}
             </div>
             <div className={`${styles.typeTag} ${type === 'Solution' ? styles.solutionTag : styles.problemTag}`}>
               <span>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
