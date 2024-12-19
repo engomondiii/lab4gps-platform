@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProposeIdea from "./ProposeIdea";
 import IdeaDetails from "./IdeaDetails";
 import IdeaDiscussion from "./IdeaDiscussion";
@@ -6,55 +6,83 @@ import IdeaVoting from "./IdeaVoting";
 import IdeaTracking from "./IdeaTracking";
 import Leaderboard from "./Leaderboard";
 import "../../styles/IdeaHubDashboard.css";
+import IdeaHubDashboardService from "../../services/IdeaHubDashboardService";
 
 const IdeaHubDashboard = () => {
   const [activePage, setActivePage] = useState("dashboard");
-  const [ideas, setIdeas] = useState([
-    {
-      id: "1",
-      title: "Community Solar Lighting Program",
-      description:
-        "A project to bring sustainable solar lighting to underserved communities.",
-      attachments: "https://via.placeholder.com/300",
-      problem: "Lack of reliable lighting in rural areas.",
-      solution: "Deploy solar-powered lights in key locations.",
-      resources: "$10,000 for initial deployment.",
-      alignment: "Supports sustainability and rural development goals.",
-      tags: "Environment, Sustainability, Renewable Energy",
-    },
-    {
-      id: "2",
-      title: "Mobile Health Clinic",
-      description:
-        "A mobile solution to provide healthcare services to remote areas.",
-      attachments: "https://via.placeholder.com/300",
-      problem: "Limited access to healthcare in remote regions.",
-      solution: "Deploy mobile clinics with essential medical equipment.",
-      resources: "$20,000 for a fully equipped van.",
-      alignment: "Improves healthcare accessibility.",
-      tags: "Health, Accessibility, Innovation",
-    },
-    {
-      id: "3",
-      title: "AI-Powered Education Platform",
-      description:
-        "An AI-driven platform to revolutionize the way students learn.",
-      attachments: "https://via.placeholder.com/300",
-      problem: "Lack of personalized learning tools.",
-      solution: "Create an AI platform that adapts to individual student needs.",
-      resources: "$50,000 for platform development.",
-      alignment: "Advances educational technology.",
-      tags: "Education, AI, Technology",
-    },
-  ]);
-
-  // Added state to track selected idea
+  const [ideas, setIdeas] = useState([]);
   const [selectedIdea, setSelectedIdea] = useState(null);
 
-  // Handle idea click to show details in full page
-  const handleIdeaClick = (idea) => {
-    setSelectedIdea(idea);
-    setActivePage("ideaDetails");
+  // Fetch real proposed ideas from the backend rather than using dummy data
+  useEffect(() => {
+    const fetchDashboardIdeas = async () => {
+      try {
+        const response = await IdeaHubDashboardService.fetchDashboardIdeas();
+        const dashboardData = response.data; 
+        // dashboardData is expected to contain an array of objects with 'idea' and metadata fields
+        // The frontend currently expects: id, title, description, problem, solution, resources, alignment, tags, attachments
+        // DashboardIdeaSerializer includes idea fields via IdeaSerializer which should provide these fields.
+        // We'll map them into a similar structure as previously used by the frontend:
+        
+        const formattedIdeas = dashboardData.map(entry => {
+          const idea = entry.idea; // Contains fields from IdeaSerializer
+          return {
+            id: idea.id.toString(),
+            title: idea.title,
+            description: idea.description,
+            attachments: idea.attachments,
+            problem: idea.problem,
+            solution: idea.solution,
+            resources: idea.resources,
+            alignment: idea.alignment,
+            tags: idea.tags,
+          };
+        });
+
+        setIdeas(formattedIdeas);
+      } catch (error) {
+        console.error("Error fetching dashboard ideas:", error);
+      }
+    };
+
+    if (activePage === "dashboard") {
+      fetchDashboardIdeas();
+    }
+  }, [activePage]);
+
+  const handleIdeaClick = async (idea) => {
+    // Fetch full details from the backend if needed
+    // The dashboard provides partial info already, but let's fetch full details to ensure we have everything updated
+    try {
+      const response = await IdeaHubDashboardService.fetchIdeaDetail(idea.id);
+      const fullIdea = response.data;
+      // Format and combine the fetched data with existing fields for consistency
+      // fullIdea fields: id, title, description, attachments, problem, solution, resources, alignment, tags
+      const selected = {
+        id: fullIdea.id.toString(),
+        title: fullIdea.title,
+        description: fullIdea.description,
+        attachments: fullIdea.attachments,
+        problem: fullIdea.problem,
+        solution: fullIdea.solution,
+        resources: fullIdea.resources,
+        alignment: fullIdea.alignment,
+        tags: fullIdea.tags,
+      };
+      setSelectedIdea(selected);
+      setActivePage("ideaDetails");
+
+      // Optionally record that the user viewed this idea (if authenticated)
+      // await IdeaHubDashboardService.recordIdeaView(fullIdea.id); // only if user is authenticated
+    } catch (error) {
+      console.error("Error fetching idea detail:", error);
+    }
+  };
+
+  const handleMinimize = () => {
+    // Minimize the detailed view and return to dashboard
+    setSelectedIdea(null);
+    setActivePage("dashboard");
   };
 
   const renderActivePage = () => {
@@ -70,8 +98,40 @@ const IdeaHubDashboard = () => {
       case "voting":
         return <IdeaVoting />;
       case "ideaDetails":
-        // Passing selectedIdea to IdeaDetails
-        return <IdeaDetails idea={selectedIdea} />;
+        // Display the selected idea details along with all fields from ProposeIdea
+        return (
+          <>
+            <IdeaDetails idea={selectedIdea} />
+            {selectedIdea && (
+              <div className="idea-full-details" style={{ marginTop: "20px" }}>
+                <h3>Full Idea Details</h3>
+                <p><strong>Title:</strong> {selectedIdea.title}</p>
+                <p><strong>Problem:</strong> {selectedIdea.problem}</p>
+                <p><strong>Solution:</strong> {selectedIdea.solution}</p>
+                <p><strong>Resources:</strong> {selectedIdea.resources}</p>
+                <p><strong>Alignment:</strong> {selectedIdea.alignment}</p>
+                <p><strong>Tags:</strong> {selectedIdea.tags}</p>
+                {selectedIdea.attachments && (
+                  <div style={{ marginTop: "10px" }}>
+                    <strong>Attachments:</strong><br />
+                    <img
+                      src={selectedIdea.attachments}
+                      alt="Idea Attachment"
+                      style={{ width: "200px", borderRadius: "8px", marginTop: "5px" }}
+                    />
+                  </div>
+                )}
+                {/* Add a minimize button here to go back to dashboard */}
+                <button
+                  style={{ marginTop: "15px", padding: "8px 12px", background: "#367162", color: "#fff", border: "none", borderRadius: "6px", cursor: "pointer" }}
+                  onClick={handleMinimize}
+                >
+                  Minimize
+                </button>
+              </div>
+            )}
+          </>
+        );
       default:
         return (
           <div className="idea-feed">
@@ -93,24 +153,13 @@ const IdeaHubDashboard = () => {
                   </div>
                 )}
 
-                {/* Keep the original details and actions, but show them only if in ideaDetails view */}
                 {activePage === "ideaDetails" && selectedIdea && selectedIdea.id === idea.id && (
                   <div className="idea-details">
-                    <p>
-                      <strong>Problem:</strong> {idea.problem}
-                    </p>
-                    <p>
-                      <strong>Solution:</strong> {idea.solution}
-                    </p>
-                    <p>
-                      <strong>Resources:</strong> {idea.resources}
-                    </p>
-                    <p>
-                      <strong>Alignment:</strong> {idea.alignment}
-                    </p>
-                    <p>
-                      <strong>Tags:</strong> {idea.tags}
-                    </p>
+                    <p><strong>Problem:</strong> {idea.problem}</p>
+                    <p><strong>Solution:</strong> {idea.solution}</p>
+                    <p><strong>Resources:</strong> {idea.resources}</p>
+                    <p><strong>Alignment:</strong> {idea.alignment}</p>
+                    <p><strong>Tags:</strong> {idea.tags}</p>
                   </div>
                 )}
 
@@ -118,26 +167,34 @@ const IdeaHubDashboard = () => {
                   <div className="idea-actions">
                     <button
                       className="discussion-button"
-                      onClick={() => setActivePage("discussion")}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActivePage("discussion");
+                      }}
                     >
                       Join Discussion
                     </button>
                     <button
                       className="vote-button"
-                      onClick={() => setActivePage("voting")}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActivePage("voting");
+                      }}
                     >
                       Vote for Idea
                     </button>
                     <button
                       className="track-button"
-                      onClick={() => setActivePage("tracking")}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActivePage("tracking");
+                      }}
                     >
                       Track Idea
                     </button>
                   </div>
                 )}
 
-                {/* Added a "Click to read more" prompt if not in details view */}
                 {!(activePage === "ideaDetails" && selectedIdea && selectedIdea.id === idea.id) && (
                   <>
                     <p
@@ -145,12 +202,16 @@ const IdeaHubDashboard = () => {
                         color: "#367162",
                         fontWeight: "bold",
                         marginTop: "10px",
+                        cursor: "pointer"
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleIdeaClick(idea);
                       }}
                     >
                       Click to read more...
                     </p>
 
-                    {/* Added icons for discussion, vote, and track below "click to read more" */}
                     <div className="quick-actions" style={{ marginTop: "10px", display: "flex", gap: "10px" }}>
                       <button
                         className="discussion-button"

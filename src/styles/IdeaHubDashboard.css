@@ -276,6 +276,126 @@ body {
     transform: scale(1.05);
 }
 
+/* Additional Styles for "Gazette" Look on Detailed View */
+.idea-full-details {
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    font-family: 'Georgia', serif;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    background: #fdfdfd;
+}
+
+.idea-full-details h3 {
+    font-family: 'Times New Roman', serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #141e3f;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #141e3f;
+    padding-bottom: 5px;
+    margin-top: 0;
+    text-align: center;
+}
+
+/* Enhanced layout for attachments and content */
+.idea-full-details-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.idea-full-details-attachments {
+    flex: 0 0 220px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fefefe;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px;
+    align-self: flex-start;
+    position: sticky;
+    top: 30px;
+}
+
+.idea-full-details-attachments img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.idea-full-details-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Problem, Solution, Resources, etc. styled as sections */
+.idea-full-details-section {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.idea-full-details-section h4 {
+    margin-bottom: 10px;
+    font-family: 'Times New Roman', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #141e3f;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 4px;
+}
+
+.idea-full-details-section p {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* Minimize button */
+.idea-full-details button {
+    margin-top: 20px;
+    display: inline-block;
+    background: #367162;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.idea-full-details button:hover {
+    background-color: #2a5149;
+    transform: scale(1.05);
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .idea-hub-title {
@@ -288,6 +408,21 @@ body {
 
     .idea-post {
         margin: 0 auto;
+    }
+
+    .idea-full-details {
+        max-width: 95%;
+    }
+
+    .idea-full-details-container {
+        flex-direction: column;
+    }
+
+    .idea-full-details-attachments {
+        position: static;
+        top: auto;
+        margin-bottom: 20px;
+        width: 100%;
     }
 }
 
@@ -323,7 +458,9 @@ body {
     .idea-description,
     .idea-details,
     .idea-actions button,
-    .quick-actions button {
+    .quick-actions button,
+    .idea-full-details p,
+    .idea-full-details-section p {
         font-size: 12px;
     }
 
@@ -333,5 +470,21 @@ body {
 
     .quick-actions button, .idea-actions button {
         padding: 5px 8px;
+    }
+
+    .idea-full-details h3 {
+        font-size: 18px;
+    }
+
+    .idea-full-details-section h4 {
+        font-size: 14px;
+    }
+
+    .idea-full-details {
+        padding: 20px;
+    }
+
+    .idea-full-details-attachments {
+        flex: 1 1 auto;
     }
 }
