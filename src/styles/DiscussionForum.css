@@ -1,0 +1,97 @@
+/* General Container Styling */
+.discussion-forum-container {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: #141e3f; /* Lab4GPS Blue for text */
+}
+
+.discussion-forum-title {
+  color: #367162; /* Lab4GPS Green for headings */
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Comments List Styling */
+.discussion-forum-comments-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.discussion-forum-comment-item {
+  background-color: #ffffff;
+  border: 1px solid #cccccc; /* Light gray border */
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.discussion-forum-comment-text {
+  color: #666666; /* Dark gray for text */
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.discussion-forum-comment-author {
+  font-style: italic;
+  font-size: 14px;
+  color: #367162; /* Subtle green for author */
+}
+
+/* Comment Form Styling */
+.discussion-forum-comment-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.discussion-forum-comment-input {
+  resize: none;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #cccccc; /* Consistent with design for inputs */
+  min-height: 100px;
+  font-size: 16px;
+}
+
+.discussion-forum-submit-comment {
+  background-color: #367162; /* Lab4GPS Green for submit button */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.discussion-forum-submit-comment:hover {
+  background-color: #285c4d; /* Darker green on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .discussion-forum-container {
+      padding: 10px;
+  }
+
+  .discussion-forum-title {
+      font-size: 20px;
+  }
+
+  .discussion-forum-comment-text,
+  .discussion-forum-comment-input {
+      font-size: 14px;
+  }
+
+  .discussion-forum-submit-comment {
+      padding: 8px 16px;
+      font-size: 14px;
+  }
+}

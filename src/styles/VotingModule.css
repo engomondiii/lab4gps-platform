@@ -1,0 +1,139 @@
+/* VotingModule.css */
+
+/* Container Styling */
+.voting-module-container {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333;
+  transition: box-shadow 0.3s ease;
+}
+
+.voting-module-container:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Styling */
+.voting-module-title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #141e3f; /* Lab4GPS Blue */
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Vote Counts Styling */
+.voting-module-vote-counts {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #666;
+}
+
+.voting-module-vote-count {
+  margin: 0;
+  text-align: center;
+}
+
+.voting-module-vote-count::before {
+  content: "\2022 ";
+  font-size: 1.3rem;
+  vertical-align: middle;
+  color: #ff9900; /* Accent Orange */
+}
+
+/* Voting Buttons Styling */
+.voting-module-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.voting-module-button {
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+/* Button Colors */
+.voting-module-yes {
+  background-color: #4caf50; /* Green for Yes */
+  color: white;
+}
+
+.voting-module-no {
+  background-color: #f44336; /* Red for No */
+  color: white;
+}
+
+.voting-module-abstain {
+  background-color: #ff9800; /* Orange for Abstain */
+  color: white;
+}
+
+/* Hover Effects */
+.voting-module-yes:hover {
+  background-color: #388e3c;
+  transform: translateY(-3px);
+  box-shadow: 0 3px 10px rgba(72, 187, 120, 0.3);
+}
+
+.voting-module-no:hover {
+  background-color: #d32f2f;
+  transform: translateY(-3px);
+  box-shadow: 0 3px 10px rgba(244, 67, 54, 0.3);
+}
+
+.voting-module-abstain:hover {
+  background-color: #fb8c00;
+  transform: translateY(-3px);
+  box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);
+}
+
+/* Alert Animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.9);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+.voting-module-container.alert {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .voting-module-container {
+      padding: 15px;
+      margin: 10px;
+  }
+
+  .voting-module-button {
+      padding: 10px 15px;
+      font-size: 0.9rem;
+  }
+
+  .voting-module-buttons {
+      flex-direction: column;
+      align-items: center;
+  }
+}

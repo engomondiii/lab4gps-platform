@@ -1,0 +1,53 @@
+/* Unifiedcomm.css */
+
+.unifiedcomm-container-unique {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f9f9f9; /* Subtle background for the container */
+}
+
+.unifiedcomm-tabs-unique {
+    display: flex;
+    background: #141e3f; /* Primary color for tabs */
+    padding: 0;
+    border-bottom: 2px solid #e0e0e0; /* Add subtle border for distinction */
+}
+
+.unifiedcomm-tab-button-unique {
+    flex-grow: 1;
+    padding: 12px 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+.unifiedcomm-tab-button-unique:hover {
+    background: #265040; /* Hover effect for tabs */
+}
+
+.unifiedcomm-tab-button-unique.unifiedcomm-active-unique {
+    background: #367162; /* Active tab background */
+    font-weight: bold;
+    color: #ffffff;
+    box-shadow: inset 0px -3px 0px #ffffff; /* Highlight active tab */
+}
+
+.unifiedcomm-tab-content-unique {
+    padding: 20px;
+    background: white;
+    border-radius: 0 0 8px 8px;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.unifiedcomm-tab-content-unique > * {
+    margin: 0;
+    padding: 0;
+}

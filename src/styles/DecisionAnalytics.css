@@ -1,0 +1,87 @@
+/* General Container Styling */
+.decision-analytics-wrapper {
+  background-color: #f8f9fa; /* Light Gray Background */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Helvetica', Arial, sans-serif;
+  color: #333;
+}
+
+.decision-analytics-title {
+  text-align: center;
+  color: #141e3f; /* Lab4GPS Blue */
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+/* Loading Text */
+.decision-analytics-loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 2rem;
+}
+
+/* Analytics Content Grid */
+.decision-analytics-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+/* Individual Chart Cards */
+.decision-analytics-chart-card {
+  background-color: #ffffff; /* White Card Background */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.decision-analytics-chart-title {
+  margin-bottom: 1rem;
+  color: #367162; /* Lab4GPS Green */
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.decision-analytics-chart-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+/* Chart Responsiveness */
+.decision-analytics-chart-card canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Chart Legends and Additional Styling */
+.decision-analytics-chart-card .chartjs-render-monitor {
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .decision-analytics-content {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+  }
+
+  .decision-analytics-chart-card {
+      padding: 1rem;
+  }
+
+  .decision-analytics-title {
+      font-size: 1.5rem;
+  }
+}

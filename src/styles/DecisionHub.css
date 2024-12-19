@@ -1,0 +1,112 @@
+/* DecisionHub.css */
+.decision-hub-container {
+    font-family: 'Helvetica', Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.decision-hub-title {
+    color: #141e3f;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.decision-hub-list {
+    margin-bottom: 20px;
+}
+
+.decision-hub-item {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.decision-hub-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.decision-hub-item-title {
+    color: #367162;
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.decision-hub-item-status {
+    color: #666666;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.decision-hub-details {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.decision-hub-details-title {
+    color: #367162;
+    font-size: 1.8em;
+    margin-top: 0;
+}
+
+/* Button and Input Styles */
+button, input[type="text"], textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+button {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e68900;
+}
+
+.submit-button, .vote-button {
+    background-color: #141e3f;
+    color: white;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+.submit-button:hover, .vote-button:hover {
+    background-color: #0a0f2a;
+}
+
+/* Search Bar Styles */
+.search-bar {
+    width: calc(100% - 22px);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .decision-hub-container, .decision-hub-details {
+        padding: 10px;
+    }
+
+    .decision-hub-title, .decision-hub-item-title {
+        font-size: 1.2em;
+    }
+}

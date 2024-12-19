@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
-  FaTachometerAlt,
+  FaUser,
   FaFileAlt,
   FaCommentDots,
   FaLightbulb,
-  FaTasks,
+  FaGavel,
   FaChalkboardTeacher,
   FaUsers,
   FaCalendarAlt,
@@ -23,6 +23,28 @@ import { useAuth } from "../Context/AuthContext"; // Import AuthContext hook
 import AdvancedUserProfile from "../components/Auths/AdvancedUserProfile";
 import InternalArchive from "../components/Archive/InternalArchive";
 import IdeaHubDashboard from "../components/IdeaHub/IdeaHubDashboard";
+import MemberDashboardHome from "../components/Dashboard/MemberDashboardHome";
+
+import Announcements from '../components/Communication/Announcements';
+import Messaging from '../components/Communication/Messaging';
+import Feedback from '../components/Communication/Feedback';
+import Unifiedcomm from '../components/Communication/Unifiedcomm';
+
+
+import DecisionHub from '../components/DMS/DecisionHub';
+import ProposalForm from '../components/DMS/ProposalForm';
+import DiscussionForum from '../components/DMS/DiscussionForum';
+import VotingModule from '../components/DMS/VotingModule';
+import DecisionAnalytics from '../components/DMS/DecisionAnalytics';
+
+
+import MemberDirectory from "../components/Community/MemberDirectory";
+import RecognitionSystem from "../components/Community/RecognitionSystem";
+import MemberProfile from "../components/Community/MemberProfile";
+
+
+
+
 import "../styles/MemberPortalDashboard.css";
 
 const MemberPortalDashboard = () => {
@@ -81,16 +103,16 @@ const MemberPortalDashboard = () => {
         <div className="sidebar-navigation">
           <ul>
             <li
-              onClick={() => handleNavigation("home")}
-              className={activeSection === "home" ? "active" : ""}
+              onClick={() => handleNavigation("MemberDashboardHome")}
+              className={activeSection === "MemberDashboardHome" ? "active" : ""}
             >
               <FaHome /> {sidebarExpanded && "Home"}
             </li>
             <li
-              onClick={() => handleNavigation("dashboard")}
-              className={activeSection === "dashboard" ? "active" : ""}
+              onClick={() => handleNavigation("AdvancedUserProfile")}
+              className={activeSection === "AdvancedUserProfile" ? "active" : ""}
             >
-              <FaTachometerAlt /> {sidebarExpanded && "Dashboard"}
+              <FaUser /> {sidebarExpanded && "Profile"}
             </li>
             <li
               onClick={() => handleNavigation("archive")}
@@ -99,41 +121,40 @@ const MemberPortalDashboard = () => {
               <FaFileAlt /> {sidebarExpanded && "Internal Archive"}
             </li>
             <li
-              onClick={() => handleNavigation("communication")}
-              className={activeSection === "communication" ? "active" : ""}
-            >
-              <FaCommentDots /> {sidebarExpanded && "Communication"}
-            </li>
+  onClick={() => handleNavigation("communication")}
+  className={activeSection === "communication" ? "active" : ""}
+>
+  <FaCommentDots /> {sidebarExpanded && "Communication"}
+</li>
+
             <li
               onClick={() => handleNavigation("ideahub")}
               className={activeSection === "ideahub" ? "active" : ""}
             >
               <FaLightbulb /> {sidebarExpanded && "Idea Hub"}
             </li>
-            <li
-              onClick={() => handleNavigation("tasks")}
-              className={activeSection === "tasks" ? "active" : ""}
-            >
-              <FaTasks /> {sidebarExpanded && "Tasks"}
-            </li>
-            <li
+            <li onClick={() => handleNavigation("decision")} className={activeSection === "decision" ? "active" : ""}>
+    <FaGavel /> {sidebarExpanded && "Decision Making"}
+</li>
+
+            {/* <li
               onClick={() => handleNavigation("training")}
               className={activeSection === "training" ? "active" : ""}
             >
               <FaChalkboardTeacher /> {sidebarExpanded && "Training"}
-            </li>
+            </li> */}
             <li
               onClick={() => handleNavigation("community")}
               className={activeSection === "community" ? "active" : ""}
             >
               <FaUsers /> {sidebarExpanded && "Community"}
             </li>
-            <li
+            {/* <li
               onClick={() => handleNavigation("events")}
               className={activeSection === "events" ? "active" : ""}
             >
               <FaCalendarAlt /> {sidebarExpanded && "Events"}
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
@@ -196,7 +217,24 @@ const MemberPortalDashboard = () => {
         </div>
 
         <div className="content">
-          {viewingProfile ? (
+          {activeSection === "MemberDashboardHome" ? (
+            <MemberDashboardHome />
+          ) :activeSection === "AdvancedUserProfile" ? (
+            <AdvancedUserProfile />
+          ) :activeSection === "community" ? (
+            <MemberDirectory />
+          ) :activeSection === "decision" ? (
+    
+        <DecisionHub />
+       
+          
+          
+          
+          
+          
+           ) :activeSection === "communication" ? (
+         <Unifiedcomm />
+           ) :viewingProfile ? (
             <AdvancedUserProfile />
           ) : activeSection === "archive" ? (
             <InternalArchive />

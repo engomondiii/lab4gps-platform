@@ -1,0 +1,218 @@
+/* Container Styling */
+.recognition-system-wrapper {
+  font-family: 'Helvetica', Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #333;
+  background-color: #f8f9fb;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.recognition-system-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #141e3f; /* Lab4GPS Blue */
+  margin-bottom: 1.5rem;
+}
+
+/* Loading Text */
+.recognition-loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #999;
+}
+
+/* Badges Section */
+.recognition-badges-section {
+  margin-bottom: 2rem;
+}
+
+.recognition-badges-title {
+  color: #367162; /* Lab4GPS Green */
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.recognition-badges-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.recognition-badge-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  padding: 1rem;
+  width: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recognition-badge-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.recognition-badge-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #ff9900; /* Accent Orange */
+}
+
+.recognition-badge-name {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #141e3f;
+}
+
+.recognition-badge-earned {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Leaderboard Section */
+.recognition-leaderboard-section {
+  margin-bottom: 2rem;
+}
+
+.recognition-leaderboard-title {
+  color: #367162;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.recognition-points {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.recognition-leaderboard-list {
+  list-style: none;
+  padding: 0;
+}
+
+.recognition-leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.recognition-leaderboard-item:hover {
+  background-color: #f1f5f8;
+}
+
+.recognition-leaderboard-item span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Nominations Section */
+.recognition-nominations-section {
+  margin-top: 2rem;
+}
+
+.recognition-nominations-title {
+  color: #367162;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.recognition-nomination-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.recognition-nomination-input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.recognition-nomination-icon {
+  font-size: 1.5rem;
+  color: #367162;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.recognition-nomination-icon:hover {
+  color: #285c4d;
+}
+
+.recognition-nomination-submit-icon {
+  font-size: 1.5rem;
+  color: #ff9900;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.recognition-nomination-submit-icon:hover {
+  color: #e68a00;
+}
+
+.recognition-nominations-list {
+  list-style: none;
+  padding: 0;
+}
+
+.recognition-nomination-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.recognition-nomination-card:hover {
+  transform: scale(1.02);
+}
+
+.recognition-nomination-card p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.recognition-vote-icon {
+  font-size: 1.5rem;
+  color: #ff9900;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.recognition-vote-icon:hover {
+  color: #e68a00;
+}
+
+.recognition-vote-icon.voted {
+  color: #ccc;
+  cursor: not-allowed;
+}
